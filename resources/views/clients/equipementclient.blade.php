@@ -26,10 +26,7 @@
 							<div class="panel">
 								<div class="panel-heading">
 									<h3 class="panel-title"> Client : {{ $client->clientname }} </h3>
-                                    @if (Auth::user()->role == "Administrateur")
-                                    <td>
-                                        <a href="/modalites/{{ $client->id_client }}/equipements/create" class="btn btn-info" >Ajouter Equipement</a>   
-                                    </td>
+                                 
                                     
                                         
                                     @endif

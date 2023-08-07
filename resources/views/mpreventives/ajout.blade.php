@@ -61,7 +61,7 @@
                                                         <option >Selectionner le client </option>  
                                                         @foreach($clients as $client )
 
-                                                        <option value="{{ $client->id_client }}">{{ $client->name }}</option> 
+                                                        <option value="{{ $client->id_client }}">{{ $client->clientname }}</option> 
                                                         @endforeach
                                                         </select>
                                                 </div>

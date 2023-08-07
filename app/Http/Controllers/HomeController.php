@@ -95,7 +95,7 @@ class HomeController extends Controller
                     ->where('date_prochaine','!=',$today)
                     ->orwhere('etat',"=","Programé")
                     ->orwhere('etat',"=","Suspendu")
-                    ->orwhere('etat',"=","En Cours")
+                    ->orwhere('etat',"=","En Cours")  
                     ->get();
         $users = User::all();
         $techniciens = User::where('role',"Technicien")->get();

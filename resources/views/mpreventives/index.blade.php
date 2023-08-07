@@ -103,7 +103,7 @@
                                                     <td>
                                                         @foreach($clients as $client )
                                                             @if ( $client->id_client == $mp->idclient )
-                                                                {{ $client->name }} 
+                                                                {{ $client->clientname }} 
                                                             @endif
                                                         @endforeach
                                                     </td>

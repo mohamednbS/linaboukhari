@@ -77,7 +77,7 @@ class MpreventivesController extends Controller
 
         while( $dateprochaine <= $datefin ){
             $maintenance = new Maintenance();
-            $maintenance->idmp = $mp->id ;
+            $maintenance->idmp = $mp->id_mpreventive ;
             $maintenance->date_maintenance = $dateprochaine;
       
             $maintenance->save();

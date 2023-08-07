@@ -25,7 +25,7 @@ class OinterventionsController extends Controller
         $equipements = Equipement::all();
         $clients = Client::all();
         $ointerventions = Ointervention::where('etat',"!=","Terminé")   
-                                        ->get();
+                                        ->get(); 
 
         return view('dmdinterventions.index')->with('messages',$messages)->with('notifications',$notifications)->with('ointerventions',$ointerventions)->with('equipements',$equipements)->with('clients',$clients)->with('users',$users);
     }
@@ -145,31 +145,31 @@ class OinterventionsController extends Controller
          
     }
 
-    public function destroyHistorique($id)
+    public function destroyHistorique($id_intervention)
     {
          //
-         $oi = Ointervention::find($id);
+         $oi = Ointervention::find($id_intervention);
          $oi->delete();
          return redirect('/di/historique')->with("addoi","deleted");
          
     }
-    public function ordretravaille($id){
-        $oi = Ointervention::find($id);
+    public function ordretravaille($id_intervention){
+        $oi = Ointervention::find($id_intervention);
         return view('ointerventions.ordret')->with('oi',$oi); 
     }
   
  
-    public function ordretravailleshow($id){
+    public function ordretravailleshow($id_intervention){
         
-        $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
-        $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
-        $oi = Ointervention::find($id);
+        $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
+        $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
+        $oi = Ointervention::find($id_intervention);
         return view('dmdinterventions.observation')->with('oi',$oi)->with('messages',$messages)->with('notifications',$notifications);
 
     }
-    public function valider($id,Request $request){
+    public function valider($id_intervention,Request $request){
         
-        $oi = Ointervention::find($id);
+        $oi = Ointervention::find($id_intervention);
         $oi->etat = "Terminé";
         $oi->update();
         
@@ -181,7 +181,7 @@ class OinterventionsController extends Controller
                $notification = new Notification();
                $notification->stat = "unseen";
                $notification->touser = "Administrateur";
-               $notification->iduser =$admin->id;
+               $notification->iduser =$admin->id_user;
                $notification->content = "Ordre de travail ".$oi->numero." validé par ".Auth::user()->name; 
                $notification->save();
            }
@@ -197,8 +197,8 @@ class OinterventionsController extends Controller
 
     }
 
-    public function addobservationoi(Request $request , $id){
-        $oi = Ointervention::find($id);
+    public function addobservationoi(Request $request , $id_intervention){
+        $oi = Ointervention::find($id_intervention);
         $numero = $oi->numero;
         $oi->date_intervention = $request->input("date_debut");
         $oi->commentaire = $request->input("commentaire");
@@ -206,7 +206,7 @@ class OinterventionsController extends Controller
         $oi->update();
 
         $ac = new Activite();
-        $ac->iduser = Auth::user()->id;
+        $ac->iduser = Auth::user()->id_user;
         $ac->description = "Commencer la demande d'Intervention ".$numero;
         $ac->save();
 
@@ -217,7 +217,7 @@ class OinterventionsController extends Controller
             $notification = new Notification();
             $notification->stat = "unseen";
             $notification->touser = "Administrateur";
-            $notification->iduser =$admin->id;
+            $notification->iduser =$admin->id_user;
             $notification->content =  "Le technicien a démaré l'ordre du travail ".$numero; 
             $notification->save();
         }
@@ -225,7 +225,7 @@ class OinterventionsController extends Controller
             $notification = new Notification(); 
             $notification->stat = "unseen";
             $notification->touser = "Chef Secteur";
-            $notification->iduser =$chef->id;
+            $notification->iduser =$chef->id_user;
             $notification->content = "le technicien a validé l'ordre du travail ".$numero; 
             $notification->save();
         }
@@ -236,23 +236,23 @@ class OinterventionsController extends Controller
 
     }
     //Modifier l'ordre d'intervention 
-    public function modordretravail($id){
+    public function modordretravail($id_intervention){
         
-        $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
-        $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
-        $oi = Ointervention::find($id);
+        $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
+        $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
+        $oi = Ointervention::find($id_intervention);
         return view('dmdinterventions.modobservation')->with('oi',$oi)->with('messages',$messages)->with('notifications',$notifications);
 
     }
-    public function modobservationoi(Request $request , $id){
-        $oi = Ointervention::find($id);
+    public function modobservationoi(Request $request , $id_intervention){
+        $oi = Ointervention::find($id_intervention);
         $numero = $oi->numero;
         $oi->date_intervention = $request->input("date_debut");
         $oi->commentaire = $request->input("commentaire");
         $oi->etat = $request->input("etat");      
         $oi->update();
         $ac = new Activite();
-        $ac->iduser = Auth::user()->id;
+        $ac->iduser = Auth::user()->id_user;
         $ac->description = "Modifier l'Ordre d'Intervention ".$numero;
         $ac->save();
         // Lister les administrateurs
@@ -262,7 +262,7 @@ class OinterventionsController extends Controller
             $notification = new Notification();
             $notification->stat = "unseen";
             $notification->touser = "Administrateur";
-            $notification->iduser =$admin->id;
+            $notification->iduser =$admin->id_user;
             $notification->content = "Le Technicien a Modifié l'Ordre d'Intervention ".$numero; 
             $notification->save();
         }
@@ -270,7 +270,7 @@ class OinterventionsController extends Controller
             $notification = new Notification(); 
             $notification->stat = "unseen";
             $notification->touser = "Chef Secteur";
-            $notification->iduser =$chef->id;
+            $notification->iduser =$chef->id_user;
             $notification->content = "le technicien a validé l'ordre du travail ".$numero; 
             $notification->save();
         }
@@ -280,33 +280,34 @@ class OinterventionsController extends Controller
         //return view('dmdinterventions.observation');
 
     }
-    public function ordretravaillempshow($id){
+    public function ordretravaillempshow($id_mpreventive){
         $equipements = Equipement::all();
         //$mp = Mpreventive::find($id);
-        $maintenances = Maintenance::where('idmp',$id)->get(); 
-        $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
-        $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
-        $mp = Mpreventive::find($id);
+        $maintenances = Maintenance::where('idmp',$id_maintenance)->get(); 
+        $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
+        $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
+        $mp = Mpreventive::find($id_mpreventive);
         $today = date("Y-m-d");
-        $maintenance = Maintenance::where('idmp',$mp->id)->where('date_maintenance',$today)->get();
+        $maintenance = Maintenance::where('idmp',$mp->id_mpreventive)->where('date_maintenance',$today)->get();
         return view('mpreventives.observation')->with('equipements',$equipements)->with('maintenances',$maintenances)->with('mp',$mp)->with('maintenance',$maintenance)->with('messages',$messages)->with('notifications',$notifications);
 
     }
-    public function historiquempshow($id){
+    public function historiquempshow($id_mpreventive){
         $equipements = Equipement::all();
         //$mp = Mpreventive::find($id);
-        $maintenances = Maintenance::where('idmp',$id)->get(); 
-        $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
-        $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
+        $mp = Mpreventive::find($id_mpreventive);
+        $maintenances = Maintenance::where('idmp',$mp->id_maintenance)->get(); 
+        $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
+        $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $clients = Client::all();
-        $mp = Mpreventive::find($id);
+        
         $today = date("Y-m-d");
-        $maintenance = Maintenance::where('idmp',$mp->id)->where('date_maintenance',$today)->get();
+        $maintenance = Maintenance::where('idmp',$mp->id_mpreventive)->where('date_maintenance',$today)->get();
         return view('mpreventives.historique')->with('equipements',$equipements)->with('maintenances',$maintenances)->with('mp',$mp)->with('maintenance',$maintenance)->with('messages',$messages)->with('notifications',$notifications)->with('clients',$clients);
 
     }
-    public function addobservationmp(Request $request , $id){
-        $m = Maintenance::find($id);
+    public function addobservationmp(Request $request , $id_maintenance){
+        $m = Maintenance::find($id_maintenance);
         $m->observation = $request->input('observation');
         $m->etat = "En attente de validation";
         $m->update();
@@ -316,7 +317,7 @@ class OinterventionsController extends Controller
         $numero = $mp->numero;
         
         $ac = new Activite();
-        $ac->iduser = Auth::user()->id;
+        $ac->iduser = Auth::user()->id_user;
         $ac->description = "valider la maintenance preventive ".$numero;
         $ac->save();
         $admins = User::where('role','=','Administrateur')->get();
@@ -325,7 +326,7 @@ class OinterventionsController extends Controller
             $notification = new Notification();
             $notification->stat = "unseen";
             $notification->touser = "Administrateur";
-            $notification->iduser =$admin->id;
+            $notification->iduser =$admin->id_user;
             $notification->content = "le technicien a démaré la maintenance preventive".$numero; 
             $notification->save();
         }
@@ -333,7 +334,7 @@ class OinterventionsController extends Controller
             $notification = new Notification();
             $notification->stat = "unseen";
             $notification->touser = "Chef Secteur";
-            $notification->iduser =$chef->id;
+            $notification->iduser =$chef->id_user;
             $notification->content = "le technicien a validé la maintenance preventive".$numero; 
             $notification->save();
         }
@@ -347,14 +348,14 @@ class OinterventionsController extends Controller
         $users = User::all();
         $clients = Client::all();
         $techniciens = User::where('role',"Technicien")->get();
-        $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
-        $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
+        $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
+        $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         return view('dmdinterventions.historique')->with('alloi',$alloi)->with('equipements',$equipements)->with('messages',$messages)->with('notifications',$notifications)->with('clients',$clients)->with('users',$users)->with('techniciens',$techniciens);
     
     }
     public function find(Request $request){
-        $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
-        $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
+        $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
+        $notifications = Notification::where('iduser',Auth::user()->i_userd)->where('stat',"unseen")->get();
         $users = User::all();
         $clients = Client::all();
         $equipements = Equipement::all();

@@ -61,9 +61,9 @@
                                                     @foreach($clients as $client )
                                                                 
                                                         @if ($client->id_client == $mp->idclient )
-                                                            <option selected value='{{ $client->id_client }}'>{{ $client->name }}</option>
+                                                            <option selected value='{{ $client->id_client }}'>{{ $client->clientname }}</option>
                                                         @else
-                                                            <option value='{{ $client->id_client }}'>{{ $client->name }}</option>
+                                                            <option value='{{ $client->id_client }}'>{{ $client->clientname }}</option>
                                                         @endif
                                                     @endforeach
                                                         </select>
@@ -78,8 +78,8 @@
                                                 <select style="width:100%;margin-bottom:10px;" class="form-control" name="machine">
                                                 @foreach($equipements as $equipement )
                                         
-                                                    @if ($equipement->id_client == $mp->idmachine )
-                                                        <option selected value='{{ $equipement->id_client }}'>{{ $equipement->designation }}</option>
+                                                    @if ($equipement->id_equipement == $mp->idmachine )
+                                                        <option selected value='{{ $equipement->id_equipement }}'>{{ $equipement->designation }}</option>
                                                     @else
                                                         <option value='{{ $equipement->id_equipement }}'>{{ $equipement->designation }}</option>
                                                     @endif
@@ -154,10 +154,10 @@
                                                 <select style="width:100%;margin-bottom:10px;" class="form-control" name="executeur">
                                                 @foreach($techniciens as $technicien )
         
-                                                    @if ($technicien->id == $mp->executeur )
-                                                        <option selected value='{{ $technicien->id }}'>{{ $technicien->name }}</option>
+                                                    @if ($technicien->id_user == $mp->executeur )
+                                                        <option selected value='{{ $technicien->name }}'>{{ $technicien->name }}</option>
                                                     @else
-                                                        <option value='{{ $technicien->id }}'>{{ $technicien->name }}</option>
+                                                        <option value='{{ $technicien->name }}'>{{ $technicien->name }}</option>
                                                     @endif
                                                 @endforeach
                                                 </select>

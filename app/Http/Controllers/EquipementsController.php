@@ -100,7 +100,7 @@ class EquipementsController extends Controller
         $document->move($destinationPath,$documentname);
         
         //
-        $equipement = new Equipement();
+        $equipement = new Equipement();  
         $equipement->name=$request->input("code");
         $equipement->marque=$request->input("marque");
         $equipement->modele=$request->input("modele");  
@@ -214,6 +214,12 @@ class EquipementsController extends Controller
         $equipement = Equipement::find($id_equipement);
         $equipement->delete(); 
         return redirect('/equipements');
+    }
+
+    public function getEquipementsByClient($id_client)
+    {
+        $equipements = Equipement::where('client_id_client', $id_client)->get();
+        return response()->json($equipements);
     }
     
     public function detect(Request $request)

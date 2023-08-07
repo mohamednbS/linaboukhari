@@ -18,7 +18,7 @@ class ContratsController extends Controller
 {
     //
     public function index(){
-        $users = User::all();
+        $users = User::all(); 
         $clients = Client::all();
         $equipements = Equipement::all();
         $sousequipements = Sousequipement::all();
@@ -26,6 +26,7 @@ class ContratsController extends Controller
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $contrats =  Contrat::all();
+        $today = date('Y-m-d');
         return view('contrats.index')->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('contrats',$contrats)->with('equipements',$equipements)->with('sousequipements',$sousequipements)->with('accessoires',$accessoires)->with('clients',$clients);
     }
     public function filter(Request $request)
@@ -57,8 +58,7 @@ class ContratsController extends Controller
     public function create(){
         $users = User::all();
         $clients = Client::all();
-  
-        $equipements = Equipement::where('client_id_client',"1")->get();
+        $equipements = Equipement::all();
         $sousequipements = Sousequipement::all();
         $accessoires = Accessoire::all();
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();

@@ -31,7 +31,7 @@
 								<div class="panel-body">
 								<h4> Machine :  
 								@foreach ($equipements as $equipement )
-									@if ($mp->idmachine == $equipement->id )
+									@if ($mp->idmachine == $equipement->id_equipement )
 									{{ $equipement->name }}
 									@endif
 									
@@ -90,7 +90,7 @@
 								</div>
 								<div class="panel-body">
                                 
-								<form action='/otmp/addobservation/{{ $maintenance[0]->id }}' method="POST" >
+								<form action='/otmp/addobservation/{{ $maintenance[0]->id_maintenance }}' method="POST" >
                                                         {{ csrf_field() }} 
                                          
                                                             <div class="row">

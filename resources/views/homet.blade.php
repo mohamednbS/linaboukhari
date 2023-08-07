@@ -287,7 +287,7 @@
 														<span class="label label-danger">{{ $oi->priorite }}</span>
 	
 														@endif
-													</td>
+													</td>  
 
 													<td>
 														@if ( $oi->etat == "Demandé")
@@ -303,8 +303,8 @@
                                                     <td> {{ $oi->commentaire }} </td>
                                             
                                                 
-                                                    <td><a class='btn btn-primary btn-sm' href="/otoi/show/{{ $oi->id }}"> <i class="lnr lnr-highlight"></i> Démarrer </a>
-														<a class='btn btn-secondary btn-sm' href="/otoi/mod/{{ $oi->id }}"> <i class="lnr lnr-pencil"></i> Modifier </a></td>
+                                                    <td><a class='btn btn-primary btn-sm' href="/otoi/show/{{ $oi->id_intervention }}"> <i class="lnr lnr-highlight"></i> Démarrer </a>
+														<a class='btn btn-secondary btn-sm' href="/otoi/mod/{{ $oi->id_intervention }}"> <i class="lnr lnr-pencil"></i> Modifier </a></td>
                                                     
                                                 </tr>
                                                  @endforeach
@@ -373,7 +373,7 @@
 
 													<td> {{ $amp->commentaire }} </td>
 												
-													<td><a class='btn btn-primary' href="/otmp/historique/{{ $amp->id }}">Consulter</a></td>
+													<td><a class='btn btn-primary' href="/otmp/historique/{{ $amp->id_mpreventive }}">Consulter</a></td>
                                                 </tr>
                                                  @endforeach
                                                 </tbody>

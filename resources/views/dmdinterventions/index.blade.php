@@ -106,14 +106,14 @@
 													</td>
 							
                                                     <td>{{ $oi->commentaire }}</td>
-
+     
                                                     <td>
 													<a href="{{ route('download.document', ['document' => $oi->document]) }}"> le Rapport d'Intervention</a>
 													</td>
                                                     
 													@if (Auth::user()->role == "Administrateur")
-													<td><a  data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary'  href="/ointervention/change/{{ $oi->id }}"><i class="lnr lnr-pencil"></i> </a> 
-														<a  data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/ointervention/delete/{{ $oi->id  }}"><i class="lnr lnr-trash"></i></a></td>
+													<td><a  data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary'  href="/ointervention/change/{{ $oi->id_intervention }}"><i class="lnr lnr-pencil"></i> </a> 
+														<a  data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/ointervention/delete/{{ $oi->id_intervention  }}"><i class="lnr lnr-trash"></i></a></td>
 													@endif
                                                     
                                                     

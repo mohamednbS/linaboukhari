@@ -50,6 +50,7 @@ Route::get('download-document/{document}', function ($document) {
     $path = storage_path('app/public/' . $document);  
 
     return response()->download($path, $document);})->name('download.document')->middleware('auth');
+Route::get('/equipements/{id_client}', 'EquipementController@getEquipementsByClient');
 
 /* Sous Equipements route */
 
@@ -62,6 +63,8 @@ Route::get('/sousequipement/del/{id}/{equipement_id}','SousequipementsController
 Route::post('/equipement/{equipement_id}/sousequipement','SousequipementsController@update')->name('Sousequipements.update')->middleware('auth');
 Route::post('/equipements/{equipement_id_equipement}/sousequipements','sousequipementsController@store')->name('Sousequipements.store')->middleware('auth');
 Route::get('/equipements/{equipement_id_equipement}/sousequipements/create', 'SousequipementsController@create');
+
+
 
 /* Accessoires route */
    
@@ -91,7 +94,7 @@ Route::get('/di/historique','OinterventionsController@historiqueoi')->middleware
 Route::get('/ot/{id_intervention}','OinterventionsController@ordretravaille')->middleware('auth');
 Route::get('/otoi/show/{id_intervention}','OinterventionsController@ordretravailleshow')->middleware('auth');
 Route::get('/otmp/show/{id_intervention}','OinterventionsController@ordretravaillempshow')->middleware('auth');
-Route::get('/otmp/historique/{id_intervention}','OinterventionsController@historiquempshow')->middleware('auth');
+Route::get('/otmp/historique/{id_mpreventive}','OinterventionsController@historiquempshow')->middleware('auth');
 Route::get('/ot/refus/{id_intervention}','OinterventionsController@ordrerefus')->middleware('auth');
 Route::get('/otmp/refus/{id_intervention}','OinterventionsController@ordremprefus')->middleware('auth');
 Route::post('/ot/addobservation/{id_intervention}','OinterventionsController@addobservationoi')->middleware('auth');

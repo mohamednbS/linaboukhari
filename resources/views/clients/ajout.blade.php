@@ -4,7 +4,7 @@
 <!-- WRAPPER -->
 <div id="wrapper">
 
-	<!--MENU-->
+	<!--MENU-->  
     @include('menu.menutop')
 	@include('menu.menuleft')
 	
