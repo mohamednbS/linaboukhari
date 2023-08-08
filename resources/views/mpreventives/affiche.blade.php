@@ -46,7 +46,7 @@
 								<h4> Client : 
 								@foreach ($clients as $client )
 									@if ($mp->idclient == $client->id_client )   
-									{{ $client->name }}
+									{{ $client->clientname }}
 									@endif
 									
 								@endforeach</h4>

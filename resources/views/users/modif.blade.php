@@ -127,25 +127,18 @@
                                                                 <div class="col-md-9">
                                                                     <select name="modalité" style="width:100%;margin-bottom:10px;" class="form-control">
                                                                             <option>-- selectionner une modalité --</option>
-                                                                            <option selected value='IRM'>IRM</option>
-                                                                            <option selected value='Scanner'>Scanner</option>
-                                                                            <option selected value='Echographie'>Echographie</option>
-                                                                            <option selected value='Salle de cathétérisme'>Salle de cathétérisme</option>
-                                                                            <option selected value='Monitoring'>Monitoring</option>
+                                                                        	@foreach( $modalites as $modalite )
+                                                                            @if ($modalite->id_modalite == $user->modalité )
+                                                                            <option selected value='{{ $modalite->id_modalite }}'>{{ $modalite->name }}</option>
+                                                                            @else
+                                                                            <option value='{{ $modalite->id_modalite }}'>{{ $modalite->name }}</option>
+                                                                            @endif
+                                                                        
+                                                                            @endforeach
                                                                            
                                                                     </select> 
                                                                 </div>
-                                                                
-                                                                
-                                                                <div class="col-md-3">
-                                                                        <label > outils </label>
-                                                                        
-                                                                </div>
-                                                                <div class="col-md-9">
-                                                                    <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Indiquer les outils ici" type="text" name="outils">
-                                                                        
-                                                                </div>
-
+                                                       
 																<div class="col-md-3">
                                                                 <label> Departement </label>
                                                                 
@@ -154,10 +147,10 @@
                                                                 <select name="iddep" class="form-control">
 																	<option>-- selectionner un departement --</option>
 																	@foreach( $departments as $dep )
-																	@if ($dep->id == $user->iddep )
-																	<option selected value='{{ $dep->id }}'>{{ $dep->name }}</option>
+																	@if ($dep->id_departement == $user->iddep )
+																	<option selected value='{{ $dep->id_departement }}'>{{ $dep->name }}</option>
 																	@else
-																	<option value='{{ $dep->id }}'>{{ $dep->name }}</option>
+																	<option value='{{ $dep->id_departement }}'>{{ $dep->name }}</option>
 																	@endif
                                                                    
                                                                     @endforeach

@@ -77,8 +77,8 @@
 										   
 									   
 									    @if (Auth::user()->role == "Administrateur") 
-										   <a href="/equipement/mod/{{ $equipement->id }}" class="btn btn-primary"><i class="lnr lnr-pencil"></i>Modifier</a>
-										   <a href="/equipement/del/{{ $equipement->id}}"  class='btn btn-danger' ><i class="lnr lnr-trash">Supprimer</i></a>
+										   <a href="/cm/mod/{{ $contrat->id_contrat }}" class="btn btn-primary"><i class="lnr lnr-pencil"></i>Modifier</a>
+										   <a href="/cm/del/{{ $contrat->id_contrat }}"  class='btn btn-danger' ><i class="lnr lnr-trash">Supprimer</i></a>
 
 										@endif
                                         </div> 

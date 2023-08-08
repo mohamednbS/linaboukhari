@@ -143,15 +143,16 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id_user)
+    public function edit($id_user)
     {
         //
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $user = User::find($id_user);
         $departments = Department::all();
-        $users = User::all();
-        return view('users.modif')->with('departments',$departments)->with('user',$user)->with('users',$users)->with('messages',$messages)->with('notifications',$notifications);
+        $modalites = Modalite::all();
+    
+        return view('users.modif')->with('departments',$departments)->with('user',$user)->with('messages',$messages)->with('notifications',$notifications)->with('modalites',$modalites);
     }
     public function profile(){
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
@@ -168,10 +169,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id_user)
-    {
-        // 
-    }
+
 
     /**
      * Update the specified resource in storage.
@@ -185,6 +183,8 @@ class UsersController extends Controller
         //
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
+        $user = User::all();
+
         $user =User::find($id_user);
         $user->name = $request->input("username") ;
         $user->matricule = $request->input("usermat") ;
@@ -197,7 +197,7 @@ class UsersController extends Controller
     
         $user->save();
   
-        return redirect("/user/".$user->id_user)->with('adduser',"success")->with('users',$users)->with('messages',$messages)->with('notifications',$notifications);
+        return redirect("/user/".$user->id_user)->with('adduser',"success")->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('departments',$departments);
     }
 
     /**

@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			@if (( $maintenance->idmp == $mp->id_mpreventive) &&($mp->idclient == $client->id_client) &&($mp->idmachine == $equipement->id_equipement))
 	            
 		
-					title: '{{$client->name.'---'.$equipement->designation  }}',
+					title: '{{$client->clientname.'---'.$equipement->designation  }}',
 				
 			@endif
 			@endforeach

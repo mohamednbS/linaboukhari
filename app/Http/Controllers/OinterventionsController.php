@@ -218,7 +218,7 @@ class OinterventionsController extends Controller
             $notification->stat = "unseen";
             $notification->touser = "Administrateur";
             $notification->iduser =$admin->id_user;
-            $notification->content =  "Le technicien a démaré l'ordre du travail ".$numero; 
+            $notification->content =  "Le technicien a démarré l'ordre du travail ".$numero; 
             $notification->save();
         }
         foreach($chefs as $chef ){

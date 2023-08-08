@@ -28,7 +28,7 @@ Route::get('/users','UsersController@index')->middleware('auth');
 Route::get('/user/add','UsersController@create')->middleware('auth');
 Route::post('/adduser','UsersController@store')->middleware('auth');
 Route::post('/user/filter','UsersController@filter')->middleware('auth');
-Route::get('/user/{id_user}','UsersController@show')->middleware('auth');
+Route::get('/user/{id_user}','UsersController@edit')->middleware('auth');
 Route::post('/moduser/{id_user}','UsersController@update')->middleware('auth');
 Route::get('/user/delete/{id_user}','UsersController@destroy')->middleware('auth');
 Route::get('/users/loop', "UsersController@loop")->name('loop')->middleware('auth');

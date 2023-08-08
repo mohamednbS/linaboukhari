@@ -68,21 +68,18 @@
                                   <?php $i=0; ?>
                                   @foreach($equipements as $equipement)
                                   <?php $i++; ?>
-                                  <tr>
+                                    <tr>
                                       <td>{{ $i }}</td>
                                       <td><a href="/equipement/{{ $equipement->id_equipement }}">{{ $equipement->designation }}</a></td>
                                       <td>{{ $equipement->numserie}}</td>
                                       <td>{{ $equipement->modele }}</td>
+                                      @if (Auth::user()->role == "Administrateur")
+														<td><a href="/equipement/mod/{{ $equipement->id }}" data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary'><i class="lnr lnr-pencil"></i> </a> 
+															<a  data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger'  href="/equipement/del/{{ $equipement->id }}"><i class="lnr lnr-trash"></i></a> </td>
+														@endif
                                   
-                                   
-                                      <td>    
-                                        @if (Auth::user()->role == "Administrateur") 
-
-                                        <a  data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary'  href="/equipement/mod/{{ $equipement->id }}"><i class="lnr lnr-pencil"></i> </a> 
-                                        <a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger'><i class="lnr lnr-trash" href="/equipement/del/{{ $equipement->id }}"></i></a></td>
-                                        @endif 
                                 
-                                  </tr>
+                                    </tr>
                                   @endforeach 
                                   </tbody>
                                 </table>

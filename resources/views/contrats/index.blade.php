@@ -110,12 +110,12 @@
 													<td>{{ $contrat->date_fin }}</td>
 												
 													<td>{{ $contrat->note }}</td>
-													</td>
+												
 												
 												
 													@if (Auth::user()->role == "Administrateur")
 														<td><a href="/cm/mod/{{ $contrat->id_contrat }}" data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary'><i class="lnr lnr-pencil"></i> </a> 
-															<a  data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/cm/del/{{ $contrat->id_contrat }}"><i class="lnr lnr-trash"></i></a> </td>
+															<a  data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/cm/del/{{ $contrat->id_contrat }}"  onclick="return confirm ('voulez vous vraiment supprimer le contrat' {{ $contrat['id']}})"><i class="lnr lnr-trash"></i></a> </td>
 														@endif
                                                 </tr>
                                                 @endforeach 

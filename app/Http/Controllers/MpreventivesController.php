@@ -114,9 +114,9 @@ class MpreventivesController extends Controller
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $equipements = Equipement::all();
-        $clients = clients::all();
+        $clients = Client::all();
         $mp = Mpreventive::find($id_mpreventive); 
-        $maintenances = Maintenance::where('idmp',$id_maintenance)->get(); 
+        $maintenances = Maintenance::where('idmp',$mp->id_maintenance)->get(); 
         return view('mpreventives.affiche')->with('users',$users)->with('mp',$mp)->with('messages',$messages)->with('notifications',$notifications)->with('maintenances',$maintenances)->with('equipements',$equipements)->with('clients',$clients);
     }
 
