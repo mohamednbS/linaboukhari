@@ -371,7 +371,7 @@ ul.notifications > li {
         color: #000; }
     .sidebar .nav > li > a:focus, .sidebar .nav > li > a.active {
       background-color: var(--bs-nav-pills-link-active-bg);
-      border-left-color: #2196f3; }
+      border-left-color: #529dff; }
     .sidebar .nav > li > a[data-toggle="collapse"] .icon-submenu {
       display: inline-block;
       vertical-align: middle;
@@ -414,7 +414,7 @@ ul.notifications > li {
       position: relative;
       top: -2px; }
     .sidebar .nav .nav {
-      background-color: #2196f2; }
+      background-color: #79c4fd; }
       .sidebar .nav .nav > li > a {
         padding-left: 60px;
         padding-top: 10px;
