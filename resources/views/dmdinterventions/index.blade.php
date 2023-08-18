@@ -81,10 +81,16 @@
 															@if ( $client->id_client == $oi->idclient )
 																{{ $client->name }}  
 															@endif
-															@endforeach
+														@endforeach
 													</td>
 
-													<td>{{ $oi->type_panne }}</td>
+													<td>
+													    @foreach($typepannes as $typepanne )
+															@if ( $typepanne->id_typepanne == $oi->type_panne )
+																{{ $typepanne->name }}  
+															@endif
+														@endforeach
+													</td>
 
 													<td  class="table-info">
 														{{ implode('/ ', explode(',', $oi->destinateur)) }}
@@ -113,7 +119,7 @@
                                                     
 													@if (Auth::user()->role == "Administrateur")
 													<td><a  data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary'  href="/ointervention/change/{{ $oi->id_intervention }}"><i class="lnr lnr-pencil"></i> </a> 
-														<a  data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/ointervention/delete/{{ $oi->id_intervention  }}"  onclick="return confirm ('voulez vous vraiment supprimer l'intervention' {{ $oi['id']}})"><i class="lnr lnr-trash"></i></a></td>
+														<a  data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/ointervention/delete/{{ $oi->id_intervention  }}"onclick="return confirm ('voulez vous vraiment supprimer la demande' {{ $oi['id']}})" ><i class="lnr lnr-trash" ></i></a></td>
 													@endif
                                                     
                                                     

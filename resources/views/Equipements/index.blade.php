@@ -36,10 +36,10 @@
 											<div class="panel">
 									
 												<div class="panel-body">
-												@if( session()->get( 'addmodalite' ) == "deleted" )
+												@if( session()->get( 'addequipement' ) == "deleted" )
 												<div class="alert alert-success alert-dismissible" role="alert">
 														<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-														<i class="fa fa-check-circle"></i> Modalité supprimée avec succèss 
+														<i class="fa fa-check-circle"></i> Equipement supprimée avec succèss 
 												</div>
 												@endif
 											
@@ -79,8 +79,8 @@
 																 
 																	@endforeach</td>
 																   @if (Auth::user()->role == "Administrateur")
-																	<td class="table-info"><a  data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary' href="/equipement/mod/{{ $equipement->id }}"><i class="lnr lnr-pencil"></i></a> 
-																		<a  data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/equipement/del/{{ $equipement->id  }}"><i class="lnr lnr-trash"></i></a>
+																	<td class="table-info"><a  data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary' href="/equipement/mod/{{ $equipement->id_equipement }}"><i class="lnr lnr-pencil"></i></a> 
+																		<a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger'><i class="lnr lnr-trash" href="/equipement/del/{{ $equipement->id_equipement }}" onclick="return confirm ('voulez vous vraiment supprimer cet équipement' {{ $equipement['id']}})"></i></a>
 																
 																	</td>
 																		

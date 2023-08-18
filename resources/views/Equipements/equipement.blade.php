@@ -35,7 +35,7 @@
                                     <!-- PANEL NO PADDING -->
                                     <div class="panel">
                                           <div class="panel-heading">
-                                            <h3 class="p-3 mb-2 bg-info text-white" class="panel-title"><a href="/equipement/{{ $equipement->id}}">{{ $equipement->marque }}</a></h3>
+                                            <h3 class="p-3 mb-2 bg-info text-white" class="panel-title"><a href="/equipement/{{ $equipement->id_equipement}}">{{ $equipement->marque }}</a></h3>
                                           
                                           </div>
 
@@ -66,8 +66,8 @@
 
 									   
 									    @if (Auth::user()->role == "Administrateur") 
-										   <a href="/equipement/mod/{{ $equipement->id }}" class="btn btn-primary"><i class="lnr lnr-pencil"></i>Modifier</a>
-										   <a href="/equipement/del/{{ $equipement->id}}"  class='btn btn-danger' ><i class="lnr lnr-trash">Supprimer</i></a>
+										   <a href="/equipement/mod/{{ $equipement->id_equipement }}" class="btn btn-primary"><i class="lnr lnr-pencil"></i>Modifier</a>
+										   <a href="/equipement/del/{{ $equipement->id_equipement }}" class='btn btn-danger' onclick="return confirm ('voulez vous vraiment supprimer cet équipement' {{ $equipement['id']}})"><i class="lnr lnr-trash"></i>Supprimer</a>
 										   <a href="/equipements/{{ $equipement->id_equipement}}/sousequipements/create"class="btn btn-info">Ajouter sous Equipement</a>
 										   <a href="/equipements/{{ $equipement->id_equipement}}/accessoires/create" class="btn btn-info">Ajouter Accessoire</a>
 										@endif
@@ -111,8 +111,8 @@
 									<td>{{ $sousequipement->date_achat }}</td>
 									<td>{{ $sousequipement->date_arrive }}</td>
 									@if (Auth::user()->role == "Administrateur")
-									<td><a data-toggle="tooltip" data-placement="top" title="Modifier"class="btn btn-primary" href="/equipement/{{ $equipement->id }}/sousequipement/mod/{{ $sousequipement->id }}"><i class="lnr lnr-pencil"></i></a>
-										<a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/sousequipement/del/{{ $sousequipement->id  }}/{{ $equipement->id }}"><i class="lnr lnr-trash"></i></a></td>
+									<td><a data-toggle="tooltip" data-placement="top" title="Modifier"class="btn btn-primary" href="/sousequipement/mod/{{ $sousequipement->id_sousequipement }}"><i class="lnr lnr-pencil"></i></a>
+										<a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/equipements/{equipement_id_equipement}/sousequipements/{{ $sousequipement->id_sousequipement }}"><i class="lnr lnr-trash"></i></a></td>
 									@endif
 								</tr>
 								@endforeach 

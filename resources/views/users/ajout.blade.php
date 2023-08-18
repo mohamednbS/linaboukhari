@@ -36,9 +36,11 @@
                                 @if( session()->get( 'adduser' ) == "success" )
                                 <div class="alert alert-success alert-dismissible" role="alert">
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<i class="fa fa-check-circle"></i> Utilisateur ajouté avec succès <a href="/users" class="btn btn-sm btn-default"> Consulter La Liste Des Utilisateurs </a>
+										<i class="fa fa-check-circle"></i> Utilisateur ajouté avec succès <a href="/users" class="btn btn-sm btn-default"> Consulter La Liste des Utilisateurs </a>
 								</div>
                                 @endif
+                        
+
                                 <form action='/adduser' method="POST" >
                                     {{ csrf_field() }} 
                                          
@@ -48,7 +50,7 @@
                                             
                                         </div>
                                         <div class="col-md-9">
-                                            <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper le nom utilisateur içi" type="text" name="username" id="validationDefault01"required > 
+                                            <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper le nom utilisateur içi" type="text" name="username" id="validationDefault01" required > 
                                            
                                         
                                         </div>
@@ -57,27 +59,31 @@
                                             
                                         </div>
                                         <div class="col-md-9">
-                                            <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper la matricule utilisateur içi" type="text" name="usermat" id="validationDefault02" required >
+                                            <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper la matricule utilisateur içi" type="text" name="usermat" required >
                                             
                                         </div>
-                                        <div class="col-md-3">
-                                            <label > <label for="validationDefault03"> Email Utilisateur </label> </label>
+                                        <div class="col-md-3{{ $errors->has('usermail') ? ' has-error' : '' }}">
+                                            <label for="usermail">  Email Utilisateur </label> 
                                                 
                                         </div>
                                         <div class="col-md-9">
-                                            <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper l'email içi" type="email" name="usermail"  id="validationDefault03" required>
-                                                
+                                            <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper l'email içi" type="email" name="usermail" for="usermail" value="{{ old('usermail') }}" required>
+                                            @if ($errors->has('usermail'))
+                                                <span class="help-block">
+                                                    <strong>{{ $errors->first('usermail')}} le mail est déjà utilisé </strong>
+                                                </span>
+                                            @endif   
                                         </div>
                                         <div class="col-md-3">
-                                            <label for="validationDefault04"> Mot De Passe </label>
+                                            <label for="validationDefault04"> Mot de Passe </label>
                                             
                                         </div>
                                         <div class="col-md-9">
-                                            <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper le mot de passe içi " type="password" name="userpw"  id="validationDefault04" required>
+                                            <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper le mot de passe içi " type="password" name="userpw"  id="email" id="validationDefault04" required>
                                             
                                         </div>
                                         <div class="col-md-3">
-                                            <label for="validationDefault05"> Repeter Mot De Passe </label>
+                                            <label for="validationDefault05"> Repeter Mot de Passe </label>
                                         
                                         </div>
                                         <div class="col-md-9">
@@ -106,7 +112,7 @@
                                             
                                         </div>
                                         <div class="col-md-9">
-                                            <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper le numéro ici" type="text" name="phone" id="validationDefault07" required>
+                                            <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper le numéro ici" type="tel" name="phone" id="validationDefault07" required>
                                             
                                         </div>
 

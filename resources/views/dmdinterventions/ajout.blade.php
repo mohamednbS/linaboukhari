@@ -100,16 +100,13 @@
                                                                 <div class="col-md-9">
                                                                 <select style="width:100%;margin-bottom:10px;" class="form-control" name="type_panne">
                                                                 
-                                                                        <option >Selectionner une panne/mission</option>
-                                                                        <option value="Panne totale">Panne totale</option>
-                                                                        <option value="Problème d'alimentation ou batterie">Problème d'alimentation ou batterie</option>
-                                                                        <option value="Faux contacts">Faux contacts</option>
-                                                                        <option value="Défaut accessoire">Défaut accessoire</option>
-                                                                        <option value="Panne Intermittente">Panne intermittente</option>
-                                                                        <option value="Casse,Chute">Casse,chute</option>
-                                                                        <option value="Installation">Installation</option>
-                                                                        <option value="Maintenance">Maintenance</option>
-                                                                        <option value="Diagnostic/réparation">Diagnostic/réparation</option>
+                                                                        <option >Selectionner une Panne/Pission</option>
+                                                                            @foreach($typepannes as $typepanne )
+                                                                    
+                                                                        <option value="{{ $typepanne->id_typepanne }}">{{ $typepanne->name }}</option>
+                                                                            
+                                                                            
+                                                                            @endforeach
                                                                         
                                             
                                                                 </select>

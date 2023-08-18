@@ -36,7 +36,7 @@
 											<h3 class="panel-title">   Utilisateurs  </h3>
 														<hr>
 														@foreach( $users as $user )
-															<a style="width:100%"  class="btn btn-primary" href="/conversation/{{ $user->id }}">{{ $user->name }}  </a>
+															<a style="width:100%"  class="btn btn-primary" href="/conversation/{{ $user->id_user }}">{{ $user->name }}  </a>
 														@endforeach
 											</div>
 											<div class="col-md-9">

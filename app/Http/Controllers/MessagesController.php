@@ -18,7 +18,7 @@ class MessagesController extends Controller
     public function index()
     {
         //
-        $users = User::where("id","<>",Auth::user()->id)->get();
+        $users = User::where("id_user","<>",Auth::user()->id_user)->get();
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         return view('messages.index')->with('messages',$messages)->with('users',$users)->with('notifications',$notifications);
@@ -45,7 +45,7 @@ class MessagesController extends Controller
         //
         $iddestination = $request->input('iddestination');
         $message = new  Message();
-        $message->idsender = Auth::user()->id;
+        $message->idsender = Auth::user()->id_user;
         $message->iddestination = $request->input('iddestination');
         $message->content = $request->input('content');
         $message->stat = "unread";
@@ -54,19 +54,19 @@ class MessagesController extends Controller
 
     }
     public function conversation($id){
-        $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
-        $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
-        $users = User::where("id","<>",Auth::user()->id)->get();
+        $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
+        $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
+        $users = User::where("id_user","<>",Auth::user()->id_user)->get();
         $messagesConv = Message::where('idsender',$id)
-                             ->where('iddestination',Auth::user()->id)
-                             ->orwhere('idsender',Auth::user()->id)
+                             ->where('iddestination',Auth::user()->id_user)
+                             ->orwhere('idsender',Auth::user()->id_user)
                              ->where('iddestination',$id)
                              ->orderBy('created_at', 'asc')
                              ->get();
         $listm = array();
         foreach( $messages as $message ){
-            if ($message->iddestination == Auth::user()->id ){
-                $listm[] = $message->id;
+            if ($message->iddestination == Auth::user()->id_user ){
+                $listm[] = $message->id_user;
             }
            
         }  

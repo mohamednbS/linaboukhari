@@ -69,9 +69,9 @@
                                             @foreach($equipements as $equipement )
                     
                                                 @if ($equipement->id_user == $oi->idmachine )
-                                                    <option selected value='{{ $equipement->id_user }}'>{{ $equipement->designation }}</option>
+                                                    <option selected value='{{ $equipement->id_equipement }}'>{{ $equipement->designation }}</option>
                                                 @else
-                                                    <option value='{{ $equipement->id_user }}'>{{ $equipement->designation }}</option>
+                                                    <option value='{{ $equipement->id_equipement }}'>{{ $equipement->designation }}</option>
                                                 @endif
                                                 @endforeach
                                                 
@@ -88,9 +88,9 @@
                                             @foreach($clients as $client )
 
                                                 @if ($client->id == $oi->idclient )
-                                                    <option selected value='{{ $client->id_user }}'>{{ $client->name }}</option>
+                                                    <option selected value='{{ $client->id_client }}'>{{ $client->clientname }}</option>
                                                 @else
-                                                    <option value='{{ $client->id_user }}'>{{ $client->name }}</option>
+                                                    <option value='{{ $client->id_client }}'>{{ $client->clientname }}</option>
                                                 @endif
                                                         
                                                         
@@ -104,19 +104,17 @@
                                             </div>
                                             <div class="col-md-9">
                                             <select style="width:100%;margin-bottom:10px;" class="form-control" name="type_panne">
-                                            
-                                                    <option >Selectionner une panne/mission</option>
-                                                    <option value="Panne totale">Panne totale</option>
-                                                    <option value="Problème d'alimentation ou batterie">Problème d'alimentation ou batterie</option>
-                                                    <option value="Faux contacts">Faux contacts</option>
-                                                    <option value="Défaut accessoire">Défaut accessoire</option>
-                                                    <option value="Panne Intermittente">Panne intermittente</option>
-                                                    <option value="Casse,Chute">Casse,chute</option>
-                                                    <option value="Installation">Installation</option>
-                                                    <option value="Maintenance">Maintenance</option>
-                                                    <option value="Diagnostic/réparation">Diagnostic/réparation</option>
-                                                    
-                        
+                                                @foreach($typepannes as $typepanne )
+
+                                                @if ($typepanne->id_type_panne == $oi->type_panne )
+                                                    <option selected value='{{ $typepanne->id_typepanne }}'>{{ $typepanne->name }}</option>
+                                                @else
+                                                    <option value='{{ $typepanne->id_typepanne }}'>{{ $typepanne->name }}</option>
+                                                @endif
+                                                        
+                                                        
+                                            @endforeach
+                                    
                                             </select>
                                             </div>
                                         
@@ -146,11 +144,29 @@
                                             </div>
                                             <div class="col-md-9">
                                                 <select style="width:100%;margin-bottom:10px;" class="form-control" name="priorite">
+                                                   @if ( $oi->priorite == "Tres urgent")
                                                 
                                                     <option >Selectionner une Priorité</option>
-                                                    <option value="Tres urgent">Tres urgent</option>
+                                                    <option selected value='Tres urgent'>Tres urgent</option>
                                                     <option value="Urgent">Urgent</option>
                                                     <option value="Normale">Normale</option>
+
+                                                    @elseif ($oi->priorite == "En Cours")
+
+                                                    <option>-- Sélectionner un Etat --</option>
+                                                    <option selected value='Urgent'>Urgent</option>
+                                                    <option value='Normale'>Normale</option>
+                                                     <option value='Tres urgent'>Tres urgent</option>
+
+                                                    @else
+
+                                                    <option>-- Sélectionner un Etat --</option>
+                                                    <option selected value='Normale'>Normale</option>
+                                                    <option value='Tres urgent'>Tres urgent</option>
+                                                    <option value='Urgent'>Urgent</option>
+                                                    
+                                                
+                                                @endif
                                                 
                                                 </select>
                                             </div>
