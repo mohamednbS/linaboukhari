@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use App\Equipement;
 use App\Client;
 use App\Maintenance;
+use App\Typepanne;
 use App\Mpreventive;
 use App\Notification;
 use App\Ointervention;
@@ -23,11 +24,12 @@ class OinterventionsController extends Controller
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $users = User::all();
         $equipements = Equipement::all();
+        $typepannes = Typepanne::all();
         $clients = Client::all();
         $ointerventions = Ointervention::where('etat',"!=","Terminé")   
                                         ->get(); 
 
-        return view('dmdinterventions.index')->with('messages',$messages)->with('notifications',$notifications)->with('ointerventions',$ointerventions)->with('equipements',$equipements)->with('clients',$clients)->with('users',$users);
+        return view('dmdinterventions.index')->with('messages',$messages)->with('notifications',$notifications)->with('ointerventions',$ointerventions)->with('equipements',$equipements)->with('clients',$clients)->with('users',$users)->with('typepannes',$typepannes);
     }
     public function store(Request $request){
         $numero = $request->input('numero');
@@ -67,15 +69,17 @@ class OinterventionsController extends Controller
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $equipements = Equipement::all();
         $clients = Client::all();
+        $typepannes = Typepanne::all();
         $techniciens = User::where('role',"Technicien")->get();
         $users = User::all();
-        return view('dmdinterventions.ajout')->with('users',$users)->with('equipements',$equipements)->with('techniciens',$techniciens)->with('clients',$clients)->with('messages',$messages)->with('notifications',$notifications);
+        return view('dmdinterventions.ajout')->with('users',$users)->with('equipements',$equipements)->with('techniciens',$techniciens)->with('clients',$clients)->with('messages',$messages)->with('notifications',$notifications)->with('typepannes',$typepannes);
     }
     public function show($id_intervention){
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $oi = Ointervention::find($id_intervention);
-        return view('dmdinterventions.affiche')->with('oi',$oi)->with('messages',$messages)->with('notifications',$notifications);
+        $typepannes = Typepanne::all();
+        return view('dmdinterventions.affiche')->with('oi',$oi)->with('messages',$messages)->with('notifications',$notifications)->with('typepannes',$typepannes);
     }
     
     public function change($id_intervention){
@@ -84,9 +88,10 @@ class OinterventionsController extends Controller
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $techniciens = User::where('role',"Technicien")->get();
         $clients = Client::all();
+        $typepannes = Typepanne::all();
         $equipements = Equipement::all();
         $oi = Ointervention::find($id_intervention);
-        return view('dmdinterventions.modifier')->with('oi',$oi)->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('equipements',$equipements)->with('clients',$clients)->with('techniciens',$techniciens);
+        return view('dmdinterventions.modifier')->with('oi',$oi)->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('equipements',$equipements)->with('clients',$clients)->with('techniciens',$techniciens)->with('typepannes',$typepannes);
     }
     public function update(Request $request,$id_intervention){
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();

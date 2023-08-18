@@ -58,9 +58,9 @@ Route::post('/addsousequipement','SousequipementsController@store')->middleware(
 Route::post('/sousequipement/filter','SousequipementsController@filter')->middleware('auth');
 Route::get('/sousequipements','SousequipementsController@index')->middleware('auth');
 Route::get('/sousequipement/{id}','SousequipementsController@show')->middleware('auth');
-Route::get('/equipement/{equipement_id}/sousequipement/mod/{id}','SousequipementsController@edit')->middleware('auth');
-Route::get('/sousequipement/del/{id}/{equipement_id}','SousequipementsController@delete')->middleware('auth');
-Route::post('/equipement/{equipement_id}/sousequipement','SousequipementsController@update')->name('Sousequipements.update')->middleware('auth');
+Route::get('/sousequipement/mod/{id_sousequipement}','SousequipementsController@edit')->middleware('auth');
+Route::get('/equipements/{equipement_id_equipement}/sousequipements','SousequipementsController@delete')->middleware('auth');
+Route::post('/sousequipement/{id_sousequipement}','SousequipementsController@update')->middleware('auth');
 Route::post('/equipements/{equipement_id_equipement}/sousequipements','sousequipementsController@store')->name('Sousequipements.store')->middleware('auth');
 Route::get('/equipements/{equipement_id_equipement}/sousequipements/create', 'SousequipementsController@create');
 
@@ -188,6 +188,16 @@ Route::get('/modalites',"ModalitesController@index")->middleware('auth');
 Route::get('/modalite/delete/{id}',"ModalitesController@destroy")->middleware('auth');
 Route::get('/modalite/{id_modalite}','ModalitesController@show')->middleware('auth');
 Route::get('/modalite/search_modalite', "clientsController@search_modalite")->name('search_modalite')->middleware('auth');
+
+/* Type de panne routes */
+
+Route::post('/department/filter',"DepartmentsController@filter")->middleware('auth');
+Route::get('/typepanne/create',"TypepannesController@create")->middleware('auth');
+Route::post('/typepanne/add',"TypepannesController@add")->middleware('auth');
+Route::post('/department/mod/{id_departement}',"DepartmentsController@update")->middleware('auth');
+Route::get('/department/change/{id_departement}',"DepartmentsController@change")->middleware('auth');
+Route::get('/typepannes',"TypepannesController@index")->middleware('auth');
+Route::get('/typepanne/delete/{id_typepanne}',"TypepannesController@destroy")->middleware('auth');
 
 
 /* ajouter un sous équipement

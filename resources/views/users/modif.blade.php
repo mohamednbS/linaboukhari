@@ -38,126 +38,126 @@
 								</div>
                                 @endif
                                 <form action='/moduser/{{ $user->id_user }}' method="POST" >
-                                                        {{ csrf_field() }} 
-                                         
-                                                            <div class="row">
+                                        {{ csrf_field() }} 
+                            
+                                            <div class="row">
+                                            
+                                                <div class="col-md-3">
+                                                <label > Nom utilisateur </label>
+                                                
+                                                </div>
+                                                <div class="col-md-9">
+                                                <input style="width:100%;margin-bottom:10px;" value="{{ $user->name }}" class="form-control"  type="text" name="username">
+                                                
+                                                </div>
+                                                <div class="col-md-3">
+                                                <label > Matricule </label>
+                                                
+                                                </div>
+                                                <div class="col-md-9">
+                                                <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $user->matricule }}" type="text" name="usermat">
+                                                
+                                                </div>
+                                                <div class="col-md-3">
+                                                <label > <label> Email utilisateur </label> </label>
+                                                
+                                                </div>
+                                                <div class="col-md-9">
+                                                <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $user->email }}" type="email" name="usermail">
+                                                
+                                                </div>
+                                                <div class="col-md-3">
+                                                <label> Mot de passe </label>
+                                                
+                                                </div>
+                                                <div class="col-md-9">
+                                                <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $user->password }}" type="password" name="userpw">
+                                                
+                                                </div>
+                                                <div class="col-md-3">
+                                                <label> Repeter mot de passe </label>
+                                                
+                                                </div>
+                                                <div class="col-md-9">
+                                                <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $user->password }}" type="password" name="userrpw">
+                                                
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <label > Mobile </label>
+                                                    
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                    <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $user->phone }}" placeholder="Tapper le numéro ici" type="text" name="phone">
+                                                    
+                                                    </div>
+
+                                                <div class="col-md-3">
+                                                <label> Role utilisateur </label>
+                                                
+                                                </div>
+                                                <div class="col-md-9">
+                                                <select name="role" style="width:100%;margin-bottom:10px;" class="form-control">
+                                                @if ( $user->role == "Administrateur")
+                                                    <option>-- selectionner un role --</option>
+                                                    <option selected value='Administrateur'>Administrateur</option>
+                                                    <option value='Superviseur'>Superviseur</option>
+                                                    <option value='Technicien'>Technicien</option>
+                                                    <option value='Ingénieur'>Ingénieur</option>
+                                                @elseif ($user->role == "Superviseur")
+                                                    <option>-- selectionner un role --</option>
+                                                    <option value='Superviseur'>Superviseur</option>
+                                                    <option selected value='Ingénieur'>Ingénieur</option>
+                                                    <option selected value='Technicien'>Technicien</option>
+                                                @else
+                                                    <option>-- selectionner un role --</option>
+                                                    <option value='Administrateur'>Administrateur</option>
+                                                    <option selected value='Superviseur'>Superviseur</option>
+                                                    <option selected value='Technicien'>Technicien</option>
+                                                    <option selected value='Ingénieur'>Ingénieur</option>
+                                                
+                                                @endif
+                                                </select> 
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label> modalité </label>
+                                                    
+                                                </div>
+
+                                                <div class="col-md-9">
+                                                    <select name="modalité" style="width:100%;margin-bottom:10px;" class="form-control">
+                                                            <option>-- selectionner une modalité --</option>
+                                                            @foreach( $modalites as $modalite )
+                                                            @if ($modalite->id_modalite == $user->modalité )
+                                                            <option selected value='{{ $modalite->id_modalite }}'>{{ $modalite->name }}</option>
+                                                            @else
+                                                            <option value='{{ $modalite->id_modalite }}'>{{ $modalite->name }}</option>
+                                                            @endif
+                                                        
+                                                            @endforeach
                                                             
-                                                                <div class="col-md-3">
-                                                                <label > Nom utilisateur </label>
-                                                                
-                                                                </div>
-                                                                <div class="col-md-9">
-                                                                <input style="width:100%;margin-bottom:10px;" value="{{ $user->name }}" class="form-control"  type="text" name="username">
-                                                                
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                <label > Matricule </label>
-                                                                
-                                                                </div>
-                                                                <div class="col-md-9">
-                                                                <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $user->matricule }}" type="text" name="usermat">
-                                                                
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                <label > <label> Email utilisateur </label> </label>
-                                                                
-                                                                </div>
-                                                                <div class="col-md-9">
-                                                                <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $user->email }}" type="email" name="usermail">
-                                                                
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                <label> Mot de passe </label>
-                                                                
-                                                                </div>
-                                                                <div class="col-md-9">
-                                                                <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $user->password }}" type="password" name="userpw">
-                                                                
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                <label> Repeter mot de passe </label>
-                                                                
-                                                                </div>
-                                                                <div class="col-md-9">
-                                                                <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $user->password }}" type="password" name="userrpw">
-                                                                
-                                                                </div>
-
-                                                                <div class="col-md-3">
-                                                                    <label > Mobile </label>
-                                                                    
-                                                                    </div>
-                                                                    <div class="col-md-9">
-                                                                    <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper le numéro ici" type="text" name="phone">
-                                                                    
-                                                                    </div>
-
-                                                                <div class="col-md-3">
-                                                                <label> Role utilisateur </label>
-                                                                
-                                                                </div>
-                                                                <div class="col-md-9">
-                                                                <select name="role" style="width:100%;margin-bottom:10px;" class="form-control">
-                                                                @if ( $user->role == "Administrateur")
-                                                                    <option>-- selectionner un role --</option>
-                                                                    <option selected value='Administrateur'>Administrateur</option>
-                                                                    <option value='Superviseur'>Superviseur</option>
-                                                                    <option value='Technicien'>Technicien</option>
-                                                                    <option value='Ingénieur'>Ingénieur</option>
-                                                                @elseif ($user->role == "Superviseur")
-                                                                    <option>-- selectionner un role --</option>
-                                                                    <option value='Superviseur'>Superviseur</option>
-                                                                    <option selected value='Chef Inénieur'>Ingénieur</option>
-                                                                    <option selected value='Technicien'>Technicien</option>
-                                                                @else
-                                                                    <option>-- selectionner un role --</option>
-                                                                    <option value='Administrateur'>Administrateur</option>
-                                                                    <option selected value='Superviseur'>Superviseur</option>
-                                                                    <option selected value='Technicien'>Technicien</option>
-                                                                    <option selected value='Ingénieur'>Ingénieur</option>
-                                                                
-                                                                @endif
-                                                                </select> 
-																</div>
-                                                                <div class="col-md-3">
-                                                                    <label> modalité </label>
-                                                                    
-                                                                </div>
-
-                                                                <div class="col-md-9">
-                                                                    <select name="modalité" style="width:100%;margin-bottom:10px;" class="form-control">
-                                                                            <option>-- selectionner une modalité --</option>
-                                                                        	@foreach( $modalites as $modalite )
-                                                                            @if ($modalite->id_modalite == $user->modalité )
-                                                                            <option selected value='{{ $modalite->id_modalite }}'>{{ $modalite->name }}</option>
-                                                                            @else
-                                                                            <option value='{{ $modalite->id_modalite }}'>{{ $modalite->name }}</option>
-                                                                            @endif
-                                                                        
-                                                                            @endforeach
-                                                                           
-                                                                    </select> 
-                                                                </div>
-                                                       
-																<div class="col-md-3">
-                                                                <label> Departement </label>
-                                                                
-                                                                </div>
-                                                                <div class="col-md-9">
-                                                                <select name="iddep" class="form-control">
-																	<option>-- selectionner un departement --</option>
-																	@foreach( $departments as $dep )
-																	@if ($dep->id_departement == $user->iddep )
-																	<option selected value='{{ $dep->id_departement }}'>{{ $dep->name }}</option>
-																	@else
-																	<option value='{{ $dep->id_departement }}'>{{ $dep->name }}</option>
-																	@endif
-                                                                   
-                                                                    @endforeach
-                                                                </select> 
-                                                                </div>
-                                                            </div>
-                                                               
+                                                    </select> 
+                                                </div>
+                                        
+                                                <div class="col-md-3">
+                                                <label> Departement </label>
+                                                
+                                                </div>
+                                                <div class="col-md-9">
+                                                <select name="iddep" class="form-control">
+                                                    <option>-- selectionner un departement --</option>
+                                                    @foreach( $departments as $dep )
+                                                    @if ($dep->id_departement == $user->iddep )
+                                                    <option selected value='{{ $dep->id_departement }}'>{{ $dep->name }}</option>
+                                                    @else
+                                                    <option value='{{ $dep->id_departement }}'>{{ $dep->name }}</option>
+                                                    @endif
+                                                    
+                                                    @endforeach
+                                                </select> 
+                                                </div>
+                                            </div>
+                                                
                                                            
                                                             
                                       

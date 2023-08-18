@@ -36,7 +36,7 @@
 										<i class="fa fa-check-circle"></i> Utilisateur ajouter avec success <a href="/users" class="btn btn-sm btn-default"> Consulter liste des utilisateurs </a>
 								</div>
                                 @endif
-                                <form action='/modequipement/{{ $equipement->id }}' method="POST" enctype="multipart/form-data">
+                                <form action='/modequipement/{{ $equipement->id_equipement }}' method="POST" enctype="multipart/form-data">
                                                         {{ csrf_field() }} 
                                          
                                                             <div class="row">
@@ -100,13 +100,13 @@
                                                                     <label> Client </label>
                                                                 </div>
                                                                 <div class="col-md-9">
-                                                                <select name="eq_client" class="form-control">
+                                                                <select name="client_id_client" class="form-control">
                                                                      <option>-- selectionner un client --</option>
                                                                         @foreach( $clients as $client )
-                                                                            @if ($client->id == $equipement->client )
-                                                                        <option selected value='{{ $client->id }}'>{{ $client->name }}</option>
+                                                                            @if ($client->id_client == $equipement->client_id_client )
+                                                                        <option selected value='{{ $client->id_client }}'>{{ $client->clientname }}</option>
                                                                             @else
-                                                                        <option value='{{ $client->id }}'>{{ $client->name }}</option>
+                                                                        <option value='{{ $client->id_client }}'>{{ $client->clientname }}</option>
                                                                            @endif
                                                                         
                                                                         @endforeach

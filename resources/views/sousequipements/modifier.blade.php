@@ -36,7 +36,7 @@
 										<i class="fa fa-check-circle"></i> Utilisateur ajouter avec success <a href="/users" class="btn btn-sm btn-default"> Consulter liste des utilisateurs </a>
 								</div>
                                 @endif
-                                <form action='/modsousequipement' method="POST" enctype="multipart/form-data">
+                                <form action='/modequipement/{{ $equipement->id_equipement }}' method="POST" enctype="multipart/form-data">
                                                         {{ csrf_field() }} 
                                          
                                                             <div class="row">
@@ -61,7 +61,7 @@
                                                                 <div class="col-md-3">
                                                                 <label > <label> Date d'Achat </label> </label>
                                                                    
-                                                                </div>
+                                                                </div> 
                                                                 <div class="col-md-9">
                                                                     <input min="{{ Carbon\Carbon::now() }}" style="width:100%;margin-bottom:10px;" value="{{ $sousequipement->date_achat}}" type="date" name="date_achat" class="form-control" >
                                                                     </div>

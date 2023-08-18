@@ -35,22 +35,22 @@
 														<hr>
                                                         @foreach( $users as $user )
                                                             
-															<a style="width:100%"  class="btn btn-primary" href="/conversation/{{ $user->id }}">{{ $user->name }} </a>
+															<a style="width:100%"  class="btn btn-primary" href="/conversation/{{ $user->id_user }}">{{ $user->name }} </a>
 														@endforeach
 											</div>
 											<div class="col-md-9">
 														<h3 class="panel-title">   Conversation avec 
                                                         @foreach( $users as $user )
-                                                            @if ( $user->id == $iddestination )
+                                                            @if ( $user->id_user == $iddestination )
                                                             <span style="color:orange;" > " {{ $user->name }} " </span> 
                                                             @endif
 														@endforeach </h3>
 														<hr>
                                                         <br>
                                                         @foreach($messagesConv as $message)
-                                                            @if ( $message->iddestination == Auth::user()->id )
+                                                            @if ( $message->iddestination == Auth::user()->id_user )
                                                             @foreach( $users as $user )
-                                                                @if ( $user->id == $iddestination )
+                                                                @if ( $user->id_user == $iddestination )
                                                                   {{ $user->name }}  
                                                                 @endif
                                                             @endforeach 

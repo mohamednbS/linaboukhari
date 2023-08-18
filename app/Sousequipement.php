@@ -4,9 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes; 
 
 class Sousequipement extends Model
 {   
+    use SoftDeletes;
     protected $primaryKey = 'id_sousequipement';
     /**
      * Get the equipement that owns the SousEquipements

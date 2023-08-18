@@ -54,7 +54,7 @@
 										<td>{{ $sousequipement->date_arrive }}</td>
 									   @if (Auth::user()->role == "Administrateur")
 										<td><a class='btn btn-primary' href="/sousequipement/mod/{id}/{{ $sousequipement->id }}"><i class="lnr lnr-pencil"></i> Modifier </a>
-											 <a class='btn btn-danger' href="/sousequipement/del/{id}/{{ $sousequipement->id  }}"><i class="lnr lnr-trash"></i>Supprimer</a></td>
+</td>
 										@endif
 									</tr>
 									@endforeach 

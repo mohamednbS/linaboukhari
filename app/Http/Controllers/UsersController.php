@@ -12,7 +12,6 @@ use App\Modalite;
 use App\Notification;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
-
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -30,7 +29,8 @@ class UsersController extends Controller
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $departments = Department::all();
         $modalites = Modalite::all();
-        $users = User::where( 'email',"!=", Auth::user()->email )->get();
+        $users = User::where('role',"!=", "Administrateur")->get();
+       
         return view('users.index')->with('users',$users)->with('departments',$departments)->with('modalites',$modalites)->with('messages',$messages)->with('notifications',$notifications);
     }
         /**
@@ -64,6 +64,7 @@ class UsersController extends Controller
     public function create()
     {
         //
+       
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $departments = Department::all();
@@ -83,12 +84,15 @@ class UsersController extends Controller
         $this->validate($request, [
             'username' => 'required',
             'usermat' => 'required',
-            'usermail' => 'required',
+            'usermail' => 'required|string|unique:users',
             'userpw' => 'required',
             'phone' => 'required',
             'role' => 'required',
             'modalité' => 'required', 
             'iddep' => 'required', 
+            
+                
+           
             
         ]);
             
@@ -99,7 +103,7 @@ class UsersController extends Controller
         $user->matricule = $request->input("usermat") ;
         $user->email = $request->input("usermail");
         $user->password = Hash::make($request->input("userpw"));
-        $user->phone =  $request->input("phone");
+        $user->phone =  $request->input("phone"); 
         $user->role =  $request->input("role");
         if ($request->input("iddep") != ""){
             $user->iddep =  $request->input("iddep");
@@ -197,7 +201,7 @@ class UsersController extends Controller
     
         $user->save();
   
-        return redirect("/user/".$user->id_user)->with('adduser',"success")->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('departments',$departments);
+        return redirect("/user/".$user->id_user)->with('adduser',"success")->with('user',$user)->with('messages',$messages)->with('notifications',$notifications);
     }
 
     /**

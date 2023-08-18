@@ -37,7 +37,7 @@
 									  <div class="col-md-4">
 										<!-- PANEL NO PADDING -->
 										<div class="panel">
-											  <div  class="panel-heading">
+											  <div  class="panel-heading" >
 												<h3 class="table-info"  class="panel-title"><a href="/modalite/{{ $modalite->id_modalite }}">{{ $modalite->name }}</a></h3>
 											  
 											  </div>

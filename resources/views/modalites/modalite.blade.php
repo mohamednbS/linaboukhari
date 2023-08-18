@@ -87,8 +87,8 @@
                                       <td>    
                                         @if (Auth::user()->role == "Administrateur") 
 
-                                        <a  data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary'  href="/equipement/mod/{{ $equipement->id }}"><i class="lnr lnr-pencil"></i> </a> 
-                                        <a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger'><i class="lnr lnr-trash" href="/equipement/del/{{ $equipement->id }}"></i></a></td>
+                                        <a  data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary'  href="/equipement/mod/{{ $equipement->id_equipement }}"><i class="lnr lnr-pencil"></i> </a> 
+                                        <a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger'><i class="lnr lnr-trash" href="/equipement/del/{{ $equipement->id_equipement }}" onclick="return confirm ('voulez vous vraiment supprimer le client' {{ $equipement['id']}})"></i></a></td>
                                         @endif 
                                 
                                   </tr>

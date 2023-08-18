@@ -16,7 +16,7 @@
 					<!-- OVERVIEW -->
 					<div class="panel panel-headline">
 						<div class="panel-heading">
-                            <h3 class="panel-title"><i class="lnr lnr-store"></i> Gestion des Départements</h3>
+                            <h3 class="panel-title"><i class="lnr lnr-store"></i> Gestion des Pannes</h3>
 							<p class="panel-subtitle">Aujourd'hui : <?php echo date('d')." ".date('M')." , ".date('Y'); ?> </p>
 						</div>
 						<div class="panel-body">
@@ -25,28 +25,22 @@
 							<!-- TABLE STRIPED -->
 							<div class="panel">
 								<div class="panel-heading">
-									<h3 class="panel-title">@isset($searchuser) Resultat de recherche pour : <span class="text-primary"> " {{ $searchuser }} "</span> @else Liste des Départements @endisset </h3>
+									<h3 class="panel-title">@isset($searchuser) Resultat de recherche pour : <span class="text-primary"> " {{ $searchuser }} "</span> @else Type des pannes @endisset </h3>
 								</div>
 				
 								<div class="panel-body">
 								@if( session()->get( 'adddepartment' ) == "deleted" )
                                 <div class="alert alert-success alert-dismissible" role="alert">
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<i class="fa fa-check-circle"></i> Départemnt supprimé avec succès
+										<i class="fa fa-check-circle"></i> Panne supprimé avec succès
 								</div>
                                 @endif
                                             <table class="table table-striped">
-											<!-- nav search--> 
-											<form action="{{ route('search') }}" method="GET">
 											
-												<input type="text" name="query" placeholder="Recherche...">
-												<button type="submit">Rechercher</button> 
-												
-											</form>
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
-                                                        <th>Nom Du Département</th>
+                                                        <th>Type de panne</th>
                                                         <th>Description</th>
                                                            
 														@if (Auth::user()->role == "Administrateur")
@@ -56,15 +50,15 @@
                                                 </thead>
                                                 <tbody>
                                                 <?php $i=0; ?>
-                                                @foreach($departments as $dep)
+                                                @foreach($typepanne as $typepanne)
                                                 <?php $i++; ?>
                                                 <tr>
                                                     <td>{{ $i }}</td>
-                                                    <td>{{ $dep->name }}</td>
-                                                    <td>{{ $dep->description }}</td>
+                                                    <td>{{ $typepanne->name }}</td>
+                                                    <td>{{ $typepanne->description }}</td>
                                                    @if (Auth::user()->role == "Administrateur")
-                                                    <td><a data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary'  href="/department/change/{{ $dep->id_departement }}"><i class="lnr lnr-pencil"></i></a> 
-														<a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/department/delete/{{ $dep->id_departement  }}" onclick="return confirm ('voulez vous vraiment supprimer le déparatement' {{ $dep['id']}})"><i class="lnr lnr-trash"></i></a></td>
+                                                    <td><a data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary'  href="/typepanne/change/{{ $typepanne->id_typepanne }}"><i class="lnr lnr-pencil"></i></a> 
+														<a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/typepanne/delete/{{ $typepanne->id_typepanne  }}" onclick="return confirm ('voulez vous vraiment supprimer la panne' {{ $typepanne['id']}})"><i class="lnr lnr-trash"></i></a></td>
                                                     @endif
                                                 </tr>
                                                 @endforeach 
@@ -74,12 +68,7 @@
                                     <!-- END TABLE STRIPED -->
                                 </div>
                     	</div>
-								<div class="panel-footer">
-									<div class="row">
-										<div class="col-md-6"></div>
-										<div class="col-md-6 text-right"><a href="/departments" class="btn btn-primary">Effacer la recherche</a></div>
-									</div>
-								</div>
+								
 							</div>
 							<!-- END RECENT PURCHASES -->
                             </div>

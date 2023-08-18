@@ -107,13 +107,13 @@ class SousequipementsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, $equipement_id)
+    public function edit($id_sousequipement)
     {
         //
-        $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
-        $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
-        $sousequipement = Sousequipement::find($id); 
-        $equipement= Equipement::find($equipement_id);
+        $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
+        $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
+        $sousequipement = Sousequipement::find($id_sousequipement); 
+        $equipement= Equipement::all(); 
         return view('sousequipements.modifier')->with('sousequipement',$sousequipement)->with('messages',$messages)->with('notifications',$notifications); 
     }
 
@@ -124,22 +124,24 @@ class SousequipementsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id,$equipement)
+    public function update(Request $request, $id_sousequipement)
     {
         //
       
       
-        $sousequipement = Sousequipement::find($id);
+        $sousequipement = Sousequipement::find($id_sousequipement);
         $sousequipement->identifiant=$request->input("identifiant");
         $sousequipement->designation=$request->input("designation");
         $sousequipement->date_achat=$request->input("date_achat");
         $sousequipement->date_arrive=$request->input("date_arrive");
 
-        $sousequipement->equipement_id=$equipement;
+        $sousequipement->equipement_id_equipement=$equipement;
+
         
         $sousequipement->update();
+        
 
-        return redirect("/equipement/".$equipement->id);
+        return redirect("/equipement/".$equipement->id_equipement);
        
 
     }
@@ -150,12 +152,12 @@ class SousequipementsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id,$equipement)
+    public function delete($id_sousequipement)
     {
         //
-        $sousequipement = Sousequipement::find($id);
+        $sousequipement = Sousequipement::find($id_sousequipement);
         $sousequipement->delete();
-        return redirect("/equipement/".$equipement->id);
+        return redirect()->back();
     }  
 
 } 

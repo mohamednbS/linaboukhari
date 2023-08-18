@@ -129,6 +129,20 @@
 							</div>
 						</li>
 
+							<li>
+							<a href="#subtypepannes" data-toggle="collapse" class="collapsed"><i class="lnr lnr-store"></i> <span>Gestion des pannes</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+	
+								<div id="subtypepannes" class="collapse ">
+								<ul class="nav">
+									@if (Auth::user()->role == "Administrateur")
+									<li> <a href="/typepanne/create" class=""><i class="lnr lnr-file-add"></i> Ajouter</a></li>
+									@endif
+									<li> <a href="/typepannes" class=""><i class="lnr lnr-list"></i> Liste</a></li>
+	
+								</ul>
+								</div>
+						</li>
+
 					
 
 					</ul>

@@ -150,15 +150,18 @@ class EquipementsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($i_equipement,$id_modalite)
+    public function edit($id_equipement)
     {
         //
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
+        $users = User::all();
         $clients = Client::all();
         $equipement = Equipement::find($id_equipement);
-        $modalite= Modalite::find($id_modalite);
-        return view('Equipements.modifier')->with('equipement',$equipement)->with('modalite',$modalite)->with('clients',$clients)->with('messages',$messages)->with('notifications',$notifications); 
+        $modalite= Modalite::all();
+        $sousequipements = $equipement->sousequipements ?? null ; // Filtrer les sous-équipements par id de l'équipement
+        $accessoires = $equipement->accessoires ?? null ; 
+        return view('Equipements.modifier')->with('equipement',$equipement)->with('modalite',$modalite)->with('clients',$clients)->with('messages',$messages)->with('notifications',$notifications)->with('users',$users); 
     }
 
     /**
@@ -168,7 +171,7 @@ class EquipementsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_equipeement)
+    public function update(Request $request, $id_equipement)
     {
         //
       
@@ -181,9 +184,9 @@ class EquipementsController extends Controller
         $equipement->numserie=$request->input("numserie");
         $equipement->date_service=$request->input("date_service");
         $equipement->plan_prev=$request->input("plan_prev"); 
-        $equipement->client=$request->input("eq_client");
+        $equipement->client_id_client=$request->input("client_id_client");
   
-        $equipement->modalite_id_modalite=$modalite;
+       
     
         if ($document != NULL){  
                
@@ -196,7 +199,7 @@ class EquipementsController extends Controller
         }
          $equipement->update();
          
- 
+  
         return redirect("/equipement/".$equipement->id_equipement);
        
 
