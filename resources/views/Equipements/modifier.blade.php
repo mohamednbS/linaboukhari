@@ -30,10 +30,10 @@
 								</div>
                                 
 								<div class="panel-body">
-                                @if( session()->get( 'adduser' ) == "success" )
+                                @if( session()->get( 'addequipement' ) == "success" )
                                 <div class="alert alert-success alert-dismissible" role="alert">
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<i class="fa fa-check-circle"></i> Utilisateur ajouter avec success <a href="/users" class="btn btn-sm btn-default"> Consulter liste des utilisateurs </a>
+										<i class="fa fa-check-circle"></i> Equipement modifié avec succèss <a href="/equipement/{{$equipement->id_equipement}}" class="btn btn-sm btn-default"> Consulter les modifications de l'équipement </a>
 								</div>
                                 @endif
                                 <form action='/modequipement/{{ $equipement->id_equipement }}' method="POST" enctype="multipart/form-data">

@@ -31,35 +31,36 @@
 								</div>
                                 
 								<div class="panel-body">
-                                @if( session()->get( 'adddepartement' ) == "success" )
+                                @if( session()->get( 'adddepartment' ) == "success" )
                                 <div class="alert alert-success alert-dismissible" role="alert">
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<i class="fa fa-check-circle"></i> département ajouté avec succès <a href="/departement" class="btn btn-sm btn-default"> Consulter La Liste Des Départements </a>
+										<i class="fa fa-check-circle"></i> Département ajouté avec succès <a href="/departments" class="btn btn-sm btn-default"> Consulter la Liste des Départements</a>
 								</div>
                                 @endif
+                        
                                 <form action='/department/add' method="POST" >
-                                                        {{ csrf_field() }} 
-                                         
-                                                            <div class="row">
-                                                            
-                                                                <div class="col-md-3">
-                                                                <label > Nom du Département </label>
-                                                                
-                                                                </div>
-                                                                <div class="col-md-9">
-                                                                <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper le nom du departement içi" type="text" name="nom">
-                                                                
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                <label > Description  </label>
-                                                                
-                                                                </div>
-                                                                <div class="col-md-9">
-                                                                <textarea style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper la description du departement içi"  name="description"></textarea>
-                                                                
-                                                                </div>
-                                                              
-                                                            </div>
+										{{ csrf_field() }} 
+							
+											<div class="row">
+											
+												<div class="col-md-3">
+												<label > Nom du Département </label>
+												
+												</div>
+												<div class="col-md-9">
+												<input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper le nom du departement içi" type="text" name="nom">
+												
+												</div>
+												<div class="col-md-3">
+												<label > Description  </label>
+												
+												</div>
+												<div class="col-md-9">
+												<textarea style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper la description du departement içi"  name="description"></textarea>
+												
+												</div>
+												
+											</div>
                                                                
                                                            
                                                             

@@ -34,7 +34,7 @@
                                 @if( session()->get( 'addmodalite' ) == "success" )
                                 <div class="alert alert-success alert-dismissible" role="alert">
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<i class="fa fa-check-circle"></i> Modalité ajoutée avec succès <a href="/modalite" class="btn btn-sm btn-default"> Consulter Liste Des Modalitès </a>
+										<i class="fa fa-check-circle"></i> Modalité ajoutée avec succès <a href="/modalites" class="btn btn-sm btn-default"> Consulter Liste Des Modalitès </a>
 								</div>
                                 @endif
                                 <form action='/modalite/add' method="POST" >

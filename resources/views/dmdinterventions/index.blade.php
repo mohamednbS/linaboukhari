@@ -47,10 +47,13 @@
                                                     <tr>
                                                         <th>#</th>
                                                         <th>N° Intervention</th>
-                                                        <th>Equipement</th>
 														<th>Client</th>
+                                                        <th>Equipement</th>
+														<th>Sous Equipement</th>
+														<th>Accessoire </th>
 														<th>Panne/Mission</th>
 														<th>Intervenant</th>
+														<th>Heure d'Appel Client</th>
 														<th>Etat</th>
                                                         <th>Commmentaires</th>
 														@if (Auth::user()->role == "Administrateur")
@@ -67,6 +70,13 @@
                                                 <tr>
                                                     <td>{{ $i }}</td>
                                                     <td>{{ $oi->numero }}</td>
+													<td>
+														@foreach($clients as $client )
+															@if ( $client->id_client == $oi->idclient )
+																{{ $client->clientname }}  
+															@endif
+														@endforeach
+													</td>
                                             
                                                     <td>    
                                                     @foreach($equipements as $equipement )
@@ -75,14 +85,21 @@
                                                         @endif
                                                         @endforeach
                                                     </td>
+													  <td>    
+                                                    @foreach($sousequipements as $sousequipement )
+                                                        @if ( $sousequipement->id_sousequipement == $oi->sousequipement )
+                                                            {{ $sousequipement->designation }} 
+                                                        @endif
+                                                        @endforeach
+                                                    </td>
 
-													<td>
-														@foreach($clients as $client )
-															@if ( $client->id_client == $oi->idclient )
-																{{ $client->name }}  
-															@endif
-														@endforeach
-													</td>
+													<td>    
+                                                    @foreach($accessoires as $accessoire )
+                                                        @if ( $accessoire->id_accessoire == $oi->accessoire )
+                                                            {{ $accessoire->designation }} 
+                                                        @endif
+                                                        @endforeach
+                                                    </td>
 
 													<td>
 													    @foreach($typepannes as $typepanne )
@@ -96,8 +113,10 @@
 														{{ implode('/ ', explode(',', $oi->destinateur)) }}
                                                     </td>
 
+													<td> {{$oi->appel_client}} </td>
+
 													<td>
-													
+
 														@if ($oi->etat == "Suspendu")
 														<span class="label label-danger">
 														@elseif( $oi->etat == "Demandé"  )
@@ -112,14 +131,15 @@
 													</td>
 							
                                                     <td>{{ $oi->commentaire }}</td>
-     
+
+													@if (Auth::user()->role == "Administrateur")
                                                     <td>
 													<a href="{{ route('download.document', ['document' => $oi->document]) }}"> le Rapport d'Intervention</a>
 													</td>
-                                                    
-													@if (Auth::user()->role == "Administrateur")
+                        
 													<td><a  data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary'  href="/ointervention/change/{{ $oi->id_intervention }}"><i class="lnr lnr-pencil"></i> </a> 
-														<a  data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/ointervention/delete/{{ $oi->id_intervention  }}"onclick="return confirm ('voulez vous vraiment supprimer la demande' {{ $oi['id']}})" ><i class="lnr lnr-trash" ></i></a></td>
+														<a  data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/ointervention/delete/{{ $oi->id_intervention  }}"onclick="return confirm ('voulez vous vraiment supprimer la demande' {{ $oi['id']}})" ><i class="lnr lnr-trash" ></i></a>
+													</td>
 													@endif
                                                     
                                                     

@@ -53,7 +53,7 @@ class ContratsController extends Controller
         $contrat->note = $request->input('note');
 
         $contrat->save();
-        return redirect('/cm/create')->with("addcontrat","success");
+        return redirect('/cm/create')->with("addcontrat","success"); 
     }
     public function create(){
         $users = User::all();
@@ -119,7 +119,7 @@ class ContratsController extends Controller
         $contrat->type_contrat = $request->input('type_contrat');
         $contrat->note = $request->input('note');
         $contrat->update();
-        return redirect('/cm')->with("cm/mod/{id_contrat}","success");
+        return redirect("/cm/mod/".$contrat->id_contrat)->with('addcontrat',"success");
     }
     public function destroy($id_contrat){
         $contrat = Contrat::find($id_contrat);

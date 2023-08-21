@@ -59,6 +59,21 @@
                                                                 <input  value="{{ Auth::user()->id_user }}" type="hidden" name="emetteur">
                                                                 
                                                                 </div>
+
+                                                                 <div class="col-md-3">
+                                                                    <label > <label>  Client </label> </label>
+                                                                    
+                                                                </div>
+                                                                <div class="col-md-9">
+                                                                <select style="width:100%;margin-bottom:10px;" class="form-control" name="idclient">
+                                                                    <option >Sélectionner un Client </option>  
+                                                                @foreach($clients as $client )
+                                                                    
+                                                                    <option value="{{ $client->id_client }}">{{ $client->clientname }}</option>
+                                                          
+                                                                @endforeach
+                                                                </select>
+                                                                </div>
                                             
                                                                 <div class="col-md-3">
                                                                 <label > <label>  Equipement </label> </label>
@@ -75,40 +90,53 @@
                                                                 @endforeach
                                                                 </select>
                                                                 </div>
-                                                                
 
                                                                 <div class="col-md-3">
-                                                                    <label > <label>  Client </label> </label>
-                                                                    
+                                                                <label > <label>  Sous Equipement </label> </label>
+                                                                
                                                                 </div>
                                                                 <div class="col-md-9">
-                                                                <select style="width:100%;margin-bottom:10px;" class="form-control" name="idclient">
-                                                                    <option >Sélectionner un Client </option>  
-                                                                @foreach($clients as $client )
-                                                                    
-                                                                        <option value="{{ $client->id_client }}">{{ $client->clientname }}</option>
-                                                                            
-                                                                            
+                                                                <select style="width:100%;margin-bottom:10px;" class="form-control" name="sousequipement">
+                                                                    <option >Sélectionner un Sous Equipement</option>
+                                                                @foreach($sousequipements as $sousequipement )
+                                                                        
+                                                                        <option value="{{ $sousequipement->id_sousequipement }}">{{ $sousequipement->designation }}</option>
+                                                                        
+                                                                        
                                                                 @endforeach
                                                                 </select>
                                                                 </div>
+                                                                
+                                                                <div class="col-md-3">
+                                                                    <label > <label>  Sous Equipement </label> </label>
+                                                                </div>
+
+                                                                <div class="col-md-9">
+                                                                    <select style="width:100%;margin-bottom:10px;" class="form-control" name="accessoire">
+                                                                        <option >Sélectionner un Accessoire</option>
+                                                                @foreach($accessoires as $accessoire )
+                                                                        
+                                                                        <option value="{{ $accessoire->id_accessoire }}">{{ $accessoire->designation }}</option>
+    
+                                                                @endforeach
+                                                                </select>
+                                                                </div>
+                                                               
         
                                                                 <div class="col-md-3">
-                                                                <label> Type de panne/Mission </label>
+                                                                    <label> Type de panne/Mission </label>
                                                                 
                                                                 </div>
                                                                 <div class="col-md-9">
-                                                                <select style="width:100%;margin-bottom:10px;" class="form-control" name="type_panne">
+                                                                    <select style="width:100%;margin-bottom:10px;" class="form-control" name="type_panne">
                                                                 
                                                                         <option >Selectionner une Panne/Pission</option>
-                                                                            @foreach($typepannes as $typepanne )
+                                                                    @foreach($typepannes as $typepanne )
                                                                     
                                                                         <option value="{{ $typepanne->id_typepanne }}">{{ $typepanne->name }}</option>
-                                                                            
-                                                                            
-                                                                            @endforeach
-                                                                        
-                                            
+                                                          
+                                                                     @endforeach
+                                                           
                                                                 </select>
 																</div>
 															
@@ -125,6 +153,15 @@
                                                                     @endforeach
                                                                 </select>
                            
+                                                                </div>
+
+                                                                <div class="col-md-3">
+                                                                <label> Heure d'appel Client </label>
+                                                                
+                                                                </div>
+                                                                <div class="col-md-9">
+                                                                <input style="width:100%;margin-bottom:10px;" class="form-control"  type="datetime-local" name="appel_client">
+                                                                
                                                                 </div>
 
 

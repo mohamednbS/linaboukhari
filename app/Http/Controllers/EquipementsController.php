@@ -200,7 +200,7 @@ class EquipementsController extends Controller
          $equipement->update();
          
   
-        return redirect("/equipement/".$equipement->id_equipement);
+        return redirect("/equipement/mod/".$equipement->id_equipement)->with('addequipement',"success");
        
 
     }
@@ -216,7 +216,7 @@ class EquipementsController extends Controller
         //
         $equipement = Equipement::find($id_equipement);
         $equipement->delete(); 
-        return redirect('/equipements');
+        return redirect()->back()->with('addequipement',"deleted");
     }
 
     public function getEquipementsByClient($id_client)

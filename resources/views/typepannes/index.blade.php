@@ -29,10 +29,10 @@
 								</div>
 				
 								<div class="panel-body">
-								@if( session()->get( 'adddepartment' ) == "deleted" )
+								@if( session()->get( 'addpanne' ) == "deleted" )
                                 <div class="alert alert-success alert-dismissible" role="alert">
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<i class="fa fa-check-circle"></i> Panne supprimé avec succès
+										<i class="fa fa-check-circle"></i> Panne Supprimé avec Succès
 								</div>
                                 @endif
                                             <table class="table table-striped">

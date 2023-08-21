@@ -37,7 +37,7 @@
                                                                 <div class="col-md-3">
                                                                 <label > Date de Début </label>
                                                                 
-                                                                </div>
+                                                                </div> 
                                                                 <div class="col-md-9">
                                                                 <input style="width:100%;margin-bottom:10px;" class="form-control"  type="datetime-local" name="date_debut">
                                                                 

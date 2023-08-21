@@ -29,7 +29,7 @@
 									<h3 class="panel-title"> Ajouter un Contrat  </h3>
 								</div>
                                 
-								<div class="panel-body">  
+								<div class="panel-body">   
                                 @if( session()->get( 'addcontrat' ) == "success" )
                                 <div class="alert alert-success alert-dismissible" role="alert">
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -62,19 +62,12 @@
 											<div class="col-md-9">
 												<select style="width:100%;margin-bottom:10px;" class="form-control" name="equipement_name">
 													<option>-- Selectionner un Equipement --</option>  
-													
 												
-													@foreach( $clients as $client )
 														@foreach($equipements as $equipement )
 														
-														<option value="{{ $equipement->id_equipement}}">	
-															@if ($equipement->client_id_client == $client->id_client)
-															{{ $equipement->designation}}
-															@endif
-														</option>
+														<option value="{{ $equipement->id_equipement }}">{{ $equipement->designation }}</option>
 											            @endforeach
-													@endforeach
-												
+
 												</select>
 											</div>
 

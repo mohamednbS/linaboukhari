@@ -33,7 +33,7 @@
                                 @if( session()->get( 'addoi' ) == "success" )
                                 <div class="alert alert-success alert-dismissible" role="alert">
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<i class="fa fa-check-circle"></i> Demande  Modifiée Avec Succès <a href="/di" class="btn btn-sm btn-default"> Consulter Liste Des Demandes d'Interventions </a>
+										<i class="fa fa-check-circle"></i> Demande  Modifiée avec succès <a href="/di" class="btn btn-sm btn-default"> Consulter Liste Des Demandes d'Interventions </a>
 								</div>
                                 @endif
                                 <form action='/ointervention/mod/{{ $oi->id_intervention }}'method="POST" enctype="multipart/form-data">
@@ -59,30 +59,12 @@
                                             <input  value="{{ Auth::user()->id_user }}" type="hidden" name="emetteur">
                                             
                                             </div>
-                        
-                                            <div class="col-md-3">
-                                            <label > <label>  Equipement </label> </label>
-                                            
-                                            </div>
-                                            <div class="col-md-9">
-                                            <select style="width:100%;margin-bottom:10px;" class="form-control" name="machine">
-                                            @foreach($equipements as $equipement )
-                    
-                                                @if ($equipement->id_user == $oi->idmachine )
-                                                    <option selected value='{{ $equipement->id_equipement }}'>{{ $equipement->designation }}</option>
-                                                @else
-                                                    <option value='{{ $equipement->id_equipement }}'>{{ $equipement->designation }}</option>
-                                                @endif
-                                                @endforeach
-                                                
-                                            </select>
-                                            </div>
-                                            
 
-                                            <div class="col-md-3">
+                                             <div class="col-md-3">
                                                 <label > <label>  Client </label> </label>
                                                 
                                             </div>
+
                                             <div class="col-md-9">
                                             <select style="width:100%;margin-bottom:10px;" class="form-control" name="idclient">
                                             @foreach($clients as $client )
@@ -97,7 +79,61 @@
                                             @endforeach
                                             </select>
                                             </div>
+                        
+                                            <div class="col-md-3">
+                                            <label > <label>  Equipement </label> </label>
+                                            
+                                            </div>
+                                            <div class="col-md-9">
+                                            <select style="width:100%;margin-bottom:10px;" class="form-control" name="machine">
+                                            @foreach($equipements as $equipement )
+                    
+                                                @if ($equipement->id_equipement == $oi->idmachine )
+                                                    <option selected value='{{ $equipement->id_equipement }}'>{{ $equipement->designation }}</option>
+                                                @else
+                                                    <option value='{{ $equipement->id_equipement }}'>{{ $equipement->designation }}</option>
+                                                @endif
+                                                @endforeach
+                                                
+                                            </select>
+                                            </div>
 
+                                            <div class="col-md-3">
+                                            <label > <label> Sous Equipement </label> </label>
+                                            
+                                            </div>
+                                            <div class="col-md-9">
+                                            <select style="width:100%;margin-bottom:10px;" class="form-control" name="sousequipement">
+                                            @foreach($sousequipements as $sousequipement )
+                    
+                                                @if ($sousequipement->id_sousequipement == $oi->sousequipement )
+                                                    <option selected value='{{ $sousequipement->id_sousequipement }}'>{{ $sousequipement->designation }}</option>
+                                                @else
+                                                    <option value='{{ $sousequipement->id_equipement }}'>{{ $sousequipement->designation }}</option>
+                                                @endif
+                                                @endforeach
+                                                
+                                            </select>
+                                            </div>
+
+                                                    <div class="col-md-3">
+                                            <label > <label> Sous Equipement </label> </label>
+                                            
+                                            </div>
+                                            <div class="col-md-9">
+                                            <select style="width:100%;margin-bottom:10px;" class="form-control" name="accessoire">
+                                            @foreach($accessoires as $accessoire )
+                    
+                                                @if ($accessoire ->id_accessoire == $oi->accessoire  )
+                                                    <option selected value='{{ $accessoire ->id_accessoire  }}'>{{ $accessoire ->designation }}</option>
+                                                @else
+                                                    <option value='{{ $accessoire->id_accessoire }}'>{{ $accessoire->designation }}</option>
+                                                @endif
+                                                @endforeach
+                                                
+                                            </select>
+                                            </div>
+                          
                                             <div class="col-md-3">
                                             <label> Type de panne/Mission </label>
                                             
@@ -106,13 +142,11 @@
                                             <select style="width:100%;margin-bottom:10px;" class="form-control" name="type_panne">
                                                 @foreach($typepannes as $typepanne )
 
-                                                @if ($typepanne->id_type_panne == $oi->type_panne )
+                                                @if ($typepanne->id_typepanne == $oi->type_panne )
                                                     <option selected value='{{ $typepanne->id_typepanne }}'>{{ $typepanne->name }}</option>
                                                 @else
                                                     <option value='{{ $typepanne->id_typepanne }}'>{{ $typepanne->name }}</option>
-                                                @endif
-                                                        
-                                                        
+                                                @endif   
                                             @endforeach
                                     
                                             </select>

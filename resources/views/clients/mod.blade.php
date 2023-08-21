@@ -34,7 +34,7 @@
                                 @if( session()->get( 'addclient' ) == "success" )
                                 <div class="alert alert-success alert-dismissible" role="alert">
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<i class="fa fa-check-circle"></i> client ajouté avec succèss <a href="/clients" class="btn btn-sm btn-default"> Consulter la Liste des Clients </a>
+										<i class="fa fa-check-circle"></i> Client Modifié avec Succèss <a href="/clients" class="btn btn-sm btn-default"> Consulter la Liste des Clients </a>
 								</div>
                                 @endif
                                 <form action='/client/mod/{{$client->id_client}}' method="POST" >

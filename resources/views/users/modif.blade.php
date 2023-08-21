@@ -63,7 +63,7 @@
                                                 
                                                 </div>
                                                 <div class="col-md-9">
-                                                <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $user->email }}" type="email" name="usermail">
+                                                <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $user->usermail }}" type="email" name="usermail">
                                                 
                                                 </div>
                                                 <div class="col-md-3">

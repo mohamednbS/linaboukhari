@@ -50,7 +50,7 @@ class ClientsController extends Controller
       
         $client->save();
     
-        return redirect('/clients')->with("client/add","success");
+        return redirect('/client/create')->with("addclient","success");
         
     }
 
@@ -93,7 +93,7 @@ class ClientsController extends Controller
      
         
         $client->save();
-        return redirect('/clients');
+        return redirect("/client/change/".$client->id_client)->with('addclient',"success");
 
     }
     public function filter(Request $request)
@@ -117,25 +117,25 @@ class ClientsController extends Controller
          //
          $client = Client::find($id_client);
          $client->delete();
-         return redirect('/clients');
+         return redirect('/clients')->with('addclient',"deleted");
          
     }
 
 
-    /*public function search(Request $request)
+   public function search(Request $request)
     {   $users = User::all();
         $equipements = Equipement::all();
-        $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
-        $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
+        $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
+        $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $query = $request->input('query');
-        $clients = clients::where('name', 'like', '%'.$query.'%')->get();
-        $clients = clients::where('adresse', 'like', '%'.$query.'%')->get();
-        $clients = clients::where('distance', 'like', '%'.$query.'%')->get();
-        $clients = clients::where('email', 'like', '%'.$query.'%')->get();
-        $clients = clients::where('mobile', 'like', '%'.$query.'%')->get();
-        $clients = clients::where('idmachine', 'like', '%'.$query.'%')->get();
+        $clients = Client::where('clientname', 'like', '%'.$query.'%')->get();
+        $clients = Client::where('adresse', 'like', '%'.$query.'%')->get();
+        $clients = Client::where('distance', 'like', '%'.$query.'%')->get();
+        $clients = Client::where('email', 'like', '%'.$query.'%')->get();
+        $clients = Client::where('mobile', 'like', '%'.$query.'%')->get();
+        $clients = Client::where('idmachine', 'like', '%'.$query.'%')->get();
         return view('clients.search', compact('clients'))->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('clients',$clients)->with('equipements',$equipements);
-    }*/
+    }
 
 
 }

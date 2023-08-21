@@ -31,7 +31,7 @@ class ModalitesController extends Controller
         $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
         return view('modalites.ajout')->with('users',$users)->with('messages',$messages)->with('notifications',$notifications);
     }
-    public function add(request $request){
+    public function add(request $request){  
         
         $modalite = new Modalite();
         $modalite->name=$request->input('name'); 
@@ -39,7 +39,7 @@ class ModalitesController extends Controller
         $modalite->save();
      
       
-        return redirect('/modalites')->with("addmodalite","success");  
+        return redirect('/modalite/create')->with("addmodalite","success");  
         
     }
      /**
@@ -54,11 +54,9 @@ class ModalitesController extends Controller
         $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
         $modalite = Modalite::find($id_modalite);
-        
         $equipement = Equipement::all();
         $clients = Client::all();
         $users = User::all();
-        
         $equipements = $modalite->equipements; // Filtrer les sous-équipements par id de l'équipement
         return view('Modalites.modalite')->with('users',$users)->with('modalite',$modalite)->with('equipements',$equipements)->with('clients',$clients)->with('equipement',$equipement)->with('messages',$messages)->with('notifications',$notifications); 
     }
@@ -76,7 +74,7 @@ class ModalitesController extends Controller
         $modalite->name = $request->input('name') ;
         $modalite->description = $request->input('description') ;
         $modalite->save();
-        return redirect('/modalites');
+        return redirect("/modalite/change/".$modalite->id_modalite)->with("addmodalite","success");
 
     }
     public function filter(Request $request)
@@ -93,7 +91,7 @@ class ModalitesController extends Controller
          //
          $modalite = Modalite::find($id_modalite);
          $modalite->delete();
-         return redirect('/modalites');
+         return redirect('/modalites')->with('addmodalite',"deleted");
          
     }
    
