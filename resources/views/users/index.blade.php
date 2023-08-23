@@ -24,12 +24,6 @@
 						<div class="col-md-12">
 							<!-- TABLE STRIPED -->
 		
-							<div class="panel">
-								<div class="panel-heading">
-									<h3 class="panel-title">@isset($searchuser) Resultat de recherche pour : <span class="text-primary"> " {{ $searchuser }} "</span> @else Liste Des Utilisateurs @endisset </h3>
-								</div>
-								
-
 								<div class="panel-body">
 								@if( session()->get( 'adduser' ) == "deleted" )
                                 <div class="alert alert-success alert-dismissible" role="alert">
@@ -69,7 +63,7 @@
                                                  
                                                     <td>{{ $user->name}}</td>
                                                     <td>{{ $user->matricule }}</td>
-													<td>{{ $user->email }}</td>
+													<td>{{ $user->usermail }}</td>
                                                     <td>{{ $user->phone }}</td>
                                                     <td>{{ $user->role }}</td>
 													<td>
@@ -105,12 +99,7 @@
                                     <!-- END TABLE STRIPED -->
                                 </div>
                     	</div>
-								<div class="panel-footer">
-									<div class="row">
-										<div class="col-md-6"></div>
-										<div class="col-md-6 text-right"><a href="/users" class="btn btn-primary">Effacer la recherche</a></div>
-									</div>
-								</div>
+								
 							</div>
 							<!-- END RECENT PURCHASES -->
                             </div>

@@ -34,7 +34,7 @@
                                 @if( session()->get( 'adddepartment' ) == "success" )
                                 <div class="alert alert-success alert-dismissible" role="alert">
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<i class="fa fa-check-circle"></i> Département ajouté avec succès <a href="/users" class="btn btn-sm btn-default"> Consulter la Liste des Départements </a>
+										<i class="fa fa-check-circle"></i> Département modifié avec succès <a href="/departments" class="btn btn-sm btn-default"> Consulter la Liste des Départements </a>
 								</div>
                                 @endif
                                 <form action='/department/mod/{{$department->id_departement}}' method="POST" >

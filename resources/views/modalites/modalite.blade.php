@@ -21,16 +21,17 @@
 						</div>
 						<div class="panel-body">
                         <div class="row">
-						<div class="col-md-12">
+					
 							<!-- TABLE STRIPED -->
 							<div class="panel">
 								<div class="panel-heading">
 									<h3 class="panel-title"> Modalité : {{ $modalite->name }} </h3>
                                     @if (Auth::user()->role == "Administrateur")
                                     <td class="table-info"><a  data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary'  href="/modalite/change/{{ $modalite->id_modalite }}"><i class="lnr lnr-pencil"></i></a> 
-                                        <a  data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/modalite/delete/{{ $modalite->id_modalite  }}"><i class="lnr lnr-trash"></i></a>
+                                        <a  data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/modalite/delete/{{ $modalite->id_modalite  }}" ><i class="lnr lnr-trash"></i></a>
                                         <a href="/modalites/{{ $modalite->id_modalite }}/equipements/create" class="btn btn-info">Ajouter Equipement</a>   
                                     </td>
+
                                     
                                         
                                     @endif
@@ -40,6 +41,15 @@
                             </div>                            
                             </div>  
                         </div>
+                        	<div class="col-md-12">
+                        	<div class="panel-body">
+                        	@if( session()->get( 'addequipement' ) == "deleted" )
+                                <div class="alert alert-success alert-dismissible" role="alert">
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										<i class="fa fa-check-circle"></i> Equipement supprimé avec succès
+								</div>
+                            
+                            @endif
                         <!--LISTE DES EQUIPEMENTS-->
                            
                             <h3  class="text-info"> Liste des Equipements</h3>
@@ -87,8 +97,8 @@
                                       <td>    
                                         @if (Auth::user()->role == "Administrateur") 
 
-                                        <a  data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary'  href="/equipement/mod/{{ $equipement->id_equipement }}"><i class="lnr lnr-pencil"></i> </a> 
-                                        <a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger'><i class="lnr lnr-trash" href="/equipement/del/{{ $equipement->id_equipement }}" onclick="return confirm ('voulez vous vraiment supprimer le client' {{ $equipement['id']}})"></i></a></td>
+                                        <a  data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary' href="/equipement/mod/{{ $equipement->id_equipement }}"><i class="lnr lnr-pencil"></i> </a> 
+                                        <a  data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger'  href="/equipement/del/{{ $equipement->id_equipement }}" onclick="return confirm ('voulez vous vraiment supprimer cet équipement' {{ $equipement['id']}})"><i class="lnr lnr-trash"></i></a></td>
                                         @endif 
                                 
                                   </tr>

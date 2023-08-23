@@ -32,10 +32,10 @@
 								</div>
                                 
 								<div class="panel-body">
-                                @if( session()->get( 'cm/mod/{id}' ) == "success" )
+                                @if( session()->get( 'addcontrat' ) == "success" )
                                 <div class="alert alert-success alert-dismissible" role="alert">
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<i class="fa fa-check-circle"></i> Contrat Modifié avec Succès <a href="/cm" class="btn btn-sm btn-default"> Consulter Liste des Contrats </a>
+										<i class="fa fa-check-circle"></i> Contrat Modifié avec Succèss <a href="/cm" class="btn btn-sm btn-default"> Consulter Liste des Contrats </a>
 								</div>
                                 @endif
                                 <form action='/cm/mod/{{ $contrat->id_contrat }}/valide' method="POST" >

@@ -74,12 +74,7 @@
                                     <!-- END TABLE STRIPED -->
                                 </div>
                     	</div>
-								<div class="panel-footer">
-									<div class="row">
-										<div class="col-md-6"></div>
-										<div class="col-md-6 text-right"><a href="/departments" class="btn btn-primary">Effacer la recherche</a></div>
-									</div>
-								</div>
+								
 							</div>
 							<!-- END RECENT PURCHASES -->
                             </div>

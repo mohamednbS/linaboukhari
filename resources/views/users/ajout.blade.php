@@ -36,7 +36,7 @@
                                 @if( session()->get( 'adduser' ) == "success" )
                                 <div class="alert alert-success alert-dismissible" role="alert">
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<i class="fa fa-check-circle"></i> Utilisateur ajouté avec succès <a href="/users" class="btn btn-sm btn-default"> Consulter La Liste des Utilisateurs </a>
+										<i class="fa fa-check-circle"></i> Utilisateur ajouté avec succès <a href="/users" class="btn btn-sm btn-default"> Consulter la Liste des Utilisateurs </a>
 								</div>
                                 @endif
                         
@@ -67,12 +67,8 @@
                                                 
                                         </div>
                                         <div class="col-md-9">
-                                            <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper l'email içi" type="email" name="usermail" for="usermail" value="{{ old('usermail') }}" required>
-                                            @if ($errors->has('usermail'))
-                                                <span class="help-block">
-                                                    <strong>{{ $errors->first('usermail')}} le mail est déjà utilisé </strong>
-                                                </span>
-                                            @endif   
+                                            <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper l'email içi" type="email" name="usermail" for="usermail"  required>
+                                          
                                         </div>
                                         <div class="col-md-3">
                                             <label for="validationDefault04"> Mot de Passe </label>

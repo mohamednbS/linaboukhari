@@ -34,7 +34,7 @@ class TypepannesController extends Controller
         $typepanne->description=$request->input('description');
         $typepanne->save();
       
-        return redirect('/typepannes');
+        return redirect('/typepanne/create')->with('addpanne',"success");
         
     }
     public function change($id_departement){
@@ -69,7 +69,7 @@ class TypepannesController extends Controller
          
          $typepanne = Typepanne::find($id_typepanne);
          $typepanne->delete();
-         return redirect('/typepannes');
+         return redirect('/typepannes')->with('addpanne',"deleted");
          
     }
    

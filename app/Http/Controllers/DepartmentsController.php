@@ -34,7 +34,7 @@ class DepartmentsController extends Controller
         $department->description=$request->input('description');
         $department->save();
       
-        return redirect('/departments');
+        return redirect("/department/create")->with('adddepartment',"success");
         
     }
     public function change($id_departement){
@@ -51,7 +51,7 @@ class DepartmentsController extends Controller
         $department->name = $request->input('nom') ;
         $department->description = $request->input('description');
         $department->save();
-        return redirect('/departments');
+        return redirect("/department/change/".$department->id_departement)->with('adddepartment',"success");
 
     }
     public function filter(Request $request)
@@ -69,7 +69,7 @@ class DepartmentsController extends Controller
          
          $department = Department::find($id_departement);
          $department->delete();
-         return redirect('/departments');
+         return redirect('/departments')->with('adddepartment',"deleted");
          
     }
    

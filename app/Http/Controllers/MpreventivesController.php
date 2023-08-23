@@ -187,7 +187,7 @@ class MpreventivesController extends Controller
 
         while( $dateprochaine <= $datefin ){
             $maintenance = new Maintenance();
-            $maintenance->idmp = $mp->id_maintenance ;
+            $maintenance->idmp = $mp->id_mpreventive ;
             $maintenance->date_maintenance = $dateprochaine;
          
             $maintenance->save();
@@ -202,7 +202,7 @@ class MpreventivesController extends Controller
         $notification->iduser = $request->input("executeur");
         $notification->content = "l'administrateur a modifié une maintenance préventive pour vous";
         $notification->save();
-        return redirect('/mp');
+        return redirect("/mpreventive/change/".$mp->id_mpreventive)->with('addmp',"success");
  
      }
     public function destroy($id_mpreventive)
@@ -210,7 +210,7 @@ class MpreventivesController extends Controller
          //
          $mp = Mpreventive::find($id_mpreventive);
          $mp->delete();
-         return redirect('/mp');
+         return redirect('/mp')->with('addmp',"deleted");
          
     }
     public function historiqueMp(){

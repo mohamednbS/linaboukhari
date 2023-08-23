@@ -63,7 +63,7 @@
                                                 <?php $i++; ?>
                                                 <tr>
                                                  
-                                                    <td>{{ $client->name}}</td>
+                                                    <td>{{ $client->clientname}}</td>
                                                   
 													<td>{{ $client->adresse }}</td>
 												
@@ -72,7 +72,7 @@
 													<td>{{ $client->mobile}}</td>
 													<td>
 														@foreach($equipements as $equipement )
-															@if ( $equipement->id == $client->idmachine)
+															@if ( $equipement->id_equipement == $client->idmachine)
 																{{ $equipement->designation }} 
 															@endif
 														@endforeach

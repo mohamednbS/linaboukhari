@@ -31,10 +31,10 @@
                                 
 								
 								<div class="panel-body">
-								@if( session()->get( 'adduser' ) == "deleted" )
+								@if( session()->get( 'addmp' ) == "deleted" )
                                 <div class="alert alert-success alert-dismissible" role="alert">
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<i class="fa fa-check-circle"></i> Utilisateur supprimé avec success 
+										<i class="fa fa-check-circle"></i> Maintenance supprimée avec succèss 
 								</div>
                                 @endif
                                             <table class="table table-striped">
@@ -121,7 +121,7 @@
                                                    
                                                     @if (Auth::user()->role == "Administrateur")
                                                     <td><a data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary' href="/mpreventive/change/{{ $mp->id_mpreventive }}"><i class="lnr lnr-pencil"></i> </a> 
-                                                        <a  data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/mpreventive/delete/{{ $mp->id_mpreventive  }}"><i class="lnr lnr-trash"></i></a></td>
+                                                        <a  data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/mpreventive/delete/{{ $mp->id_mpreventive  }}" onclick="return confirm ('voulez vous vraiment supprimer la maintenance' {{ $mp['id']}})"><i class="lnr lnr-trash"></i></a></td>
                                                     @endif
                                                       
                                                 </tr>

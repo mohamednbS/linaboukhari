@@ -34,7 +34,7 @@
                                 @if( session()->get( 'addmp' ) == "success" )
                                 <div class="alert alert-success alert-dismissible" role="alert">
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<i class="fa fa-check-circle"></i> Maitenance  ajouteé avec succèss <a href="/mp" class="btn btn-sm btn-default"> Consulter la liste des Maintenances Préventives </a>
+										<i class="fa fa-check-circle"></i> Maitenance  ajout"e avec succèss <a href="/mp" class="btn btn-sm btn-default"> Consulter la liste des Maintenances Préventives </a>
 								</div>
                                 @endif
                                 <form action='/addmp' method="POST" enctype="multipart/form-data">
