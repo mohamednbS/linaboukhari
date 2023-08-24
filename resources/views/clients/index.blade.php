@@ -6,6 +6,7 @@
 <div id="wrapper">
 
 	<!--MENU-->
+	@include('sweetalert::alert')
     @include('menu.menutop')
 	@include('menu.menuleft')
 
@@ -76,7 +77,7 @@
 													
 													@if (Auth::user()->role == "Administrateur")
                                                     <td><a data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary' href="/client/change/{{$client->id_client}}"><i class="lnr lnr-pencil"></i>  </a> 
-														<a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/client/delete/{{ $client->id_client }}" onclick="return confirm ('voulez vous vraiment supprimer le client' {{ $client['id']}})"><i class="lnr lnr-trash"></i></a></td>
+														<a data-confirm-delete="true" data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/client/delete/{{ $client->id_client }}" onclick="return  {{ $client['id']}})"><i class="lnr lnr-trash"></i></a></td>
                                                     @endif
                                                 </tr>
                                                 @endforeach 

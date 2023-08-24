@@ -11,7 +11,7 @@ use App\Client;
 use App\Equipement;
 use App\Notification;
 use Illuminate\Http\Request;
-
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ClientsController extends Controller
 {
@@ -21,7 +21,7 @@ class ClientsController extends Controller
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $clients = Client::all();
-   
+        ConfirmDelete($title, $text);
         $equipements = $client->equipements ?? null ;
        
         return view('clients.index')->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('clients',$clients)->with('equipements',$equipements);
@@ -116,6 +116,8 @@ class ClientsController extends Controller
     {
          //
          $client = Client::find($id_client);
+        
+        
          $client->delete();
          return redirect('/clients')->with('addclient',"deleted");
          
