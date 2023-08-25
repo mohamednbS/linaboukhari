@@ -62,12 +62,21 @@
                                             <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper la matricule utilisateur içi" type="text" name="usermat" required >
                                             
                                         </div>
+<<<<<<< HEAD
                                         <div class="col-md-3">
                                           <label > <label for="validationDefault03"> Email Utilisateur </label> </label>
                                                 
                                         </div>
                                         <div class="col-md-9">
                                         <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper l'email içi" type="email" name="usermail"  id="validationDefault03" required>
+=======
+                                        <div class="col-md-3{{ $errors->has('usermail') ? ' has-error' : '' }}">
+                                            <label for="usermail">  Email Utilisateur </label> 
+                                                
+                                        </div>
+                                        <div class="col-md-9">
+                                            <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper l'email içi" type="email" name="usermail" for="usermail"  required>
+>>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
                                           
                                         </div>
                                         <div class="col-md-3">
@@ -80,7 +89,11 @@
                                         </div>
                                         <div class="col-md-3">
                                             <label for="validationDefault05"> Repeter Mot de Passe </label>
+<<<<<<< HEAD
                                          
+=======
+                                        
+>>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
                                         </div>
                                         <div class="col-md-9">
                                             <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Repeter le mot de passe içi " type="password" name="userrpw" id="validationDefault05" required>
@@ -96,7 +109,11 @@
                                                     <option>-- Selectionner Un Rôle  --</option>
                                                     <option value='Administrateur'>Administrateur</option>
                                                     <option value='Superviseur'>Superviseur</option>
+<<<<<<< HEAD
                                                     <option value='Ingenieur'>Ingenieur</option>
+=======
+                                                    <option value='Ingenieur'>Ingénieur</option>
+>>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
                                                     <option value='Technicien'>Technicien</option>
                                                 
                                                 

@@ -46,7 +46,11 @@
                                                     <tr>
                                                         <th>Nom client/Raison sociale</th>
 														<th>Adresse</th>
+<<<<<<< HEAD
 													             
+=======
+														<th>Distance(Km)</th>              
+>>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
 														<th>Email</th>
 														<th>Mobile</th>   
 														<th>Equipements</th>            
@@ -67,7 +71,11 @@
                                                   
 													<td>{{ $client->adresse }}</td>
 												
+<<<<<<< HEAD
                                                  
+=======
+                                                    <td>{{ $client->distance}}</td>
+>>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
 													<td>{{ $client->email }}</td>
 													<td>{{ $client->mobile}}</td>
 													<td>

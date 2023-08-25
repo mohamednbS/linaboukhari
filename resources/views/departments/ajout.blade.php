@@ -59,8 +59,13 @@
 												<textarea style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper la description du departement içi"  name="description"></textarea>
 												
 												</div>
+<<<<<<< HEAD
 										
 											</div> 
+=======
+												
+											</div>
+>>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
                                                                
                                                            
                                                             

@@ -171,6 +171,7 @@
                                             
                                             </div>
 
+<<<<<<< HEAD
                                             <div class="col-md-3">
                                             <label> Heure d'Appel Client </label>
                                             
@@ -180,6 +181,8 @@
                                             
                                             </div>
 
+=======
+>>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
 
                                             <div class="col-md-3">
                                             <label> Priorité </label>

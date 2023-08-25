@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "54827b34ca99d1d48c7e68d26fcdfad1",
+=======
+    "content-hash": "dc82900be465d9c38f548616976b0612",
+>>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1524,6 +1528,7 @@
             "time": "2022-12-19T21:55:10+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "snapappointments/bootstrap-select",
             "version": "v1.13.18",
             "source": {
@@ -1584,6 +1589,8 @@
             "time": "2020-06-26T18:04:14+00:00"
         },
         {
+=======
+>>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
             "name": "swiftmailer/swiftmailer",
             "version": "v5.4.12",
             "source": {

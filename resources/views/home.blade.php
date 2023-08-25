@@ -1,9 +1,17 @@
+<<<<<<< HEAD
 @if (Auth::user()->role == "Technicien" )
+=======
+@if (Auth::user()->role == "Technicien"||Auth::user()->role == "Ingenieur")
+>>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
 <script>
 	window.location = "/homet";
 </script>
 @else
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
 @extends('layouts.app')
 @extends('layouts.dashboard')
 @section('content')

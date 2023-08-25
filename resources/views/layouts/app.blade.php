@@ -49,7 +49,10 @@
 	<script src="{{ asset('vendor/chartist/js/chartist.min.js') }}"></script>
     <script src="{{ asset('vendor/toastr/toastr.min.js') }}"></script>
 	<script src="{{ asset('scripts/klorofil-common.js') }}"></script>
+<<<<<<< HEAD
 
                                                                 
+=======
+>>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
 </body>
 </html>

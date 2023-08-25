@@ -64,18 +64,27 @@
                                                                     <label > <label>  Client </label> </label>
                                                                     
                                                                 </div>
+<<<<<<< HEAD
 
                                                                 <div class="col-md-9" class="search_box_select">
                                                                 <select style="width:100%;margin-bottom:10px;" data-live-search="true" class="form-control"  name="idclient">
                                                              
                                                                     <option >Sélectionner un client</option>  
+=======
+                                                                <div class="col-md-9">
+                                                                <select style="width:100%;margin-bottom:10px;" class="form-control" name="idclient">
+                                                                    <option >Sélectionner un Client </option>  
+>>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
                                                                 @foreach($clients as $client )
                                                                     
                                                                     <option value="{{ $client->id_client }}">{{ $client->clientname }}</option>
                                                           
                                                                 @endforeach
                                                                 </select>
+<<<<<<< HEAD
                                                               
+=======
+>>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
                                                                 </div>
                                             
                                                                 <div class="col-md-3">
@@ -149,12 +158,19 @@
                                                                 </div>
                                                                 <div class="col-md-9">
                                                                 <select name="iduser[]" id="iduser"  multiple="multiple" style="width:100%;margin-bottom:10px;">   
+<<<<<<< HEAD
                                                                     <option >Sélectionner l'intervenant</option>
                                                                     @foreach($techniciens as $technicien )
                                                                         <option value="{{ $technicien->name }}">{{ $technicien->name }}</option> 
                                                                     @endforeach
                                                                     @foreach($ingenieurs as $ingenieur )
                                                                         <option value="{{ $ingenieur->name }}">{{ $ingenieur->name }}</option> 
+=======
+                                                                    <option >Selectionner l'intervenant</option>
+                                                                    @foreach($techniciens as $technicien )
+                                                                        <option value="{{ $technicien->name }}">{{ $technicien->name }}</option> 
+                                                            
+>>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
                                                                     @endforeach
                                                                 </select>
                            

@@ -99,8 +99,12 @@ class HomeController extends Controller
                     ->get();
         $users = User::all();
         $techniciens = User::where('role',"Technicien")->get();
+<<<<<<< HEAD
         $ingenieurs = User::where('role',"Ingenieur")->get();
         return view('homet')->with('allmpreventives',$allmpreventives)->with('ingenieurs',$ingenieurs)->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('equipements',$equipements)->with('ointerventions',$ointerventions)->with('mpreventives',$mpreventives)->with('clients',$clients)->with('techniciens',$techniciens);
+=======
+        return view('homet')->with('allmpreventives',$allmpreventives)->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('equipements',$equipements)->with('ointerventions',$ointerventions)->with('mpreventives',$mpreventives)->with('clients',$clients)->with('techniciens',$techniciens);
+>>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
     }
     
 }

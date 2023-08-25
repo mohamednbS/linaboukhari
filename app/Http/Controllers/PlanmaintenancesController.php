@@ -18,8 +18,13 @@ class PlanmaintenancesController extends Controller
     //
     public function index(){
         $users = User::all();
+<<<<<<< HEAD
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
+=======
+        $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
+        $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
+>>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
         $mpreventives = Mpreventive::all();
         $maintenances = Maintenance::all(); 
         $clients = Client::all(); 

@@ -16,15 +16,25 @@ class DepartmentsController extends Controller
     //
     public function index(){ 
         $users = User::all();
+<<<<<<< HEAD
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
+=======
+        $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
+        $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
+>>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
         $departments = Department::all();
         return view('departments.index')->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('departments',$departments);
     }
     public function create(){
         $users = User::all();
+<<<<<<< HEAD
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
+=======
+        $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
+        $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
+>>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
         return view('departments.ajout')->with('users',$users)->with('messages',$messages)->with('notifications',$notifications);
     }
     public function add(request $request){
@@ -39,14 +49,24 @@ class DepartmentsController extends Controller
     }
     public function change($id_departement){
         $users = User::all();
+<<<<<<< HEAD
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
+=======
+        $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
+        $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
+>>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
         $department = Department::find($id_departement);
         return view('departments.mod')->with('department',$department)->with('users',$users)->with('messages',$messages)->with('notifications',$notifications);
     }
     public function update(Request $request,$id_departement){
+<<<<<<< HEAD
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
+=======
+        $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
+        $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
+>>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
         $department = Department::find($id_departement);
         $department->name = $request->input('nom') ;
         $department->description = $request->input('description');
@@ -58,8 +78,13 @@ class DepartmentsController extends Controller
     {
          //
          $users = User::all();
+<<<<<<< HEAD
          $messages = Message::where('iddestination',Auth::user()->i_user)->where('stat',"unread")->get();
          $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
+=======
+         $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
+         $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
+>>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
          $departments = Department::where("name",'like','%'.$request->input("searchdepartment").'%')->get();
          return view('departments.index')->with('messages',$messages)->with('users',$users)->with('departments',$departments)->with('messages',$messages)->with('notifications',$notifications);
     }
@@ -75,8 +100,13 @@ class DepartmentsController extends Controller
    
     public function search(Request $request)
     {   $users = User::all();
+<<<<<<< HEAD
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
+=======
+        $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
+        $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
+>>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
         $query = $request->input('query');
         $departments = Department::where('name', 'like', '%'.$query.'%')->get();
         $departments = Department::where('description', 'like', '%'.$query.'%')->get();

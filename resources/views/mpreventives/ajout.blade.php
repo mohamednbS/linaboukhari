@@ -140,9 +140,13 @@
                                                         <option >Selectionner l'intervenant</option>
                                                         @foreach($techniciens as $technicien )
                                                             <option value="{{ $technicien->name }}">{{ $technicien->name }}</option> 
+<<<<<<< HEAD
                                                         @endforeach
                                                         @foreach($ingenieurs as $ingenieur )
                                                             <option value="{{ $ingenieur->name }}">{{ $ingenieur->name }}</option> 
+=======
+                                                
+>>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
                                                         @endforeach
                                                     </select>
                                                 </div>

@@ -16,7 +16,11 @@
 					<!-- OVERVIEW -->
 					<div class="panel panel-headline">
 						<div class="panel-heading">
+<<<<<<< HEAD
 							<h4 class="panel-title"><i class="lnr lnr-laptop-phone"></i> Gestion des Sous Equipements</h4>
+=======
+							<h3 class="panel-title"><i class="lnr lnr-laptop-phone"></i> Gestion des equipements</h3>
+>>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
 							<p class="panel-subtitle">Aujourd'hui : <?php echo date('M')." ".date('d')." , ".date('Y'); ?> </p>
 						</div>
 						<div class="panel-body">
@@ -26,6 +30,7 @@
 							<div class="panel">
                                 
 								<div class="panel-heading">
+<<<<<<< HEAD
 									<h3 class="panel-title"> Modification :<span class="text-primary"> {{$sousequipement->designation}} </span> </h3>
 								</div>
                                 
@@ -39,6 +44,21 @@
                                 <form action='/modsousequipement/{{ $sousequipement->id_sousequipement }}' method="POST" enctype="multipart/form-data">
                                                         {{ csrf_field() }} 
                                           
+=======
+									<h3 class="panel-title"> Modifier un equipement   </h3>
+								</div>
+                                
+								<div class="panel-body">
+                                @if( session()->get( 'adduser' ) == "success" )
+                                <div class="alert alert-success alert-dismissible" role="alert">
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										<i class="fa fa-check-circle"></i> Utilisateur ajouter avec success <a href="/users" class="btn btn-sm btn-default"> Consulter liste des utilisateurs </a>
+								</div>
+                                @endif
+                                <form action='/modequipement/{{ $equipement->id_equipement }}' method="POST" enctype="multipart/form-data">
+                                                        {{ csrf_field() }} 
+                                         
+>>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
                                                             <div class="row">
                                                             
                                                                 <div class="col-md-3">
