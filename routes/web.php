@@ -59,7 +59,6 @@ Route::post('/sousequipement/filter','SousequipementsController@filter')->middle
 Route::get('/sousequipements','SousequipementsController@index')->middleware('auth');
 Route::get('/sousequipement/{id}','SousequipementsController@show')->middleware('auth');
 Route::get('/sousequipement/mod/{id_sousequipement}','SousequipementsController@edit')->middleware('auth');
-<<<<<<< HEAD
 Route::post('/modsousequipement/{id_sousequipement}','SousequipementsController@update')->middleware('auth');
 Route::get('/equipements/{equipement_id_equipement}/sousequipements','SousequipementsController@delete')->middleware('auth');
 Route::post('/equipements/{equipement_id_equipement}/sousequipements','sousequipementsController@store')->name('Sousequipements.store')->middleware('auth');
@@ -73,24 +72,6 @@ Route::get('/sousequipement/{id}','SouequipementsController@show')->middleware('
 Route::get('/accessoire/mod/{id_accessoire}','AccessoiresController@edit')->middleware('auth');
 Route::post('/modaccessoire/{id_accessoire}','AccessoiresController@update')->middleware('auth');
 Route::get('/equipement/del/{id}','EquipementsController@delete')->middleware('auth');
-=======
-Route::get('/equipements/{equipement_id_equipement}/sousequipements','SousequipementsController@delete')->middleware('auth');
-Route::post('/sousequipement/{id_sousequipement}','SousequipementsController@update')->middleware('auth');
-Route::post('/equipements/{equipement_id_equipement}/sousequipements','sousequipementsController@store')->name('Sousequipements.store')->middleware('auth');
-Route::get('/equipements/{equipement_id_equipement}/sousequipements/create', 'SousequipementsController@create');
-
-
-
-/* Accessoires route */
-   
-
-Route::post('/sousequipement/filter','AccessoiresController@filter')->middleware('auth');
-Route::get('/accessoires','AccessoiresController@index')->middleware('auth'); 
-Route::get('/sousequipement/{id}','SouequipementsController@show')->middleware('auth');
-Route::get('/equipement/mod/{id}','EquipementsController@edit')->middleware('auth');
-Route::get('/equipement/del/{id}','EquipementsController@delete')->middleware('auth');
-Route::post('/modequipement/{id}','EquipementsController@update')->middleware('auth'); 
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
 Route::post('/equipements/{equipement_id_equipement}/accessoires','AccessoiresController@store')->name('Accessoires.store')->middleware('auth');
 Route::get('/equipements/{equipement_id_equipement}/accessoires/create', 'AccessoiresController@create');
 
@@ -99,11 +80,7 @@ Route::get('/di','OinterventionsController@index')->middleware('auth');
 Route::get('/di/add','OinterventionsController@create')->middleware('auth');
 Route::post('/addoi','OinterventionsController@store')->middleware('auth');
 Route::post('/oi/filter','OinterventionsController@filter')->middleware('auth');
-<<<<<<< HEAD
 Route::get('/intervention/{id_intervention}','OinterventionsController@intervention')->middleware('auth');
-=======
-
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
 Route::post('/ointervention/mod/{id_intervention}',"OinterventionsController@update")->middleware('auth'); 
 Route::get('/ointervention/change/{id_intervention}',"OinterventionsController@change")->middleware('auth');
 Route::get('/ointervention/delete/{id_intervention}',"OinterventionsController@destroy")->middleware('auth');

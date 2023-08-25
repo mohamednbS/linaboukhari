@@ -26,21 +26,12 @@ class OinterventionsController extends Controller
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $users = User::all();
         $equipements = Equipement::all();
-<<<<<<< HEAD
-=======
-        $sousequipements = Sousequipement::all();
-        $accessoires = Accessoire::all();
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
         $typepannes = Typepanne::all();
         $clients = Client::all();
         $ointerventions = Ointervention::where('etat',"!=","Terminé")   
                                         ->get(); 
 
-<<<<<<< HEAD
         return view('dmdinterventions.index')->with('messages',$messages)->with('notifications',$notifications)->with('ointerventions',$ointerventions)->with('equipements',$equipements)->with('clients',$clients)->with('users',$users)->with('typepannes',$typepannes);
-=======
-        return view('dmdinterventions.index')->with('messages',$messages)->with('notifications',$notifications)->with('ointerventions',$ointerventions)->with('equipements',$equipements)->with('clients',$clients)->with('users',$users)->with('typepannes',$typepannes)->with('sousequipements',$sousequipements)->with('accessoires',$accessoires);
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
     }
     public function store(Request $request){
         $numero = $request->input('numero');
@@ -90,14 +81,9 @@ class OinterventionsController extends Controller
         $clients = Client::all();
         $typepannes = Typepanne::all();
         $techniciens = User::where('role',"Technicien")->get();
-<<<<<<< HEAD
         $ingenieurs = User::where('role',"Ingenieur")->get();
         $users = User::all();
         return view('dmdinterventions.ajout')->with('users',$users)->with('equipements',$equipements)->with('techniciens',$techniciens)->with('clients',$clients)->with('messages',$messages)->with('notifications',$notifications)->with('typepannes',$typepannes)->with('sousequipements',$sousequipements)->with('accessoires',$accessoires)->with('ingenieurs',$ingenieurs);
-=======
-        $users = User::all();
-        return view('dmdinterventions.ajout')->with('users',$users)->with('equipements',$equipements)->with('techniciens',$techniciens)->with('clients',$clients)->with('messages',$messages)->with('notifications',$notifications)->with('typepannes',$typepannes)->with('sousequipements',$sousequipements)->with('accessoires',$accessoires);
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
     }
     public function show($id_intervention){
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
@@ -106,7 +92,6 @@ class OinterventionsController extends Controller
         $typepannes = Typepanne::all();
         return view('dmdinterventions.affiche')->with('oi',$oi)->with('messages',$messages)->with('notifications',$notifications)->with('typepannes',$typepannes);
     }
-<<<<<<< HEAD
     public function intervention($id_intervention){
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
@@ -118,8 +103,6 @@ class OinterventionsController extends Controller
         $ointerventions = Ointervention::find($id_intervention);
         return view('dmdinterventions.intervention')->with('messages',$messages)->with('notifications',$notifications)->with('ointerventions',$ointerventions)->with('equipements',$equipements)->with('clients',$clients)->with('users',$users)->with('sousequipements',$sousequipements)->with('accessoires',$accessoires);
     }
-=======
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
     
     public function change($id_intervention){
         $users = User::all();

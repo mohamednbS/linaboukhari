@@ -11,15 +11,9 @@
 							<div class="header">
 								<div class="logo text-center"><h1>GMAO STIET</h1></div>
 								<h4  class="text-dark"  class="font-weight-normal">Bonjour ! </h4>
-<<<<<<< HEAD
 											@if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
-=======
-								@if ($errors->has('usermail'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('usermail') }}</strong>
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
                                     </span>
                                 @endif
 
@@ -31,10 +25,6 @@
 								
 								</p>
 							</div>
-<<<<<<< HEAD
-
-=======
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
 							<form class="form-horizontal" method="POST" action="{{ route('login') }}">
                                     {{ csrf_field() }}
 								<div class="form-group">

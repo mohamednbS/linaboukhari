@@ -63,11 +63,7 @@
                                                  
                                                     <td>{{ $user->name}}</td>
                                                     <td>{{ $user->matricule }}</td>
-<<<<<<< HEAD
 													<td>{{ $user->usermail }}</td> 
-=======
-													<td>{{ $user->usermail }}</td>
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
                                                     <td>{{ $user->phone }}</td>
                                                     <td>{{ $user->role }}</td>
 													<td>
