@@ -49,11 +49,10 @@
                                                         <th>N° Intervention</th>
 														<th>Client</th>
                                                         <th>Equipement</th>
-														<th>Sous Equipement</th>
-														<th>Accessoire </th>
+														
 														<th>Panne/Mission</th>
 														<th>Intervenant</th>
-														<th>Heure d'Appel Client</th>
+														
 														<th>Etat</th>
                                                         <th>Commmentaires</th>
 														@if (Auth::user()->role == "Administrateur")
@@ -69,7 +68,7 @@
                                                 <?php $i++; ?>
                                                 <tr>
                                                     <td>{{ $i }}</td>
-                                                    <td>{{ $oi->numero }}</td>
+                                                    <td> <a href="/intervention/{{ $oi->id_intervention }}">{{ $oi->numero }}</a></td>
 													<td>
 														@foreach($clients as $client )
 															@if ( $client->id_client == $oi->idclient )
@@ -85,21 +84,6 @@
                                                         @endif
                                                         @endforeach
                                                     </td>
-													  <td>    
-                                                    @foreach($sousequipements as $sousequipement )
-                                                        @if ( $sousequipement->id_sousequipement == $oi->sousequipement )
-                                                            {{ $sousequipement->designation }} 
-                                                        @endif
-                                                        @endforeach
-                                                    </td>
-
-													<td>    
-                                                    @foreach($accessoires as $accessoire )
-                                                        @if ( $accessoire->id_accessoire == $oi->accessoire )
-                                                            {{ $accessoire->designation }} 
-                                                        @endif
-                                                        @endforeach
-                                                    </td>
 
 													<td>
 													    @foreach($typepannes as $typepanne )
@@ -112,8 +96,6 @@
 													<td  class="table-info">
 														{{ implode('/ ', explode(',', $oi->destinateur)) }}
                                                     </td>
-
-													<td> {{$oi->appel_client}} </td>
 
 													<td>
 

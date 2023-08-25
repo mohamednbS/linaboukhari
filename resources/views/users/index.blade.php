@@ -63,7 +63,7 @@
                                                  
                                                     <td>{{ $user->name}}</td>
                                                     <td>{{ $user->matricule }}</td>
-													<td>{{ $user->email }}</td> 
+													<td>{{ $user->usermail }}</td> 
                                                     <td>{{ $user->phone }}</td>
                                                     <td>{{ $user->role }}</td>
 													<td>

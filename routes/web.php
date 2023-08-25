@@ -80,7 +80,7 @@ Route::get('/di','OinterventionsController@index')->middleware('auth');
 Route::get('/di/add','OinterventionsController@create')->middleware('auth');
 Route::post('/addoi','OinterventionsController@store')->middleware('auth');
 Route::post('/oi/filter','OinterventionsController@filter')->middleware('auth');
-
+Route::get('/intervention/{id_intervention}','OinterventionsController@intervention')->middleware('auth');
 Route::post('/ointervention/mod/{id_intervention}',"OinterventionsController@update")->middleware('auth'); 
 Route::get('/ointervention/change/{id_intervention}',"OinterventionsController@change")->middleware('auth');
 Route::get('/ointervention/delete/{id_intervention}',"OinterventionsController@destroy")->middleware('auth');

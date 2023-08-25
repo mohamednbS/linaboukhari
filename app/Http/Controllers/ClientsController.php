@@ -130,7 +130,7 @@ class ClientsController extends Controller
         $query = $request->input('query');
         $clients = Client::where('clientname', 'like', '%'.$query.'%')->get();
         $clients = Client::where('adresse', 'like', '%'.$query.'%')->get();
-        $clients = Client::where('distance', 'like', '%'.$query.'%')->get();
+      
         $clients = Client::where('email', 'like', '%'.$query.'%')->get();
         $clients = Client::where('mobile', 'like', '%'.$query.'%')->get();
         $clients = Client::where('idmachine', 'like', '%'.$query.'%')->get();

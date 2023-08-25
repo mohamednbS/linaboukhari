@@ -26,14 +26,12 @@ class OinterventionsController extends Controller
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $users = User::all();
         $equipements = Equipement::all();
-        $sousequipements = Sousequipement::all();
-        $accessoires = Accessoire::all();
         $typepannes = Typepanne::all();
         $clients = Client::all();
         $ointerventions = Ointervention::where('etat',"!=","Terminé")   
                                         ->get(); 
 
-        return view('dmdinterventions.index')->with('messages',$messages)->with('notifications',$notifications)->with('ointerventions',$ointerventions)->with('equipements',$equipements)->with('clients',$clients)->with('users',$users)->with('typepannes',$typepannes)->with('sousequipements',$sousequipements)->with('accessoires',$accessoires);
+        return view('dmdinterventions.index')->with('messages',$messages)->with('notifications',$notifications)->with('ointerventions',$ointerventions)->with('equipements',$equipements)->with('clients',$clients)->with('users',$users)->with('typepannes',$typepannes);
     }
     public function store(Request $request){
         $numero = $request->input('numero');
@@ -93,6 +91,17 @@ class OinterventionsController extends Controller
         $oi = Ointervention::find($id_intervention);
         $typepannes = Typepanne::all();
         return view('dmdinterventions.affiche')->with('oi',$oi)->with('messages',$messages)->with('notifications',$notifications)->with('typepannes',$typepannes);
+    }
+    public function intervention($id_intervention){
+        $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
+        $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
+        $users = User::all();
+        $equipements = Equipement::all();
+        $sousequipements = Sousequipement::all();
+        $accessoires = Accessoire::all();
+        $clients = Client::all();
+        $ointerventions = Ointervention::find($id_intervention);
+        return view('dmdinterventions.intervention')->with('messages',$messages)->with('notifications',$notifications)->with('ointerventions',$ointerventions)->with('equipements',$equipements)->with('clients',$clients)->with('users',$users)->with('sousequipements',$sousequipements)->with('accessoires',$accessoires);
     }
     
     public function change($id_intervention){

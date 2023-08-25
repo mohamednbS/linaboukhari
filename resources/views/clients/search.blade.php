@@ -46,7 +46,7 @@
                                                     <tr>
                                                         <th>Nom client/Raison sociale</th>
 														<th>Adresse</th>
-														<th>Distance(Km)</th>              
+													             
 														<th>Email</th>
 														<th>Mobile</th>   
 														<th>Equipements</th>            
@@ -67,7 +67,7 @@
                                                   
 													<td>{{ $client->adresse }}</td>
 												
-                                                    <td>{{ $client->distance}}</td>
+                                                 
 													<td>{{ $client->email }}</td>
 													<td>{{ $client->mobile}}</td>
 													<td>

@@ -11,9 +11,9 @@
 							<div class="header">
 								<div class="logo text-center"><h1>GMAO STIET</h1></div>
 								<h4  class="text-dark"  class="font-weight-normal">Bonjour ! </h4>
-								@if ($errors->has('usermail'))
+											@if ($errors->has('email'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('usermail') }}</strong>
+                                        <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
 
