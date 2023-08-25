@@ -50,8 +50,6 @@
 														<th>Email</th>
 														<th>Mobile</th>   
 														<th>Equipements</th>            
-													
-														
 														@if (Auth::user()->role == "Administrateur")
 														<th>Action</th>
 														@endif

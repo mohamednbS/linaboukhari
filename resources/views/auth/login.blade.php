@@ -31,28 +31,17 @@
 									<label for="signin-email" class="control-label sr-only">Email</label>
 									<input type="email" name="email" value="{{ old('email') }}" class="form-control" id="signin-email"  placeholder="Email">
 								</div>
-<<<<<<< HEAD
-
-=======
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
 								<div class="form-group">
 									<label for="signin-password" class="control-label sr-only">Mot de passe</label>
 									<input type="password" name="password" style="width:100%;margin-bottom:10px;"class="form-control" id="signin-password"  placeholder="Password">
 								</div>
-<<<<<<< HEAD
-
-=======
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
 								<div class="form-group clearfix">
 									<label class="fancy-checkbox element-left">
 										<input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }} >
 										<span>Garder ma sesion active</span>
 									</label>
 								</div>
-<<<<<<< HEAD
 								
-=======
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
 								<div> <button type="submit"class="btn btn-primary btn-lg btn-block"  style="width:100%;margin-bottom:10px;">Connecter</button> </div>
 
 							
