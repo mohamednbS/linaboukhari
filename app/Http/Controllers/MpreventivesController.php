@@ -107,12 +107,8 @@ class MpreventivesController extends Controller
          $equipements = Equipement::all();
          $clients = Client::all();
          $techniciens = User::where('role',"Technicien")->get();
-<<<<<<< HEAD
          $ingenieurs = User::where('role',"Ingenieur")->get();
          return view('mpreventives.ajout')->with('messages',$messages)->with('notifications',$notifications)->with('equipements',$equipements)->with('clients',$clients)->with('techniciens',$techniciens)->with('users',$users)->with('ingenieurs',$ingenieurs);
-=======
-         return view('mpreventives.ajout')->with('messages',$messages)->with('notifications',$notifications)->with('equipements',$equipements)->with('clients',$clients)->with('techniciens',$techniciens)->with('users',$users);
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
      }
  public function show($id_mpreventive){
         $users = User::all();
@@ -232,13 +228,8 @@ class MpreventivesController extends Controller
       
     public function search_mp(Request $request)
     {   $users = User::all();
-<<<<<<< HEAD
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-=======
-        $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
-        $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
         $techniciens = User::where('role',"Technicien")->get();
         $clients = Client::all();
         $equipements = Equipement::all();

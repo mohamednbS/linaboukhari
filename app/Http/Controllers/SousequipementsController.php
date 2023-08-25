@@ -25,13 +25,8 @@ class SousequipementsController extends Controller
     public function index()
     {
          //
-<<<<<<< HEAD
          $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
          $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-=======
-         $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
-         $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
          $sousequipements = Sousequipement::all();
          $users = User::all();
          return view('sousequipements.index')->with('users',$users)->with('sousequipements',$sousequipements)->with('messages',$messages)->with('notifications',$notifications);
@@ -45,13 +40,8 @@ class SousequipementsController extends Controller
     {
          //
          $users = User::all();
-<<<<<<< HEAD
          $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
          $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-=======
-         $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
-         $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
          $sousequipements = Sousequipement::where("name",'like','%'.$request->input("searchequipement").'%')->get();
          return view('sousequipements.index')->with('users',$users)->with('sousequipements',$sousequipements)->with('messages',$messages)->with('notifications',$notifications);
     }
@@ -65,13 +55,8 @@ class SousequipementsController extends Controller
     {
         //
         $equipement= Equipement::find($equipement_id_equipement);
-<<<<<<< HEAD
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-=======
-        $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
-        $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
         $users = User::all();
         return view('sousequipements.ajout')->with('equipement',$equipement)->with('users',$users)->with('messages',$messages)->with('notifications',$notifications);
     }
@@ -108,13 +93,8 @@ class SousequipementsController extends Controller
     public function show($id)
     {
         //
-<<<<<<< HEAD
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-=======
-        $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
-        $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
         $departments = Department::all();
         $equipement = Equipement::find($id_equipement);
         $users = User::all();
@@ -133,12 +113,7 @@ class SousequipementsController extends Controller
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $sousequipement = Sousequipement::find($id_sousequipement); 
-<<<<<<< HEAD
         return view('sousequipements.modifier')->with('sousequipement',$sousequipement)->with('messages',$messages)->with('notifications',$notifications);
-=======
-        $equipement= Equipement::all(); 
-        return view('sousequipements.modifier')->with('sousequipement',$sousequipement)->with('messages',$messages)->with('notifications',$notifications); 
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
     }
 
     /**
@@ -159,21 +134,13 @@ class SousequipementsController extends Controller
         $sousequipement->date_achat=$request->input("date_achat");
         $sousequipement->date_arrive=$request->input("date_arrive");
 
-<<<<<<< HEAD
        
-=======
-        $sousequipement->equipement_id_equipement=$equipement;
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
 
         
         $sousequipement->update();
         
 
-<<<<<<< HEAD
         return redirect()->back()->with("addsousequipement","success");
-=======
-        return redirect("/equipement/".$equipement->id_equipement);
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
        
 
     }
