@@ -11,7 +11,7 @@
 							<div class="header">
 								<div class="logo text-center"><h1>GMAO STIET</h1></div>
 								<h4  class="text-dark"  class="font-weight-normal">Bonjour ! </h4>
-											@if ($errors->has('email'))
+								@if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
@@ -41,7 +41,6 @@
 										<span>Garder ma sesion active</span>
 									</label>
 								</div>
-								
 								<div> <button type="submit"class="btn btn-primary btn-lg btn-block"  style="width:100%;margin-bottom:10px;">Connecter</button> </div>
 
 							
@@ -62,9 +61,4 @@
 		</div>
 	</div>
 	<!-- END WRAPPER -->
-
-
-
-
-
 @endsection

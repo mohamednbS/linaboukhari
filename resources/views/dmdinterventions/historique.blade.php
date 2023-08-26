@@ -73,7 +73,7 @@
                                                     <td>    
                                                     @foreach($equipements as $equipement )
                                                         @if ( $equipement->id_equipement == $oi->idmachine )
-                                                            {{ $equipement->designation }} 
+                                                            {{ $equipement->modele }} 
                                                         @endif
                                                         @endforeach
                                                     </td>

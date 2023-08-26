@@ -87,7 +87,7 @@
                                                                     <option >Sélectionner un Equipement</option>
                                                                 @foreach($equipements as $equipement )
                                                                         
-                                                                        <option value="{{ $equipement->id_equipement }}">{{ $equipement->designation }}</option>
+                                                                        <option value="{{ $equipement->id_equipement }}">{{ $equipement->modele}}</option>
                                                                         
                                                                         
                                                                 @endforeach

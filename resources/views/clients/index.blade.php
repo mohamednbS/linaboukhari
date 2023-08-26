@@ -40,7 +40,7 @@
 											<div>
 											<form action="{{ route('filter') }}" method="GET">
 												<input type="text" name="query" placeholder="Recherche...">
-												<button type="submit">Rechercher</button> 
+												<button  type="submit">Rechercher</button> 
 											</form>
 											</div>
                                                 <thead> 
@@ -50,6 +50,8 @@
 														<th>Email</th>
 														<th>Mobile</th>   
 														<th>Equipements</th>            
+													
+														
 														@if (Auth::user()->role == "Administrateur")
 														<th>Action</th>
 														@endif

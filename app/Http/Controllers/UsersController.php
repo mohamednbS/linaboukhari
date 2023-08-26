@@ -84,23 +84,23 @@ class UsersController extends Controller
         $this->validate($request, [
             'username' => 'required',
             'usermat' => 'required',
-            'usermail' => ' required|unique:users',
+            'usermail' => 'required',
             'userpw' => 'required',
             'phone' => 'required',
             'role' => 'required',
             'modalité' => 'required', 
             'iddep' => 'required', 
-           
-       
+            
         ]);
             
+        
         //
         $user = new User();
         $user->name = $request->input("username") ;
         $user->matricule = $request->input("usermat") ;
         $user->email = $request->input("usermail");
         $user->password = Hash::make($request->input("userpw"));
-        $user->phone =  $request->input("phone"); 
+        $user->phone =  $request->input("phone");
         $user->role =  $request->input("role");
         if ($request->input("iddep") != ""){
             $user->iddep =  $request->input("iddep");
@@ -108,7 +108,7 @@ class UsersController extends Controller
         $user->modalité =  $request->input("modalité");   
         $user->save();
 
-        return redirect("/user/add")->with('adduser',"success");   
+        return redirect("/user/add")->with('adduser',"success");  
     }
     public function modprofile(Request $request){
       
@@ -189,7 +189,7 @@ class UsersController extends Controller
         $user =User::find($id_user);
         $user->name = $request->input("username") ;
         $user->matricule = $request->input("usermat") ;
-        $user->usermail = $request->input("usermail");
+        $user->email = $request->input("usermail");
         $user->password = Hash::make($request->input("userpw"));
         $user->phone =  $request->input("phone"); 
         $user->role =  $request->input("role");

@@ -1,4 +1,4 @@
-@if (Auth::user()->role == "Technicien" )
+@if (Auth::user()->role == "Technicien" || Auth::user()->role == "Ingenieur" )
 <script>
 	window.location = "/homet";
 </script>

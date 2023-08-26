@@ -170,7 +170,7 @@ Route::post('/client/mod/{id_client}',"ClientsController@update")->middleware('a
 Route::get('/client/change/{id_client}',"ClientsController@change")->middleware('auth');
 Route::get('/clients',"ClientsController@index")->middleware('auth');
 Route::get('/client/delete/{id_client}',"ClientsController@destroy")->middleware('auth');
-Route::get('/clients/filter', "clientsController@filter")->name('filter')->middleware('auth');
+Route::get('/clients/filter', "ClientsController@filter")->name('filter')->middleware('auth');
 Route::get('/equipementclient/{id_client}','ClientsController@show')->middleware('auth');
 
 

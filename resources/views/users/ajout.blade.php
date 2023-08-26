@@ -62,13 +62,13 @@
                                             <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper la matricule utilisateur içi" type="text" name="usermat" required >
                                             
                                         </div>
-                                        <div class="col-md-3">
-                                          <label > <label for="validationDefault03"> Email Utilisateur </label> </label>
+                                         <div class="col-md-3">
+                                            <label > <label for="validationDefault03"> Email Utilisateur </label> </label>
                                                 
                                         </div>
                                         <div class="col-md-9">
-                                        <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper l'email içi" type="email" name="usermail"  id="validationDefault03" required>
-                                          
+                                            <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper l'email içi" type="email" name="usermail"  id="validationDefault03" required>
+                                                
                                         </div>
                                         <div class="col-md-3">
                                             <label for="validationDefault04"> Mot de Passe </label>

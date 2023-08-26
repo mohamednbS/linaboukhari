@@ -63,7 +63,7 @@
                                                 
                                                 </div>
                                                 <div class="col-md-9">
-                                                <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $user->usermail }}" type="email" name="usermail">
+                                                <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $user->email }}" type="email" name="usermail">
                                                 
                                                 </div>
                                                 <div class="col-md-3">
@@ -103,18 +103,18 @@
                                                     <option selected value='Administrateur'>Administrateur</option>
                                                     <option value='Superviseur'>Superviseur</option>
                                                     <option value='Technicien'>Technicien</option>
-                                                    <option value='Ingénieur'>Ingénieur</option>
-                                                @elseif ($user->role == "Superviseur")
+                                                    <option value='Ingenieur'>Ingénieur</option>
+                                                @elseif ($user->role == "Technicien")
                                                     <option>-- selectionner un role --</option>
-                                                    <option value='Superviseur'>Superviseur</option>
-                                                    <option selected value='Ingénieur'>Ingénieur</option>
+                                                    <option value='Superviseur'>Administrateur</option>
+                                                    <option selected value='Ingenieur'>Ingénieur</option>
                                                     <option selected value='Technicien'>Technicien</option>
                                                 @else
                                                     <option>-- selectionner un role --</option>
                                                     <option value='Administrateur'>Administrateur</option>
                                                     <option selected value='Superviseur'>Superviseur</option>
                                                     <option selected value='Technicien'>Technicien</option>
-                                                    <option selected value='Ingénieur'>Ingénieur</option>
+                                                    <option selected value='Ingenieur'>Ingénieur</option>
                                                 
                                                 @endif
                                                 </select> 

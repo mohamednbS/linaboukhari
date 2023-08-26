@@ -64,7 +64,7 @@ class OinterventionsController extends Controller
 
        $notification = new Notification();
        $notification->stat = "unseen";  
-       $notification->touser = "Technicien";
+       $notification->touser = "Technicien" || "Ingenieur" ;
        $notification->iduser = $request->destinateur = implode(',', $destinateurs);
        $notification->content = "l'administrateur a ajouté une intervention pour vous";
        $notification->save();
