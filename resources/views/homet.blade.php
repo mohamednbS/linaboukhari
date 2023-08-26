@@ -1,9 +1,4 @@
-
 @extends('layouts.app')
-<<<<<<< HEAD
-=======
-
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
 @section('content')
 <!-- WRAPPER -->
 <div id="wrapper">
@@ -234,15 +229,7 @@
 						<div class="panel-body">
                         <div class="row">
 						<div class="col-md-12">
-<<<<<<< HEAD
-						
-=======
-							<!-- TABLE STRIPED -->
-							<div class="panel">
-								<div class="panel-heading">
 									
-								</div>
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
 								<div class="panel-body">
                                      <br>
                                      <hr>
@@ -398,11 +385,7 @@
 							</div>
 							<!-- END RECENT PURCHASES -->
                             </div>
-<<<<<<< HEAD
 						
-=======
-						</div>
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
 					</div>	
 				</div>
 			</div>

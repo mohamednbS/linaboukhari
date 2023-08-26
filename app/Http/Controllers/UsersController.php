@@ -30,11 +30,7 @@ class UsersController extends Controller
         $departments = Department::all();
         $modalites = Modalite::all();
         $users = User::where('role',"!=", "Administrateur")->get();
-<<<<<<< HEAD
    
-=======
-       
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
         return view('users.index')->with('users',$users)->with('departments',$departments)->with('modalites',$modalites)->with('messages',$messages)->with('notifications',$notifications);
     }
         /**
@@ -102,11 +98,7 @@ class UsersController extends Controller
         $user = new User();
         $user->name = $request->input("username") ;
         $user->matricule = $request->input("usermat") ;
-<<<<<<< HEAD
         $user->email = $request->input("usermail");
-=======
-        $user->usermail = $request->input("usermail");
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
         $user->password = Hash::make($request->input("userpw"));
         $user->phone =  $request->input("phone"); 
         $user->role =  $request->input("role");

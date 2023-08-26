@@ -56,13 +56,8 @@ class AccessoiresController extends Controller
     {
         //
         $equipement= Equipement::find($equipement_id_equipement);
-<<<<<<< HEAD
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-=======
-        $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
-        $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
         $users = User::all();
         return view('accessoires.ajout')->with('equipement',$equipement)->with('users',$users)->with('messages',$messages)->with('notifications',$notifications);
     }
@@ -112,7 +107,6 @@ class AccessoiresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-<<<<<<< HEAD
     public function edit($id_accessoire)
     {
         //
@@ -120,16 +114,6 @@ class AccessoiresController extends Controller
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $accessoire = Accessoire::find($id_accessoire); 
         return view('accessoires.modifier')->with('accessoire',$accessoire)->with('messages',$messages)->with('notifications',$notifications); 
-=======
-    public function edit($id, $equipement_id)
-    {
-        //
-        $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
-        $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
-        $sousequipement = SousEquipements::find($id); 
-        $equipement= Equipement::find($equipement_id);
-        return view('sousequipements.modifier')->with('sousequipement',$sousequipement)->with('messages',$messages)->with('notifications',$notifications); 
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
     }
 
     /**
@@ -139,16 +123,11 @@ class AccessoiresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-<<<<<<< HEAD
     public function update(Request $request,$id_accessoire)
-=======
-    public function update(Request $request, $id,$equipement)
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
     {
         //
       
      
-<<<<<<< HEAD
         $accessoire = Accessoire::find($id_accessoire);
         $accessoire->identifiant=$request->input("identifiant");
         $accessoire->designation=$request->input("designation");
@@ -158,23 +137,6 @@ class AccessoiresController extends Controller
         $accessoire -> update();
 
         return redirect()->back()->with("addaccessoire","success");
-=======
-        $sousequipement = SousEquipements::find($id);
-        $sousequipement->identifiant=$request->input("identifiant");
-        $sousequipement->designation=$request->input("designation");
-        $sousequipement->date_achat=$request->input("date_achat");
-        $sousequipement->date_arrive=$request->input("date_arrive");
-
-        $sousequipement->equipement_id=$equipement;
-        
-        $sousequipement->update();
-
-        $activite = new Activite();
-        $activite->iduser = Auth::user()->id;
-        $activite->description = "modifier le sousequipement ".$request->input("designation");
-        $activite->save();
-        return redirect("/equipement/".$equipement->id);
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
        
 
     }

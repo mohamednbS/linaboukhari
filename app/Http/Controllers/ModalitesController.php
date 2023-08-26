@@ -20,25 +20,15 @@ class ModalitesController extends Controller
     //
     public function index(){
         $users = User::all();
-<<<<<<< HEAD
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-=======
-        $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
-        $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
         $modalites = Modalite::all();
         return view('modalites.index')->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('modalites',$modalites);
     }
     public function create(){
         $users = User::all();
-<<<<<<< HEAD
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-=======
-        $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
-        $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
         return view('modalites.ajout')->with('users',$users)->with('messages',$messages)->with('notifications',$notifications);
     }
     public function add(request $request){  
@@ -61,13 +51,8 @@ class ModalitesController extends Controller
     public function show($id_modalite)
     {
         //
-<<<<<<< HEAD
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-=======
-        $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
-        $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
         $modalite = Modalite::find($id_modalite);
         $equipement = Equipement::all();
         $clients = Client::all();
@@ -77,24 +62,14 @@ class ModalitesController extends Controller
     }
     public function change($id_modalite){
         $users = User::all();
-<<<<<<< HEAD
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-=======
-        $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
-        $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
         $modalite = Modalite::find($id_modalite);
         return view('modalites.mod')->with('modalite',$modalite)->with('users',$users)->with('messages',$messages)->with('notifications',$notifications);
     }
     public function update(Request $request,$id_modalite){
-<<<<<<< HEAD
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-=======
-        $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
-        $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
         $modalite = Modalite::find($id_modalite);
         $modalite->name = $request->input('name') ;
         $modalite->description = $request->input('description') ;
@@ -106,13 +81,8 @@ class ModalitesController extends Controller
     {
          //
          $users = User::all();
-<<<<<<< HEAD
          $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
          $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-=======
-         $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
-         $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
          $modalites = Modalite::where("name",'like','%'.$request->input("searchdepartment").'%')->get();
          return view('modalites.index')->with('messages',$messages)->with('users',$users)->with('modalites',$modalites)->with('messages',$messages)->with('notifications',$notifications);
     }
@@ -128,13 +98,8 @@ class ModalitesController extends Controller
     public function search_modalite(Request $request)
     {   $users = User::all();
         $equipement = Equipement::find($id);
-<<<<<<< HEAD
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-=======
-        $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
-        $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
         $query = $request->input('query');
         $modalites = Modalite::where('designation', 'like', '%'.$query.'%')
                                 ->orwhere('numserie', 'like', '%'.$query.'%')
