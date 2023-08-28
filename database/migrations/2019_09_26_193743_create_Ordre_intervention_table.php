@@ -17,7 +17,7 @@ class CreateOrdreInterventionTable extends Migration
         Schema::create('ointerventions', function (Blueprint $table) {
             $table->bigIncrements('id_intervention')->primaryKey();
             $table->string('numero');
-            $table->integer('emetteur');
+          
             $table->integer('idmachine');
             $table->integer('sousequipement')->nullable();
             $table->integer('accessoire')->nullable();

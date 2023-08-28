@@ -50,7 +50,7 @@
                                                                 <input style="width:100%;margin-bottom:10px;"  class="form-control" value="{{ 'DI'.uniqid() }}" type="hidden" name="numero">
                                                                 
                                                                 </div>
-                                                                
+                                                             
 
                                                                  <div class="col-md-3">
                                                                     <label > <label>  Client </label> </label>
@@ -79,17 +79,31 @@
                                                                     <option >Sélectionner un Equipement</option>
                                                                 @foreach($equipements as $equipement )
                                                                         
-                                                                        <option value="{{ $equipement->id_equipement }}">{{ $equipement->modele}}</option>
+                                                                        <option value="{{ $equipement->id_equipement }}">{{ $equipement->designation.'---'.$equipement->modele}}</option>
                                                                         
                                                                         
                                                                 @endforeach
                                                                 </select>
                                                                 </div>
 
+                                                                <div class="col-md-3">
+                                                                <label > <label>  Sous Equipement </label> </label>
                                                                 
+                                                                </div>
+                                                                <div class="col-md-9">
+                                                                <select style="width:100%;margin-bottom:10px;" class="form-control" name="sousequipement">
+                                                                    <option>Sélectionner un Sous Equipement</option>
+                                                                @foreach($sousequipements as $sousequipement )
+                                                                        
+                                                                        <option value="{{ $sousequipement->id_sousequipement }}">{{ $sousequipement->designation }}</option>
+                                                                        
+                                                                        
+                                                                @endforeach
+                                                                </select>
+                                                                </div>
                                                                 
                                                                 <div class="col-md-3">
-                                                                    <label > <label>  Sous Equipement </label> </label>
+                                                                    <label > <label>  Accessoire </label> </label>
                                                                 </div>
 
                                                                 <div class="col-md-9">
@@ -175,6 +189,7 @@
                                                                         <option value="En Cours">En Cours</option>
                                                                         <option value="Suspendu">Suspendu</option>
                                                                         <option value="Terminé">Terminé</option>
+                                                                        <option value="Action Clôturé">Action Clôturé </option>
                                                                         
                                                                     </select>
                                                                 </div>

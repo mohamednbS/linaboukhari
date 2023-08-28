@@ -89,6 +89,7 @@
 																@endforeach 
 																</tbody>
 															</table>
+															{{$equipements->links()}}
 													  
                             </div>                            
                                              

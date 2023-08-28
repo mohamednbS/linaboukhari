@@ -70,17 +70,11 @@
                                                  
 													<td>{{ $client->email }}</td>
 													<td>{{ $client->mobile}}</td>
-													<td>
-														@foreach($equipements as $equipement )
-															@if ( $equipement->id_equipement == $client->idmachine)
-																{{ $equipement->designation }} 
-															@endif
-														@endforeach
-														</td>
+													<td><a href="/equipementclient/{{ $client->id_client }}"> voir les équipements</a></td>
 													
 													@if (Auth::user()->role == "Administrateur")
-                                                    <td><a data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary' href="/client/change/{{$client->id}}"><i class="lnr lnr-pencil"></i>  </a> 
-														<a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/client/delete/{{ $client->id }}"><i class="lnr lnr-trash"></i></a></td>
+                                                    <td><a data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary' href="/client/change/{{$client->id_client}}"><i class="lnr lnr-pencil"></i>  </a> 
+														<a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/client/delete/{{ $client->id_client }}" onclick="return confirm ('voulez vous vraiment supprimer le client' {{ $client['id']}})"><i class="lnr lnr-trash"></i></a></td>
                                                     @endif
                                                 </tr>
                                                 @endforeach 
