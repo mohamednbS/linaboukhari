@@ -77,7 +77,6 @@
 															@endif
 														@endforeach
 														</td>
-													<td>{{ $client->created_at }}</td>
 													
 													@if (Auth::user()->role == "Administrateur")
                                                     <td><a data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary' href="/client/change/{{$client->id}}"><i class="lnr lnr-pencil"></i>  </a> 

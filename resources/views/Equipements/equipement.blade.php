@@ -151,13 +151,8 @@
 									<td>{{ $accessoire->date_achat }}</td>
 									<td>{{ $accessoire->date_arrive }}</td>
 									@if (Auth::user()->role == "Administrateur")
-<<<<<<< HEAD
 									<td><a class="table-info"><a  data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary' href="/accessoire/mod/{{ $accessoire->id_accessoire }}"><i class="lnr lnr-pencil"></i></a>
 										<a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/department/delete/{{ $accessoire->id_accessoire  }}"><i class="lnr lnr-trash"></i></a></td>
-=======
-									<td><a class="table-info"><a  data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary' href="/department/change/{{ $accessoire->id }}"><i class="lnr lnr-pencil"></i></a>
-										<a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/department/delete/{{ $accessoire->id  }}"><i class="lnr lnr-trash"></i></a></td>
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
 									@endif
 								</tr>
 									@endforeach 

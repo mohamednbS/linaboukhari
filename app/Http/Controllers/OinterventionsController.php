@@ -245,7 +245,6 @@ class OinterventionsController extends Controller
 
         // Lister les administrateurs
         $admins = User::where('role','=','Administrateur')->get();
-        $chefs = User::where('role','=','Chef Secteur')->get();
         foreach($admins as $admin ){
             $notification = new Notification();
             $notification->stat = "unseen";
@@ -254,15 +253,6 @@ class OinterventionsController extends Controller
             $notification->content =  "Le technicien a démarré l'ordre du travail ".$numero; 
             $notification->save();
         }
-        foreach($chefs as $chef ){
-            $notification = new Notification(); 
-            $notification->stat = "unseen";
-            $notification->touser = "Chef Secteur";
-            $notification->iduser =$chef->id_user;
-            $notification->content = "le technicien a validé l'ordre du travail ".$numero; 
-            $notification->save();
-        }
-
 
         return redirect('/homet');
         //return view('dmdinterventions.observation');

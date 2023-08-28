@@ -50,15 +50,7 @@
                                                                 <input style="width:100%;margin-bottom:10px;"  class="form-control" value="{{ 'DI'.uniqid() }}" type="hidden" name="numero">
                                                                 
                                                                 </div>
-                                                                <div class="col-md-3">
-                                                                <label > Emetteur </label>
                                                                 
-                                                                </div>
-                                                                <div class="col-md-9">
-                                                                <input style="width:100%;margin-bottom:10px;" disabled class="form-control" value="{{ Auth::user()->name }}" type="text" >
-                                                                <input  value="{{ Auth::user()->id_user }}" type="hidden" name="emetteur">
-                                                                
-                                                                </div>
 
                                                                  <div class="col-md-3">
                                                                     <label > <label>  Client </label> </label>
@@ -94,21 +86,7 @@
                                                                 </select>
                                                                 </div>
 
-                                                                <div class="col-md-3">
-                                                                <label > <label>  Sous Equipement </label> </label>
                                                                 
-                                                                </div>
-                                                                <div class="col-md-9">
-                                                                <select style="width:100%;margin-bottom:10px;" class="form-control" name="sousequipement">
-                                                                    <option >Sélectionner un Sous Equipement</option>
-                                                                @foreach($sousequipements as $sousequipement )
-                                                                        
-                                                                        <option value="{{ $sousequipement->id_sousequipement }}">{{ $sousequipement->designation }}</option>
-                                                                        
-                                                                        
-                                                                @endforeach
-                                                                </select>
-                                                                </div>
                                                                 
                                                                 <div class="col-md-3">
                                                                     <label > <label>  Sous Equipement </label> </label>

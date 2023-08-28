@@ -171,7 +171,6 @@
                                             
                                             </div>
 
-<<<<<<< HEAD
                                             <div class="col-md-3">
                                             <label> Heure d'Appel Client </label>
                                             
