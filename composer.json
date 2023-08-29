@@ -9,12 +9,9 @@
         "laravel/fortify": "^1.4",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
-<<<<<<< HEAD
         "nesbot/carbon": "^1.39",
+        "realrashid/sweet-alert": "^3.2",
         "snapappointments/bootstrap-select": "^1.13"
-=======
-        "nesbot/carbon": "^1.39"
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
