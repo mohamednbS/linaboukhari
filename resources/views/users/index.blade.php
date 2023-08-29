@@ -116,6 +116,7 @@
 			<p class="copyright">&copy; 2023 <a href="/" target="_blank">STIET</a>.</p>
 		</div>
 	</footer>
+	@include('sweetalert::alert')
 </div>
 <!-- END WRAPPER -->
 
