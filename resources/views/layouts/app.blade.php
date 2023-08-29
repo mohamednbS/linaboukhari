@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{ asset('vendor/toastr/toastr.min.css') }}">
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="{{ asset('css/main.css') }}">
+	
 	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
 	<link rel="stylesheet" href="{{ asset('css/demo.css') }}">
 	<!-- GOOGLE FONTS -->

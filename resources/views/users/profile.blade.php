@@ -18,17 +18,7 @@
 							<!-- LEFT COLUMN -->
 							<div class="profile-left">
 								<!-- PROFILE HEADER -->
-								<div class="profile-header">
-									<div class="overlay"></div>
-									<div class="img-circle">
-								
-									<img src=" {{ asset('img/user.png') }}" class="img-circle">
-								
-										<h3 class="name">{{ Auth::user()->name }}</h3>
-										<span class="online-status status-available">Connecté</span>
-									</div>
-									
-								</div>
+							
 								<!-- END PROFILE HEADER -->
 								<!-- PROFILE DETAIL -->
 								<div class="profile-detail">

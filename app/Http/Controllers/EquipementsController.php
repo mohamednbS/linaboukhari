@@ -31,7 +31,7 @@ class EquipementsController extends Controller
          //
          $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
          $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-         $equipements = Equipement::all();
+         $equipements = Equipement::paginate(20);
          $users = User::all();
          $clients = Client::all();
          return view('Equipements.index')->with('users',$users)->with('equipements',$equipements)->with('messages',$messages)->with('notifications',$notifications)->with('clients',$clients);
@@ -238,7 +238,6 @@ class EquipementsController extends Controller
                             ->orwhere('modele', 'like', '%'.$query.'%')
                             ->orwhere('designation', 'like', '%'.$query.'%')
                             ->orwhere('numserie', 'like', '%'.$query.'%')
-                            ->orwhere('emplacement', 'like', '%'.$query.'%')
                             ->orwhere('date_service', 'like', '%'.$query.'%')
                             ->orwhere('plan_prev', 'like', '%'.$query.'%')
                             ->orwhere('document', 'like', '%'.$query.'%')->get();

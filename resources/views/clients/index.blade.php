@@ -82,9 +82,12 @@
                                                 @endforeach 
                                                 </tbody>
                                             </table>
+											{{ $clients->links()}}
                                       
                                     <!-- END TABLE STRIPED -->
                                 </div>
+								
+
                     	</div>
 								
 							</div>

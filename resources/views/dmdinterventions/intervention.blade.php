@@ -16,7 +16,7 @@
 					<!-- OVERVIEW -->
 					<div class="panel panel-headline">
 						<div class="panel-heading">
-                            <h3 class="panel-title"><i class="lnr lnr-laptop-phone"></i> Gestion des interventions </h3>
+                            <h3 class="panel-title"><i class="lnr lnr-laptop-phone"></i> Gestion des Interventions </h3>
 							<p class="panel-subtitle">Aujourd'hui : <?php echo date('d')." ".date('M')." , ".date('Y'); ?> </p>
 						</div>
 						<div class="panel-body">
@@ -25,12 +25,12 @@
 							<!-- TABLE STRIPED -->
 							<div class="panel">
 								<div class="panel-heading">
-									<h3 class="panel-title"> Intervention : {{ $oi->numero }} </h3>
-                                    <h3 class="panel-title"> Client : {{ $oi->idclient }} </h3>
-                                 
-                                    
-                                        
-                                    @endif
+                                  <h3 class="panel-title">Numéro : {{ $ointervention->numero}}</h3>
+                                          <h5 class="panel-subtitle">Equipement: {{ $ointervention->idmachine}}</h5>
+										  <h5 class="panel-subtitle">Client: {{ $ointervention->idclient}}</h5>
+                             
+									
+                               
 								</div>
 
                                 <div class="row">
@@ -49,56 +49,7 @@
                                         </form>
                                     </div>
                                   
-                                  <thead>
-                                      <tr>
-                                          <th>#</th>
-                                          <th>N° Intervention</th> 
-                                          <th> Equipement</th>
-                                          <th>Sous Equipement</th>
-										  <th>Accessoire </th>
-                                          <th>Client </th>
-                                          <th>Heure d'Appel Client</th>
-                                       
-                                      </tr>
-                                  </thead>
-                                  <tbody>
-                                  <?php $i=0; ?>
-                                @foreach($ointerventions as $oi)
-                                  <?php $i++; ?>
-                                    <tr>
-                                      <td>{{ $i }}</td>
-                                      <td>{{ $oi->numero }}</a></td>
-                                      <td>{{ $oi->numserie}}</td>
-                                      <td>  
-                                        @foreach($equipements as $equipement )
-                                                        @if ( $equipement->id_equipement == $oi->idmachine )
-                                                            {{ $equipement->designation }} 
-                                                        @endif
-                                        @endforeach
-                                       </td>
-                                        <td>    
-                                            @foreach($sousequipements as $sousequipement )
-                                                @if ( $sousequipement->id_sousequipement == $oi->sousequipement )
-                                                    {{ $sousequipement->designation }} 
-                                                @endif
-                                            @endforeach
-                                        </td>
-
-                                        <td>    
-                                        @foreach($accessoires as $accessoire )
-                                            @if ( $accessoire->id_accessoire == $oi->accessoire )
-                                                {{ $accessoire->designation }} 
-                                            @endif
-                                        @endforeach
-                                        </td>
-
-                                        <td> {{$oi->appel_client}} </td>
-                    
-                                    </tr>
-                                @endforeach 
-                                  </tbody>
-                                </table>
-                                </div>
+                          
                         
   
     

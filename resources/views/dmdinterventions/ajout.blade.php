@@ -50,15 +50,7 @@
                                                                 <input style="width:100%;margin-bottom:10px;"  class="form-control" value="{{ 'DI'.uniqid() }}" type="hidden" name="numero">
                                                                 
                                                                 </div>
-                                                                <div class="col-md-3">
-                                                                <label > Emetteur </label>
-                                                                
-                                                                </div>
-                                                                <div class="col-md-9">
-                                                                <input style="width:100%;margin-bottom:10px;" disabled class="form-control" value="{{ Auth::user()->name }}" type="text" >
-                                                                <input  value="{{ Auth::user()->id_user }}" type="hidden" name="emetteur">
-                                                                
-                                                                </div>
+                                                             
 
                                                                  <div class="col-md-3">
                                                                     <label > <label>  Client </label> </label>
@@ -87,7 +79,7 @@
                                                                     <option >Sélectionner un Equipement</option>
                                                                 @foreach($equipements as $equipement )
                                                                         
-                                                                        <option value="{{ $equipement->id_equipement }}">{{ $equipement->modele}}</option>
+                                                                        <option value="{{ $equipement->id_equipement }}">{{ $equipement->designation.'---'.$equipement->modele}}</option>
                                                                         
                                                                         
                                                                 @endforeach
@@ -100,7 +92,7 @@
                                                                 </div>
                                                                 <div class="col-md-9">
                                                                 <select style="width:100%;margin-bottom:10px;" class="form-control" name="sousequipement">
-                                                                    <option >Sélectionner un Sous Equipement</option>
+                                                                    <option>Sélectionner un Sous Equipement</option>
                                                                 @foreach($sousequipements as $sousequipement )
                                                                         
                                                                         <option value="{{ $sousequipement->id_sousequipement }}">{{ $sousequipement->designation }}</option>
@@ -111,7 +103,7 @@
                                                                 </div>
                                                                 
                                                                 <div class="col-md-3">
-                                                                    <label > <label>  Sous Equipement </label> </label>
+                                                                    <label > <label>  Accessoire </label> </label>
                                                                 </div>
 
                                                                 <div class="col-md-9">
@@ -197,6 +189,7 @@
                                                                         <option value="En Cours">En Cours</option>
                                                                         <option value="Suspendu">Suspendu</option>
                                                                         <option value="Terminé">Terminé</option>
+                                                                        <option value="Action Clôturé">Action Clôturé </option>
                                                                         
                                                                     </select>
                                                                 </div>

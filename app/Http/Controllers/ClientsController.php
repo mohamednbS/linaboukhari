@@ -13,6 +13,7 @@ use App\Notification;
 use Illuminate\Http\Request;
 
 
+
 class ClientsController extends Controller
 {
     //
@@ -20,7 +21,7 @@ class ClientsController extends Controller
         $users = User::all();
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-        $clients = Client::all();
+        $clients = Client::paginate(20);
    
         $equipements = $client->equipements ?? null ;
        
@@ -121,21 +122,6 @@ class ClientsController extends Controller
          
     }
 
-
-   public function search(Request $request)
-    {   $users = User::all();
-        $equipements = Equipement::all();
-        $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
-        $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-        $query = $request->input('query');
-        $clients = Client::where('clientname', 'like', '%'.$query.'%')->get();
-        $clients = Client::where('adresse', 'like', '%'.$query.'%')->get();
-      
-        $clients = Client::where('email', 'like', '%'.$query.'%')->get();
-        $clients = Client::where('mobile', 'like', '%'.$query.'%')->get();
-        $clients = Client::where('idmachine', 'like', '%'.$query.'%')->get();
-        return view('clients.search')->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('clients',$clients)->with('equipements',$equipements);
-    }
 
 
 }

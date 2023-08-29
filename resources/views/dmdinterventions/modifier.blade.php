@@ -171,7 +171,6 @@
                                             
                                             </div>
 
-<<<<<<< HEAD
                                             <div class="col-md-3">
                                             <label> Heure d'Appel Client </label>
                                             
@@ -181,8 +180,6 @@
                                             
                                             </div>
 
-=======
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
 
                                             <div class="col-md-3">
                                             <label> Priorité </label>
@@ -196,13 +193,15 @@
                                                     <option selected value='Tres urgent'>Tres urgent</option>
                                                     <option value="Urgent">Urgent</option>
                                                     <option value="Normale">Normale</option>
+                                                    <option value="Action Clôturé">Action Clôturé </option>
 
                                                     @elseif ($oi->priorite == "En Cours")
 
                                                     <option>-- Sélectionner un Etat --</option>
                                                     <option selected value='Urgent'>Urgent</option>
                                                     <option value='Normale'>Normale</option>
-                                                     <option value='Tres urgent'>Tres urgent</option>
+                                                    <option value='Tres urgent'>Tres urgent</option>
+                                                    <option value="Action Clôturé">Action Clôturé </option>
 
                                                     @else
 
@@ -210,6 +209,7 @@
                                                     <option selected value='Normale'>Normale</option>
                                                     <option value='Tres urgent'>Tres urgent</option>
                                                     <option value='Urgent'>Urgent</option>
+                                                    <option value="Action Clôturé">Action Clôturé </option>
                                                     
                                                 
                                                 @endif
