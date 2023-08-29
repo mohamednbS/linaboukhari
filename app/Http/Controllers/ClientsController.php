@@ -104,7 +104,7 @@ class ClientsController extends Controller
          $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
          $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
          $query = $request->input('query');
-         $clients = Client::where('name', 'like', '%'.$query.'%')
+         $clients = Client::where('clientname', 'like', '%'.$query.'%')
                             ->orwhere('adresse', 'like', '%'.$query.'%')
                             ->orwhere('email', 'like', '%'.$query.'%')
                             ->orwhere('mobile', 'like', '%'.$query.'%')->get();
