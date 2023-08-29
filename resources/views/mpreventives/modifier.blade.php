@@ -93,7 +93,7 @@
                                                         
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <input style="width:100%;margin-bottom:10px;"  value="{{ $mp->name}}" class="form-control" type='text' name="name">
+                                                    <input style="width:100%;margin-bottom:10px;"  value="{{ $mp->numserie}}" class="form-control" type='text' name="numserie">
                                                 </div>
                     
 

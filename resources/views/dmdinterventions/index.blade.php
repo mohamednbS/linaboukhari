@@ -68,7 +68,7 @@
                                                 <?php $i++; ?>
                                                 <tr>
                                                     <td>{{ $i }}</td>
-                                                    <td> <a href="/intervention/{{ $oi->id_intervention }}">{{ $oi->numero }}</a></td>
+                                                    <td> <a href="/di/show/{{ $oi->id_intervention }}">{{ $oi->numero }}</a></td>
 													<td>
 														@foreach($clients as $client )
 															@if ( $client->id_client == $oi->idclient )
@@ -85,7 +85,7 @@
                                                         @endforeach
                                                     </td>
 
-													<td>
+													<td>  
 													    @foreach($typepannes as $typepanne )
 															@if ( $typepanne->id_typepanne == $oi->type_panne )
 																{{ $typepanne->name }}  

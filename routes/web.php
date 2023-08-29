@@ -76,6 +76,7 @@ Route::post('/equipements/{equipement_id_equipement}/accessoires','AccessoiresCo
 Route::get('/equipements/{equipement_id_equipement}/accessoires/create', 'AccessoiresController@create');
 
 /* Demande d'intervention route */
+Route::get('/di/show/{id_intervention}','OinterventionsController@show')->middleware('auth');
 Route::get('/di','OinterventionsController@index')->middleware('auth');
 Route::get('/di/add','OinterventionsController@create')->middleware('auth');
 Route::post('/addoi','OinterventionsController@store')->middleware('auth');

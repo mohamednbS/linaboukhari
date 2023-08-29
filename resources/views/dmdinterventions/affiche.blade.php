@@ -17,7 +17,7 @@
 					<!-- OVERVIEW -->
 					<div class="panel panel-headline">
 						<div class="panel-heading">
-                            <h3 class="panel-title"><i class="lnr lnr-file-empty"></i> Gestion des demandes d'interventions</h3>
+                            <h3 class="panel-title"><i class="lnr lnr-file-empty"></i> Gestion des Demandes d'Interventions</h3>
 							<p class="panel-subtitle">Aujourd'hui : <?php echo date('d')." ".date('M')." , ".date('Y'); ?> </p>
 						</div>
 						<div class="panel-body">
@@ -26,21 +26,48 @@
 							<!-- TABLE STRIPED -->
 							<div class="panel">
 								<div class="panel-heading">
-									<h3 class="panel-title"> Demande d'intervention {{ $oi->numero }} </h3>
+									<h3 class="panel-title"> Demande d'intervention : <span class="label label-primary"> {{ $di->numero }} </span></h3>
 								</div>
-								<div class="panel-body">
-								
-                                       
-                                      
-                                   
-                                </div>
+							<div class="panel-body">
+								<h3> CLIENT :  
+								@foreach ($clients as $client )
+									@if ($di->idclient == $client->id_client )
+									{{ $client->clientname }}
+									@endif
+									
+								@endforeach </h3>
+
+								<h4> ◾​ EQUIPEMENT :  
+								@foreach ($equipements as $equipement )
+									@if ($di->idmachine == $equipement->id_equipement )
+									{{ $equipement->designation }}
+									@endif
+									
+								@endforeach </h4>
+
+								<h4> ◾​ SOUS EQUIPEMENT :  
+								@foreach ($sousequipements as $sousequipement )
+									@if ($di->sousequipement == $sousequipement->id_sousequipement )
+									{{ $sousequipement->designation }}
+									@endif
+									
+								@endforeach </h4>
+							
+								<h4> ◾​ ACCESSOIRES : 
+								@foreach ($accessoires as $accessoire )
+									@if ($di->accessoire == $accessoire->id_accessoire )   
+									{{ $accessoire->designation }}
+									@endif
+									
+								@endforeach</h4>
+								<h4>◾​ Heure d'appel client : {{ $di->appel_client }}</h4>
+								<h5>◾​ Date de début d'intervention : {{ $di->date_intervention }}</h5>
+								<h5>◾​ Date de fin d'intervention : {{ $di->date_fin_intervention }}</h5>
+								<h5>◾​ Observation : : {{ $di->observation }}</h5>
+								<h4>◾​  Commentaires :{{ $di->comemntaire }}</h4>
+					        </div>
                     	</div>
-								<div class="panel-footer">
-									<div class="row">
-										<div class="col-md-6"></div>
-										<div class="col-md-6 text-right"><a href="/users" class="btn btn-primary">Effacer la recherche</a></div>
-									</div>
-								</div>
+								
 							</div>
 							<!-- END RECENT PURCHASES -->
                             </div>

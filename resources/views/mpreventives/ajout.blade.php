@@ -34,7 +34,7 @@
                                 @if( session()->get( 'addmp' ) == "success" )
                                 <div class="alert alert-success alert-dismissible" role="alert">
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<i class="fa fa-check-circle"></i> Maitenance  ajout"e avec succèss <a href="/mp" class="btn btn-sm btn-default"> Consulter la liste des Maintenances Préventives </a>
+										<i class="fa fa-check-circle"></i> Maintenance  ajoutée avec succèss <a href="/mp" class="btn btn-sm btn-default"> Consulter la liste des Maintenances Préventives </a>
 								</div>
                                 @endif
                                 <form action='/addmp' method="POST" enctype="multipart/form-data">
@@ -76,10 +76,19 @@
                                                     <option >Selectionner l'équipement </option>
                                                 @foreach($equipements as $equipement )
 
-                                                    <option value="{{ $equipement->id_equipement }}">{{ $equipement->designation }}</option>
+                                                    <option value="{{ $equipement->id_equipement }}">{{ $equipement->designation.'---'.$equipement->modele}}</option>
                                                 @endforeach
                                                 </select>
 
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                <label > <label>  Num.Série </label> </label>
+                                                
+                                                </div>
+                                                <div class="col-md-9">
+                                                <input style="width:100%;margin-bottom:10px;" placeholder="Saisir le numéro de série" class="form-control" name="numserie">
+              
                                                 </div>
 
                                                 <div class="col-md-3">
@@ -140,13 +149,9 @@
                                                         <option >Selectionner l'intervenant</option>
                                                         @foreach($techniciens as $technicien )
                                                             <option value="{{ $technicien->name }}">{{ $technicien->name }}</option> 
-<<<<<<< HEAD
                                                         @endforeach
                                                         @foreach($ingenieurs as $ingenieur )
                                                             <option value="{{ $ingenieur->name }}">{{ $ingenieur->name }}</option> 
-=======
-                                                
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -174,7 +179,7 @@
                                                 </div>
                                                 
                                                 <div class="col-md-9">
-                                                    <input style="width:100%;margin-bottom:10px;" class="form-control" type='text' name="observation">
+                                                    <input style="width:100%;margin-bottom:10px;" class="form-control" type='text' name="observation" placeholder="saisir un commentaire içi">
                                                 
                                                 </div>
 

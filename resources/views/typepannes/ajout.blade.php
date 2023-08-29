@@ -34,7 +34,7 @@
                                 @if( session()->get( 'addpanne' ) == "success" )
                                 <div class="alert alert-success alert-dismissible" role="alert">
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<i class="fa fa-check-circle"></i> Panne Ajouté avec Succès <a href="/typepannes" class="btn btn-sm btn-default"> Consulter la Liste des Pannes </a>
+										<i class="fa fa-check-circle"></i> Panne Ajoutée avec Succès <a href="/typepannes" class="btn btn-sm btn-default"> Consulter la Liste des Pannes </a>
 								</div>
                                 @endif
                                 <form action='/typepanne/add' method="POST" >

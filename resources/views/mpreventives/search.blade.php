@@ -75,23 +75,17 @@
                                                             @endif
                                                         @endforeach
                                                     </td>
-                                                    <td>
-                                                        @foreach($equipements as $equipement )
-                                                            @if ( $equipement->id == $mp->idmachine )
-                                                                {{ $equipement->name }} 
-                                                            @endif
-                                                        @endforeach
-                                                    </td>
+                                                    <td>{{ $mp->numserie }} </td>
                                                     <td>
                                                         @foreach($clients as $client )
-                                                            @if ( $client->id == $mp->idclient )
-                                                                {{ $client->name }} 
+                                                            @if ( $client->id_client == $mp->idclient )
+                                                                {{ $client->clientname }} 
                                                             @endif
                                                         @endforeach
                                                     </td>
                                                    <td>
                                                     @foreach($techniciens as $technicien )
-                                                        @if ( $technicien->id == $mp->executeur )
+                                                        @if ( $technicien->id_user == $mp->executeur )
                                                             {{ $technicien->name }} 
                                                         @endif
                                                     @endforeach
@@ -102,8 +96,8 @@
                                                     <td>{{ $mp->etat }} </td>
                                                    
                                                     @if (Auth::user()->role == "Administrateur")
-                                                    <td><a data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary' href="/mpreventive/change/{{ $mp->id }}"><i class="lnr lnr-pencil"></i> </a> 
-                                                        <a  data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/mpreventive/delete/{{ $mp->id  }}"><i class="lnr lnr-trash"></i></a></td>
+                                                    <td><a data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary' href="/mpreventive/change/{{ $mp->id_mpreventive }}"><i class="lnr lnr-pencil"></i> </a> 
+                                                        <a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/mpreventive/delete/{{ $mp->id_mpreventive  }}" onclick="return confirm ('voulez vous vraiment supprimer la maintenance' {{ $mp['id']}})"><i class="lnr lnr-trash"></i></a></td>
                                                     @endif
                                                       
                                                 </tr>

@@ -45,6 +45,7 @@ class MpreventivesController extends Controller
         $numero= $request->input("numero");
         $status = $request->input("status");
         $idmachine = $request->input("machine");
+        $numserie = $request->input("numserie");
         $idclient = $request->input("client");
         $umesure = $request->input("unite_mesure");
         $executeurs = $request->input("executeur");
@@ -62,6 +63,7 @@ class MpreventivesController extends Controller
         $mp->numero = $numero;
         $mp->status = $status;
         $mp->idmachine = $idmachine;
+        $mp->numserie = $numserie;
         $mp->idclient = $idclient;
         $mp->umesure = $umesure;
         $mp->executeur = implode(',', $executeurs);
@@ -153,6 +155,7 @@ class MpreventivesController extends Controller
         $mp->numero = $request->input("numero");
         $mp->status = $request->input("status");
         $mp->idmachine = $request->input("machine");
+        $numserie = $request->input("numserie");
         $mp->idclient = $request->input("client");
         $mp->umesure = $request->input("unite_mesure");   
         $mp->executeur = $request->input("executeur");
@@ -172,6 +175,7 @@ class MpreventivesController extends Controller
             $mp->numero = $request->input("numero");
             $mp->status = $request->input("status");
             $mp->idmachine = $request->input("machine");
+            $mp->numserie = $request->input("numserie");
             $mp->idclient = $request->input("client");
             $mp->umesure = $request->input("unite_mesure");   
             $mp->executeur = $request->input("executeur");

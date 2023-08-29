@@ -20,6 +20,7 @@ class CreateMpreventivesTable extends Migration
             $table->string('status');
             $table->string('umesure');
             $table->integer('idmachine');
+            $table->integer('numserie');
             $table->integer('idclient');
             $table->string('intervalle');
             $table->string('executeur'); 

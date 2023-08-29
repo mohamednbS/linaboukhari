@@ -88,9 +88,14 @@ class OinterventionsController extends Controller
     public function show($id_intervention){
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-        $oi = Ointervention::find($id_intervention);
-        $typepannes = Typepanne::all();
-        return view('dmdinterventions.affiche')->with('oi',$oi)->with('messages',$messages)->with('notifications',$notifications)->with('typepannes',$typepannes);
+        $di = Ointervention::find($id_intervention);
+        $typepannes = Typepanne::all();  
+        $users = User::all();
+        $equipements = Equipement::all();
+        $sousequipements = Sousequipement::all();
+        $accessoires = Accessoire::all();
+        $clients = Client::all();
+        return view('dmdinterventions.affiche')->with('di',$di)->with('messages',$messages)->with('notifications',$notifications)->with('typepannes',$typepannes)->with('equipements',$equipements)->with('clients',$clients)->with('users',$users)->with('sousequipements',$sousequipements)->with('accessoires',$accessoires);
     }
     public function intervention($id_intervention){
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
@@ -281,7 +286,7 @@ class OinterventionsController extends Controller
         $ac->save();
         // Lister les administrateurs
         $admins = User::where('role','=','Administrateur')->get();
-        $chefs = User::where('role','=','Chef Secteur')->get();
+      
         foreach($admins as $admin ){
             $notification = new Notification();
             $notification->stat = "unseen";
@@ -290,15 +295,6 @@ class OinterventionsController extends Controller
             $notification->content = "Le Technicien a Modifié l'Ordre d'Intervention ".$numero; 
             $notification->save();
         }
-        foreach($chefs as $chef ){
-            $notification = new Notification(); 
-            $notification->stat = "unseen";
-            $notification->touser = "Chef Secteur";
-            $notification->iduser =$chef->id_user;
-            $notification->content = "le technicien a validé l'ordre du travail ".$numero; 
-            $notification->save();
-        }
-
 
         return redirect('/homet');
         //return view('dmdinterventions.observation');
@@ -345,21 +341,13 @@ class OinterventionsController extends Controller
         $ac->description = "valider la maintenance preventive ".$numero;
         $ac->save();
         $admins = User::where('role','=','Administrateur')->get();
-        $chefs = User::where('role','=','Chef Secteur')->get();
+    
         foreach($admins as $admin ){
             $notification = new Notification();
             $notification->stat = "unseen";
             $notification->touser = "Administrateur";
             $notification->iduser =$admin->id_user;
             $notification->content = "le technicien a démaré la maintenance preventive".$numero; 
-            $notification->save();
-        }
-        foreach($chefs as $chef ){
-            $notification = new Notification();
-            $notification->stat = "unseen";
-            $notification->touser = "Chef Secteur";
-            $notification->iduser =$chef->id_user;
-            $notification->content = "le technicien a validé la maintenance preventive".$numero; 
             $notification->save();
         }
         return redirect('/homet');
@@ -395,6 +383,5 @@ class OinterventionsController extends Controller
         return view('dmdinterventions.search')->with('messages',$messages)->with('notifications',$notifications)->with('ointerventions',$ointerventions)->with('equipements',$equipements)->with('clients',$clients)->with('users',$users);
 
     }
-
 
 }
