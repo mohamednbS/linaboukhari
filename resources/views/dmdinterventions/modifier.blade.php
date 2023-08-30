@@ -50,15 +50,6 @@
                                             <input style="width:100%;margin-bottom:10px;"  class="form-control" value="{{ $oi->numero}}" type="hidden" name="numero">
                                             
                                             </div>
-                                            <div class="col-md-3">
-                                            <label > Emetteur </label>
-                                            
-                                            </div>
-                                            <div class="col-md-9">
-                                            <input style="width:100%;margin-bottom:10px;" disabled class="form-control" value="{{ Auth::user()->name }}" type="text" >
-                                            <input  value="{{ Auth::user()->id_user }}" type="hidden" name="emetteur">
-                                            
-                                            </div>
 
                                              <div class="col-md-3">
                                                 <label > <label>  Client </label> </label>
@@ -117,7 +108,7 @@
                                             </div>
 
                                                     <div class="col-md-3">
-                                            <label > <label> Sous Equipement </label> </label>
+                                            <label > <label> Accessoire </label> </label>
                                             
                                             </div>
                                             <div class="col-md-9">
@@ -157,13 +148,23 @@
                                             
                                             </div>
                                             <div class="col-md-9">
-                                            <select style="width:100%;margin-bottom:10px;" class="form-control" name="iduser">
-                                            @foreach($users as $user)
+                                            <select style="width:100%;margin-bottom:10px;" class="form-control" name="iduser" id="executeur"  multiple="multiple">
+                                             @foreach($techniciens as $technicien )
                                                     
-                                                @if ($user->name == $oi->destinateur)
-                                                    <option selected value='{{ $user->name }}'>{{ $user->name }}</option>
+                                                @if ($technicien->name == $oi->destinateur)
+                                                    <option selected value='{{ $technicien->name }}'>{{ $technicien->name }}</option>
                                                 @else
-                                                    <option value='{{ $user->name }}'>{{ $user->name }}</option>
+                                                    <option value='{{ $technicien->name }}'>{{ $technicien->name }}</option>
+                                                @endif
+                                                    
+                                            @endforeach
+
+                                              @foreach($ingenieurs as $ingenieur )
+                                                    
+                                                @if ($ingenieur->name == $oi->destinateur)
+                                                    <option selected value='{{ $ingenieur->name }}'>{{ $ingenieur->name }}</option>
+                                                @else
+                                                    <option value='{{ $ingenieur->name }}'>{{ $ingenieur->name }}</option>
                                                 @endif
                                                     
                                             @endforeach

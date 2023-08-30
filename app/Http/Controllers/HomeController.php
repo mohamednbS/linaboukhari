@@ -11,6 +11,7 @@ use App\Equipement;
 use App\Contrat;
 use App\Modalite;
 use App\Client;
+use App\Typepanne;
 use App\Message;
 use App\Notification;
 
@@ -78,7 +79,7 @@ class HomeController extends Controller
     {
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-       
+        $typepannes = Typepanne::all();
         $equipements = Equipement::all();
         $clients = Client::all();
         $today = date('Y-m-d');
@@ -100,7 +101,7 @@ class HomeController extends Controller
         $users = User::all();
         $techniciens = User::where('role',"Technicien")->get();
         $ingenieurs = User::where('role',"Ingenieur")->get();
-        return view('homet')->with('allmpreventives',$allmpreventives)->with('ingenieurs',$ingenieurs)->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('equipements',$equipements)->with('ointerventions',$ointerventions)->with('mpreventives',$mpreventives)->with('clients',$clients)->with('techniciens',$techniciens);
+        return view('homet')->with('allmpreventives',$allmpreventives)->with('ingenieurs',$ingenieurs)->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('equipements',$equipements)->with('ointerventions',$ointerventions)->with('mpreventives',$mpreventives)->with('clients',$clients)->with('techniciens',$techniciens)->with('typepannes',$typepannes);
     }
     
 }

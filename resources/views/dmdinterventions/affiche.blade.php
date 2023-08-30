@@ -26,7 +26,18 @@
 							<!-- TABLE STRIPED -->
 							<div class="panel">
 								<div class="panel-heading">
-									<h3 class="panel-title"> Demande d'intervention : <span class="label label-primary"> {{ $di->numero }} </span></h3>
+									<h3 class="panel-title"> Demande d'intervention : <span class="label label-primary"> {{ $di->numero }} </span>
+									<h4 class="col-md-12 text-right"> Etat : @if ($di->etat == "Suspendu")
+														<span class="label label-danger">
+														@elseif( $di->etat == "Demandé"  )
+														<span class="label label-info">
+														@elseif( $di->etat == "En attente de validation" || $di->etat == "En Cours"  )
+														<span class="label label-warning">
+														@else
+														<span class="label label-success">
+														
+														@endif
+														{{$di->etat}}</span> </h4>
 								</div>
 							<div class="panel-body">
 								<h3> CLIENT :  
@@ -61,10 +72,12 @@
 									
 								@endforeach</h4>
 								<h4>◾​ Heure d'appel client : {{ $di->appel_client }}</h4>
+								<h4>◾​ Commentaires :{{ $di->comemntaire }}</h4>
 								<h5>◾​ Date de début d'intervention : {{ $di->date_intervention }}</h5>
 								<h5>◾​ Date de fin d'intervention : {{ $di->date_fin_intervention }}</h5>
-								<h5>◾​ Observation : : {{ $di->observation }}</h5>
-								<h4>◾​  Commentaires :{{ $di->comemntaire }}</h4>
+								
+								<h5>◾​ Observations : {{ $di->observation }}</h5>
+								
 					        </div>
                     	</div>
 								

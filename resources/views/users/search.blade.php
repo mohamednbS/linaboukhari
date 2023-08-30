@@ -16,7 +16,7 @@
 					<!-- OVERVIEW -->
 					<div class="panel panel-headline">
 						<div class="panel-heading">
-                            <h3 class="panel-title"><i class="lnr lnr-users"></i> Gestion des utilisateurs</h3>
+                            <h3 class="panel-title"><i class="lnr lnr-users"></i> Gestion des Utilisateurs</h3>
 							<p class="panel-subtitle">Aujourd'hui : <?php echo date('M')." ".date('d')." , ".date('Y'); ?> </p>
 						</div>
 						<div class="panel-body">
@@ -52,9 +52,7 @@
 														<th>Phone</th>
 														<th>Role </th>
 														<th>Modalité </th>
-														<th> Département </th>
-														
-														
+														<th>Département </th>
 														@if (Auth::user()->role == "Administrateur")
 														<th>Action</th>
 														@endif
@@ -71,19 +69,23 @@
 													<td>{{ $user->email }}</td>
                                                     <td>{{ $user->phone }}</td>
                                                     <td>{{ $user->role }}</td>
-													<td>{{ $user->modalité }}</td>
+													<td>@foreach($modalites as $modalite )
+															@if ($user->modalité == $modalite->id_modalite )
+																{{ $modalite->name }}
+															@endif
+														
+														@endforeach</td>
 													
 													<td>
 														@foreach($departments as $dep )
-															@if ($user->iddep == $dep->id )
+															@if ($user->iddep == $dep->id_departement )
 																{{ $dep->name }}
 															@endif
 														
 														@endforeach
 
 													</td>
-													<td>{{ $user->created_at }}</td>
-													
+										
 													@if (Auth::user()->role == "Administrateur")
                                                     <td><a data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary' href="/user/{{$user->id}}"><i class="lnr lnr-pencil"></i>  </a> 
 														<a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/user/delete/{{ $user->id }}"><i class="lnr lnr-trash"></i></a></td>
@@ -96,12 +98,6 @@
                                     <!-- END TABLE STRIPED -->
                                 </div>
                     	</div>
-								<div class="panel-footer">
-									<div class="row">
-										<div class="col-md-6"></div>
-										<div class="col-md-6 text-right"><a href="/users" class="btn btn-primary">Effacer la recherche</a></div>
-									</div>
-								</div>
 							</div>
 							<!-- END RECENT PURCHASES -->
                             </div>

@@ -222,6 +222,7 @@ class UsersController extends Controller
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $departments = Department::all();
+        $modalites = Modalite::all();
         $users = User::where( 'email',"!=", Auth::user()->email )->get();
         $query = $request->input('query');
         $users = User::where('name', 'like', '%'.$query.'%')
@@ -230,7 +231,7 @@ class UsersController extends Controller
                            ->orwhere('phone', 'like', '%'.$query.'%')
                            ->orwhere('iddep', 'like', '%'.$query.'%')
                            ->orwhere('modalité', 'like', '%'.$query.'%')->get();
-        return view('users.search')->with('users',$users)->with('departments',$departments)->with('messages',$messages)->with('notifications',$notifications);
+        return view('users.search')->with('users',$users)->with('departments',$departments)->with('messages',$messages)->with('notifications',$notifications)->with('modalites',$modalites);
     }
 
 }

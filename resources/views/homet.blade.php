@@ -1,220 +1,12 @@
 @extends('layouts.app')
 @section('content')
-<!-- WRAPPER -->
+
+
 <div id="wrapper">
-		<!-- NAVBAR -->
-		<nav class="navbar navbar-default navbar-fixed-top">
-			<div class="brand">
-				<a href="/">GMAO STIET</a>
-			</div>
-			<div class="container-fluid">
-				<div class="navbar-btn">
-					<button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
-				</div>
-				
-				
-				<div id="navbar-menu">
-					<ul class="nav navbar-nav navbar-right">
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown">
-							<i class="lnr lnr-envelope"></i>
-							
-						
-							<span class="badge bg-danger"> {{ count($messages) }} </span>
-							 
-						</a>
-						
-						
-						<ul class="dropdown-menu notifications">
-							@foreach($messages as $message)
-							<li><a href="/conversation/{{ $message->idsender }}" class="notification-item"><span class="dot bg-warning"></span> 
-							@foreach($users as $user)
-								@if ( $user->id == $message->idsender)
-									{{ $user->name }}	: 
-								@endif
-							@endforeach
-							
-							
-							<span class="text-danger">" {{ $message->content}} "</span> </a></li>
-							@endforeach
-							<li><a href="/messages" class="more">Ouvrir la boite de messagerie</a></li>
-						</ul>
-				
-						
-					</li>
-			
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown">
-							<i class="lnr lnr-alarm"></i>
-							
-						@if( count($notifications) > 0 ) 
-							<span class="badge bg-danger">{{ count($notifications) }} </span>
-							@endif 
-						</a>
-						
-						@if( count($notifications) > 0 ) 
-						<ul class="dropdown-menu notifications">
-							@foreach ($notifications as $not )
-							<li style="display:flex;"><a  class="notification-item"><span class="dot bg-warning"></span>{{ $not->content }}</a><a style="position:relative;float:right;" href="/notification/seen/{{ $not->id }}">Lue</a></li>
-							@endforeach
-							
-						</ul>
-				
-						@endif 		
-					</li>
-			
-						
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							@if (Auth::user()->avatar == NULL )
-								<img src=" {{ asset('img/user.png') }}" class="img-circle" alt="Avatar">
-								@else 
-								<img src=" {{ asset('uploads/profile/'.Auth::user()->avatar) }}" class="img-circle" alt="Avatar">	
-								@endif <span>{{ Auth::user()->name }}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
-							<ul class="dropdown-menu">
-								
-								<li><a href="/profile"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
-								<li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
-                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                        {{ csrf_field() }}
-                                                </form>
-							</ul>
-						</li>
-						
-					</ul>
-				</div>
-			</div>
-		</nav>
-		<!-- END NAVBAR -->
-		<!-- LEFT SIDEBAR -->
-		<div id="sidebar-nav" class="sidebar">
-			<div class="sidebar-scroll">
-			<nav>
-					<ul class="nav">
-                        <li><a href="/homet" class="active"><i class="lnr lnr-home"></i> <span>Ordre d'Intervention</span></a></li>
-						<li><a href="/profile" ><i class="lnr lnr-user"></i> <span>Compte</span></a></li>
-						<li>
-							<a  href="#subusers" data-toggle="collapse" class="collapsed"><i class="lnr lnr-users"></i> <span>Utilisateurs</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-								
-								<div id="subusers" class="collapse ">
-									<ul class="nav">
-									@if (Auth::user()->role == "Administrateur")
-										<li> <a href="/user/add" class=""><i class="lnr lnr-file-add"></i> Ajouter</a></li>
-									@endif
-										<li> <a href="/users" class=""><i class="lnr lnr-list"></i> Liste</a></li>
-										
-									</ul>
-								</div>
-							 </li>
-	
-							<li>
-							<a href="#subeqpmt"  data-toggle="collapse" class="collapsed"><i class="lnr lnr-laptop-phone"></i> <span>Equipements</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-								
-								<div id="subeqpmt" class="collapse ">
-									<ul class="nav">
-									@if (Auth::user()->role == "Administrateur")
-										<li> <a href="/equipement/add" class=""><i class="lnr lnr-file-add"></i> Ajouter</a></li>
-									@endif
-										<li> <a href="/equipements" class=""><i class="lnr lnr-list"></i> Liste</a></li>
-										
-									</ul>
-								</div>
-							</li>
-							<li>
-							<a href="#subdepartments" data-toggle="collapse" class="collapsed"><i class="lnr lnr-store"></i> <span>Départements</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-	
-								<div id="subdepartments" class="collapse ">
-								<ul class="nav">
-									@if (Auth::user()->role == "Administrateur")
-									<li> <a href="/department/create" class=""><i class="lnr lnr-file-add"></i> Ajouter</a></li>
-									@endif
-									<li> <a href="/departments" class=""><i class="lnr lnr-list"></i> Liste</a></li>
-	
-								</ul>
-								</div>
-							</li>
-	
-							<li>
-							<a href="#subdi"  data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>Demande Intervention</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-								
-								<div id="subdi" class="collapse ">
-									<ul class="nav">
-									@if (Auth::user()->role == "Administrateur")
-										<li> <a href="/di/add" class=""><i class="lnr lnr-file-add"></i> Ajouter</a></li>
-										<li> <a href="/di/add" class=""><i class="lnr lnr-file-add"></i> Historique</a></li>
-									@endif
-										<li> <a href="/di" class=""><i class="lnr lnr-list"></i> Liste</a></li>
-										
-									</ul>
-								</div>
-							</li>
-	
-							<li>
-							<a href="#submp" class="active" data-toggle="collapse" class="collapsed"><i class="lnr lnr lnr-cog"></i> <span>Maintenance Préventive</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-								
-								 <div id="submp" class="collapse ">
-									<ul class="nav">
-									@if (Auth::user()->role == "Administrateur")
-										<li> <a href="/mp/add" class=""><i class="lnr lnr-file-add"></i> Ajouter</a></li>
-									@endif
-										<li> <a href="/mp" class=""><i class="lnr lnr-list"></i> Liste</a></li>
-										
-									</ul>
-								</div>
-							</li>
-	
-							<li>
-							<a href="/pm" class=""><i class="lnr lnr-calendar-full"></i> <span>Plan De Maintenance</span></a>
-							</li>
-	
-							<li>
-							<a href="#subcm"  data-toggle="collapse" class="collapsed"><i class="lnr lnr lnr-license"></i> <span>Contrats Maintenance</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-								
-								<div id="subcm" class="collapse ">
-								   <ul class="nav">
-								   @if (Auth::user()->role == "Administrateur")
-									   <li> <a href="/cm/create" class=""><i class="lnr lnr-file-add"></i> Ajouter</a></li>
-								   @endif
-									   <li> <a href="/cm" class=""><i class="lnr lnr-list"></i> Liste</a></li>
-									   
-								   </ul>
-							   </div>
-							</li>
-	
-							<li>
-							<a href="#subclients" data-toggle="collapse" class="collapsed"><i class="lnr lnr-store"></i> <span>Gestion Clients</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+@include('usermenu.menutop')
+@include('usermenu.menuleft')
+
 		
-								<div id="subclients" class="collapse ">
-									<ul class="nav">
-										@if (Auth::user()->role == "Administrateur")
-										<li> <a href="/client/create" class=""><i class="lnr lnr-file-add"></i> Ajouter</a></li>
-										@endif
-										<li> <a href="/clients" class=""><i class="lnr lnr-list"></i> Liste</a></li>
-		
-									</ul>
-								</div>
-							</li>
-	
-							<li>
-							<a href="#submodalites" data-toggle="collapse" class="collapsed"><i class="lnr lnr-store"></i> <span>Modalités</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-		
-								<div id="submodalites" class="collapse ">
-								<ul class="nav">
-									@if (Auth::user()->role == "Administrateur")
-									<li> <a href="/modalite/create" class=""><i class="lnr lnr-file-add"></i> Ajouter</a></li>
-									@endif
-									<li> <a href="/modalites" class=""><i class="lnr lnr-list"></i> Liste</a></li>
-		
-								</ul>
-							</li>
-						
-						
-               
-					</ul>
-				</nav>
-			</div>
-		</div>
-		<!-- END LEFT SIDEBAR -->
 		<!-- MAIN -->
 		<div class="main">
 			<!-- MAIN CONTENT -->
@@ -223,12 +15,12 @@
 						<!-- OVERVIEW -->
                         <div class="panel panel-headline">
 						<div class="panel-heading">
-                            <h3 class="panel-title"><i class="lnr lnr-users"></i> Gérer la Liste des Maintenances </h3>
+                            <h3 class="panel-title"><i class="lnr lnr-users"></i>Tableau des Maintenances </h3>
 							<p class="panel-subtitle">Aujourd'hui : <?php echo date('M')." ".date('d')." , ".date('Y'); ?> </p>
 						</div>
 						<div class="panel-body">
                         <div class="row">
-						<div class="col-md-12">
+						
 						
 								<div class="panel-body">
                                      <br>
@@ -241,15 +33,14 @@
                                                     <tr>
                                                         
 														<th>#</th>
-                                                        <th>N° Intervention</th>
-                                                        <th>Equipement</th>
 														<th>Client</th>
-														<th>Panne/Mission</th>
+														<th>Equipement</th>
+														<th>Equipement</th>
+														<th>Intervenant</th>
 														<th> Priorité </th>
 														<th>Etat</th>
-													
-                                                        <th> Commentaire </th>
-                                                        <th> Action </th>
+                                                        <th>Commentaire</th>
+                                                        <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -258,20 +49,32 @@
                                                 <?php $i++; ?>
                                                 <tr>                                                                                                                                           <tr>
 													<td>{{ $i }}</td>
-                                                    <td> {{ $oi->numero }} </td>
-                                                    <td>
-                                                    @foreach( $equipements as $eq )
-                                                         @if ($eq->id == $oi->idmachine)
-                                                            {{ $eq->designation }} 
-                                                         @endif
-                                                    @endforeach </td>
 													<td>
 														@foreach( $clients as $client )
-															 @if ($client->id == $oi->idclient)
-																{{ $client->name }} 
+															 @if ($client->id_client == $oi->idclient)
+																{{ $client->clientname }} 
 															 @endif
-														@endforeach </td>
-                                                    <td> {{ $oi->type_panne }} </td>
+														@endforeach 
+													</td>
+
+													<td>
+                                                    @foreach( $equipements as $eq )
+                                                         @if ($eq->id_equipement == $oi->idmachine)
+                                                            {{ $eq->designation }} 
+                                                         @endif
+                                                    @endforeach 
+													</td>
+
+													<td>
+													    @foreach($typepannes as $typepanne)
+														    @if ($typepanne->id_typepanne == $oi->type_panne)
+																{{ $typepanne->name }} 
+															 @endif
+														@endforeach
+													</td>
+
+													<td>{{ implode('/ ', explode(',', $oi->destinateur)) }}</td>
+                     
 													<td>
 														@if ( $oi->priorite == "Normale")
 															<span class="label label-success">{{ $oi->priorite }}</span>
@@ -314,9 +117,8 @@
                                                 <thead>
                                                     <tr>
 														<th>#</th>
-                                                        <th>N° Intervention</th>
-                                                        <th>Equipement</th>
 														<th>Client</th>
+                                                        <th>Equipement</th>
 														<th>Intervenant</th>
 														<th>Prochaine Execution</th>
 														<th>Etat</th>
@@ -332,18 +134,17 @@
                                                 <?php $i++; ?>
                                                 <tr>                                                                                  
                                                     <td>{{ $i }}</td>
-                                                    <td> {{ $amp->numero }} </td>
-													<td>
-													@foreach( $equipements as $eq )
-														@if ($eq->id == $amp->idmachine)
-															{{ $eq->designation }} 
+                                                   	<td>
+													@foreach( $clients as $client )
+													    @if ($client->id_client_ == $amp->idclient)
+															{{ $client->clientname }} 
 														@endif
 													@endforeach </td>
-
+					
 													<td>
-													@foreach( $clients as $client )
-													    @if ($client->id == $amp->idclient)
-															{{ $client->name }} 
+													@foreach( $equipements as $eq )
+														@if ($eq->id_equipement == $amp->idmachine)
+															{{ $eq->designation }} 
 														@endif
 													@endforeach </td>
 
@@ -376,7 +177,7 @@
                                     <!-- END TABLE STRIPED -->
 
                                 </div>
-                    	</div>
+                    	
 								<div class="panel-footer">
 									<div class="row">
 										<div class="col-md-6"></div>
@@ -399,7 +200,9 @@
 			</div>
 		</footer>
 	</div>
+	</div>
 	<!-- END WRAPPER -->
+
 @endsection
 
 

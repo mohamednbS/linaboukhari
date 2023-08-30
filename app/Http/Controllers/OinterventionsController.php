@@ -39,7 +39,6 @@ class OinterventionsController extends Controller
         $idmachine = $request->input('machine');
         $sousequipement = $request->input('sousequipement');
         $accessoire = $request->input('accessoire');
-        
         $type_panne = $request->input('type_panne');
         $destinateurs = $request->input('iduser');
         $appel_client = $request->input('appel_client');
@@ -53,7 +52,6 @@ class OinterventionsController extends Controller
        $oi->idmachine = $idmachine;
        $oi->sousequipement = $sousequipement;
        $oi->accessoire = $accessoire;
-       
        $oi->type_panne = $type_panne;
        $oi->destinateur = implode(',', $destinateurs);
        $oi->appel_client = $appel_client ; 
@@ -97,35 +95,27 @@ class OinterventionsController extends Controller
         $clients = Client::all();
         return view('dmdinterventions.affiche')->with('di',$di)->with('messages',$messages)->with('notifications',$notifications)->with('typepannes',$typepannes)->with('equipements',$equipements)->with('clients',$clients)->with('users',$users)->with('sousequipements',$sousequipements)->with('accessoires',$accessoires);
     }
-    public function intervention($id_intervention){
-        $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
-        $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-        $users = User::all();
-        $equipements = Equipement::all();
-        $sousequipements = Sousequipement::all();
-        $accessoires = Accessoire::all();
-        $clients = Client::all();
-        $ointervention = Ointervention::find($id_intervention);
-        return view('dmdinterventions.intervention')->with('messages',$messages)->with('notifications',$notifications)->with('ointervention',$ointervention)->with('equipements',$equipements)->with('clients',$clients)->with('users',$users)->with('sousequipements',$sousequipements)->with('accessoires',$accessoires);
-    }
     
     public function change($id_intervention){
+        $oi = Ointervention::find($id_intervention);
         $users = User::all();
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $techniciens = User::where('role',"Technicien")->get();
         $clients = Client::all();
+        $techniciens = User::where('role',"Technicien")->get();
+        $ingenieurs = User::where('role',"Ingenieur")->get();
         $typepannes = Typepanne::all();
         $equipements = Equipement::all();
         $sousequipements = Sousequipement::all();
         $accessoires = Accessoire::all();
-        $oi = Ointervention::find($id_intervention);
-        return view('dmdinterventions.modifier')->with('oi',$oi)->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('equipements',$equipements)->with('clients',$clients)->with('techniciens',$techniciens)->with('typepannes',$typepannes)->with('sousequipements',$sousequipements)->with('accessoires',$accessoires);
+        return view('dmdinterventions.modifier')->with('oi',$oi)->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('equipements',$equipements)->with('clients',$clients)->with('techniciens',$techniciens)->with('ingenieurs',$ingenieurs)->with('typepannes',$typepannes)->with('sousequipements',$sousequipements)->with('accessoires',$accessoires);
     }
     public function update(Request $request,$id_intervention){
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $techniciens = User::where('role',"Technicien")->get();
+        $ingenieurs = User::where('role',"Ingenieur")->get();
 
          $document = $request->file('document');
         if ($request->hasFile('document'))
@@ -137,13 +127,12 @@ class OinterventionsController extends Controller
         //
         $oi = Ointervention::find($id_intervention);
         $oi->numero = $request->input("numero");
-        $oi->emetteur = $request->input("emetteur");
         $oi->idmachine = $request->input("machine");
         $oi->sousequipement = $request->input("sousequipement");
         $oi->accessoire = $request->input("accessoire");
         $oi->idclient = $request->input("idclient");
         $oi->type_panne = $request->input("type_panne");
-        $oi->destinateur = $request->input("iduser");
+        $oi->destinateur = $request->input('iduser');
         $oi->priorite = $request->input("priorite");
         $oi->commentaire = $request->input("commentaire");  
         $oi->etat = $request->input("etat");
@@ -154,13 +143,12 @@ class OinterventionsController extends Controller
             $destinationPath['document'] = null;
             $oi = Ointervention::find($id_intervention);
             $oi->numero = $request->input("numero");
-            $oi->emetteur = $request->input("emetteur");
             $oi->idmachine = $request->input("machine");
             $oi->sousequipement = $request->input("sousequipement");
             $oi->accessoire = $request->input("accessoire");
             $oi->idclient = $request->input("idclient");
             $oi->type_panne = $request->input("type_panne");
-            $oi->destinateur = $request->input("iduser");
+            $oi->destinateur = $request->input('iduser');
             $oi->priorite = $request->input("priorite");
             $oi->commentaire = $request->input("commentaire");  
             $oi->etat = $request->input("etat");
@@ -196,7 +184,6 @@ class OinterventionsController extends Controller
         return view('ointerventions.ordret')->with('oi',$oi); 
     }
   
- 
     public function ordretravailleshow($id_intervention){
         
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
@@ -234,6 +221,7 @@ class OinterventionsController extends Controller
         return redirect('/di');
 
     }
+    /*début des interventions par les techniciens*/
 
     public function addobservationoi(Request $request , $id_intervention){
         $oi = Ointervention::find($id_intervention);
@@ -256,7 +244,7 @@ class OinterventionsController extends Controller
             $notification->stat = "unseen";
             $notification->touser = "Administrateur";
             $notification->iduser =$admin->id_user;
-            $notification->content =  "Le technicien a démarré l'ordre du travail ".$numero; 
+            $notification->content =  "Le technicien"." ".$oi->destinateur." "." a démarré l'ordre du travail ".$numero; 
             $notification->save();
         }
 
