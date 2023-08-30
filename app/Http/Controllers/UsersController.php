@@ -14,6 +14,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UsersController extends Controller
 {
@@ -30,7 +31,7 @@ class UsersController extends Controller
         $departments = Department::all();
         $modalites = Modalite::all();
         $users = User::where('role',"!=", "Administrateur")->get();
-   
+       Alert::success('text','text');
         return view('users.index')->with('users',$users)->with('departments',$departments)->with('modalites',$modalites)->with('messages',$messages)->with('notifications',$notifications);
     }
         /**
