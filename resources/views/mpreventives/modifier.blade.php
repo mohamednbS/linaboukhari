@@ -151,13 +151,21 @@
                                                 
                                                 </div>
                                                 <div class="col-md-9">
-                                                <select style="width:100%;margin-bottom:10px;" class="form-control" name="executeur">
+                                                <select style="width:100%;margin-bottom:10px;" class="form-control" name="executeur[]" id="executeur" multiple="multiple">
                                                 @foreach($techniciens as $technicien )
         
                                                     @if ($technicien->id_user == $mp->executeur )
                                                         <option selected value='{{ $technicien->name }}'>{{ $technicien->name }}</option>
                                                     @else
                                                         <option value='{{ $technicien->name }}'>{{ $technicien->name }}</option>
+                                                    @endif
+                                                @endforeach
+                                                @foreach($ingenieurs as $ingenieur )
+        
+                                                    @if ($ingenieur->id_user == $mp->executeur )
+                                                        <option selected value='{{ $ingenieur->name }}'>{{ $ingenieur->name }}</option>
+                                                    @else
+                                                        <option value='{{ $ingenieur->name }}'>{{ $ingenieur->name }}</option>
                                                     @endif
                                                 @endforeach
                                                 </select>

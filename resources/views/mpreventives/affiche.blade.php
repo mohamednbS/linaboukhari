@@ -7,7 +7,7 @@
 
 	<!--MENU-->
     @include('menu.menutop')
-	@include('menu.menuleft')
+	@include('menu.menuleft')  ""
 
 		<!-- MAIN -->
 		<div class="main">
@@ -37,12 +37,9 @@
 									
 								@endforeach </h4>
 								<h4> N°Série : 
-								@foreach ($equipements as $equipement )
-								@if ($mp->idmachine == $equipement->id_equipement )   
-								{{ $equipement->numserie }}
-								@endif
-								
-							    @endforeach</h4>
+							 
+								{{ $mp->numserie }}
+					</h4>
 								<h4> Client : 
 								@foreach ($clients as $client )
 									@if ($mp->idclient == $client->id_client )   

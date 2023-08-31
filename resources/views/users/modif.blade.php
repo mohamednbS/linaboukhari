@@ -128,11 +128,11 @@
                                                     <select name="modalité" style="width:100%;margin-bottom:10px;" class="form-control">
                                                             <option>-- selectionner une modalité --</option>
                                                             @foreach( $modalites as $modalite )
-                                                            @if ($modalite->id_modalite == $user->modalité )
+                                                                @if ($modalite->id_modalite == $user->modalité )
                                                             <option selected value='{{ $modalite->id_modalite }}'>{{ $modalite->name }}</option>
-                                                            @else
+                                                                @else
                                                             <option value='{{ $modalite->id_modalite }}'>{{ $modalite->name }}</option>
-                                                            @endif
+                                                                @endif
                                                         
                                                             @endforeach
                                                             

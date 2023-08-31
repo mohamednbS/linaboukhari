@@ -57,8 +57,9 @@ class ModalitesController extends Controller
         $equipement = Equipement::all();
         $clients = Client::all();
         $users = User::all();
+        
         $equipements = $modalite->equipements; // Filtrer les sous-équipements par id de l'équipement
-        return view('Modalites.modalite')->with('users',$users)->with('modalite',$modalite)->with('equipements',$equipements)->with('clients',$clients)->with('equipement',$equipement)->with('messages',$messages)->with('notifications',$notifications); 
+        return view('Modalites.modalite')->with('users',$users)->with('modalite',$modalite)->with('equipements',$equipements)->with('clients',$clients)->with('equipement',$equipement)->with('messages',$messages)->with('notifications',$notifications)->with('equipement',$equipement); 
     }
     public function change($id_modalite){
         $users = User::all();

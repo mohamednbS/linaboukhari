@@ -135,6 +135,7 @@ class EquipementsController extends Controller
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $modalites = Modalite::all();
         $clients = Client::all();
+      
         $equipement = Equipement::find($id_equipement);
         $users = User::all();
         $sousequipements = $equipement->sousequipements ?? null ; // Filtrer les sous-équipements par id de l'équipement

@@ -204,9 +204,7 @@
                                                                 </div>
                                                                 
                                                             </div>
-                                                               
-                                                           
-                                                            
+                
                                       
                                     <!-- END TABLE STRIPED -->
                                 </div>

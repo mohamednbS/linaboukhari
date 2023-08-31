@@ -53,14 +53,14 @@ class MessagesController extends Controller
         return redirect('/conversation/'.$iddestination);
 
     }
-    public function conversation($id){
+    public function conversation($id_user){
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $users = User::where("id_user","<>",Auth::user()->id_user)->get();
-        $messagesConv = Message::where('idsender',$id)
+        $messagesConv = Message::where('idsender',$id_user)
                              ->where('iddestination',Auth::user()->id_user)
                              ->orwhere('idsender',Auth::user()->id_user)
-                             ->where('iddestination',$id)
+                             ->where('iddestination',$id_user)
                              ->orderBy('created_at', 'asc')
                              ->get();
         $listm = array();
@@ -76,7 +76,7 @@ class MessagesController extends Controller
             $messagesReaded->update();   
         }
               
-        return view('messages.conversation')->with('iddestination',$id)->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('messagesConv',$messagesConv);
+        return view('messages.conversation')->with('iddestination',$id_user)->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('messagesConv',$messagesConv)->with('idsender',$id_user);
 
     }
 

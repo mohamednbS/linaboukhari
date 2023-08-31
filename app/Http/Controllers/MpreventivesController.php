@@ -38,6 +38,16 @@ class MpreventivesController extends Controller
         $mpreventives = Mpreventive::where("numero",'like','%'.$request->input("searchmp").'%')->get();
         return view('mpreventives.index')->with('messages',$messages)->with('notifications',$notifications)->with('mpreventives',$mpreventives)->with('equipements',$equipements)->with('clients',$clients)->with('techniciens',$techniciens)->with('users',$users);
     }
+    public function create(){
+        $users = User::all();
+        $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
+        $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
+         $equipements = Equipement::all();
+         $clients = Client::all();
+         $techniciens = User::where('role',"Technicien")->get();
+         $ingenieurs = User::where('role',"Ingenieur")->get();
+         return view('mpreventives.ajout')->with('messages',$messages)->with('notifications',$notifications)->with('equipements',$equipements)->with('clients',$clients)->with('techniciens',$techniciens)->with('users',$users)->with('ingenieurs',$ingenieurs);
+     }
     public function store(Request $request){
         $intervalle = $request->input("intervalle");
         $datedebut = $request->input("date_debut"); 
@@ -102,38 +112,31 @@ class MpreventivesController extends Controller
         return redirect('/mp/add')->with("addmp","success");
  
      }
-     public function create(){
-        $users = User::all();
-        $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
-        $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-         $equipements = Equipement::all();
-         $clients = Client::all();
-         $techniciens = User::where('role',"Technicien")->get();
-         $ingenieurs = User::where('role',"Ingenieur")->get();
-         return view('mpreventives.ajout')->with('messages',$messages)->with('notifications',$notifications)->with('equipements',$equipements)->with('clients',$clients)->with('techniciens',$techniciens)->with('users',$users)->with('ingenieurs',$ingenieurs);
-     }
+  
  public function show($id_mpreventive){
         $users = User::all();
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $equipements = Equipement::all();
         $clients = Client::all();
-        $mp = Mpreventive::find($id_mpreventive); 
-        $maintenances = Maintenance::where('idmp',$mp->id_maintenance)->get(); 
+        $mp = Mpreventive::find($id_mpreventive);   
+        $maintenances = Maintenance::where('idmp',$mp->id_mpreventive)->get(); 
         return view('mpreventives.affiche')->with('users',$users)->with('mp',$mp)->with('messages',$messages)->with('notifications',$notifications)->with('maintenances',$maintenances)->with('equipements',$equipements)->with('clients',$clients);
     }
 
     public function change($id_mpreventive){
+        $mp = Mpreventive::find($id_mpreventive);
         $users = User::all();
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $techniciens = User::where('role',"Technicien")->get();
+        $ingenieurs = User::where('role',"Ingenieur")->get();
         $clients = Client::all();
         $equipements = Equipement::all();
-        $mp = Mpreventive::find($id_mpreventive);
-        return view('mpreventives.modifier')->with('mp',$mp)->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('equipements',$equipements)->with('clients',$clients)->with('techniciens',$techniciens);
+        return view('mpreventives.modifier')->with('mp',$mp)->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('equipements',$equipements)->with('clients',$clients)->with('techniciens',$techniciens)->with('ingenieurs',$ingenieurs);
     }
     public function update(Request $request,$id_mpreventive){
+        $executeurs = $request->input("executeur");
         $intervalle = $request->input("intervalle");
         $datedebut = $request->input("date_debut");
         $datefin = $request->input("date_fin");
@@ -158,7 +161,7 @@ class MpreventivesController extends Controller
         $numserie = $request->input("numserie");
         $mp->idclient = $request->input("client");
         $mp->umesure = $request->input("unite_mesure");   
-        $mp->executeur = $request->input("executeur");
+        $mp->executeur = implode(',', $executeurs);
         $mp->intervalle = $request->input("intervalle");
         $mp->date_debut = $request->input("date_debut");
         $mp->date_fin = $request->input("date_fin");
@@ -178,7 +181,7 @@ class MpreventivesController extends Controller
             $mp->numserie = $request->input("numserie");
             $mp->idclient = $request->input("client");
             $mp->umesure = $request->input("unite_mesure");   
-            $mp->executeur = $request->input("executeur");
+            $mp->executeur = implode(',', $executeurs);
             $mp->intervalle = $request->input("intervalle");
             $mp->date_debut = $request->input("date_debut");
             $mp->date_fin = $request->input("date_fin");
@@ -198,15 +201,9 @@ class MpreventivesController extends Controller
             $maintenance->save();
             $request->input("unite_mesure") == "Mois";
                 $dateprochaine = Carbon::parse($dateprochaine)->addMonths($intervalle);
-            
 
         }
-        $notification = new Notification();
-        $notification->stat = "unseen";
-        $notification->touser = "Technicien";
-        $notification->iduser = $request->input("executeur");
-        $notification->content = "l'administrateur a modifié une maintenance préventive pour vous";
-        $notification->save();
+     
         return redirect("/mpreventive/change/".$mp->id_mpreventive)->with('addmp',"success");
  
      }

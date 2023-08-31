@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Equipement;
+use App\Equipement;   
 use App\Maintenance;
 use App\Mpreventive;
 use App\Ointervention;
@@ -16,7 +16,7 @@ class MaintenancesController extends Controller
         $equipements = Equipement::all();
         //$mp = Mpreventive::find($id);
         $maintenances = Maintenance::where('idmp',$id_maintenance)->get(); 
-        $m = Maintenance::find($idmaintenance);
+        $m = Maintenance::find($id_maintenance);
         $mp = Mpreventive::find($m->idmp);
         $oi = Ointervention::find($m->idmp);
         return view('maintenances.affiche')->with('m',$m)->with('mp',$mp);

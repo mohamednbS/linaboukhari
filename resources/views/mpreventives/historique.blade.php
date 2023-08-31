@@ -42,7 +42,7 @@
 								<h4> Periode : de  " {{ $mp->date_debut }} " jusqu'a " {{ $mp->date_fin }} "  </h4>
 								<h4> Client : 	@foreach ($clients as $client )
 									@if ($mp->idclient == $client->id_client )
-									{{ $client->name }}
+									{{ $client->clientname }}
 									@endif
 									
 								@endforeach </h4>

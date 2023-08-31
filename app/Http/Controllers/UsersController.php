@@ -159,7 +159,7 @@ class UsersController extends Controller
     public function profile(){
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-        $activities = Activite::where('iduser',Auth::user()->id)->get();
+        $activities = Activite::where('iduser',Auth::user()->id_user)->get();
         $users = User::all();
         return view('users.profile')->with('users',$users)->with('activities',$activities)->with('messages',$messages)->with('notifications',$notifications);
     }

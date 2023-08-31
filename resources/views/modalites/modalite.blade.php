@@ -105,6 +105,7 @@
                                   @endforeach 
                                   </tbody>
                                 </table>
+                           
                                 </div>
                               <!--FIN LISTE DES EQUIPEMENTS-->
   

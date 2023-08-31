@@ -48,15 +48,14 @@
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
-                                                        <th>N° Intervention</th>
-                                                        <th> Etat</th>
-                                                        <th>Equipement</th>
-                                                        <th>N°Série</th>
+                                                        <th>N°Maintenance</th>
+                                                        <th>Etat</th>
                                                         <th>Client</th>
+                                                        <th>Equipement</th>
                                                         <th>Intervenant</th>
-                                                        <th>Prochaine Date d'Execution</th>
+                                                        <th>Prochaine Exécution</th>
                                                         <th>Observations</th>
-                                                        <th>Rapport Maintenance</th>
+                                                        <th>Rapport</th>
                                                         @if (Auth::user()->role == "Administrateur")
 														<th>Action</th>
 														@endif
@@ -86,6 +85,15 @@
 														@endif
 														{{ $mp->etat }}</span>
 													</td>
+                                                   
+                                                    <td>
+                                                        @foreach($clients as $client )
+                                                            @if ( $client->id_client == $mp->idclient )
+                                                                {{ $client->clientname }} 
+                                                            @endif
+                                                        @endforeach
+                                                    </td>
+
                                                     <td>
                                                         @foreach($equipements as $equipement )
                                                             @if ( $equipement->id_equipement == $mp->idmachine )
@@ -94,20 +102,6 @@
                                                         @endforeach
                                                     </td>
                                                     <td>
-                                                        @foreach($equipements as $equipement )
-                                                            @if ( $equipement->id_equipement == $mp->idmachine )
-                                                                {{ $equipement->name }} 
-                                                            @endif
-                                                        @endforeach
-                                                    </td>
-                                                    <td>
-                                                        @foreach($clients as $client )
-                                                            @if ( $client->id_client == $mp->idclient )
-                                                                {{ $client->clientname }} 
-                                                            @endif
-                                                        @endforeach
-                                                    </td>
-                                                   <td class="table-info">
                                                     {{ implode('/ ', explode(',', $mp->executeur)) }}
                                                     </td>
                                          
@@ -115,7 +109,7 @@
                                               
                                                     <td>{{ $mp->observation }} </td>
                                                     <td>
-                                                        <a href="{{ route('download.document', ['document' => $mp->document]) }}">Rapport Maintenance</a>
+                                                        <a href="{{ route('download.document', ['document' => $mp->document]) }}">Voir rapport</a>
                                                         </td>
                                                 
                                                    

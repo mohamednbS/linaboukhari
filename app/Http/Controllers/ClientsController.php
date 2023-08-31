@@ -13,7 +13,6 @@ use App\Notification;
 use Illuminate\Http\Request;
 
 
-
 class ClientsController extends Controller
 {
     //
@@ -22,7 +21,6 @@ class ClientsController extends Controller
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $clients = Client::paginate(20);
-   
         $equipements = $client->equipements ?? null ;
        
         return view('clients.index')->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('clients',$clients)->with('equipements',$equipements);

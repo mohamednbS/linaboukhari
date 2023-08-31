@@ -74,8 +74,8 @@
                                       <td>{{ $equipement->numserie}}</td>
                                       <td>{{ $equipement->modele }}</td>
                                       @if (Auth::user()->role == "Administrateur")
-														<td><a href="/equipement/mod/{{ $equipement->id }}" data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary'><i class="lnr lnr-pencil"></i> </a> 
-															<a  data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger'  href="/equipement/del/{{ $equipement->id }}"><i class="lnr lnr-trash"></i></a> </td>
+														<td><a href="/equipement/mod/{{ $equipement->id_equipement }}" data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary'><i class="lnr lnr-pencil"></i> </a> 
+															<a  data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger'  href="/equipement/del/{{ $equipement->id_equipement }}" onclick="return confirm ('voulez vous vraiment supprimer cet equipement' {{ $equipement['id']}})"><i class="lnr lnr-trash"></i></a> </td>
 														@endif
                                   
                                 

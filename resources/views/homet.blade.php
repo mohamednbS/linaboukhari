@@ -136,7 +136,7 @@
                                                     <td>{{ $i }}</td>
                                                    	<td>
 													@foreach( $clients as $client )
-													    @if ($client->id_client_ == $amp->idclient)
+													    @if ($client->id_client== $amp->idclient)
 															{{ $client->clientname }} 
 														@endif
 													@endforeach </td>

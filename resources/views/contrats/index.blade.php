@@ -121,6 +121,7 @@
                                                 @endforeach 
                                                 </tbody>
                                             </table>
+											{{ $contrats->links()}}
                                       
                                     <!-- END TABLE STRIPED -->
                                 </div>
