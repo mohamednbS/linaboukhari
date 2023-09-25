@@ -122,6 +122,7 @@
                                                 @endforeach 
                                                 </tbody>
                                             </table>
+                                            {{$mpreventives->links()}}
                                       
                                     <!-- END TABLE STRIPED -->
                                 </div>

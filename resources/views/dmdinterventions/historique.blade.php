@@ -73,7 +73,7 @@
                                                     <td>    
                                                     @foreach($equipements as $equipement )
                                                         @if ( $equipement->id_equipement == $oi->idmachine )
-                                                            {{ $equipement->modele }} 
+                                                              {{ $equipement->designation.'--'.$equipement->modele }} 
                                                         @endif
                                                         @endforeach
                                                     </td>
@@ -81,18 +81,21 @@
 													<td>
 														@foreach($clients as $client )
 															@if ( $client->id_client == $oi->idclient )
-																{{ $client->name }}  
+																{{ $client->clientname }}  
 															@endif
 															@endforeach
 													</td>
 
-													<td>{{ $oi->type_panne }}</td>
+													<td>  
+													    @foreach($typepannes as $typepanne )
+															@if ( $typepanne->id_typepanne == $oi->type_panne )
+																{{ $typepanne->name }}  
+															@endif
+														@endforeach
+													</td>
 
-													<td>@foreach($users as $user )
-                                                        @if ( $user->id_user == $oi->destinateur )
-                                                            {{ $user->name }} 
-                                                        @endif
-                                                        @endforeach 
+											        <td  class="table-info">
+														{{ implode('/ ', explode(',', $oi->destinateur)) }}
                                                     </td>
 
 													<td><span  class="label label-success">{{ $oi->etat }}</span></td>
@@ -139,6 +142,7 @@
                                                 @endforeach 
                                                 </tbody>
                                             </table>
+												{{$ointerventions->links()}}
                                       
                                     <!-- END TABLE STRIPED -->
                                 </div>

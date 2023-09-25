@@ -152,8 +152,8 @@ class UsersController extends Controller
         $user = User::find($id_user);
         $departments = Department::all();
         $modalites = Modalite::all();
-    
-        return view('users.modif')->with('departments',$departments)->with('user',$user)->with('messages',$messages)->with('notifications',$notifications)->with('modalites',$modalites);
+        $users = User::all();
+        return view('users.modif')->with('departments',$departments)->with('user',$user)->with('messages',$messages)->with('notifications',$notifications)->with('modalites',$modalites)->with('users',$users);
     }
     public function profile(){
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();

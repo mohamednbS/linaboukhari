@@ -99,20 +99,22 @@
                                                 <div class="col-md-9">
                                                 <select name="role" style="width:100%;margin-bottom:10px;" class="form-control">
                                                 @if ( $user->role == "Administrateur")
-                                                    <option>-- selectionner un role --</option>
+                                                    <option>-- selectionner un rôle --</option>
                                                     <option selected value='Administrateur'>Administrateur</option>
-                                                    <option value='Superviseur'>Superviseur</option>
+                                                    <option value='Ingenieur'>Ingenieur</option>
                                                     <option value='Technicien'>Technicien</option>
-                                                    <option value='Ingenieur'>Ingénieur</option>
+                                                    <option value='Commercial'>Commercial</option>
                                                 @elseif ($user->role == "Technicien")
-                                                    <option>-- selectionner un role --</option>
-                                                    <option value='Superviseur'>Administrateur</option>
+                                                    <option>-- selectionner un rôle --</option>
+                                                    <option value='Commercial'>Commercial</option>
                                                     <option selected value='Ingenieur'>Ingénieur</option>
                                                     <option selected value='Technicien'>Technicien</option>
+                                                    
+
                                                 @else
-                                                    <option>-- selectionner un role --</option>
+                                                    <option>-- selectionner un rôle --</option>
                                                     <option value='Administrateur'>Administrateur</option>
-                                                    <option selected value='Superviseur'>Superviseur</option>
+                                                    <option selected value='Commercial'>Commercial</option>
                                                     <option selected value='Technicien'>Technicien</option>
                                                     <option selected value='Ingenieur'>Ingénieur</option>
                                                 

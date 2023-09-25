@@ -129,6 +129,7 @@
                                                 @endforeach 
                                                 </tbody>
                                             </table>
+											{{$ointerventions->links()}}
                                       
                                     <!-- END TABLE STRIPED -->
                                 </div>
@@ -152,6 +153,4 @@
 	</footer>
 </div>
 <!-- END WRAPPER -->
-
-
 @endsection

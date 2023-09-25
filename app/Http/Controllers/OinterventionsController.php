@@ -30,7 +30,7 @@ class OinterventionsController extends Controller
         $clients = Client::all();
         $ointerventions = Ointervention::where('etat',"!=","Terminé")   
                                         ->get(); 
-
+        $ointerventions = Ointervention::paginate(5);
         return view('dmdinterventions.index')->with('messages',$messages)->with('notifications',$notifications)->with('ointerventions',$ointerventions)->with('equipements',$equipements)->with('clients',$clients)->with('users',$users)->with('typepannes',$typepannes);
     }
     public function create(){
@@ -341,18 +341,22 @@ class OinterventionsController extends Controller
     public function historiqueoi(){
         $alloi = Ointervention::where('etat',"Terminé")->get();
         $equipements = Equipement::all();
+        $typepannes = Typepanne::all();
         $users = User::all();
         $clients = Client::all();
         $techniciens = User::where('role',"Technicien")->get();
+        $ingenieurs = User::where('role',"Ingenieur")->get();
+        $ointerventions = Ointervention::paginate(10);
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-        return view('dmdinterventions.historique')->with('alloi',$alloi)->with('equipements',$equipements)->with('messages',$messages)->with('notifications',$notifications)->with('clients',$clients)->with('users',$users)->with('techniciens',$techniciens);
+        return view('dmdinterventions.historique')->with('alloi',$alloi)->with('equipements',$equipements)->with('messages',$messages)->with('notifications',$notifications)->with('clients',$clients)->with('users',$users)->with('techniciens',$techniciens)->with('ointerventions',$ointerventions)->with('ingenieurs',$ingenieurs)->with('typepannes',$typepannes);
     
     }
     public function find(Request $request){
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->i_userd)->where('stat',"unseen")->get();
         $users = User::all();
+        $typepannes = Typepanne::all();
         $clients = Client::all();
         $equipements = Equipement::all();
         $query = $request->input('query');
@@ -364,7 +368,7 @@ class OinterventionsController extends Controller
                                         ->orwhere('etat', 'like', '%'.$query.'%')
                                         ->orwhere('commentaire', 'like', '%'.$query.'%')
                                         ->orwhere('idmachine', 'like', '%'.$query.'%')->get();
-        return view('dmdinterventions.search')->with('messages',$messages)->with('notifications',$notifications)->with('ointerventions',$ointerventions)->with('equipements',$equipements)->with('clients',$clients)->with('users',$users);
+        return view('dmdinterventions.search')->with('messages',$messages)->with('notifications',$notifications)->with('ointerventions',$ointerventions)->with('equipements',$equipements)->with('clients',$clients)->with('users',$users)->with('typepannes',$typepannes);
 
     }
 

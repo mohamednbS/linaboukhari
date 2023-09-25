@@ -22,7 +22,6 @@ class ClientsController extends Controller
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $clients = Client::paginate(20);
         $equipements = $client->equipements ?? null ;
-       
         return view('clients.index')->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('clients',$clients)->with('equipements',$equipements);
     }
     public function create(){

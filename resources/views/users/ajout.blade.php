@@ -98,6 +98,7 @@
                                                     <option value='Superviseur'>Superviseur</option>
                                                     <option value='Ingenieur'>Ingenieur</option>
                                                     <option value='Technicien'>Technicien</option>
+                                                     <option value='Commercial'>Commercial</option>
                                                 
                                                 
                                         </select> 

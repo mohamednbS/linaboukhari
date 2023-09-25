@@ -11,12 +11,12 @@
 		<!-- MAIN -->
 		<div class="main">
 			<!-- MAIN CONTENT -->
-			<div class="main-content">
+			<div class="main-content"> 
 				<div class="container-fluid">
 					<!-- OVERVIEW -->
 					<div class="panel panel-headline">
 						<div class="panel-heading">
-                            <h3 class="panel-title"><i class="lnr lnr-file-empty"></i> Gestion des demandes d'interventions</h3>
+                            <h3 class="panel-title"><i class="lnr lnr-file-empty"></i> Gestion des Demandes d'Interventions</h3>
 							<p class="panel-subtitle">Aujourd'hui : <?php echo date('d')." ".date('M')." , ".date('Y'); ?> </p>
 						</div>
 						<div class="panel-body">
@@ -25,35 +25,40 @@
 							<!-- TABLE STRIPED -->
 							<div class="panel">
 								<div class="panel-heading">
-									<h3 class="panel-title">@isset($searchuser) Resultat de recherche pour : <span class="text-primary"> " {{ $searchuser }} "</span> @else Liste des demandes d'interventions @endisset </h3>
+									<h3 class="panel-title">@isset($searchuser) Resultat de recherche pour : <span class="text-primary"> " {{ $searchuser }} "</span> @else Liste des Demandes d'Interventions @endisset </h3>
 								</div>
-								<!-- nav search--> 
-								<form action="{{ route('find') }}" method="GET">
-									<input type="text" name="query" placeholder="Recherche...">
-									<button type="submit">Rechercher</button> 
-								</form>
+							
 								<div class="panel-body">
-								@if( session()->get( 'adduser' ) == "deleted" )
+								@if( session()->get( 'addoi' ) == "deleted" )
                                 <div class="alert alert-success alert-dismissible" role="alert">
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<i class="fa fa-check-circle"></i> Demande supprimée avec succèss 
+										<i class="fa fa-check-circle"></i> Demande Supprimée avec Succès
 								</div>
                                 @endif
-                                            <table class="table table-striped">
+                                            <table class="table table-striped"  enctype="multipart/form-data">
+													<!-- nav search--> 
+											<div>
+											<form action="{{ route('find') }}" method="GET">
+												<input type="text" name="query" placeholder="Recherche...">
+												<button type="submit">Rechercher</button> 
+											</form>
+											</div>
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
                                                         <th>N° Intervention</th>
-                                                        <th>Etat</th>
-                                                        <th>Machine</th>
 														<th>Client</th>
-														<th>Type de Panne/Mission</th>
+                                                        <th>Equipement</th>
+														
+														<th>Panne/Mission</th>
 														<th>Intervenant</th>
-                                                        <th>commentaire</th>
-                                                        <th>Date de creation</th>
+														
+														<th>Etat</th>
+                                                        <th>Commmentaires</th>
 														@if (Auth::user()->role == "Administrateur")
-                                                        
+							
                                                         <th>Validation</th>
+														<th> Action </th>
                                                         @endif
                                                     </tr>
                                                 </thead>
@@ -63,79 +68,73 @@
                                                 <?php $i++; ?>
                                                 <tr>
                                                     <td>{{ $i }}</td>
-                                                    <td>{{ $oi->numero }}</td>
-                                                    <td>
-													
-													@if ($oi->etat == "refusée")
-													<span class="label label-danger">
-													@elseif( $oi->etat == "demandée"  )
-													<span class="label label-info">
-													@elseif( $oi->etat == "En attente de validation" || $oi->etat == "En cours"  )
-													<span class="label label-warning">
-													@else
-													<span class="label label-success">
-													
-													@endif
-													
-													
-													{{ $oi->etat }}</span></td>
-                                                   
-												
+                                                    <td> <a href="/di/show/{{ $oi->id_intervention }}">{{ $oi->numero }}</a></td>
+													<td>
+														@foreach($clients as $client )
+															@if ( $client->id_client == $oi->idclient )
+																{{ $client->clientname }}  
+															@endif
+														@endforeach
+													</td>
+                                            
                                                     <td>    
                                                     @foreach($equipements as $equipement )
-                                                        @if ( $equipement->id_intervention == $oi->idmachine )
-                                                            {{ $equipement->designation }} 
+                                                        @if ( $equipement->id_equipement == $oi->idmachine )
+                                                            {{ $equipement->designation.'--'.$equipement->modele }} 
                                                         @endif
                                                         @endforeach
+                                                    </td>
+
+													<td>  
+													    @foreach($typepannes as $typepanne )
+															@if ( $typepanne->id_typepanne == $oi->type_panne )
+																{{ $typepanne->name }}  
+															@endif
+														@endforeach
+													</td>
+
+													<td  class="table-info">
+														{{ implode('/ ', explode(',', $oi->destinateur)) }}
                                                     </td>
 
 													<td>
-														@foreach($clients as $client )
-															@if ( $client->id_intervention == $oi->idclient )
-																{{ $client->name }}  
-															@endif
-															@endforeach
+
+														@if ($oi->etat == "Suspendu")
+														<span class="label label-danger">
+														@elseif( $oi->etat == "Demandé"  )
+														<span class="label label-info">
+														@elseif( $oi->etat == "En attente de validation" || $oi->etat == "En Cours"  )
+														<span class="label label-warning">
+														@else
+														<span class="label label-success">
+														
+														@endif
+														{{ $oi->etat }}</span>
 													</td>
-
-												
-
-													<td>{{ $oi->type_panne }}</td>
-
-													<td>@foreach($users as $user )
-                                                        @if ( $user->id_user == $oi->destinateur )
-                                                            {{ $user->name }} 
-                                                        @endif
-                                                        @endforeach
-                                                    </td>
 							
                                                     <td>{{ $oi->commentaire }}</td>
-                                                    
-                                                    <td>{{ $oi->created_at }}</td>
+
 													@if (Auth::user()->role == "Administrateur")
-                                                        
-                                                        <td>
-														@if ($oi->etat == "En attente de validation")
-														<a href="/di/valider/{{ $oi->id_intervention }}" class="btn btn-success">Valider</a>
-														@endif
-														
-														</td>
-                                                     @endif
+                                                    <td>
+													<a href="{{ route('download.document', ['document' => $oi->document]) }}"> le Rapport d'Intervention</a>
+													</td>
+                        
+													<td><a  data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary'  href="/ointervention/change/{{ $oi->id_intervention }}"><i class="lnr lnr-pencil"></i> </a> 
+														<a  data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/ointervention/delete/{{ $oi->id_intervention  }}"onclick="return confirm ('voulez vous vraiment supprimer la demande' {{ $oi['id']}})" ><i class="lnr lnr-trash" ></i></a>
+													</td>
+													@endif
                                                     
                                                     
                                                 </tr>
                                                 @endforeach 
                                                 </tbody>
                                             </table>
+											
                                       
                                     <!-- END TABLE STRIPED -->
                                 </div>
                     	</div>
-								<div class="panel-footer">
-									<div class="row">
-										<div class="col-md-6"></div>
-										<div class="col-md-6 text-right"><a href="/di" class="btn btn-primary">Effacer la recherche</a></div>
-									</div>
-								</div>
+								
 							</div>
 							<!-- END RECENT PURCHASES -->
                             </div>
@@ -154,6 +153,4 @@
 	</footer>
 </div>
 <!-- END WRAPPER -->
-
-
 @endsection
