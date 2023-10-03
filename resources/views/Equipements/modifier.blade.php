@@ -78,15 +78,16 @@
                                                                 <div class="col-md-3">
                                                                 <label> Numéro Série </label>
                                                                 </div>
+
                                                                 <div class="col-md-9">
                                                                 <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $equipement->numserie}}" type="text" name="numserie">
                                                                 </div>
 
                                                                 <div class="col-md-3">
-                                                                    <label> Date Mise en Service </label>       
+                                                                    <label> Date d'installation </label>       
                                                                 </div>
                                                                 <div class="col-md-9">
-                                                                <input min="{{ Carbon\Carbon::now() }}" style="width:100%;margin-bottom:10px;" value="{{ $equipement->date_service}}" type="date" name="date_service" class="form-control" >
+                                                                <input min="{{ Carbon\Carbon::now() }}" style="width:100%;margin-bottom:10px;" value="{{ $equipement->date_installation}}" type="date" name="date_installation" class="form-control" >
                                                                 </div>
 
                                                                 <div class="col-md-3">
@@ -111,6 +112,14 @@
                                                                         
                                                                         @endforeach
                                                                     </select> 
+                                                                </div>
+
+                                                                <div class="col-md-3">
+                                                                <label> Software </label>
+                                                                </div>
+                                                                
+                                                                <div class="col-md-9">
+                                                                <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $equipement->software}}" type="text" name="software">
                                                                 </div>
 
                                                                 <div class="col-md-3">

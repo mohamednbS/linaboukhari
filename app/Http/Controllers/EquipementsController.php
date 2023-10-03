@@ -106,6 +106,7 @@ class EquipementsController extends Controller
         $equipement->modele=$request->input("modele");  
         $equipement->designation=$request->input("designation");
         $equipement->numserie=$request->input("numserie");
+        $equipement->software=$request->input("software");
         $equipement->date_service=$request->input("date_service"); 
         $equipement->plan_prev=$request->input("plan_prev"); 
         
@@ -183,6 +184,7 @@ class EquipementsController extends Controller
         $equipement->modele=$request->input("modele"); 
         $equipement->designation=$request->input("designation");
         $equipement->numserie=$request->input("numserie");
+        $equipement->software=$request->input("software");
         $equipement->date_service=$request->input("date_service");
         $equipement->plan_prev=$request->input("plan_prev"); 
         $equipement->client_id_client=$request->input("client_id_client");
@@ -232,7 +234,6 @@ class EquipementsController extends Controller
          $users = User::all();
          $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
          $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-      
          $query = $request->input('query');
          $equipements = Equipement::where('name', 'like', '%'.$query.'%')
                             ->orwhere('marque', 'like', '%'.$query.'%')

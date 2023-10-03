@@ -64,11 +64,8 @@ class ClientsController extends Controller
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $client = Client::find($id_client);
-        
         $equipement = Equipement::all();
-     
         $users = User::all();
-        
         $equipements = $client->equipements; // Filtrer les sous-équipements par id de l'équipement
         return view('clients.equipementclient')->with('users',$users)->with('client',$client)->with('equipement',$equipement)->with('equipements',$equipements)->with('messages',$messages)->with('notifications',$notifications); 
     }

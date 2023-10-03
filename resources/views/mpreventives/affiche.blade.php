@@ -7,7 +7,7 @@
 
 	<!--MENU-->
     @include('menu.menutop')
-	@include('menu.menuleft')  ""
+	@include('menu.menuleft') 
 
 		<!-- MAIN -->
 		<div class="main">

@@ -102,20 +102,7 @@
                                                                 </select>
                                                                 </div>
                                                                 
-                                                                <div class="col-md-3">
-                                                                    <label > <label>  Accessoire </label> </label>
-                                                                </div>
-
-                                                                <div class="col-md-9">
-                                                                    <select style="width:100%;margin-bottom:10px;" class="form-control" name="accessoire">
-                                                                        <option >Sélectionner un Accessoire</option>
-                                                                @foreach($accessoires as $accessoire )
-                                                                        
-                                                                        <option value="{{ $accessoire->id_accessoire }}">{{ $accessoire->designation }}</option>
     
-                                                                @endforeach
-                                                                </select>
-                                                                </div>
                                                                
         
                                                                 <div class="col-md-3">
@@ -189,7 +176,7 @@
                                                                         <option value="En Cours">En Cours</option>
                                                                         <option value="Suspendu">Suspendu</option>
                                                                         <option value="Terminé">Terminé</option>
-                                                                        <option value="Action Clôturé">Action Clôturé </option>
+                                                                        <option value="Action Clôturé">Action Clôturée </option>
                                                                         
                                                                     </select>
                                                                 </div>

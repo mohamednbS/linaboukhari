@@ -19,15 +19,13 @@ class CreateAccessoiresTable extends Migration
             $table->string('designation');
             $table->string('date_achat');
             $table->string('date_arrive');
-           
-
-
-
+  
             $table->rememberToken();
             $table->timestamps();
             $table->unsignedBigInteger('equipement_id_equipement');
             // Ajouter la contrainte de clé étrangère après avoir créé la colonne `equipement_id`
-            $table->foreign('equipement_id_equipement')->references('id_equipement')->on('equipements')->onDelete('cascade');
+            $table->foreign('equipement_id_equipement')->references('id_equipement')->on('equipements');
+            
         });
     }
 

@@ -83,30 +83,30 @@
                                             <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="tapper le numéro de série içi " type="text" name="numserie" id="validationDefault04" required>
                                             
                                             </div>
-                                        
+
                                             <div class="col-md-3">
-                                            <label> <label for="validationDefault05"> Date Mise en Service </label> </label>
+                                            <label> <label for="validationDefault06"> Date d'installation </label> </label>
                                                     
                                             </div>
                                                     <div class="col-md-9">
-                                                    <input min="{{ Carbon\Carbon::now() }}" style="width:100%;margin-bottom:10px;" type="date" name="date_service" class="form-control" id="validationDefault05" required >
+                                                    <input min="{{ Carbon\Carbon::now() }}" style="width:100%;margin-bottom:10px;" type="date" name="date_installation" class="form-control" id="validationDefault06" required >
                                                     
                                                     </div>
 
                                             <div class="col-md-3">
-                                            <label for="validationDefault06"> Durée Planing Préventif/an  </label>
+                                            <label for="validationDefault07"> Durée Planing Préventif/an  </label>
                                                     
                                             </div>
                                             <div class="col-md-9">
-                                            <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="tapper la durée du planing préventif par an içi " type="number" name="plan_prev" id="validationDefault06" required>
+                                            <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="tapper la durée du planing préventif par an içi " type="number" name="plan_prev" id="validationDefault07" required>
                                             </div>
 
                                             <div class="col-md-3">
-                                            <label><label for="validationDefault07"> Client</label> </label>
+                                            <label><label for="validationDefault08"> Client</label> </label>
                                                     
                                             </div>
                                             <div class="col-md-9">
-                                            <select name="client_id_client" class="form-control" style="width:100%;margin-bottom:10px;" id="validationDefault07" required>
+                                            <select name="client_id_client" class="form-control" style="width:100%;margin-bottom:10px;" id="validationDefault08" required>
                                                 <option>-- selectionner un Client --</option>
                                                 @foreach($clients as $client ) 
                                                                         
@@ -114,13 +114,22 @@
                                                 @endforeach
                                             </select>
                                             </div>
-                                            
+
                                             <div class="col-md-3">
-                                            <label><label for="validationDefault08"> Documentation de l'équipement </label>
+                                            <label for="validationDefault09"> Software </label>
                                             
                                             </div>
                                             <div class="col-md-9">
-                                                <input style="width:100%;margin-bottom:10px;" class="form-control"  type="file" name="document"  id="validationDefault08" required>
+                                            <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="tapper le software installé içi " type="text" name="software" id="validationDefault09" required>
+                                            
+                                            </div>
+                                            
+                                            <div class="col-md-3">
+                                            <label><label for="validationDefault010"> Documentation de l'équipement </label>
+                                            
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input style="width:100%;margin-bottom:10px;" class="form-control"  type="file" name="document"  id="validationDefault010" required>
                                             
                                             </div> 
                                             

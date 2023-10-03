@@ -80,56 +80,6 @@
 												</div>
 
 												<div class="col-md-3">
-													<label > Sous Equipement </label> 	
-												</div>
-	
-												<div class="col-md-9">
-													<select style="width:100%;margin-bottom:10px;" class="form-control" name="souseq_name">
-														<option>-- Selectionner un Sous Equipement --</option>  
-	
-													
-															@foreach($sousequipements as $sousequipement )
-															
-															    @if ($sousequipement->id_sousequipement == $contrat->souseq_name )
-															<option selected value='{{ $sousequipement->id_sousequipement }}'>{{ $sousequipement->designation }}</option>
-															    @else
-															<option value='{{ $sousequipement->id_sousequipement }}'>{{ $sousequipement->designation }}</option>
-															@endif
-
-															@endforeach
-														
-													</select>
-												</div>
-
-												<div class="col-md-3">
-													<label >Accessoire </label> 	
-												</div>
-	
-												<div class="col-md-9">
-													<select style="width:100%;margin-bottom:10px;" class="form-control" name="accessoire_name">
-														<option>-- Selectionner un Accessoire --</option>  
-	
-														
-															@foreach($accessoires as $accessoire )
-															
-															    @if ($accessoire->id_accessoire == $contrat->accessoire_name )
-															<option selected value='{{ $accessoire->id_accessoire }}'>{{ $accessoire->designation }}</option>
-															@else
-															<option value='{{ $accessoire->id_accessoire }}'>{{ $accessoire->designation }}</option>
-															@endif
-															
-															@endforeach
-														
-													</select>
-												</div>
-											
-												
-											
-												
-		
-
-												
-												<div class="col-md-3">
 													<label > Date de Début </label>
 													
 													</div>

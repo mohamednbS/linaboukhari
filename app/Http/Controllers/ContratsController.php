@@ -82,9 +82,7 @@ class ContratsController extends Controller
         $contrat = Contrat::find($id_contrat);
         $equipements = Equipement::all();
         $clients = Client::all();
-        $sousequipements = Equipement::all();
         $users = User::all();
-        $accessoires = Accessoire::all();
         $mailer= new AlerteContrat();
         Mail::to('gmao5657@gmail.com')->send(new AlerteContrat());
         /* dd($mailer->build());*/ 

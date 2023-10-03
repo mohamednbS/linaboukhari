@@ -21,5 +21,15 @@ class Client extends Model
     {
         return $this->hasMany(Equipement::class);
     }
+
+    /**
+	 * Has Many Through relation
+	 *
+	 * @return Illuminate\Database\Eloquent\Relations\hasManyThrough
+	 */
+	public function sousequipements()
+	{
+		return $this->hasManyThrough('App\Models\Sousequipement', 'App\Models\Equipement');
+	}
 }
    

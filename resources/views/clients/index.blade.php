@@ -49,9 +49,8 @@
 														<th>Adresse</th>            
 														<th>Email</th>
 														<th>Mobile</th>   
-														<th>Equipements</th>            
-													
-														
+														<th>Equipements</th>  
+											
 														@if (Auth::user()->role == "Administrateur")
 														<th>Action</th>
 														@endif
@@ -71,6 +70,7 @@
 													 
 													<td>{{ $client->mobile}}</td>  
 													<td><a href="/equipementclient/{{ $client->id_client }}"> voir les équipements</a></td>
+													
 												
 										 
 													

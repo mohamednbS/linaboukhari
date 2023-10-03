@@ -60,7 +60,7 @@
                                             <select style="width:100%;margin-bottom:10px;" class="form-control" name="idclient">
                                             @foreach($clients as $client )
 
-                                                @if ($client->id == $oi->idclient )
+                                                @if ($client->id_client == $oi->idclient )
                                                     <option selected value='{{ $client->id_client }}'>{{ $client->clientname }}</option>
                                                 @else
                                                     <option value='{{ $client->id_client }}'>{{ $client->clientname }}</option>
@@ -106,24 +106,6 @@
                                                 
                                             </select>
                                             </div>
-
-                                                    <div class="col-md-3">
-                                            <label > <label> Accessoire </label> </label>
-                                            
-                                            </div>
-                                            <div class="col-md-9">
-                                            <select style="width:100%;margin-bottom:10px;" class="form-control" name="accessoire">
-                                            @foreach($accessoires as $accessoire )
-                    
-                                                @if ($accessoire ->id_accessoire == $oi->accessoire  )
-                                                    <option selected value='{{ $accessoire ->id_accessoire  }}'>{{ $accessoire ->designation }}</option>
-                                                @else
-                                                    <option value='{{ $accessoire->id_accessoire }}'>{{ $accessoire->designation }}</option>
-                                                @endif
-                                                @endforeach
-                                                
-                                            </select>
-                                            </div>
                           
                                             <div class="col-md-3">
                                             <label> Type de panne/Mission </label>
@@ -148,7 +130,7 @@
                                             
                                             </div>
                                             <div class="col-md-9">
-                                            <select style="width:100%;margin-bottom:10px;" class="form-control" name="iduser" id="executeur"  multiple="multiple">
+                                            <select style="width:100%;margin-bottom:10px;" class="form-control" name="iduser[]" id="iduser"  multiple="multiple">
                                              @foreach($techniciens as $technicien )
                                                     
                                                 @if ($technicien->name == $oi->destinateur)
@@ -158,8 +140,7 @@
                                                 @endif
                                                     
                                             @endforeach
-
-                                              @foreach($ingenieurs as $ingenieur )
+                                            @foreach($ingenieurs as $ingenieur )
                                                     
                                                 @if ($ingenieur->name == $oi->destinateur)
                                                     <option selected value='{{ $ingenieur->name }}'>{{ $ingenieur->name }}</option>
@@ -168,6 +149,7 @@
                                                 @endif
                                                     
                                             @endforeach
+
                                             </select>
                                             
                                             </div>
@@ -202,7 +184,7 @@
                                                     <option selected value='Urgent'>Urgent</option>
                                                     <option value='Normale'>Normale</option>
                                                     <option value='Tres urgent'>Tres urgent</option>
-                                                    <option value="Action Clôturé">Action Clôturé </option>
+                                                    <option value="Action Clôturé">Action Clôturée </option>
 
                                                     @else
 

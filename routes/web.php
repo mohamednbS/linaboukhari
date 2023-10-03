@@ -117,7 +117,7 @@ Route::get('download-document/{document}', function ($document) {
 /* maintenance preventives route */
 Route::get('/mp','MpreventivesController@index')->middleware('auth');
 Route::get('/mp/show/{id_mpreventive}','MpreventivesController@show')->middleware('auth');
-Route::get('/m/{id_mpreventive}','MaintenancesController@show')->middleware('auth');
+Route::get('/m/{id_mpreventive}','MaintenancesController@show')->middleware('auth'); 
 Route::get('/mp/add','MpreventivesController@create')->middleware('auth');
 Route::post('/addmp','MpreventivesController@store')->middleware('auth');
 Route::post('/mp/filter','MpreventivesController@filter')->middleware('auth');

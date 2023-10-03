@@ -27,7 +27,7 @@
 							<div class="panel">
 								<div class="panel-heading">
 									<h3 class="panel-title"> Demande d'intervention : <span class="label label-primary"> {{ $di->numero }} </span>
-									<h4 class="col-md-12 text-right"> Etat : @if ($di->etat == "Suspendu")
+									<h4 class="col-md-12 text-left"> Etat : @if ($di->etat == "Suspendu")
 														<span class="label label-danger">
 														@elseif( $di->etat == "Demandé"  )
 														<span class="label label-info">
@@ -63,14 +63,7 @@
 									@endif
 									
 								@endforeach </h4>
-							
-								<h4> ◾​ ACCESSOIRES : 
-								@foreach ($accessoires as $accessoire )
-									@if ($di->accessoire == $accessoire->id_accessoire )   
-									{{ $accessoire->designation }}
-									@endif
-									
-								@endforeach</h4>
+						
 								<h4>◾​ Heure d'appel client : {{ $di->appel_client }}</h4>
 								<h4>◾​ Commentaires :{{ $di->comemntaire }}</h4>
 								<h5>◾​ Date de début d'intervention : {{ $di->date_intervention }}</h5>

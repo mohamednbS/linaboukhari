@@ -20,7 +20,6 @@ class CreateOrdreInterventionTable extends Migration
           
             $table->integer('idmachine');
             $table->integer('sousequipement')->nullable();
-            $table->integer('accessoire')->nullable();
             $table->integer('idclient');
             $table->string('type_panne');
             $table->string('priorite');

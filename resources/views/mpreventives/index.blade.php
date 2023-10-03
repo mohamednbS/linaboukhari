@@ -64,7 +64,7 @@
                                                     </tr>
                                                 </thead>
                                                 
-                                                <tbody>
+                                                <tbody> 
                                                 <?php $i=0; ?>
                                                 @foreach($mpreventives as $mp)
                                                 <?php $i++; ?>
@@ -108,9 +108,7 @@
                                                     <td> {{ $mp->date_execution }}</td>
                                               
                                                     <td>{{ $mp->observation }} </td>
-                                                    <td>
-                                                        <a href="{{ route('download.document', ['document' => $mp->document]) }}">Voir rapport</a>
-                                                        </td>
+                                                 
                                                 
                                                    
                                                     @if (Auth::user()->role == "Administrateur")

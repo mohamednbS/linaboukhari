@@ -18,13 +18,14 @@ class CreateEquipementsTable extends Migration
             $table->string('modele');
             $table->string('marque');
             $table->string('designation');
-            $table->string('numserie')->unique(); 
+            $table->string('numserie');
             $table->unsignedBigInteger('modalite_id_modalite');
             $table->unsignedBigInteger('client_id_client');
+            $table->unsignedBigInteger('software');
                 // Ajouter la contrainte de clé étrangère après avoir créé la colonne `modalite_id et 'client_id`
             $table->foreign('modalite_id_modalite')->references('id_modalite')->on('modalites');
             $table->foreign('client_id_client')->references('id_client')->on('clients');
-            $table->string('date_service');
+            $table->string('date_installation');
             $table->integer('plan_prev');
             $table->string('document');
             $table->rememberToken();

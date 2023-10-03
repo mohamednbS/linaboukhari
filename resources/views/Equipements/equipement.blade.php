@@ -59,7 +59,7 @@
 															@endif
 														 
 														    @endforeach</h4>
-										   <h5>Date Mise en Service : {{ $equipement->date_service}}</h5>
+										   <h5>Date d'installation : {{ $equipement->date_installation}}</h5>
 										   <h5>Durée planing préventif par an: {{ $equipement->plan_prev}}</h5>
 										   
 										   <p><a href="{{ route('download.document', ['document' => $equipement->document]) }}">voir la documentation</a></p>

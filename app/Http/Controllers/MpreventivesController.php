@@ -214,7 +214,7 @@ class MpreventivesController extends Controller
          $mp = Mpreventive::find($id_mpreventive);
          $mp->delete();
          return redirect('/mp')->with('addmp',"deleted");
-         
+          
     }
     public function historiqueMp(){
         $allmp = Mpreventive::where('etat',"Terminé")->get();

@@ -48,11 +48,8 @@
                                                     <tr>
                                                         <th>#</th>
 														<th>Type du contrat</th>
-                                                        <th>Clinet</th>
+                                                        <th>Client</th>
                                                         <th>Equipement</th>
-														<th>Sous Equipement</th>
-														<th>Accessoire</th>
-													
 														<th>Date de Début</th>
 														<th>Date de fin</th>
 													
@@ -87,32 +84,11 @@
 															@endif
 														@endforeach
 													</td>
-													<td>
-														@foreach( $equipements as $equipement )
-														@foreach($sousequipements as $sousequipement )
-															@if (( $equipement->id_equipement == $sousequipement->id_sousequipement) &&( $sousequipement->id_sousequipement == $contrat->souseq_name))
-																{{ $sousequipement->designation }} 
-															@endif
-														@endforeach
-														@endforeach
-													</td>
-													<td>
-														@foreach( $equipements as $equipement )
-														@foreach($accessoires as $accessoire)
-															@if (( $equipement->id_equipement == $accessoire->id_accessoire) &&( $accessoire->id_accessoire == $contrat->accessoire_name))
-																{{ $accessoire->designation }} 
-															@endif
-														@endforeach
-														@endforeach
-													</td>
-											
 													<td>{{ $contrat->date_debut }}</td>
 													<td>{{ $contrat->date_fin }}</td>
 												
 													<td>{{ $contrat->note }}</td>
-												
-												
-												
+
 													@if (Auth::user()->role == "Administrateur")
 														<td><a href="/cm/mod/{{ $contrat->id_contrat }}" data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary'><i class="lnr lnr-pencil"></i> </a> 
 															<a  data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/cm/del/{{ $contrat->id_contrat }}"  onclick="return confirm ('voulez vous vraiment supprimer le contrat' {{ $contrat['id']}})"><i class="lnr lnr-trash"></i></a> </td>
