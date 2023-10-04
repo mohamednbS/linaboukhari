@@ -1,43 +1,59 @@
 <?php
 
 namespace App\Http\Livewire;
-
 use Livewire\Component;
 use Illuminate\Support\Facades\Input;
 
 use Auth;
-// Les modèles
+
 use App\Client;
 use App\Equipement;
+use App\Sousequipement;
+
 
 class ClientEquipementSelect extends Component
 {
-    public $client_id_client; // L'identifiant du client
-    public $equipement_id; // L'identifiant de l'equipement
-    public $equipements; // la collection de l'equipements
+    public $clients;
+    public $equipements;
+    public $sousequipements;
 
-    public function mount() {
-        // On affecte une collection vide 
-        $this->equipements = collect();
+    public $selectedClient = null;
+    public $selectedEquipement= null;
+    public $selectedSousequipement = null;
+
+    public function mount($selectedSousequipement = null)
+    {
+        $this->clients = Client::all();
+        $this->equipements= collect();
+        $this->sousequipements = collect();
+        $this->selectedSousequipement = $selectedSousequipement;
+
+        if (!is_null($selectedSousequipement)) {
+            $sousequipement = Sousequipement::with('equipement.client')->find($selectedSousequipement);
+            if ($sousequipement) {
+                $this->sousequipements = Sousequipement::where('equipement_id_equipement', $sousequipement->equipement_id_equipement)->get();
+                $this->equipements = Equipement::where('client_id_client', $sousequipement->equipement->client_id_client)->get();
+                $this->selectedClinet = $sousequipement->equipement->client_id_client;
+                $this->selectedEquipement= $sousequipement->equipement_id;
+            }
+        }
     }
-
-    // Quand $id_client change, on charge les $equipements de $id_client 
-       public function updatedClientIdClient ($newValue) {
-        $this->equipements = Equipement::where("client_id_client", $newValue)->get();
-    }
-
-
 
     public function render()
     {
-        {
-            // On récupère les clients
-            $clients = Client::select("id_client", "clientname")->get();
-    
-            // On retourne la vue avec les clients
-            return view('livewire.client-equipement-select', [
-                'clients' => $clients
-            ]);
+        return view('livewire.client-equipement-select');
+    }
+
+    public function updatedSelectedClient($client)
+    {
+        $this->equipements = Equipement::where('client_id_client', $client)->get();
+        $this->selectedEquipement = NULL;
+    }
+
+    public function updatedSelectedEquipement($equipement)
+    {
+        if (!is_null($equipement)) {
+            $this->sousequipements = Sousequipement::where('equipement_id_equipement', $equipement)->get();
         }
     }
 }
