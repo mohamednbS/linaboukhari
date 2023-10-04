@@ -51,36 +51,16 @@
                                                 <input style="width:100%;margin-bottom:10px;"  class="form-control" value="{{ 'MP'.uniqid() }}" type="hidden" name="numero">
                                                 
                                                 </div>
+                                                <!--Générer la liste des clients et équipements -->
+                                                                
+                                                <!-- Styles livewire -->
+                                                    @livewireStyles()
 
-                                                <div class="col-md-3">
-                                                    <label > <label>  Client </label> </label>
-                                                        
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <select style="width:100%;margin-bottom:10px;" class="form-control" name="client">
-                                                        <option >Selectionner le client </option>  
-                                                        @foreach($clients as $client )
+                                                <!-- Le composant app/Http/Livewire/ClientsEquipementsSelect.php -->
+                                                    @livewire("client-equipement-select")
 
-                                                        <option value="{{ $client->id_client }}">{{ $client->clientname }}</option> 
-                                                        @endforeach
-                                                        </select>
-                                                </div>
-
-                                                
-                                                <div class="col-md-3">
-                                                <label > <label>  Equipement </label> </label>
-                                                
-                                                </div>
-                                                <div class="col-md-9">
-                                                <select style="width:100%;margin-bottom:10px;" class="form-control" name="machine">
-                                                    <option >Selectionner l'équipement </option>
-                                                @foreach($equipements as $equipement )
-
-                                                    <option value="{{ $equipement->id_equipement }}">{{ $equipement->designation.'---'.$equipement->modele}}</option>
-                                                @endforeach
-                                                </select>
-
-                                                </div>
+                                                <!-- Scripts livewire -->
+                                                    @livewireScripts()
 
                                                 <div class="col-md-3">
                                                 <label > <label>  Num.Série </label> </label>

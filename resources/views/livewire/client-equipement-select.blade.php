@@ -1,15 +1,14 @@
 <div>
-   
-    <div>
-    <!-- L'état de chargement de données -->
-    <p wire:loading >Chargement de données ...</p>
-
+ 
     <!-- Les clients -->
-    <p>
-        <label for="client_id_client" >Sélectionnez un client</label>
+    <div class="col-md-3">
+    
+        <label><label for="client_id_client" >client</label></label>
+    </div>
         
         <!-- Data Binding : <select> avec la propriété $client_id_client -->
-        <select id="client_id_client" wire:model="client_id_client" >
+    <div class="col-md-9">
+        <select id="client_id_client" wire:model="client_id_client" style="width:100%;margin-bottom:10px;" class="form-control" >
 
             <option value="" >Séléctionner un client</option>
 
@@ -19,25 +18,28 @@
             @endforeach
 
         </select>
-    </p>
+   
+    </div>
 
-    <!-- On vérifie si la collection de villes contient des éléments -->
-    @if($equipements->count())
-    <p>
-        <label for="id_equipement" >Sélectionnez un équipement</label>
-
+    <!-- On vérifie si la collection des equipements contient des éléments -->
+    @if(!is_null($equipements))
+    <div class="col-md-3">
+   
+        <label for="equipement_id" >Equipement</label>
+    </div>
+    <div class="col-md-9">
         <!-- Data Binding : <select> avec la propriété $equipement_id -->
-        <select id="equipement_id" wire:model="equipement_id" >
+        <select id="equipement_id" wire:model="equipement_id" style="width:100%;margin-bottom:10px;" class="form-control" >
 
-            <option value="" >Sélectionnez un equipement</option>
+            <option value="" >Sélectionnez un équipement</option>
 
             <!-- On parcourt la collection de equipements pour afficher chaque equipements -->
             @foreach ($equipements as $equipement)
-            <option value="{{ $equipement->id_equipement }}" >{{ $equipement->modele}}</option>
+            <option value="{{ $equipement->id_equipement }}" >{{ $equipement->designation.'--'.$equipement->modele }}</option>
             @endforeach
-
         </select>
-    </p>
+   
+    </div>
     @endif
-</div>
+
 </div>

@@ -13,7 +13,7 @@ use App\Equipement;
 class ClientEquipementSelect extends Component
 {
     public $client_id_client; // L'identifiant du client
-    public $id_equipement; // L'identifiant de l'equipement
+    public $equipement_id; // L'identifiant de l'equipement
     public $equipements; // la collection de l'equipements
 
     public function mount() {
@@ -22,8 +22,8 @@ class ClientEquipementSelect extends Component
     }
 
     // Quand $id_client change, on charge les $equipements de $id_client 
-       public function updatedClientId ($newValue) {
-        $this->equipements = Equipement::where("client_id_client", $newValue)->orderBy("clientname")->get();
+       public function updatedClientIdClient ($newValue) {
+        $this->equipements = Equipement::where("client_id_client", $newValue)->get();
     }
 
 

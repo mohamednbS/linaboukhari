@@ -40,12 +40,12 @@ class OinterventionsController extends Controller
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $equipements = Equipement::all();
         $sousequipements = Sousequipement::all();
-      
+        $clients = Client::all();
         $typepannes = Typepanne::all();
         $techniciens = User::where('role',"Technicien")->get();
         $ingenieurs = User::where('role',"Ingenieur")->get();
         $users = User::all();
-        return view('dmdinterventions.ajout')->with('users',$users)->with('equipements',$equipements)->with('techniciens',$techniciens)->with('messages',$messages)->with('notifications',$notifications)->with('typepannes',$typepannes)->with('sousequipements',$sousequipements)->with('ingenieurs',$ingenieurs);
+        return view('dmdinterventions.ajout')->with('users',$users)->with('equipements',$equipements)->with('clients',$clients)->with('techniciens',$techniciens)->with('messages',$messages)->with('notifications',$notifications)->with('typepannes',$typepannes)->with('sousequipements',$sousequipements)->with('ingenieurs',$ingenieurs);
     }
     public function store(Request $request){
         $numero = $request->input('numero');
