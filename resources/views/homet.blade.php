@@ -51,7 +51,7 @@
 													<td>{{ $i }}</td>
 													<td>
 														@foreach( $clients as $client )
-															 @if ($client->id_client == $oi->idclient)
+															 @if ($client->id_client == $oi->client_name)
 																{{ $client->clientname }} 
 															 @endif
 														@endforeach 
@@ -59,8 +59,8 @@
 
 													<td>
                                                     @foreach( $equipements as $eq )
-                                                         @if ($eq->id_equipement == $oi->idmachine)
-                                                            {{ $eq->designation }} 
+                                                         @if ($eq->id_equipement == $oi->equipement_name)
+                                                            {{ $eq->designation.'--'.$eq->modele  }} 
                                                          @endif
                                                     @endforeach 
 													</td>
@@ -136,15 +136,15 @@
                                                     <td>{{ $i }}</td>
                                                    	<td>
 													@foreach( $clients as $client )
-													    @if ($client->id_client== $amp->idclient)
+													    @if ($client->id_client== $amp->client_name)
 															{{ $client->clientname }} 
 														@endif
 													@endforeach </td>
 					
 													<td>
 													@foreach( $equipements as $eq )
-														@if ($eq->id_equipement == $amp->idmachine)
-															{{ $eq->designation }} 
+														@if ($eq->id_equipement == $amp->equipement_name)
+															{{ $eq->designation.'--'.$eq->modele  }} 
 														@endif
 													@endforeach </td>
 

@@ -71,7 +71,7 @@
                                                     <td> <a href="/di/show/{{ $oi->id_intervention }}">{{ $oi->numero }}</a></td>
 													<td>
 														@foreach($clients as $client )
-															@if ( $client->id_client == $oi->idclient )
+															@if ( $client->id_client == $oi->client_name )
 																{{ $client->clientname }}  
 															@endif
 														@endforeach
@@ -79,7 +79,7 @@
                                             
                                                     <td>    
                                                     @foreach($equipements as $equipement )
-                                                        @if ( $equipement->id_equipement == $oi->idmachine )
+                                                        @if ( $equipement->id_equipement == $oi->equipement_name )
                                                             {{ $equipement->designation.'--'.$equipement->modele }} 
                                                         @endif
                                                         @endforeach

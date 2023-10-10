@@ -47,7 +47,7 @@
                                              
                                             </div>
                                             <div class="col-md-9">
-                                            <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper le code de l'équipement içi" type="text" name="code" id="validationDefault01" required>
+                                            <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper le code de l'équipement ici" type="text" name="code" id="validationDefault01" required>
                                             
                                             </div>
                                             <div class="col-md-3">
@@ -55,7 +55,7 @@
                                             
                                             </div>
                                             <div class="col-md-9">
-                                            <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper la modele de l'équipement içi" type="text" name="modele" id="validationDefault02" required>
+                                            <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper la modele de l'équipement ici" type="text" name="modele" id="validationDefault02" required>
                                             
                                             </div>
                                             <div class="col-md-3">
@@ -63,7 +63,7 @@
                                             
                                             </div>
                                             <div class="col-md-9">
-                                            <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper la marque de l'équipement içi" type="text" name="marque" id="validationDefault02" required>
+                                            <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper la marque de l'équipement ici" type="text" name="marque" id="validationDefault02" required>
                                             
                                             </div>
                                             <div class="col-md-3">
@@ -71,7 +71,7 @@
                                                 
                                                 </div>
                                                 <div class="col-md-9">
-                                                <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper la désignation de l'équipement içi" type="text" name="designation" id="validationDefault03" required>
+                                                <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper la désignation de l'équipement ici" type="text" name="designation" id="validationDefault03" required>
                                                 
                                                 </div>
                                         
@@ -80,7 +80,7 @@
                                             
                                             </div>
                                             <div class="col-md-9">
-                                            <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="tapper le numéro de série içi " type="text" name="numserie" id="validationDefault04" required>
+                                            <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="tapper le numéro de série ici " type="text" name="numserie" id="validationDefault04" required>
                                             
                                             </div>
 
@@ -98,7 +98,7 @@
                                                     
                                             </div>
                                             <div class="col-md-9">
-                                            <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="tapper la durée du planing préventif par an içi " type="number" name="plan_prev" id="validationDefault07" required>
+                                            <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="tapper la durée du planing préventif par an ici " type="number" name="plan_prev" id="validationDefault07" required>
                                             </div>
 
                                             <div class="col-md-3">
@@ -120,7 +120,7 @@
                                             
                                             </div>
                                             <div class="col-md-9">
-                                            <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="tapper le software installé içi " type="text" name="software" id="validationDefault09" required>
+                                            <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="tapper le software installé ici " type="text" name="software" id="validationDefault09" required>
                                             
                                             </div>
                                             

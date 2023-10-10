@@ -48,7 +48,7 @@
 												
 												</div>
 												<div class="col-md-9">
-												<input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper le nom du departement içi" type="text" name="nom">
+												<input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper le nom du departement ici" type="text" name="nom">
 												
 												</div>
 												<div class="col-md-3">
@@ -56,16 +56,11 @@
 												
 												</div>
 												<div class="col-md-9">
-												<textarea style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper la description du departement içi"  name="description"></textarea>
+												<textarea style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper la description du departement ici"  name="description"></textarea>
 												
 												</div>
-<<<<<<< HEAD
 										
 											</div> 
-=======
-												
-											</div>
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
                                                                
                                                            
                                                             

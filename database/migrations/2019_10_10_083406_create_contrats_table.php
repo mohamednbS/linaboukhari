@@ -19,7 +19,7 @@ class CreateContratsTable extends Migration
             $table->string('client_name'); 
             $table->string('equipement_name');
             $table->string('souseq_name');
-            $table->string('accessoire_name');
+           
             $table->date('date_debut');
             $table->date('date_fin');
             $table->string('type_contrat');

@@ -31,7 +31,7 @@
 								<div class="panel-body">
 								<h4> Machine :  
 								@foreach ($equipements as $equipement )
-									@if ($mp->idmachine == $equipement->id_equipement )
+									@if ($mp->equipement_name == $equipement->id_equipement )
 									{{ $equipement->designation }}
 									@endif
 									
@@ -42,7 +42,7 @@
 					</h4>
 								<h4> Client : 
 								@foreach ($clients as $client )
-									@if ($mp->idclient == $client->id_client )   
+									@if ($mp->client_name == $client->id_client )   
 									{{ $client->clientname }}
 									@endif
 									

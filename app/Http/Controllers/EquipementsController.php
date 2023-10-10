@@ -107,7 +107,7 @@ class EquipementsController extends Controller
         $equipement->designation=$request->input("designation");
         $equipement->numserie=$request->input("numserie");
         $equipement->software=$request->input("software");
-        $equipement->date_service=$request->input("date_service"); 
+        $equipement->date_installation=$request->input("date_installation"); 
         $equipement->plan_prev=$request->input("plan_prev"); 
         
        
@@ -185,7 +185,7 @@ class EquipementsController extends Controller
         $equipement->designation=$request->input("designation");
         $equipement->numserie=$request->input("numserie");
         $equipement->software=$request->input("software");
-        $equipement->date_service=$request->input("date_service");
+        $equipement->date_installation=$request->input("date_installation");
         $equipement->plan_prev=$request->input("plan_prev"); 
         $equipement->client_id_client=$request->input("client_id_client");
   
@@ -240,7 +240,7 @@ class EquipementsController extends Controller
                             ->orwhere('modele', 'like', '%'.$query.'%')
                             ->orwhere('designation', 'like', '%'.$query.'%')
                             ->orwhere('numserie', 'like', '%'.$query.'%')
-                            ->orwhere('date_service', 'like', '%'.$query.'%')
+                            ->orwhere('date_installation', 'like', '%'.$query.'%')
                             ->orwhere('plan_prev', 'like', '%'.$query.'%')
                             ->orwhere('document', 'like', '%'.$query.'%')->get();
          return view('Equipements.search')->with('users',$users)->with('equipements',$equipements)->with('messages',$messages)->with('notifications',$notifications);

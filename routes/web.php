@@ -93,6 +93,7 @@ Route::get('/ot/{id_intervention}','OinterventionsController@ordretravaille')->m
 Route::get('/otoi/show/{id_intervention}','OinterventionsController@ordretravailleshow')->middleware('auth');
 Route::get('/otmp/show/{id_intervention}','OinterventionsController@ordretravaillempshow')->middleware('auth');
 Route::get('/otmp/historique/{id_mpreventive}','OinterventionsController@historiquempshow')->middleware('auth');
+Route::get('/otmp/ordretravavail/{id_mpreventive}','OinterventionsController@ordretravailmp')->middleware('auth');
 Route::get('/ot/refus/{id_intervention}','OinterventionsController@ordrerefus')->middleware('auth');
 Route::get('/otmp/refus/{id_intervention}','OinterventionsController@ordremprefus')->middleware('auth');
 Route::post('/ot/addobservation/{id_intervention}','OinterventionsController@addobservationoi')->middleware('auth');
@@ -106,8 +107,8 @@ Route::get('/notification/seen/{id_intervention}','NotificationsController@seen'
 Route::get('/oi/find', "OinterventionsController@find")->name('find')->middleware('auth'); 
 
 /* Rapport d'intervention*/ 
-Route::get('download-document/{document}', function ($document) {
-    $path = storage_path('app/public/' . $document);
+Route::get('download-document/',  function ($document) {
+    $path = storage_path('app/public/' . $document);  
 
     return response()->download($path, $document);})->name('download.document')->middleware('auth');
 
@@ -126,6 +127,7 @@ Route::get('/mpreventive/change/{id_mpreventive}',"MpreventivesController@change
 Route::get('/mpreventive/delete/{id_mpreventive}',"MpreventivesController@destroy")->middleware('auth');
 Route::get('/mpreventive/search_mp', "MpreventivesController@search_mp")->name('search_mp')->middleware('auth');
 Route::get('/mp/historique','MpreventivesController@historiqueMp')->middleware('auth'); 
+
 
 /* plan maintenance route */
 Route::get('/pm','PlanmaintenancesController@index')->middleware('auth');

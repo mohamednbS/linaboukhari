@@ -47,9 +47,6 @@ class HomeController extends Controller
         $modalites = Modalite::all()->count();
         $diec = Ointervention::where('etat',"En Cours")->count();
         $dimp = Mpreventive::where('etat',"Programé")->count();
-
-
-
         $diall = Ointervention::all()->count();
         $dinc = Ointervention::where('etat',"Demandé")->count(); 
         $dinc = Ointervention::where('etat',"Demandé")->count();    

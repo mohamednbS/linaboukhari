@@ -33,7 +33,7 @@
 								<div class="panel-body">
 								<h4> Machine :  
 								@foreach ($equipements as $equipement )
-									@if ($mp->idmachine == $equipement->id_equipement )
+									@if ($mp->equipement_name == $equipement->id_equipement )
 									{{ $equipement->designation }}
 									@endif
 									
@@ -41,7 +41,7 @@
 								<h4>Intervalle : Chaque  {{ $mp->intervalle }} {{ $mp->umesure }}</h4>
 								<h4> Periode : de  " {{ $mp->date_debut }} " jusqu'a " {{ $mp->date_fin }} "  </h4>
 								<h4> Client : 	@foreach ($clients as $client )
-									@if ($mp->idclient == $client->id_client )
+									@if ($mp->client_name == $client->id_client )
 									{{ $client->clientname }}
 									@endif
 									
@@ -54,6 +54,7 @@
                                                         <th>#</th>
 														<th>Date de maintenance</th>
 														<th>Observation</th>
+														<th>Action </th>
                      
                                                     </tr>
                                                 </thead>
@@ -63,11 +64,12 @@
 													@foreach($maintenances as $mt)
 													<?php $i++; ?>
 													<tr>
-													<td><a href="#">{{  $mp->numero }} ( {{ $i  }} ) </a></td> 
+													<td><a href="otmp/ordretravavail/{{ $mp->id_mpreventive }}">{{  $mp->numero }} ( {{ $i  }} ) </a></td> 
 
 													<td>{{ $mt->date_maintenance }}</td>
 						
 													<td>{{ $mt->observation }}</td>
+													 <td><a class='btn btn-primary btn-sm' href="otmp/ordretravavail/{{ $mp->id_mpreventive }}"> <i class="lnr lnr-highlight"></i> Démarrer </a>
 
 													
 														

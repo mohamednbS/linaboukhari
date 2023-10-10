@@ -36,6 +36,7 @@ class ClientsController extends Controller
         $adresse = $request->input('adresse');
         $email = $request->input('email');
         $mobile = $request->input('mobile');
+        $fax = $request->input('fax');
       
       /*dd($request->all());*/  
     
@@ -44,6 +45,7 @@ class ClientsController extends Controller
         $client->adresse = $adresse;
         $client->email = $email;
         $client->mobile = $mobile;
+        $client->fax = $fax;
        
       
         $client->save();
@@ -85,6 +87,7 @@ class ClientsController extends Controller
         $client->adresse=$request->input('adresse');
         $client->email=$request->input('email');
         $client->mobile=$request->input('mobile');
+        $client->fax=$request->input('fax');
      
         
         $client->save();
@@ -102,6 +105,7 @@ class ClientsController extends Controller
          $clients = Client::where('clientname', 'like', '%'.$query.'%')
                             ->orwhere('adresse', 'like', '%'.$query.'%')
                             ->orwhere('email', 'like', '%'.$query.'%')
+                            ->orwhere('fax', 'like', '%'.$query.'%')
                             ->orwhere('mobile', 'like', '%'.$query.'%')->get();
        
   

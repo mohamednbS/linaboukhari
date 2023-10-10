@@ -57,7 +57,7 @@
                                             </div>
 
                                             <div class="col-md-9">
-                                            <select style="width:100%;margin-bottom:10px;" class="form-control" name="idclient">
+                                            <select style="width:100%;margin-bottom:10px;" class="form-control" name="client_name">
                                             @foreach($clients as $client )
 
                                                 @if ($client->id_client == $oi->idclient )
@@ -76,7 +76,7 @@
                                             
                                             </div>
                                             <div class="col-md-9">
-                                            <select style="width:100%;margin-bottom:10px;" class="form-control" name="machine">
+                                            <select style="width:100%;margin-bottom:10px;" class="form-control" name="equipement_name">
                                             @foreach($equipements as $equipement )
                     
                                                 @if ($equipement->id_equipement == $oi->idmachine )
@@ -94,7 +94,7 @@
                                             
                                             </div>
                                             <div class="col-md-9">
-                                            <select style="width:100%;margin-bottom:10px;" class="form-control" name="sousequipement">
+                                            <select style="width:100%;margin-bottom:10px;" class="form-control" name="souseq_name">
                                             @foreach($sousequipements as $sousequipement )
                     
                                                 @if ($sousequipement->id_sousequipement == $oi->sousequipement )
@@ -210,18 +210,83 @@
                                                 @if ( $oi->etat == "Demandé")
                                                     <option>-- Sélectionner un Etat --</option>
                                                     <option selected value='Demandé'>Demandé</option>
-                                                    <option value='En Cours'>En Cours</option>
-                                                    <option value='Suspendu'>Suspendu</option>
-                                                    <option value='Terminé'>Terminé</option>
-                                                @elseif ($oi->etat == "En Cours")
+                                                    <option value="Diagnostic en Cours">Diagnostic en Cours</option>
+                                                    <option value="Reporté">Reporté</option>
+                                                    <option value="Attente BC">Attente BC</option>
+                                                    <option value="Attente Pièce">Attente Pièce</option>
+                                                    <option value="Devis à fournir">Devis à fournir</option>
+                                                    <option value="Mise en Attente">Mise en Attente</option>
+                                                    <option value="Attente Rapport">Attente Rapport</option>
+                                                    <option value="Clôturé Sans Rappport">Clôturé Sans Rappport</option>
+                                                    <option value="Clôturé">Clôturé </option> 
+                                                @elseif ($oi->etat == "Diagnostic en Cours")
                                                     <option>-- Sélectionner un Etat --</option>
-                                                    <option selected value='En Cours'>En cours</option>
-                                                    <option value='Suspendu'>Suspendu</option>
-                                                    <option value='Terminé'>Terminé</option>
+                                                    <option selected value='Diagnostic en Cours'>Diagnostic en Cours</option>
+                                                    <option selected value='Demandé'>Demandé</option>
+                                                    <option value="Reporté">Reporté</option>
+                                                    <option value="Attente BC">Attente BC</option>
+                                                    <option value="Attente Pièce">Attente Pièce</option>
+                                                    <option value="Devis à fournir">Devis à fournir</option>
+                                                    <option value="Mise en Attente">Mise en Attente</option>
+                                                    <option value="Attente Rapport">Attente Rapport</option>
+                                                    <option value="Clôturé Sans Rappport">Clôturé Sans Rappport</option>
+                                                    <option value="Clôturé">Clôturé </option> 
+                                                @elseif ($oi->etat == "Reporté")
+                                                    <option>-- Sélectionner un Etat --</option>
+                                                    <option selected value='Reporté'>Reporté</option>
+                                                    <option value="Attente BC">Attente BC</option>
+                                                    <option value="Attente Pièce">Attente Pièce</option>
+                                                    <option value="Devis à fournir">Devis à fournir</option>
+                                                    <option value="Mise en Attente">Mise en Attente</option>
+                                                    <option value="Attente Rapport">Attente Rapport</option>
+                                                    <option value="Clôturé Sans Rappport">Clôturé Sans Rappport</option>
+                                                    <option value="Clôturé">Clôturé </option>
+                                                @elseif ($oi->etat == "Attente BC")
+                                                    <option>-- Sélectionner un Etat --</option>
+                                                    <option selected value='Attente BC'>Attente BC</option>
+                                                    <option value="Reporté">Reporté</option>
+                                                    <option value="Attente BC">Attente BC</option>
+                                                    <option value="Attente Pièce">Attente Pièce</option>
+                                                    <option value="Devis à fournir">Devis à fournir</option>
+                                                    <option value="Mise en Attente">Mise en Attente</option>
+                                                    <option value="Attente Rapport">Attente Rapport</option>
+                                                    <option value="Clôturé Sans Rappport">Clôturé Sans Rappport</option>
+                                                    <option value="Clôturé">Clôturé </option>
+                                                @elseif ($oi->etat == "Attente Pièce")
+                                                    <option>-- Sélectionner un Etat --</option>
+                                                    <option selected value='Attente Pièce'>Attente Pièce</option>
+                                                    <option value="Devis à fournir">Devis à fournir</option>
+                                                    <option value="Mise en Attente">Mise en Attente</option>
+                                                    <option value="Attente Rapport">Attente Rapport</option>
+                                                    <option value="Clôturé Sans Rappport">Clôturé Sans Rappport</option>
+                                                    <option value="Clôturé">Clôturé </option>
+                                                @elseif ($oi->etat == "Devis à fournir")
+                                                    <option>-- Sélectionner un Etat --</option>
+                                                    <option selected value='Devis à fournir'>Devis à fournir</option>
+                                                    <option value="Mise en Attente">Mise en Attente</option>
+                                                    <option value="Attente Rapport">Attente Rapport</option>
+                                                    <option value="Clôturé Sans Rappport">Clôturé Sans Rappport</option>
+                                                    <option value="Clôturé">Clôturé </option>
+                                                @elseif ($oi->etat == "Mise en Attente")
+                                                    <option>-- Sélectionner un Etat --</option>
+                                                    <option selected value='Mise en Attente'>Mise en Attente</option>
+                                                    <option value="Attente Rapport">Attente Rapport</option>
+                                                    <option value="Clôturé Sans Rappport">Clôturé Sans Rappport</option>
+                                                    <option value="Clôturé">Clôturé </option>
+                                                @elseif ($oi->etat == "Attente Rapport")
+                                                    <option>-- Sélectionner un Etat --</option>
+                                                    <option selected value='Attente Rapport'>Attente Rapport</option>
+                                                    <option value="Clôturé Sans Rappport">Clôturé Sans Rappport</option>
+                                                    <option value="Clôturé">Clôturé </option>
+                                                @elseif ($oi->etat == "Clôturé Sans Rappport")
+                                                    <option>-- Sélectionner un Etat --</option>
+                                                    <option selected value='Clôturé Sans Rappport'>Clôturé Sans Rappport</option>
+                                                    <option value="Clôturé">Clôturé </option>
+                                                
                                                 @else
                                                     <option>-- Sélectionner un Etat --</option>
-                                                    <option selected value='Suspendu'>Suspendu</option>
-                                                    <option value='En Cours'>En Cours</option>
+                                                    <option selected value='Clôturé'>Clôturé</option>
+                                                    <option value='Clôturé'>En Cours</option>
                                                     <option value='Terminé'>Terminé</option>
                                                     
                                                 

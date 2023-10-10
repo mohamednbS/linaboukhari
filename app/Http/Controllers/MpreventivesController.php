@@ -55,9 +55,9 @@ class MpreventivesController extends Controller
         $datefin = $request->input("date_fin");
         $numero= $request->input("numero");
         $status = $request->input("status");
-        $idmachine = $request->input("machine");
+        $equipement_name = $request->input("equipement_name");
         $numserie = $request->input("numserie");
-        $idclient = $request->input("client");
+        $client_name = $request->input("client_name");
         $umesure = $request->input("unite_mesure");
         $executeurs = $request->input("executeur");
         $date_execution = $request->input("date_execution");
@@ -73,9 +73,9 @@ class MpreventivesController extends Controller
         $mp = new Mpreventive();
         $mp->numero = $numero;
         $mp->status = $status;
-        $mp->idmachine = $idmachine;
+        $mp->equipement_name  = $equipement_name ;
         $mp->numserie = $numserie;
-        $mp->idclient = $idclient;
+        $mp->client_name = $client_name;
         $mp->umesure = $umesure;
         $mp->executeur = implode(',', $executeurs);
         $mp->intervalle = $intervalle;

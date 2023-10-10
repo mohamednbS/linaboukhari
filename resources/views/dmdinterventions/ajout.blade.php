@@ -50,7 +50,7 @@
                                                                 <input style="width:100%;margin-bottom:10px;"  class="form-control" value="{{ 'DI'.uniqid() }}" type="hidden" name="numero">
                                                                 
                                                                 </div>
-                                                                <!--Générer la liste des clients et équipements -->
+                                                                <!--Générer la liste des clients et équipements et sous-equipements-->
                                                                 
                                                                 <!-- Styles livewire -->
               
@@ -60,19 +60,7 @@
 
                                                                 <!-- Scripts livewire -->
                                                                 @livewireScripts()
-                      
-                                                                                                           <!-- Styles livewire -->
-              
-                                                                @livewireStyles()
-                                                                 <!-- Le composant app/Http/Livewire/ClientsEquipementsSelect.php -->
-                                                                    @livewire("equipement-sousequipement-select")
-
-                                                                <!-- Scripts livewire -->
-                                                                @livewireScripts()
-                                                                
-    
-                                                               
-        
+             
                                                                 <div class="col-md-3">
                                                                     <label> Type de panne/Mission </label>
                                                                 
@@ -80,7 +68,7 @@
                                                                 <div class="col-md-9">
                                                                     <select style="width:100%;margin-bottom:10px;" class="form-control" name="type_panne">
                                                                 
-                                                                        <option >Selectionner une Panne/Pission</option>
+                                                                        <option >Sélectionner une Panne/Mission</option>
                                                                     @foreach($typepannes as $typepanne )
                                                                     
                                                                         <option value="{{ $typepanne->id_typepanne }}">{{ $typepanne->name }}</option>
@@ -124,7 +112,7 @@
                                                                 <div class="col-md-9">
                                                                     <select style="width:100%;margin-bottom:10px;" class="form-control" name="priorite">
                                                                     
-                                                                        <option >Selectionner une periorité</option>
+                                                                        <option >Sélectionner une periorité</option>
                                                                         <option value="Très urgent">Très urgent</option>
                                                                         <option value="Urgent">Urgent</option>
                                                                         <option value="Normale">Normale</option>
@@ -141,10 +129,15 @@
                                                                         
                                                                         <option >Sélectionner un Etat</option>
                                                                         <option value="Demandé">Demandé</option>
-                                                                        <option value="En Cours">En Cours</option>
-                                                                        <option value="Suspendu">Suspendu</option>
-                                                                        <option value="Terminé">Terminé</option>
-                                                                        <option value="Action Clôturé">Action Clôturée </option>
+                                                                        <option value="Diagnostic en Cours">Diagnostic en Cours</option>
+                                                                        <option value="Reporté">Reporté</option>
+                                                                        <option value="Attente BC">Attente BC</option>
+                                                                        <option value="Attente Pièce">Attente Pièce</option>
+                                                                        <option value="Devis à fournir">Devis à fournir</option>
+                                                                        <option value="Mise en Attente">Mise en Attente</option>
+                                                                        <option value="Attente Rapport">Attente Rapport</option>
+                                                                        <option value="Clôturé Sans Rappport">Clôturé Sans Rappport</option>
+                                                                        <option value="Clôturé">Clôturé </option> 
                                                                         
                                                                     </select>
                                                                 </div>

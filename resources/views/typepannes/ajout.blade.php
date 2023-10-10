@@ -47,7 +47,7 @@
                                                                 
                                                                 </div>
                                                                 <div class="col-md-9">
-                                                                <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper le type de panne içi" type="text" name="name">
+                                                                <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper le type de panne ici" type="text" name="name">
                                                                 
                                                                 </div>
                                                                 <div class="col-md-3">
@@ -55,7 +55,7 @@
                                                                 
                                                                 </div>
                                                                 <div class="col-md-9">
-                                                                <textarea style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper la description du panne içi"  name="description"></textarea>
+                                                                <textarea style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper la description du panne ici"  name="description"></textarea>
                                                                 
                                                                 </div>
                                                               

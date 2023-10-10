@@ -1,44 +1,44 @@
 <div>
-    <div class="form-group row">
-        <label for="client" class="col-md-4 col-form-label text-md-right">{{ __('Client') }}</label>
-
-        <div class="col-md-6">
-            <select wire:model="selectedClient" class="form-control">
-                <option value="" selected>Choose client</option>
+    <div class="col-md-3">
+        <label for="client">{{__('Client') }}</label>
+    </div> 
+        <div class="col-md-9">
+            <select wire:model="selectedClient" style="width:100%;margin-bottom:10px;" class="form-control" name="client_name">
+                <option value="" selected>Sélectionner un client</option>
                 @foreach($clients as $client)
                     <option value="{{ $client->id_client }}">{{ $client->clientname }}</option>
                 @endforeach
             </select>
         </div>
-    </div>
+    
 
     @if (!is_null($selectedClient))
-        <div class="form-group row">
-            <label for="equipement" class="col-md-4 col-form-label text-md-right">{{ __('Equipement') }}</label>
-
-            <div class="col-md-6">
-                <select wire:model="selectedEquipement" class="form-control">
-                    <option value="" selected>Choose equipement</option>
+        <div class="col-md-3">
+            <label for="equipement">{{ __('Equipement') }}</label>
+        </div>
+            <div class="col-md-9">
+                <select wire:model="selectedEquipement" style="width:100%;margin-bottom:10px;" class="form-control" name="equipement_name">
+                    <option value="" selected>Sélectionner un équipement</option>
                     @foreach($equipements as $equipement)
                         <option value="{{ $equipement->id_equipement }}">{{ $equipement->modele}}</option>
                     @endforeach
                 </select>
             </div>
-        </div>
+        
     @endif
 
     @if (!is_null($selectedEquipement))
-        <div class="form-group row">
-            <label for="sousequipement" class="col-md-4 col-form-label text-md-right">{{ __('Sousequipement') }}</label>
-
-            <div class="col-md-6">
-                <select wire:model="selectedSousequipement" class="form-control" name="sousequipement_id">
-                    <option value="" selected>Choose sousequipement</option>
+        <div class="col-md-3">
+            <label for="sousequipement">{{ __('Sousequipement') }}</label>
+        </div>
+            <div class="col-md-9">
+                <select wire:model="selectedSousequipement" style="width:100%;margin-bottom:10px;" class="form-control" name="souseq_name" >
+                    <option value="" selected>Sélectionner un sousequipement</option>
                     @foreach($sousequipements as $sousequipement)
                         <option value="{{ $sousequipement->id_sousequipement }}">{{ $sousequipement->designation }}</option>
                     @endforeach
                 </select>
             </div>
-        </div>
+        
     @endif
 </div>

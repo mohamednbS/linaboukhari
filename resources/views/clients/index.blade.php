@@ -49,6 +49,7 @@
 														<th>Adresse</th>            
 														<th>Email</th>
 														<th>Mobile</th>   
+														<th>Fax</th>  
 														<th>Equipements</th>  
 											
 														@if (Auth::user()->role == "Administrateur")
@@ -68,7 +69,9 @@
 											
 													<td>{{ $client->email }}</td>
 													 
-													<td>{{ $client->mobile}}</td>  
+													<td>{{ $client->mobile}}</td> 
+
+													<td>{{ $client->fax}}</td>  
 													<td><a href="/equipementclient/{{ $client->id_client }}"> voir les équipements</a></td>
 													
 												

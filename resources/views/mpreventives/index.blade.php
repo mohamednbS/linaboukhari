@@ -53,7 +53,7 @@
                                                         <th>Client</th>
                                                         <th>Equipement</th>
                                                         <th>Intervenant</th>
-                                                        <th>Prochaine Exécution</th>
+                                                        <th>Date de Maintenance</th>
                                                         <th>Observations</th>
                                                         <th>Rapport</th>
                                                         @if (Auth::user()->role == "Administrateur")
@@ -88,7 +88,7 @@
                                                    
                                                     <td>
                                                         @foreach($clients as $client )
-                                                            @if ( $client->id_client == $mp->idclient )
+                                                            @if ( $client->id_client == $mp->client_name )
                                                                 {{ $client->clientname }} 
                                                             @endif
                                                         @endforeach
@@ -96,7 +96,7 @@
 
                                                     <td>
                                                         @foreach($equipements as $equipement )
-                                                            @if ( $equipement->id_equipement == $mp->idmachine )
+                                                            @if ( $equipement->id_equipement == $mp->equipement_name )
                                                                {{ $equipement->designation.'--'.$equipement->modele }}  
                                                             @endif
                                                         @endforeach

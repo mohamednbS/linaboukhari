@@ -34,11 +34,7 @@
                                 @if( session()->get( 'addsousequipement' ) == "success" )
                                 <div class="alert alert-success alert-dismissible" role="alert">
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-<<<<<<< HEAD
 										<i class="fa fa-check-circle"></i> Sous-équipement ajouté avec succèss
-=======
-										<i class="fa fa-check-circle"></i> Sous-equipement ajouté avec succèss
->>>>>>> e121b86aa98783be36c6b4fe44980a592ea45271
 								</div>
                                 @endif
 						

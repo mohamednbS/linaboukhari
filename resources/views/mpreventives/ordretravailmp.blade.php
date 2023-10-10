@@ -29,7 +29,7 @@
 									<h3 class="panel-title"> Ordre d'Intervention</h3>
 								</div>
 								<div class="panel-body">
-								<form action='/ot/modobservation/{{ $oi->id_intervention }}' method="POST" >
+								<form action='otmp/ordretravavail/{{ $mp->id_mpreventive }}' method="POST" >
                                                         {{ csrf_field() }} 
                                          
                                                             <div class="row">
@@ -37,16 +37,9 @@
                                                                 <div class="col-md-3">
                                                                 <label > Date de Début </label>
                                                                 
-                                                                </div>
+                                                                </div> 
                                                                 <div class="col-md-9">
-                                                                <input style="width:100%;margin-bottom:10px;" class="form-control"  value="{{ $oi->date_debut}}"  type="datetime-local" name="date_debut">
-                                                                
-                                                                </div>
-																<label > Date de Fin </label>
-                                                                
-                                                                </div>
-                                                                <div class="col-md-9">
-                                                                <input style="width:100%;margin-bottom:10px;" class="form-control"  value="{{ $oi->date_fin}}"  type="datetime-local" name="date_fin">
+                                                                <input style="width:100%;margin-bottom:10px;" class="form-control"  type="datetime-local" name="date_debut">
                                                                 
                                                                 </div>
 																<div class="col-md-3">
@@ -54,7 +47,7 @@
 																			
 																	</div>
 																	<div class="col-md-9">
-																		<input style="width:100%;margin-bottom:10px;" class="form-control"  value="{{ $oi->commentaire}}" placeholder="Ecrire une Description içi"  type="text" name="commentaire">
+																		<input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Ecrire une Description içi"  type="text" name="commentaire">
 																			
 																	</div>
 
@@ -65,19 +58,12 @@
                                                                 <div class="col-md-9">
                                                                     <select style="width:100%;margin-bottom:10px;" class="form-control" name="etat">
                                                                         
-                                                                        @if ( $oi->etat == "Demandée")
-                                                                        <option>-- Sélectionner un Etat --</option>
-                                                                        <option selected value='Demandée'>Demandée</option>
-                                                                        <option value='En Cours'>En Cours</option>
-                                                                        @elseif ($oi->etat == "En Cours")
-                                                                        <option>-- Sélectionner un Etat --</option>
-                                                                        <option selected value='En Cours'>En Cours</option>
-                                                                        <option value='Suspendu'>Suspendu</option>
-                                                                        @else <option>-- Sélectionner un Etat --</option>
-                                                                        <option selected value='Suspendu'>Suspendu</option>
-                                                                        <option value='En Cours'>En Cours</option>
-                                                                        @endif
-
+                                                                        <option >Selectionner un Etat</option>
+                                                                        <option value="En Cours">En Cours</option>
+                                                                        <option value="Suspendu">Suspendu</option>
+																		<option value="Terminé">Terminé</option>
+                                                                
+                                                                        
                                                                     </select>
 															
                                                                 </div>

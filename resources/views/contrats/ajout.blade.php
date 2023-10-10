@@ -42,76 +42,16 @@
 						
 										<div class="row">
 										
-										    <div class="col-md-3">
-											    <label > Nom du Client </label>
-											</div>
+										<!--Générer la liste des clients et équipements et sous-equipements-->
+										
+										<!-- Styles livewire -->
+										    @livewireStyles()
 
-											<div class="col-md-9">
-												<select name="client_name" class="form-control" style="width:100%;margin-bottom:10px;">
-													<option>-- Selectionner un Client --</option>
-															@foreach( $clients as $client )
-																<option value='{{ $client->id_client }}'>{{ $client->clientname }}</option>
-															@endforeach
-												</select>
-											</div>
+										<!-- Le composant app/Http/Livewire/ClientsEquipementsSelect.php -->
+											@livewire("client-equipement-select")
 
-											<div class="col-md-3">
-											    <label >  Equipement </label> 	
-											</div>
-
-											<div class="col-md-9">
-												<select style="width:100%;margin-bottom:10px;" class="form-control" name="equipement_name">
-													<option>-- Selectionner un Equipement --</option>  
-												
-														@foreach($equipements as $equipement )
-														
-														<option value="{{ $equipement->id_equipement }}">{{ $equipement->designation }}</option>
-											            @endforeach
-
-												</select>
-											</div>
-
-											<div class="col-md-3">
-											    <label > Sous Equipement </label> 	
-											</div>
-
-											<div class="col-md-9">
-												<select style="width:100%;margin-bottom:10px;" class="form-control" name="souseq_name">
-													<option>-- Selectionner un Sous Equipement --</option>  
-
-													@foreach( $equipements as $equipement )
-														@foreach($sousequipements as $sousequipement )
-														
-														<option value="{{ $sousequipement->id_sousequipement}}">	
-															@if ($sousequipement->equipement_id_equipement == $equipement->id_equipement)
-															{{ $sousequipement->designation}}
-															@endif
-														</option>
-											            @endforeach
-													@endforeach
-												</select>
-											</div>
-
-											<div class="col-md-3">
-											    <label > Accessoire </label> 	
-											</div>
-
-											<div class="col-md-9">
-												<select style="width:100%;margin-bottom:10px;" class="form-control" name="accessoire_name">
-													<option>-- Selectionner un Accessoire --</option>  
-
-													@foreach( $equipements as $equipement )
-														@foreach($accessoires as $accessoire )
-														
-														<option value="{{ $accessoire->id_accessoire}}">	
-															@if ($accessoire->equipement_id_equipement == $equipement->id_equipement)
-															{{ $accessoire->designation}}
-															@endif
-														</option>
-											            @endforeach
-													@endforeach
-												</select>
-											</div>
+										<!-- Scripts livewire -->
+										    @livewireScripts()
 
 											<div class="col-md-3">
 											    <label> Date de Début </label>
@@ -147,7 +87,7 @@
 											</div>
 
 											<div class="col-md-9">
-											<input class="form-control" name="note" placeholder="tapper une note içi" type="text">
+											<input class="form-control" name="note" placeholder="tapper une note ici" type="text">
 											</div>
 											
 											

@@ -19,9 +19,9 @@ class CreateMpreventivesTable extends Migration
             $table->string('numero')->unique();
             $table->string('status');
             $table->string('umesure');
-            $table->integer('idmachine');
+            $table->integer('equipement_name');
             $table->integer('numserie');
-            $table->integer('idclient');
+            $table->integer('client_name');
             $table->string('intervalle');
             $table->string('executeur'); 
             $table->date('date_prochaine');

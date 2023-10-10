@@ -42,7 +42,7 @@
 							<div class="panel-body">
 								<h3> CLIENT :  
 								@foreach ($clients as $client )
-									@if ($di->idclient == $client->id_client )
+									@if ($di->client_name == $client->id_client )
 									{{ $client->clientname }}
 									@endif
 									
@@ -50,7 +50,7 @@
 
 								<h4> ◾​ EQUIPEMENT :  
 								@foreach ($equipements as $equipement )
-									@if ($di->idmachine == $equipement->id_equipement )
+									@if ($di->equipement_name == $equipement->id_equipement )
 									{{ $equipement->designation }}
 									@endif
 									
@@ -58,7 +58,7 @@
 
 								<h4> ◾​ SOUS EQUIPEMENT :  
 								@foreach ($sousequipements as $sousequipement )
-									@if ($di->sousequipement == $sousequipement->id_sousequipement )
+									@if ($di->souseq_name  == $sousequipement->id_sousequipement )
 									{{ $sousequipement->designation }}
 									@endif
 									

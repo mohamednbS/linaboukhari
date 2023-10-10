@@ -46,7 +46,7 @@ class ContratsController extends Controller
         $contrat->client_name = $request->input('client_name');
         $contrat->equipement_name = $request->input('equipement_name');
         $contrat->souseq_name = $request->input('souseq_name');
-        $contrat->accessoire_name = $request->input('accessoire_name');
+     
         $contrat->date_debut= $request->input('date_debut');
         $contrat->date_fin = $request->input('date_fin');
         $contrat->type_contrat = $request->input('type_contrat');
@@ -81,6 +81,8 @@ class ContratsController extends Controller
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $contrat = Contrat::find($id_contrat);
         $equipements = Equipement::all();
+        $sousequipements = Sousequipement::all();
+        $accessoires= Accessoire::all();
         $clients = Client::all();
         $users = User::all();
         $mailer= new AlerteContrat();

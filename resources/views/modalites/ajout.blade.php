@@ -47,7 +47,7 @@
                                                                 
                                                                 </div>
                                                                 <div class="col-md-9">
-                                                                <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper le nom du modalité içi" type="text" name="name">
+                                                                <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper le nom du modalité ici" type="text" name="name">
                                                                 
                                                                 </div>
                                                                 <div class="col-md-3">
@@ -55,7 +55,7 @@
                                                                 
                                                                 </div>
                                                                 <div class="col-md-9">
-                                                                <textarea style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper la description du modalité içi"  name="description"></textarea>
+                                                                <textarea style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper la description du modalité ici"  name="description"></textarea>
                                                                 
                                                                 </div>
                                                                

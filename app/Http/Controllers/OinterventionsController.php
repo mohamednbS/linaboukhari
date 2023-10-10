@@ -49,9 +49,9 @@ class OinterventionsController extends Controller
     }
     public function store(Request $request){
         $numero = $request->input('numero');
-        $idclient = $request->input('idclient');
-        $idmachine = $request->input('machine');
-        $sousequipement = $request->input('sousequipement');
+        $client_name = $request->input('client_name');
+        $equipement_name = $request->input('equipement_name');
+        $souseq_name = $request->input('souseq_name');
         $type_panne = $request->input('type_panne');
         $destinateurs = $request->input('iduser');
         $appel_client = $request->input('appel_client');
@@ -61,9 +61,9 @@ class OinterventionsController extends Controller
        
        $oi = new Ointervention();
        $oi->numero = $numero;
-       $oi->idclient = $idclient;
-       $oi->idmachine = $idmachine;
-       $oi->sousequipement = $sousequipement;
+       $oi->client_name = $client_name;
+       $oi->equipement_name = $equipement_name;
+       $oi->souseq_name= $souseq_name;
        $oi->type_panne = $type_panne;
        $oi->destinateur = implode(',', $destinateurs);
        $oi->appel_client = $appel_client ; 
@@ -125,9 +125,9 @@ class OinterventionsController extends Controller
         //
         $oi = Ointervention::find($id_intervention);
         $oi->numero = $request->input("numero");
-        $oi->idmachine = $request->input("machine");
-        $oi->sousequipement = $request->input("sousequipement");
-        $oi->idclient = $request->input("idclient");
+        $oi->equipement_name = $request->input("equipement_name");
+        $oi->souseq_name = $request->input("souseq_name");
+        $oi->client_name = $request->input("client_name");
         $oi->type_panne = $request->input("type_panne");
         $oi->destinateur = implode(',', $destinateurs);
         $oi->priorite = $request->input("priorite");
@@ -140,9 +140,9 @@ class OinterventionsController extends Controller
             $destinationPath['document'] = null;
             $oi = Ointervention::find($id_intervention);
             $oi->numero = $request->input("numero");
-            $oi->idmachine = $request->input("machine");
-            $oi->sousequipement = $request->input("sousequipement");
-            $oi->idclient = $request->input("idclient");
+            $oi->equipement_name = $request->input("equipement_name");
+            $oi->souseq_name = $request->input("souseq_name");
+            $oi->client_name = $request->input("client_name");
             $oi->type_panne = $request->input("type_panne");
             $oi->destinateur = implode(',', $destinateurs);
             $oi->priorite = $request->input("priorite");
@@ -304,6 +304,14 @@ class OinterventionsController extends Controller
         $today = date("Y-m-d");
         $maintenance = Maintenance::where('idmp',$mp->id_mpreventive)->where('date_maintenance',$today)->get();
         return view('mpreventives.historique')->with('equipements',$equipements)->with('maintenances',$maintenances)->with('mp',$mp)->with('maintenance',$maintenance)->with('messages',$messages)->with('notifications',$notifications)->with('clients',$clients);
+
+    }
+    public function ordretravailmp($id_mpreventive){
+        
+        $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
+        $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
+        $mp = Mpreventive::find($id_mpreventive);
+        return view('mpreventives.ordretravailmp')->with('mp',$mp)->with('messages',$messages)->with('notifications',$notifications);
 
     }
     public function addobservationmp(Request $request , $id_maintenance){

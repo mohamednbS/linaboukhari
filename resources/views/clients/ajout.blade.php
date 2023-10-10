@@ -47,7 +47,7 @@
 											
 											</div>
 											<div class="col-md-9">
-											<input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper le nom du client içi" type="text" name="clientname"  id="validationDefault01"required>
+											<input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper le nom du client ici" type="text" name="clientname"  id="validationDefault01"required>
 											
 											</div>
 											
@@ -56,7 +56,7 @@
 													
 											</div>
 											<div class="col-md-9">
-											<input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper l'adresse du clientt içi" type="text" name="adresse">
+											<input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper l'adresse du clientt ici" type="text" name="adresse">
 													
 											</div>
 
@@ -65,15 +65,24 @@
 																											
 											</div>
 											<div class="col-md-9">
-											<input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper l'émail içi" type="text" name="email">
+											<input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper l'émail ici" type="text" name="email">
 											
 											</div>
 											<div class="col-md-3">
-												<label > Mobile</label>
+												<label > Tél/Mobile</label>
+												
+											</div>  
+											<div class="col-md-9">
+												<input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper le numéro du client ici" type="num" name="mobile">
 												
 											</div>
+
+											<div class="col-md-3">
+												<label >Fax</label>
+												
+											</div>  
 											<div class="col-md-9">
-												<input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper le numéro du client içi" type="num" name="mobile">
+												<input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper le numéro du client ici" type="varchar" name="fax">
 												
 											</div>
 														
