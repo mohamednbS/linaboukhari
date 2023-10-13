@@ -45,15 +45,15 @@ class HomeController extends Controller
         $equipements = Equipement::all()->count();
         $contrats = Contrat::all()->count();
         $modalites = Modalite::all()->count();
-        $diec = Ointervention::where('etat',"En Cours")->count();
+       
         $dimp = Mpreventive::where('etat',"Programé")->count();
+
         $diall = Ointervention::all()->count();
-        $dinc = Ointervention::where('etat',"Demandé")->count(); 
-        $dinc = Ointervention::where('etat',"Demandé")->count();    
-        $dir = Ointervention::where('etat',"Suspendu")->count(); 
-        
+        $dinc = Ointervention::where('etat',"Demandé")->count();   
+        $dir = Ointervention::where('etat',"Mise en Attente")->count(); 
+        $diec = Ointervention::where('etat',"Diagnostic en Cours")->count();
         $dieav = Ointervention::where('etat',"En attente de validation")->count();
-        $dit = Ointervention::where('etat',"Terminé")->count();
+        $dit = Ointervention::where('etat',"Clôturé")->count();
         if ($diall > 0 ){
             $diperc = round( ( $dinc / $diall ) * 100 , 2) ;
             $dirperc = round( ( $dir / $diall ) * 100 , 2);
@@ -82,8 +82,11 @@ class HomeController extends Controller
         $today = date('Y-m-d');
         $ointerventions = Ointervention::where('destinateur',Auth::user()->id_user)
                                         ->orwhere('etat',"=","Demandé")
-                                        ->orwhere('etat',"=","Suspendu")
-                                        ->orwhere('etat',"=","En Cours")
+                                        ->orwhere('etat',"=","Mise en Attente")
+                                        ->orwhere('etat',"=","Diagnostic En Cours")
+                                        ->orwhere('etat',"=","Devis à fournir")
+                                        ->orwhere('etat',"=","Attente pièce")
+                                        ->orwhere('etat',"=","Attente BC")
                                         ->get();
         $mpreventives = Mpreventive::where('executeur',Auth::user()->id_user)
                             ->where('date_prochaine',$today) 

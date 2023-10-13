@@ -62,11 +62,11 @@
                                                                 @livewireScripts()
              
                                                                 <div class="col-md-3">
-                                                                    <label> Type de panne/Mission </label>
+                                                                    <label for="validationDefault03"> Type de panne/Mission </label>
                                                                 
                                                                 </div>
                                                                 <div class="col-md-9">
-                                                                    <select style="width:100%;margin-bottom:10px;" class="form-control" name="type_panne">
+                                                                    <select style="width:100%;margin-bottom:10px;" class="form-control" name="type_panne" id="validationDefault03" required>
                                                                 
                                                                         <option >Sélectionner une Panne/Mission</option>
                                                                     @foreach($typepannes as $typepanne )
@@ -79,11 +79,11 @@
 																</div>
 															
                                                                 <div class="col-md-3">
-                                                                <label> Intervenant </label>
+                                                                <label for="validationDefault04"> Intervenant </label>
                                                                 
                                                                 </div>
                                                                 <div class="col-md-9">
-                                                                <select name="iduser[]" id="iduser"  multiple="multiple" style="width:100%;margin-bottom:10px;">   
+                                                                <select name="iduser[]" id="iduser"  multiple="multiple" style="width:100%;margin-bottom:10px;" id="validationDefault04" required>   
                                                                     <option >Sélectionner l'intervenant</option>
                                                                     @foreach($techniciens as $technicien )
                                                                         <option value="{{ $technicien->name }}">{{ $technicien->name }}</option> 

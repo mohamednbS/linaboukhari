@@ -30,7 +30,7 @@ class OinterventionsController extends Controller
         $clients = Client::all();
         $techniciens = User::where('role',"Technicien")->get();
         $ingenieurs = User::where('role',"Ingenieur")->get();
-        $ointerventions = Ointervention::where('etat',"!=","Terminé")   
+        $ointerventions = Ointervention::where('etat',"!=","Clôturé")   
                                         ->get(); 
         $ointerventions = Ointervention::paginate(5);
         return view('dmdinterventions.index')->with('messages',$messages)->with('notifications',$notifications)->with('ointerventions',$ointerventions)->with('equipements',$equipements)->with('clients',$clients)->with('users',$users)->with('typepannes',$typepannes)->with('techniciens', $techniciens)->with('ingenieurs',$ingenieurs);
@@ -343,7 +343,7 @@ class OinterventionsController extends Controller
     }
 
     public function historiqueoi(){
-        $alloi = Ointervention::where('etat',"Terminé")->get();
+        $alloi = Ointervention::where('etat',"Clôturé")->get();
         $equipements = Equipement::all();
         $typepannes = Typepanne::all();
         $users = User::all();

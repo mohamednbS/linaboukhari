@@ -222,7 +222,7 @@
                                                 @elseif ($oi->etat == "Diagnostic en Cours")
                                                     <option>-- Sélectionner un Etat --</option>
                                                     <option selected value='Diagnostic en Cours'>Diagnostic en Cours</option>
-                                                    <option selected value='Demandé'>Demandé</option>
+                                                    <option value='Demandé'>Demandé</option>
                                                     <option value="Reporté">Reporté</option>
                                                     <option value="Attente BC">Attente BC</option>
                                                     <option value="Attente Pièce">Attente Pièce</option>
@@ -234,6 +234,8 @@
                                                 @elseif ($oi->etat == "Reporté")
                                                     <option>-- Sélectionner un Etat --</option>
                                                     <option selected value='Reporté'>Reporté</option>
+                                                    <option value='Demandé'>Demandé</option>
+                                                    <option value="Diagnostic en Cours">Diagnostic en Cours</option>
                                                     <option value="Attente BC">Attente BC</option>
                                                     <option value="Attente Pièce">Attente Pièce</option>
                                                     <option value="Devis à fournir">Devis à fournir</option>
@@ -244,6 +246,9 @@
                                                 @elseif ($oi->etat == "Attente BC")
                                                     <option>-- Sélectionner un Etat --</option>
                                                     <option selected value='Attente BC'>Attente BC</option>
+                                                    <option value='Demandé'>Demandé</option>
+                                                    <option value="Diagnostic en Cours">Diagnostic en Cours</option>
+                                                    <option value="Reporté">Reporté</option>
                                                     <option value="Reporté">Reporté</option>
                                                     <option value="Attente BC">Attente BC</option>
                                                     <option value="Attente Pièce">Attente Pièce</option>
@@ -255,6 +260,10 @@
                                                 @elseif ($oi->etat == "Attente Pièce")
                                                     <option>-- Sélectionner un Etat --</option>
                                                     <option selected value='Attente Pièce'>Attente Pièce</option>
+                                                    <option value='Demandé'>Demandé</option>
+                                                    <option value="Diagnostic en Cours">Diagnostic en Cours</option>
+                                                    <option value="Reporté">Reporté</option>
+                                                    <option value="Attente BC">Attente BC</option>
                                                     <option value="Devis à fournir">Devis à fournir</option>
                                                     <option value="Mise en Attente">Mise en Attente</option>
                                                     <option value="Attente Rapport">Attente Rapport</option>
@@ -263,6 +272,11 @@
                                                 @elseif ($oi->etat == "Devis à fournir")
                                                     <option>-- Sélectionner un Etat --</option>
                                                     <option selected value='Devis à fournir'>Devis à fournir</option>
+                                                    <option value='Demandé'>Demandé</option>
+                                                    <option value="Diagnostic en Cours">Diagnostic en Cours</option>
+                                                    <option value="Reporté">Reporté</option>
+                                                    <option value="Attente BC">Attente BC</option>
+                                                    <option value="Attente Pièce">Attente Pièce</option>
                                                     <option value="Mise en Attente">Mise en Attente</option>
                                                     <option value="Attente Rapport">Attente Rapport</option>
                                                     <option value="Clôturé Sans Rappport">Clôturé Sans Rappport</option>
@@ -270,24 +284,55 @@
                                                 @elseif ($oi->etat == "Mise en Attente")
                                                     <option>-- Sélectionner un Etat --</option>
                                                     <option selected value='Mise en Attente'>Mise en Attente</option>
+                                                    <option value='Demandé'>Demandé</option>
+                                                    <option value="Diagnostic en Cours">Diagnostic en Cours</option>
+                                                    <option value="Reporté">Reporté</option>
+                                                    <option value="Attente BC">Attente BC</option>
+                                                    <option value="Attente Pièce">Attente Pièce</option>
+                                                    <option value="Devis à fournir">Devis à fournir</option>
                                                     <option value="Attente Rapport">Attente Rapport</option>
                                                     <option value="Clôturé Sans Rappport">Clôturé Sans Rappport</option>
                                                     <option value="Clôturé">Clôturé </option>
                                                 @elseif ($oi->etat == "Attente Rapport")
                                                     <option>-- Sélectionner un Etat --</option>
                                                     <option selected value='Attente Rapport'>Attente Rapport</option>
+                                                    <option value='Demandé'>Demandé</option>
+                                                    <option value="Diagnostic en Cours">Diagnostic en Cours</option>
+                                                    <option value="Reporté">Reporté</option>
+                                                    <option value="Attente BC">Attente BC</option>
+                                                    <option value="Attente Pièce">Attente Pièce</option>
+                                                    <option value="Devis à fournir">Devis à fournir</option>
+                                                    <option value="Mise en Attente">Mise en Attente</option>
                                                     <option value="Clôturé Sans Rappport">Clôturé Sans Rappport</option>
                                                     <option value="Clôturé">Clôturé </option>
                                                 @elseif ($oi->etat == "Clôturé Sans Rappport")
                                                     <option>-- Sélectionner un Etat --</option>
                                                     <option selected value='Clôturé Sans Rappport'>Clôturé Sans Rappport</option>
+                                                    <option value='Demandé'>Demandé</option>
+                                                    <option value="Diagnostic en Cours">Diagnostic en Cours</option>
+                                                    <option value="Reporté">Reporté</option>
+                                                    <option value="Attente BC">Attente BC</option>
+                                                    <option value="Attente Pièce">Attente Pièce</option>
+                                                    <option value="Devis à fournir">Devis à fournir</option>
+                                                    <option value="Mise en Attente">Mise en Attente</option>
+                                                    <option value="Attente Rapport">Attente Rapport</option>
                                                     <option value="Clôturé">Clôturé </option>
+                                                    <option value='Terminé'>Terminé</option>
                                                 
                                                 @else
                                                     <option>-- Sélectionner un Etat --</option>
                                                     <option selected value='Clôturé'>Clôturé</option>
+                                                    <option value='Demandé'>Demandé</option>
+                                                    <option value="Diagnostic en Cours">Diagnostic en Cours</option>
+                                                    <option value="Reporté">Reporté</option>
+                                                    <option value="Attente BC">Attente BC</option>
+                                                    <option value="Attente Pièce">Attente Pièce</option>
+                                                    <option value="Devis à fournir">Devis à fournir</option>
+                                                    <option value="Mise en Attente">Mise en Attente</option>
+                                                    <option value="Attente Rapport">Attente Rapport</option>
                                                     <option value='Clôturé'>En Cours</option>
-                                                    <option value='Terminé'>Terminé</option>
+                                                    <option value="Clôturé Sans Rappport">Clôturé Sans Rappport</option>
+                                                   
                                                     
                                                 
                                                 @endif

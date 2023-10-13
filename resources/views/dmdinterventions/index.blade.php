@@ -99,14 +99,18 @@
 
 													<td>
 
-														@if ($oi->etat == "Suspendu")
+														@if ($oi->etat =="Mise en Attente")
 														<span class="label label-danger">
 														@elseif( $oi->etat == "Demandé"  )
 														<span class="label label-info">
-														@elseif( $oi->etat == "En attente de validation" || $oi->etat == "En Cours"  )
-														<span class="label label-warning">
-														@else
+														@elseif( $oi->etat == "Clôturé" )
 														<span class="label label-success">
+														
+														@elseif( $oi->etat == "Diagnostic en Cours " )
+														<span class="label label-primary">
+														@else
+														<span class="label label-warning">
+														
 														
 														@endif
 														{{ $oi->etat }}</span>
