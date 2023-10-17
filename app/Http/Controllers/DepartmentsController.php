@@ -20,7 +20,7 @@ class DepartmentsController extends Controller
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $messages = Message::where('iddestination',Auth::user()->id)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id)->where('stat',"unseen")->get();
-        $departments = Department::all();
+        $departments = Department::orderBy('name')->get(); 
         return view('departments.index')->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('departments',$departments);
     }
     public function create(){

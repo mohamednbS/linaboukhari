@@ -11,7 +11,7 @@
             </select>
         </div>
     
-
+ 
     @if (!is_null($selectedClient))
         <div class="col-md-3">
             <label for="equipement" for="validationDefault02">{{ __('Equipement') }}</label>
@@ -20,7 +20,7 @@
                 <select wire:model="selectedEquipement" style="width:100%;margin-bottom:10px;" class="form-control" name="equipement_name" id="validationDefault02" required>
                     <option value="" selected>Sélectionner un équipement</option>
                     @foreach($equipements as $equipement)
-                        <option value="{{ $equipement->id_equipement }}">{{ $equipement->modele}}</option>
+                        <option value="{{ $equipement->id_equipement }}">{{ $equipement->modele.'--'.$equipement->numserie }} </option>
                     @endforeach
                 </select>
             </div>

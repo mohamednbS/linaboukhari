@@ -31,6 +31,7 @@ class UsersController extends Controller
         $departments = Department::all();
         $modalites = Modalite::all();
         $users = User::where('role',"!=", "Administrateur")->get();
+        $users = User::orderBy('name')->get(); 
         return view('users.index')->with('users',$users)->with('departments',$departments)->with('modalites',$modalites)->with('messages',$messages)->with('notifications',$notifications);
     }
         /**

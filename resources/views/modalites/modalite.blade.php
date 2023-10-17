@@ -58,12 +58,13 @@
                                       <!-- nav search--> 
                                   
                                 <table class="table table-striped">
-                                    <div>
-                                        <form action="{{ route('search_modalite') }}" method="GET">
-                                            <input type="text" name="query" placeholder="Recherche...">
-                                            <button type="submit">Rechercher</button> 
-                                        </form>
-                                    </div>
+                                <!-- nav search--> 
+                                <div>
+                                <form action="{{ route('filter') }}" method="GET">
+                                    <input type="text" name="query" placeholder="Recherche...">
+                                    <button  type="submit">Rechercher</button> 
+                                </form>
+                                </div>
                                   
                                   <thead>
                                       <tr>

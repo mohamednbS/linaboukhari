@@ -54,11 +54,13 @@ class ModalitesController extends Controller
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $modalite = Modalite::find($id_modalite);
-        $equipement = Equipement::all();
+        $equipement=Equipement::with('client')
+         ->orderBy('client_id_client','asc')
+         ->get();
         $clients = Client::all();
         $users = User::all();
         
-        $equipements = $modalite->equipements; // Filtrer les sous-équipements par id de l'équipement
+        $equipements = $modalite->equipements;// Filtrer les sous-équipements par id de l'équipement
         return view('Modalites.modalite')->with('users',$users)->with('modalite',$modalite)->with('equipements',$equipements)->with('clients',$clients)->with('equipement',$equipement)->with('messages',$messages)->with('notifications',$notifications)->with('equipement',$equipement); 
     }
     public function change($id_modalite){
