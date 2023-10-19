@@ -110,12 +110,8 @@ class EquipementsController extends Controller
         $equipement->software=$request->input("software");
         $equipement->date_installation=$request->input("date_installation"); 
         $equipement->plan_prev=$request->input("plan_prev"); 
-        
-       
         $equipement->client_id_client=$request->input("client_id_client"); 
-        
         $equipement->document = $document -> getClientOriginalName();
-
         $equipement->modalite_id_modalite=$modalite;
         
         $equipement->save();

@@ -46,17 +46,14 @@
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
-                                                        <th>N° Intervention</th>
+                                                        <th>N°</th>
 														<th>Client</th>
                                                         <th>Equipement</th>
-														
-														<th>Panne/Mission</th>
-														<th>Intervenant</th>
-														
+														<th>Etat initial d'équipement</th>
+														<th>Intervenant(s)</th>													
 														<th>Etat</th>
-                                                        <th>Commmentaires</th>
-														@if (Auth::user()->role == "Administrateur")
-							
+                                                        <th>Description</th>
+														@if (Auth::user()->role == "Administrateur")			
                                                         <th>Validation</th>
 														<th> Action </th>
                                                         @endif
@@ -116,7 +113,7 @@
 														{{ $oi->etat }}</span>
 													</td>
 							
-                                                    <td>{{ $oi->commentaire }}</td>
+                                                    <td>{{ $oi->description_panne }}</td>
 
 													@if (Auth::user()->role == "Administrateur")
                                                     <td>

@@ -37,9 +37,9 @@
 										<i class="fa fa-check-circle"></i> Equipement ajouté avec succèss <a href="/users" class="btn btn-sm btn-default"> Consulter la Liste des Equipements</a>
 								</div>
                                 @endif
-                                <form action="{{ route('Equipements.store', ['modalite' => $modalite]) }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('Equipements.store', ['modalite_id_modalite' => $modalite]) }}" method="POST" enctype="multipart/form-data">
                                     {{ csrf_field() }} 
-                                         
+                                           
                                         <div class="row">
                                         
                                             <div class="col-md-3"> 
@@ -51,7 +51,7 @@
                                             
                                             </div>
                                             <div class="col-md-3">
-                                            <label for="validationDefault02" > Modèle du machine</label>
+                                            <label for="validationDefault02" > Modèle Equipement</label>
                                             
                                             </div>
                                             <div class="col-md-9">
@@ -59,7 +59,7 @@
                                             
                                             </div>
                                             <div class="col-md-3">
-                                            <label > <label  for="validationDefault02"> Marque du machine </label> </label>
+                                            <label > <label  for="validationDefault02"> Marque Equipement  </label> </label>
                                             
                                             </div>
                                             <div class="col-md-9">
@@ -67,7 +67,7 @@
                                             
                                             </div>
                                             <div class="col-md-3">
-                                                <label > <label for="validationDefault03"> Désignation </label> </label>
+                                                <label > <label for="validationDefault03"> Modalité </label> </label>
                                                 
                                                 </div>
                                                 <div class="col-md-9">
@@ -94,7 +94,7 @@
                                                     </div>
 
                                             <div class="col-md-3">
-                                            <label for="validationDefault07"> Durée Planing Préventif/an  </label>
+                                            <label for="validationDefault07"> Durée Planning Préventif/an  </label>
                                                     
                                             </div>
                                             <div class="col-md-9">
@@ -125,11 +125,11 @@
                                             </div>
                                             
                                             <div class="col-md-3">
-                                            <label><label for="validationDefault010"> Documentation de l'équipement </label>
+                                            <label><label> Documentation de l'équipement </label>
                                             
                                             </div>
                                             <div class="col-md-9">
-                                                <input style="width:100%;margin-bottom:10px;" class="form-control"  type="file" name="document"  id="validationDefault010" required>
+                                                <input style="width:100%;margin-bottom:10px;" class="form-control"  type="file" name="document">
                                             
                                             </div> 
                                             

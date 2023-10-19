@@ -43,11 +43,11 @@
                                                             <div class="row">
                                                             
                                                                 <div class="col-md-3">
-                                                                <label > Nom du Panne </label>
+                                                                <label for="validationDefault01"> Nom du Panne </label>
                                                                 
                                                                 </div>
                                                                 <div class="col-md-9">
-                                                                <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper le type de panne ici" type="text" name="name">
+                                                                <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper le type de panne ici" type="text" name="name" id="validationDefault01" required>
                                                                 
                                                                 </div>
                                                                 <div class="col-md-3">

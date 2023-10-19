@@ -45,9 +45,16 @@
 											</form>
                                                 <thead>
                                                     <tr>
-                                                        <th>#</th>
-                                                        <th>Nom Du Département</th>
-                                                        <th>Description</th>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">Nom Du Département</th>
+                                                        <th scope="col">
+															<span> 
+																<i class ="fa fa-arrow-up"></i>
+																<i class ="fa fa-arrow-down"></i>
+															</span>
+															
+															
+															Description</th>
                                                            
 														@if (Auth::user()->role == "Administrateur")
 														<th>Action</th>

@@ -147,12 +147,12 @@ class AccessoiresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id,$equipement)
+    public function delete($id_accessoire)
     {
         //
-        $sousequipement = SousEquipements::find($id);
-        $sousequipement->delete();
-        return redirect("/equipement/".$equipement->id);
+        $accessoire = Accessoire::find($id_accessoire);
+        $accessoire->delete();
+        return redirect()->back()->with('addaccessoire',"deleted");
     }  
 
 } 

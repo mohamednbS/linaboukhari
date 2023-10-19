@@ -44,7 +44,7 @@ Route::get('/equipement/del/{id_equipement}','EquipementsController@destroy')->m
 Route::post('/modequipement/{id_equipement}','EquipementsController@update')->middleware('auth');
 Route::get('/equipements/detect', "EquipementsController@detect")->name('detect')->middleware('auth');
 Route::post('/modalites/{modalite_id_modalite}/equipements','EquipementsController@store')->name('Equipements.store')->middleware('auth');
-Route::get('/modalites/{modalite_id_modalite}/equipements/create', 'EquipementsController@create');
+Route::get('/modalites/{modalite_id_modalite}/equipements/create', 'EquipementsController@create');  
 /* voir la documementation */ 
 Route::get('download-document/{document}', function ($document) {
     $path = storage_path('app/public/' . $document);  
@@ -71,7 +71,7 @@ Route::get('/accessoires','AccessoiresController@index')->middleware('auth');
 Route::get('/sousequipement/{id}','SouequipementsController@show')->middleware('auth');
 Route::get('/accessoire/mod/{id_accessoire}','AccessoiresController@edit')->middleware('auth');
 Route::post('/modaccessoire/{id_accessoire}','AccessoiresController@update')->middleware('auth');
-Route::get('/equipement/del/{id}','EquipementsController@delete')->middleware('auth');
+Route::get('/accessoire/del/{id_accessoire}','AccessoiresController@delete')->middleware('auth');
 Route::post('/equipements/{equipement_id_equipement}/accessoires','AccessoiresController@store')->name('Accessoires.store')->middleware('auth');
 Route::get('/equipements/{equipement_id_equipement}/accessoires/create', 'AccessoiresController@create');
 

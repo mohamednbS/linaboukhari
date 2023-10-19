@@ -61,8 +61,8 @@
                                                                 <!-- Scripts livewire -->
                                                                 @livewireScripts()
              
-                                                                <div class="col-md-3">
-                                                                    <label for="validationDefault03"> Type de panne/Mission </label>
+                                                                <div class="col-md-3"> 
+                                                                    <label for="validationDefault03"> Etat initial d'équipement </label>
                                                                 
                                                                 </div>
                                                                 <div class="col-md-9">
@@ -77,9 +77,18 @@
                                                            
                                                                 </select>
 																</div>
+
+                                                                <div class="col-md-3">
+                                                                    <label> Description de la panne </label>
+                                                                    
+                                                                </div>
+                                                                <div class="col-md-9">
+                                                                    <textarea style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Ecrire une Description içi" name="description_panne"></textarea>
+                                                                    
+                                                                </div>
 															
                                                                 <div class="col-md-3">
-                                                                <label for="validationDefault04"> Intervenant </label>
+                                                                <label for="validationDefault04"> Intervenant(s) </label>
                                                                 
                                                                 </div>
                                                                 <div class="col-md-9">
@@ -96,21 +105,37 @@
                                                                 </div>
 
                                                                 <div class="col-md-3">
-                                                                <label> Heure d'appel Client </label>
+                                                                <label for="validationDefault05"> Heure d'appel Client </label>
                                                                 
                                                                 </div>
                                                                 <div class="col-md-9">
-                                                                <input style="width:100%;margin-bottom:10px;" class="form-control"  type="datetime-local" name="appel_client">
+                                                                <input style="width:100%;margin-bottom:10px;" class="form-control"  type="datetime-local" name="appel_client" id="validationDefault05" required>
                                                                 
                                                                 </div>
+
+                                                                <div class="col-md-3">
+                                                                    <label for="validationDefault06"> Mode d'Appel Client </label>
+                                                                    
+                                                                    </div>
+                                                                    <div class="col-md-9">
+                                                                        <select style="width:100%;margin-bottom:10px;" class="form-control" name="mode_appel" id="validationDefault06" required>
+                                                                        
+                                                                            <option >Sélectionner le mode d'appel</option>
+                                                                            <option value="Mail">Mail</option>
+                                                                            <option value="Téléphone">Téléphone</option>
+                                                                            <option value="Fax">Fax</option>
+                                                                            <option value="WhatsApp">WhatsApp</option>
+                                                                        
+                                                                        </select>
+                                                                    </div>
 
 
                                                                 <div class="col-md-3">
-                                                                <label> Priorité </label>
+                                                                <label for="validationDefault06"> Priorité </label>
                                                                 
                                                                 </div>
                                                                 <div class="col-md-9">
-                                                                    <select style="width:100%;margin-bottom:10px;" class="form-control" name="priorite">
+                                                                    <select style="width:100%;margin-bottom:10px;" class="form-control" name="priorite" id="validationDefault06" required>
                                                                     
                                                                         <option >Sélectionner une periorité</option>
                                                                         <option value="Très urgent">Très urgent</option>
@@ -119,13 +144,22 @@
                                                                     
                                                                     </select>
                                                                 </div>
+
+                                                                <div class="col-md-3">
+                                                                    <label > Date Début de l'intervention </label>
+                                                                    
+                                                                </div> 
+                                                                <div class="col-md-9">
+                                                                    <input style="width:100%;margin-bottom:10px;" class="form-control"  type="datetime-local" name="date_debut">
+                                                                    
+                                                                </div>
                                                                 
                                                                 <div class="col-md-3">
-                                                                    <label> Etat </label>
+                                                                    <label for="validationDefault07"> Etat </label>
                                                                     
                                                                 </div>
                                                                 <div class="col-md-9">
-                                                                    <select style="width:100%;margin-bottom:10px;" class="form-control" name="etat">
+                                                                    <select style="width:100%;margin-bottom:10px;" class="form-control" name="etat" id="validationDefault07" required>
                                                                         
                                                                         <option >Sélectionner un Etat</option>
                                                                         <option value="Demandé">Demandé</option>
@@ -142,15 +176,6 @@
                                                                     </select>
                                                                 </div>
 
-                                                                <div class="col-md-3">
-                                                                <label> Description Complémentaire </label>
-                                                                
-                                                                </div>
-                                                                <div class="col-md-9">
-                                                                <textarea style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Ecrire une Description içi" name="commentaire"></textarea>
-                                                                
-                                                                </div>
-                                                                
                                                             </div>
                 
                                       

@@ -40,26 +40,26 @@
 						
 							
 							
-								<form action="{{ route('Sousequipements.store', ['equipement' => $equipement]) }}" method="POST" enctype="multipart/form-data">
+								<form action="{{ route('Sousequipements.store', ['equipement_id_equipement' => $equipement]) }}" method="POST" enctype="multipart/form-data">
 							
 									{{ csrf_field() }}                                       
 								<div class="row"> 
                                                             
 								
 									<div class="col-md-3"> 
-									<label > Identifiant </label> 
+									<label for="validationDefault01"> Numéro de Série </label> 
 									
 									</div>
 									<div class="col-md-9">
-									<input style="width:100%;margin-bottom:10px;" class="form-control"  type="text" name="identifiant">
+									<input style="width:100%;margin-bottom:10px;" class="form-control"  type="text" name="identifiant" id="validationDefault01" required>
 									
 									</div>
 									<div class="col-md-3">
-									<label > Designation</label>
+									<label for="validationDefault02"> Désignation</label>
 									
 									</div>
 									<div class="col-md-9">
-									<input style="width:100%;margin-bottom:10px;" class="form-control"type="text" name="designation">
+									<input style="width:100%;margin-bottom:10px;" class="form-control"type="text" name="designation" id="validationDefault02" required>
 									
 									</div>
 								    <div class="col-md-3">

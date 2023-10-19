@@ -1,9 +1,9 @@
 <div>
     <div class="col-md-3">
-        <label for="client" for="validationDefault01">{{__('Client') }}</label>
+        <label for="client" >{{__('Client') }}</label>
     </div> 
         <div class="col-md-9">
-            <select wire:model="selectedClient" style="width:100%;margin-bottom:10px;" class="form-control" name="client_name" id="validationDefault01" required>
+            <select wire:model="selectedClient" style="width:100%;margin-bottom:10px;" class="form-control" name="client_name">
                 <option value="" selected>Sélectionner un client</option>
                 @foreach($clients as $client)
                     <option value="{{ $client->id_client }}">{{ $client->clientname }}</option>
@@ -14,10 +14,10 @@
  
     @if (!is_null($selectedClient))
         <div class="col-md-3">
-            <label for="equipement" for="validationDefault02">{{ __('Equipement') }}</label>
+            <label for="equipement">{{ __('Equipement') }}</label>
         </div>
             <div class="col-md-9">
-                <select wire:model="selectedEquipement" style="width:100%;margin-bottom:10px;" class="form-control" name="equipement_name" id="validationDefault02" required>
+                <select wire:model="selectedEquipement" style="width:100%;margin-bottom:10px;" class="form-control" name="equipement_name">
                     <option value="" selected>Sélectionner un équipement</option>
                     @foreach($equipements as $equipement)
                         <option value="{{ $equipement->id_equipement }}">{{ $equipement->modele.'--'.$equipement->numserie }} </option>

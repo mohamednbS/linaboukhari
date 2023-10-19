@@ -30,7 +30,7 @@ class OinterventionsController extends Controller
         $clients = Client::all();
         $techniciens = User::where('role',"Technicien")->get();
         $ingenieurs = User::where('role',"Ingenieur")->get();
-        $ointerventions = Ointervention::where('etat',"!=","Clôturé")   
+        $ointerventions = Ointervention::where('etat',"!=","Clôturé")    
                                         ->get(); 
         $ointerventions = Ointervention::paginate(5);
         return view('dmdinterventions.index')->with('messages',$messages)->with('notifications',$notifications)->with('ointerventions',$ointerventions)->with('equipements',$equipements)->with('clients',$clients)->with('users',$users)->with('typepannes',$typepannes)->with('techniciens', $techniciens)->with('ingenieurs',$ingenieurs);
@@ -40,7 +40,7 @@ class OinterventionsController extends Controller
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $equipements = Equipement::all();
         $sousequipements = Sousequipement::all();
-        $clients = Client::all();
+        $clients = Client::orderBy('clientname')->get(); 
         $typepannes = Typepanne::all();
         $techniciens = User::where('role',"Technicien")->get();
         $ingenieurs = User::where('role',"Ingenieur")->get();
@@ -53,10 +53,12 @@ class OinterventionsController extends Controller
         $equipement_name = $request->input('equipement_name');
         $souseq_name = $request->input('souseq_name');
         $type_panne = $request->input('type_panne');
+        $description_panne = $request->input('description_panne');
         $destinateurs = $request->input('iduser');
         $appel_client = $request->input('appel_client');
+        $mode_appel = $request->input('mode_appel');
         $priorite = $request->input('priorite');
-        $commentaire = $request->input('commentaire');
+        $date_intervention = $request->input("date_debut");  
         $etat = $request->input('etat');
        
        $oi = new Ointervention();
@@ -65,10 +67,12 @@ class OinterventionsController extends Controller
        $oi->equipement_name = $equipement_name;
        $oi->souseq_name= $souseq_name;
        $oi->type_panne = $type_panne;
+       $oi->description_panne = $description_panne;
        $oi->destinateur = implode(',', $destinateurs);
        $oi->appel_client = $appel_client ; 
+       $oi->mode_appel = $mode_appel ;
        $oi->priorite = $priorite; 
-       $oi->commentaire = $commentaire;
+       $oi->date_intervention = $date_intervention ;
        $oi->etat = $etat;
        $oi->save();
 
@@ -131,6 +135,8 @@ class OinterventionsController extends Controller
         $oi->type_panne = $request->input("type_panne");
         $oi->destinateur = implode(',', $destinateurs);
         $oi->priorite = $request->input("priorite");
+        $oi->date_intervention  = $request->input("date_intervention ");
+        $oi->date_fin_intervention = $request->input("date_fin_intervention ");
         $oi->commentaire = $request->input("commentaire");  
         $oi->etat = $request->input("etat");
         $oi->document = $document -> getClientOriginalName();
@@ -146,6 +152,8 @@ class OinterventionsController extends Controller
             $oi->type_panne = $request->input("type_panne");
             $oi->destinateur = implode(',', $destinateurs);
             $oi->priorite = $request->input("priorite");
+            $oi->date_intervention  = $request->input("date_intervention ");
+            $oi->date_fin_intervention = $request->input("date_fin_intervention ");
             $oi->commentaire = $request->input("commentaire");  
             $oi->etat = $request->input("etat");
         }

@@ -51,64 +51,16 @@
                                             
                                             </div>
 
-                                             <div class="col-md-3">
-                                                <label > <label>  Client </label> </label>
-                                                
-                                            </div>
+                                        
 
-                                            <div class="col-md-9">
-                                            <select style="width:100%;margin-bottom:10px;" class="form-control" name="client_name">
-                                            @foreach($clients as $client )
+                                            <!-- Le composant app/Http/Livewire/ClientsEquipementsSelect.php -->
+                                            @livewire("client-equipement-select")
 
-                                                @if ($client->id_client == $oi->idclient )
-                                                    <option selected value='{{ $client->id_client }}'>{{ $client->clientname }}</option>
-                                                @else
-                                                    <option value='{{ $client->id_client }}'>{{ $client->clientname }}</option>
-                                                @endif
-                                                        
-                                                        
-                                            @endforeach
-                                            </select>
-                                            </div>
+                                            <!-- Scripts livewire -->
+                                            @livewireScripts()
                         
                                             <div class="col-md-3">
-                                            <label > <label>  Equipement </label> </label>
-                                            
-                                            </div>
-                                            <div class="col-md-9">
-                                            <select style="width:100%;margin-bottom:10px;" class="form-control" name="equipement_name">
-                                            @foreach($equipements as $equipement )
-                    
-                                                @if ($equipement->id_equipement == $oi->idmachine )
-                                                    <option selected value='{{ $equipement->id_equipement }}'>{{ $equipement->designation }}</option>
-                                                @else
-                                                    <option value='{{ $equipement->id_equipement }}'>{{ $equipement->designation }}</option>
-                                                @endif
-                                                @endforeach
-                                                
-                                            </select>
-                                            </div>
-
-                                            <div class="col-md-3">
-                                            <label > <label> Sous Equipement </label> </label>
-                                            
-                                            </div>
-                                            <div class="col-md-9">
-                                            <select style="width:100%;margin-bottom:10px;" class="form-control" name="souseq_name">
-                                            @foreach($sousequipements as $sousequipement )
-                    
-                                                @if ($sousequipement->id_sousequipement == $oi->sousequipement )
-                                                    <option selected value='{{ $sousequipement->id_sousequipement }}'>{{ $sousequipement->designation }}</option>
-                                                @else
-                                                    <option value='{{ $sousequipement->id_equipement }}'>{{ $sousequipement->designation }}</option>
-                                                @endif
-                                                @endforeach
-                                                
-                                            </select>
-                                            </div>
-                          
-                                            <div class="col-md-3">
-                                            <label> Type de panne/Mission </label>
+                                            <label> Etat initial d'équipement</label>
                                             
                                             </div>
                                             <div class="col-md-9">
@@ -124,9 +76,19 @@
                                     
                                             </select>
                                             </div>
+
+                                            
+                                            <div class="col-md-3">
+                                                <label> Description de la panne </label>
+                                                
+                                            </div>
+                                            <div class="col-md-9">
+                                                <textarea style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $oi->description_panne }}" name="description_panne"></textarea>
+                                                
+                                            </div>
                                         
                                             <div class="col-md-3">
-                                            <label> Intervenant </label>
+                                            <label> Intervenant(s) </label>
                                             
                                             </div>
                                             <div class="col-md-9">
@@ -176,28 +138,41 @@
                                                     <option selected value='Tres urgent'>Tres urgent</option>
                                                     <option value="Urgent">Urgent</option>
                                                     <option value="Normale">Normale</option>
-                                                    <option value="Action Clôturé">Action Clôturé </option>
+                
+                                                    @elseif ($oi->priorite == "Urgent")
 
-                                                    @elseif ($oi->priorite == "En Cours")
-
-                                                    <option>-- Sélectionner un Etat --</option>
+                                                    <option>-- Sélectionner une priorité--</option>
                                                     <option selected value='Urgent'>Urgent</option>
                                                     <option value='Normale'>Normale</option>
                                                     <option value='Tres urgent'>Tres urgent</option>
-                                                    <option value="Action Clôturé">Action Clôturée </option>
-
+                                       
                                                     @else
 
-                                                    <option>-- Sélectionner un Etat --</option>
+                                                    <option>-- Sélectionner une priorité --</option>
                                                     <option selected value='Normale'>Normale</option>
                                                     <option value='Tres urgent'>Tres urgent</option>
                                                     <option value='Urgent'>Urgent</option>
-                                                    <option value="Action Clôturé">Action Clôturé </option>
-                                                    
-                                                
+                                 
                                                 @endif
                                                 
                                                 </select>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <label > Date Début de l'intervention </label>
+                                                
+                                            </div> 
+                                            <div class="col-md-9">
+                                                <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $oi->date_intervention }}" type="datetime-local" name="date_debut">
+                                                
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label > Date Fin de l'intervention </label>
+                                                
+                                            </div> 
+                                            <div class="col-md-9">
+                                                <input style="width:100%;margin-bottom:10px;" class="form-control"  type="datetime-local" name="date_fin_intervention">
+                                                
                                             </div>
 
                                             <div class="col-md-3">
@@ -340,11 +315,11 @@
                                             </div> 
 
                                             <div class="col-md-3">
-                                            <label> Description complémentaire </label>
+                                            <label> Description de l'intervention </label>
                                             
                                             </div>
                                             <div class="col-md-9">
-                                            <textarea style="width:100%;margin-bottom:10px;"  value="{{ $oi->name}}"class="form-control"  name="commentaire"></textarea>
+                                            <textarea style="width:100%;margin-bottom:10px;" class="form-control"  name="commentaire"></textarea>
                                             
                                             </div>
 

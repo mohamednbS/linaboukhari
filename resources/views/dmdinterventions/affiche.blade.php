@@ -65,11 +65,11 @@
 								@endforeach </h4>
 						
 								<h4>◾​ Heure d'appel client : {{ $di->appel_client }}</h4>
-								<h4>◾​ Commentaires :{{ $di->comemntaire }}</h4>
 								<h5>◾​ Date de début d'intervention : {{ $di->date_intervention }}</h5>
 								<h5>◾​ Date de fin d'intervention : {{ $di->date_fin_intervention }}</h5>
+								<h4>◾​ Description de la panne :{{ $di->description_panne }}</h4>
+								<h4>◾​ Description de l'intervention : {{ $di->commentaire }}</h4>
 								
-								<h5>◾​ Observations : {{ $di->observation }}</h5>
 								
 					        </div>
                     	</div>

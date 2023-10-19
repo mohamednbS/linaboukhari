@@ -62,21 +62,13 @@
                                                 <!-- Scripts livewire -->
                                                     @livewireScripts()
 
-                                                <div class="col-md-3">
-                                                <label > <label>  Num.Série </label> </label>
-                                                
-                                                </div>
-                                                <div class="col-md-9">
-                                                <input style="width:100%;margin-bottom:10px;" placeholder="Saisir le numéro de série" class="form-control" name="numserie">
-              
-                                                </div>
 
                                                 <div class="col-md-3">
-                                                <label> Unité de mesure </label> 
+                                                <label for="validationDefault03"> Unité de mesure </label> 
                                                 
                                                 </div>
                                                 <div class="col-md-9">
-                                                <select style="width:100%;margin-bottom:10px;" class="form-control" name="unite_mesure">
+                                                <select style="width:100%;margin-bottom:10px;" class="form-control" name="unite_mesure" id="validationDefault03" required>
                                                 
                                                         <option >Selectionner l'unite de mesure</option>
                     
@@ -86,23 +78,23 @@
                                                 </div>
 
                                                 <div class="col-md-3">
-                                                <label> Intervalle </label>
+                                                <label for="validationDefault04"> Intervalle </label>
                                                 
                                                 </div>
                                                 <div class="col-md-9">
-                                                <input style="width:100%;margin-bottom:10px;" type="number" name="intervalle" class="form-control" >
+                                                <input style="width:100%;margin-bottom:10px;" type="number" name="intervalle" class="form-control" id="validationDefault04 " required>
                                                 
                                                 </div>
                                                 <div class="col-md-3">
-                                                <label> Commencé le </label>
+                                                <label for="validationDefault05"> Commencé le </label>
                                                 
                                                 </div>
                                                 <div class="col-md-9">
-                                                <input min="{{ Carbon\Carbon::now() }}" style="width:100%;margin-bottom:10px;" type="date" name="date_debut" class="form-control" >
+                                                <input min="{{ Carbon\Carbon::now() }}" style="width:100%;margin-bottom:10px;" type="date" name="date_debut" class="form-control" id="validationDefault05 " required >
                                                 
                                                 </div>
                                                 <div class="col-md-3">
-                                                <label> Terminé le </label>
+                                                <label for="validationDefault06"> Terminé le </label>
                                                 
                                                 </div>
                                                 <div class="col-md-9">
@@ -114,18 +106,18 @@
                                                     
                                                     </div>
                                                 <div class="col-md-9">
-                                                    <input min="{{ Carbon\Carbon::now() }}" style="width:100%;margin-bottom:10px;"   type="date" name="date_execution" class="form-control" >
+                                                    <input min="{{ Carbon\Carbon::now() }}" style="width:100%;margin-bottom:10px;"   type="date" name="date_execution" class="form-control" id="validationDefault06 " required >
                                                 </div>
                 
                                         
                                                 
                                                 <div class="col-md-3">
-                                                <label> Intervenant </label>
+                                                <label for="validationDefault07"> Intervenant </label>
                                                 
                                                 </div>
                                                 <div class="col-md-9">
                                             
-                                                    <select name="executeur[]" id="executeur"  multiple="multiple" style="width:100%;margin-bottom:10px;">   
+                                                    <select name="executeur[]" id="executeur"  multiple="multiple" style="width:100%;margin-bottom:10px;" id="validationDefault07 " required>   
                                                         <option >Selectionner l'intervenant</option>
                                                         @foreach($techniciens as $technicien )
                                                             <option value="{{ $technicien->name }}">{{ $technicien->name }}</option> 
@@ -137,11 +129,11 @@
                                                 </div>
 
                                                 <div class="col-md-3">
-                                                    <label> Etat </label>
+                                                    <label for="validationDefault08"> Etat </label>
                                                     
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <select style="width:100%;margin-bottom:10px;" class="form-control" name="etat">
+                                                    <select style="width:100%;margin-bottom:10px;" class="form-control" name="etat" id="validationDefault08" required>
                                                         
                                                         <option >Selectionner un Etat</option>
                                                         <option value="Programé">Programé</option>

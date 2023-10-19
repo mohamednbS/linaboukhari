@@ -44,11 +44,11 @@
 											<div class="row">
 											
 												<div class="col-md-3">
-												<label > Nom du Département </label>
+												<label for="validationDefault01"> Nom du Département </label>
 												
 												</div>
 												<div class="col-md-9">
-												<input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper le nom du departement ici" type="text" name="nom">
+												<input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="Tapper le nom du departement ici" type="text" name="nom" id="validationDefault01" required>
 												
 												</div>
 												<div class="col-md-3">
