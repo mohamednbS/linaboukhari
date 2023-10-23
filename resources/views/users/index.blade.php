@@ -31,72 +31,72 @@
 										<i class="fa fa-check-circle"></i> Utilisateur supprimé avec succès
 								</div>
                                 @endif
-                                            <table class="table table-striped">
-												<!-- nav search--> 
+                                <table class="table table-bordered">
+								<!-- nav search--> 
 								<form action="{{ route('loop') }}" method="GET">
 								
 									<input type="text" name="query" placeholder="Recherche...">
 									<button type="submit">Rechercher<i  aria-hidden="True"></i></button> 
 									
 								</form>
-                                                <thead>
-                                                    <tr>
-                                                        <th>Nom</th>
-														<th>Matricule</th>
-                                                        <th>Email</th>
-														<th>Mobile</th>
-														<th> Rôle</th>
-														<th>Modalité </th>
-														<th> Département </th>
-														
-														
-														@if (Auth::user()->role == "Administrateur")
-														<th>Action</th>
-														@endif
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                <?php $i=0; ?>
-                                                @foreach($users as $user)
-                                                <?php $i++; ?>
-                                                <tr>
-                                                 
-                                                    <td>{{ $user->name}}</td>
-                                                    <td>{{ $user->matricule }}</td>
-													<td>{{ $user->email }}</td> 
-                                                    <td>{{ $user->phone }}</td>
-                                                    <td>{{ $user->role }}</td>
-													<td>
-														@foreach($modalites as $modalite )
-														@if ($user->modalité == $modalite->id_modalite )
-															{{ $modalite->name }}
-														@endif
-													
-													@endforeach
-                                                    </td>
-													
-													<td>
-														@foreach($departments as $dep )
-															@if ($user->iddep == $dep->id_departement )
-																{{ $dep->name }}
-															@endif
-														
-														@endforeach
+								<thead>
+									<tr>
+										<th>Nom</th>
+										<th>Matricule</th>
+										<th>Email</th>
+										<th>Mobile</th>
+										<th> Rôle</th>
+										<th>Modalité </th>
+										<th> Département </th>
+										
+										
+										@if (Auth::user()->role == "Administrateur")
+										<th>Action</th>
+										@endif
+									</tr>
+								</thead>
+								<tbody>
+								<?php $i=0; ?>
+								@foreach($users as $user)
+								<?php $i++; ?>
+								<tr>
+									
+									<td>{{ $user->name}}</td>
+									<td>{{ $user->matricule }}</td>
+									<td>{{ $user->email }}</td> 
+									<td>{{ $user->phone }}</td>
+									<td>{{ $user->role }}</td>
+									<td>
+										@foreach($modalites as $modalite )
+										@if ($user->modalité == $modalite->id_modalite )
+											{{ $modalite->name }}
+										@endif
+									
+									@endforeach
+									</td>
+									
+									<td>
+										@foreach($departments as $dep )
+											@if ($user->iddep == $dep->id_departement )
+												{{ $dep->name }}
+											@endif
+										
+										@endforeach
 
-													</td>
-													
-													
-													@if (Auth::user()->role == "Administrateur")
-                                                    <td><a data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary' href="/user/{{$user->id_user}}"><i class="lnr lnr-pencil"></i>  </a> 
-													
-														<a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/user/delete/{{ $user->id_user }}" onclick="return confirm ('voulez vous vraiment supprimer cet utilisateur' {{ $user['id']}})"><i class="lnr lnr-trash" ></i></a></td>
-                                                    @endif
-                                                </tr>
-                                                @endforeach 
-                                                </tbody>  
-                                            </table>
-                                      
-                                    <!-- END TABLE STRIPED -->
+									</td>
+									
+									
+									@if (Auth::user()->role == "Administrateur")
+									<td><a data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-info' href="/user/{{$user->id_user}}"><i class="lnr lnr-pencil"></i>  </a> 
+									
+										<a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/user/delete/{{ $user->id_user }}" onclick="return confirm ('voulez vous vraiment supprimer cet utilisateur' {{ $user['id']}})"><i class="lnr lnr-trash" ></i></a></td>
+									@endif
+								</tr>
+								@endforeach 
+								</tbody>  
+							</table>
+						
+					<!-- END TABLE STRIPED -->
                                 </div>
                     	</div>
 								

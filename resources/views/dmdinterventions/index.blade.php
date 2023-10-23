@@ -35,7 +35,7 @@
 										<i class="fa fa-check-circle"></i> Demande Supprimée avec Succès
 								</div>
                                 @endif
-                                            <table class="table table-striped"  enctype="multipart/form-data">
+                                            <table class="table table-bordered"  enctype="multipart/form-data">
 													<!-- nav search--> 
 											<div>
 											<form action="{{ route('find') }}" method="GET">
@@ -49,7 +49,7 @@
                                                         <th>N°</th>
 														<th>Client</th>
                                                         <th>Equipement</th>
-														<th>Etat initial d'équipement</th>
+														<th>Panne Equipement</th>
 														<th>Intervenant(s)</th>													
 														<th>Etat</th>
                                                         <th>Description</th>
@@ -120,7 +120,7 @@
 													<a href="{{ route('download.document', ['document' => $oi->document]) }}"> le Rapport d'Intervention</a>
 													</td>
                         
-													<td><a  data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary'  href="/ointervention/change/{{ $oi->id_intervention }}"><i class="lnr lnr-pencil"></i> </a> 
+													<td><a  data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-info'  href="/ointervention/change/{{ $oi->id_intervention }}"><i class="lnr lnr-pencil"></i> </a> 
 														<a  data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/ointervention/delete/{{ $oi->id_intervention  }}"onclick="return confirm ('voulez vous vraiment supprimer la demande' {{ $oi['id']}})" ><i class="lnr lnr-trash" ></i></a>
 													</td>
 													@endif

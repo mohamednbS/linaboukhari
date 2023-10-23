@@ -30,7 +30,14 @@ class OinterventionsController extends Controller
         $clients = Client::all();
         $techniciens = User::where('role',"Technicien")->get();
         $ingenieurs = User::where('role',"Ingenieur")->get();
-        $ointerventions = Ointervention::where('etat',"!=","Clôturé")    
+        $ointerventions = Ointervention::where('etat',"=","Demandé") 
+                                        ->orwhere('etat',"=","Mise en Attente")
+                                        ->orwhere('etat',"=","Diagnostic en Cours ")
+                                        ->orwhere('etat',"=","Reporté")
+                                        ->orwhere('etat',"=","Attente BC")
+                                        ->orwhere('etat',"=","Attente Pièce")
+                                        ->orwhere('etat',"=","Devis à fournir")
+                                        ->orwhere('etat',"=","Clôturé Sans Rappport")  
                                         ->get(); 
         $ointerventions = Ointervention::paginate(5);
         return view('dmdinterventions.index')->with('messages',$messages)->with('notifications',$notifications)->with('ointerventions',$ointerventions)->with('equipements',$equipements)->with('clients',$clients)->with('users',$users)->with('typepannes',$typepannes)->with('techniciens', $techniciens)->with('ingenieurs',$ingenieurs);

@@ -47,7 +47,7 @@ class ClientEquipementSelect extends Component
     public function updatedSelectedClient($client)
     {
         $this->equipements = Equipement::where('client_id_client', $client)->get();
-        $this->selectedEquipement = NULL;
+        $this->selectedEquipement = $this->selectedEquipement;
     }
 
     public function updatedSelectedEquipement($equipement)
@@ -56,4 +56,6 @@ class ClientEquipementSelect extends Component
             $this->sousequipements = Sousequipement::where('equipement_id_equipement', $equipement)->get();
         }
     }
+
+
 }

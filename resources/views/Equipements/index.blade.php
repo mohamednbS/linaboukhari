@@ -43,53 +43,53 @@
 												</div>
 												@endif
 											
-															<table class="table table-striped">
-															<!-- nav search--> 
-															<div>
-															<form action="{{ route('detect') }}" method="GET">
-																<input type="text" name="query" placeholder="Recherche...">
-																<button type="submit">Rechercher</button> 
-															</form></div>
-																<thead>
-																	<tr>
-																		<th>#</th>
-																		<th>Equipement</th>
-																		<th>N° série</th>
-																		<th>Modèle</th>
-																		<th>Client</th>
-																		
-																		@if (Auth::user()->role == "Administrateur")
-																		<th>Action</th>
-																		@endif
-																	</tr>
-																</thead>
-																<tbody>
-																<?php $i=0; ?>
-																@foreach($equipements as $equipement)
-																<?php $i++; ?>
-																<tr>
-																	<td class="table-info">{{ $i }}</td>
-																	<td class="table-info">{{ $equipement->designation }}</td>
-																	<td class="table-info">{{ $equipement->numserie }}</td>
-																	<td class="table-info">{{ $equipement->modele }}</td>
-																	<td class="table-info">@foreach($clients as $client )
-																	@if ($equipement->client_id_client == $client->id_client)
-																		{{ $client->clientname}}
-																	@endif
-																 
-																	@endforeach</td>
-																   @if (Auth::user()->role == "Administrateur")
-																	<td class="table-info"><a  data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary' href="/equipement/mod/{{ $equipement->id_equipement }}"><i class="lnr lnr-pencil"></i></a> 
-																		<a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger'><i class="lnr lnr-trash" href="/equipement/del/{{ $equipement->id_equipement }}" onclick="return confirm ('voulez vous vraiment supprimer cet équipement' {{ $equipement['id']}})"></i></a>
-																
-																	</td>
-																		
-																	@endif
-																</tr>
-																@endforeach 
-																</tbody>
-															</table>
-															{{$equipements->links()}}
+										<table class="table table-bordered">
+										<!-- nav search--> 
+										<div>
+										<form action="{{ route('detect') }}" method="GET">
+											<input type="text" name="query" placeholder="Recherche...">
+											<button type="submit">Rechercher</button> 
+										</form></div>
+											<thead>
+												<tr>
+													<th>#</th>
+													<th>Equipement</th>
+													<th>N° série</th>
+													<th>Modèle</th>
+													<th>Client</th>
+													
+													@if (Auth::user()->role == "Administrateur")
+													<th>Action</th>
+													@endif
+												</tr>
+											</thead>
+											<tbody>
+											<?php $i=0; ?>
+											@foreach($equipements as $equipement)
+											<?php $i++; ?>
+											<tr>
+												<td class="table-info">{{ $i }}</td>
+												<td class="table-info">{{ $equipement->designation }}</td>
+												<td class="table-info">{{ $equipement->numserie }}</td>
+												<td class="table-info">{{ $equipement->modele }}</td>
+												<td class="table-info">@foreach($clients as $client )
+												@if ($equipement->client_id_client == $client->id_client)
+													{{ $client->clientname}}
+												@endif
+												
+												@endforeach</td>
+												@if (Auth::user()->role == "Administrateur")
+												<td class="table-info"><a  data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary' href="/equipement/mod/{{ $equipement->id_equipement }}"><i class="lnr lnr-pencil"></i></a> 
+													<a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger'><i class="lnr lnr-trash" href="/equipement/del/{{ $equipement->id_equipement }}" onclick="return confirm ('voulez vous vraiment supprimer cet équipement' {{ $equipement['id']}})"></i></a>
+											
+												</td>
+													
+												@endif
+											</tr>
+											@endforeach 
+											</tbody>
+										</table>
+										{{$equipements->links()}}
 													  
                             </div>                            
                                              

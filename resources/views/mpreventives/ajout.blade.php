@@ -136,7 +136,7 @@
                                                     <select style="width:100%;margin-bottom:10px;" class="form-control" name="etat" id="validationDefault08" required>
                                                         
                                                         <option >Selectionner un Etat</option>
-                                                        <option value="Programé">Programé</option>
+                                                        <option value="Programé">Programmé</option>
                                                         <option value="En Cours">En Cours</option>
                                                         <option value="Suspendu">Suspendu</option>
                                                         <option value="Terminé">Terminé</option>

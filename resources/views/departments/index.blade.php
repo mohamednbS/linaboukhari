@@ -35,7 +35,7 @@
 										<i class="fa fa-check-circle"></i> Départemnt supprimé avec succès
 								</div>
                                 @endif
-                                            <table class="table table-striped">
+                                            <table class="table table-bordered">
 											<!-- nav search--> 
 											<form action="{{ route('search') }}" method="GET">
 											

@@ -35,7 +35,7 @@
 										<i class="fa fa-check-circle"></i> Panne Supprimé avec Succès
 								</div>
                                 @endif
-                                            <table class="table table-striped">
+                                            <table class="table table-bordered">
 											
                                                 <thead>
                                                     <tr>

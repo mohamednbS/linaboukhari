@@ -37,13 +37,14 @@
 										<i class="fa fa-check-circle"></i>Contrat supprimé avec succès
 								</div>
                                 @endif
-                                            <table class="table table-striped">
-												<div>
-												<!-- nav search--> 
+                                <table  class="table table-bordered" >
+								<div>
+								<!-- nav search--> 
 								<form action="{{ route('recherche') }}" method="GET">
 									<input type="text" name="query" placeholder="Recherche...">
 									<button type="submit">Rechercher</button> 
-								</form></div>
+								</form>
+							    </div>
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>

@@ -35,57 +35,58 @@
 										<i class="fa fa-check-circle"></i> Client supprimé avec succès
 								</div>
                                 @endif
-                                            <table class="table table-striped">
-												<!-- nav search--> 
-											<div>
-											<form action="{{ route('filter') }}" method="GET">
-												<input type="text" name="query" placeholder="Recherche...">
-												<button  type="submit">Rechercher</button> 
-											</form>
-											</div>
-                                                <thead> 
-                                                    <tr>
-                                                        <th>Nom client/Raison sociale</th>
-														<th>Adresse</th>            
-														<th>Email</th>
-														<th>Mobile</th>   
-														<th>Fax</th>  
-														<th>Equipements</th>  
+								<table class="table table-bordered">
+									<!-- nav search--> 
+								<div>
+								<form action="{{ route('filter') }}" method="GET">
+									<input type="text" name="query" placeholder="Recherche...">
+									<button  type="submit">Rechercher</button> 
+								</form>
+								</div>
+								<!-- END nav search-->
+									<thead> 
+										<tr>
+											<th>Nom client/Raison sociale</th>
+											<th>Adresse</th>            
+											<th>Email</th>
+											<th>Mobile</th>   
+											<th>Fax</th>  
+											<th>Equipements</th>  
+								
+											@if (Auth::user()->role == "Administrateur")
+											<th>Action</th>
+											@endif
+										</tr>
+									</thead>
+									<tbody>
+									<?php $i=0; ?>
+									@foreach($clients as $client)
+									<?php $i++; ?>
+									<tr>
+										
+										<td>{{ $client->clientname}}</td>
+										
+										<td>{{ $client->adresse }}</td>
+								
+										<td>{{ $client->email }}</td>
 											
-														@if (Auth::user()->role == "Administrateur")
-														<th>Action</th>
-														@endif
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                <?php $i=0; ?>
-                                                @foreach($clients as $client)
-                                                <?php $i++; ?>
-                                                <tr>
-                                                 
-                                                    <td>{{ $client->clientname}}</td>
-                                                  
-													<td>{{ $client->adresse }}</td>
-											
-													<td>{{ $client->email }}</td>
-													 
-													<td>{{ $client->mobile}}</td> 
+										<td>{{ $client->mobile}}</td> 
 
-													<td>{{ $client->fax}}</td>  
-													<td><a href="/equipementclient/{{ $client->id_client }}"> voir les équipements</a></td>
-													
-												
-										 
-													
-													@if (Auth::user()->role == "Administrateur")
-                                                    <td><a data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary' href="/client/change/{{$client->id_client}}"><i class="lnr lnr-pencil"></i>  </a> 
-														<a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/client/delete/{{ $client->id_client }}" onclick="return confirm ('voulez vous vraiment supprimer le client' {{ $client['id']}})"><i class="lnr lnr-trash"></i></a></td>
-                                                    @endif
-                                                </tr>
-                                                @endforeach 
-                                                </tbody>
-                                            </table>
-											{{ $clients->links()}}
+										<td>{{ $client->fax}}</td>  
+										<td><a href="/equipementclient/{{ $client->id_client }}"> voir les équipements</a></td>
+										
+									
+								
+										
+										@if (Auth::user()->role == "Administrateur")
+										<td><a data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary' href="/client/change/{{$client->id_client}}"><i class="lnr lnr-pencil"></i>  </a> 
+											<a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/client/delete/{{ $client->id_client }}" onclick="return confirm ('voulez vous vraiment supprimer le client' {{ $client['id']}})"><i class="lnr lnr-trash"></i></a></td>
+										@endif
+									</tr>
+									@endforeach 
+									</tbody>
+								</table>
+								{{ $clients->links()}}
                                       
                                     <!-- END TABLE STRIPED -->
                                 </div>
