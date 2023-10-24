@@ -45,14 +45,11 @@ class OinterventionsController extends Controller
     public function create(){
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-        $equipements = Equipement::all();
-        $sousequipements = Sousequipement::all();
-        $clients = Client::orderBy('clientname')->get(); 
         $typepannes = Typepanne::all();
         $techniciens = User::where('role',"Technicien")->get();
         $ingenieurs = User::where('role',"Ingenieur")->get();
         $users = User::all();
-        return view('dmdinterventions.ajout')->with('users',$users)->with('equipements',$equipements)->with('clients',$clients)->with('techniciens',$techniciens)->with('messages',$messages)->with('notifications',$notifications)->with('typepannes',$typepannes)->with('sousequipements',$sousequipements)->with('ingenieurs',$ingenieurs);
+        return view('dmdinterventions.ajout')->with('users',$users)->with('techniciens',$techniciens)->with('messages',$messages)->with('notifications',$notifications)->with('typepannes',$typepannes)->with('ingenieurs',$ingenieurs);
     }
     public function store(Request $request){
         $numero = $request->input('numero');
@@ -112,13 +109,11 @@ class OinterventionsController extends Controller
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $techniciens = User::where('role',"Technicien")->get();
-        $clients = Client::all();
+        $sousequipement  = Sousequipement::all();
         $techniciens = User::where('role',"Technicien")->get();
         $ingenieurs = User::where('role',"Ingenieur")->get();
         $typepannes = Typepanne::all();
-        $equipements = Equipement::all();
-        $sousequipements = Sousequipement::all();
-        return view('dmdinterventions.modifier')->with('oi',$oi)->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('equipements',$equipements)->with('clients',$clients)->with('techniciens',$techniciens)->with('ingenieurs',$ingenieurs)->with('typepannes',$typepannes)->with('sousequipements',$sousequipements);
+        return view('dmdinterventions.modifier')->with('oi',$oi)->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('techniciens',$techniciens)->with('ingenieurs',$ingenieurs)->with('typepannes',$typepannes)->with('sousequipement ',$sousequipement );
     }
     public function update(Request $request,$id_intervention){
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();

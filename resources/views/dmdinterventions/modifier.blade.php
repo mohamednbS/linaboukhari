@@ -54,7 +54,7 @@
                                         
 
                                             <!-- Le composant app/Http/Livewire/ClientsEquipementsSelect.php -->
-                                            @livewire("client-equipement-select")
+                                            @livewire("client-equipement-select") 
 
                                             <!-- Scripts livewire -->
                                             @livewireScripts()
