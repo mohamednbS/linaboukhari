@@ -52,14 +52,14 @@
 										</form></div>
 											<thead>
 												<tr>
-													<th>#</th>
-													<th>Equipement</th>
-													<th>N° série</th>
-													<th>Modèle</th>
-													<th>Client</th>
+													<th style="text-align: center;">#</th>
+													<th style="text-align: center;">Equipement</th>
+													<th style="text-align: center;">N° série</th>
+													<th style="text-align: center;">Modèle</th>
+													<th style="text-align: center;">Client</th>
 													
 													@if (Auth::user()->role == "Administrateur")
-													<th>Action</th>
+													<th style="text-align: center;">Action</th>
 													@endif
 												</tr>
 											</thead>
@@ -79,9 +79,12 @@
 												
 												@endforeach</td>
 												@if (Auth::user()->role == "Administrateur")
-												<td class="table-info"><a  data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary' href="/equipement/mod/{{ $equipement->id_equipement }}"><i class="lnr lnr-pencil"></i></a> 
+												<td  style="text-align: center;" class="table-info"><a  data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-info' href="/equipement/mod/{{ $equipement->id_equipement }}"><i class="lnr lnr-pencil"></i></a> 
 													<a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger'><i class="lnr lnr-trash" href="/equipement/del/{{ $equipement->id_equipement }}" onclick="return confirm ('voulez vous vraiment supprimer cet équipement' {{ $equipement['id']}})"></i></a>
-											
+											        <a  data-toggle="tooltip" data-placement="top" class='btn btn-primary' href="/equipement/{{ $equipement->id_equipement }}">
+													<i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+													<path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/><path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+													</svg></i> 
 												</td>
 													
 												@endif

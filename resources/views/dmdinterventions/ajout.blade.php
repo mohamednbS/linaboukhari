@@ -36,7 +36,7 @@
 										<i class="fa fa-check-circle"></i> Demande  Ajoutée avec Succès <a href="/di" class="btn btn-sm btn-default"> Consulter Liste des Demandes d'Interventions </a>
 								</div>
                                 @endif
-                                <form action='/addoi' method="POST" enctype="multipart/form-data">
+                                <form action='/addoi' method="POST" enctype="multipart/form-data" wire:submit.prevent="save">
                                                         {{ csrf_field() }} 
                                          
                                                             <div class="row">
@@ -101,8 +101,27 @@
                                                                         <option value="{{ $ingenieur->name }}">{{ $ingenieur->name }}</option> 
                                                                     @endforeach
                                                                 </select>
-                           
                                                                 </div>
+
+                                                                
+                                                                <div class="col-md-3"> 
+                                                                <label> Sous-traitant </label>
+                                                                
+                                                                </div>
+                                                                <div class="col-md-9">
+                                                                    <select style="width:100%;margin-bottom:10px;" class="form-control" name="soustraitant">
+                                                                
+                                                                        <option >Sélectionner un sous-traitant</option>
+                                                                    @foreach($soustraitants as $soustraitant )
+                                                                    
+                                                                        <option value="{{ $soustraitant->id_soustraitant}}">{{ $soustraitant->name }}</option>
+                                                          
+                                                                     @endforeach
+                                                           
+                                                                </select>
+																</div>
+                           
+                                                                
 
                                                                 <div class="col-md-3">
                                                                 <label for="validationDefault05"> Heure d'appel Client </label>
@@ -171,7 +190,7 @@
                                                                         <option value="Mise en Attente">Mise en Attente</option>
                                                                         <option value="Attente Rapport">Attente Rapport</option>
                                                                         <option value="Clôturé Sans Rappport">Clôturé Sans Rappport</option>
-                                                                        <option value="Clôturé">Clôturé </option> 
+                                                                        <option value="Cloture">Clôturé </option> 
                                                                         
                                                                     </select>
                                                                 </div>

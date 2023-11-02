@@ -16,7 +16,7 @@
 					<!-- OVERVIEW -->
 					<div class="panel panel-headline">
 						<div class="panel-heading">
-                            <h3 class="panel-title"><i class="lnr lnr-store"></i> Gestion des Pannes</h3>
+                            <h3 class="panel-title"><i class="lnr lnr-store"></i> Gestion des Sous-Traitants</h3>
 							<p class="panel-subtitle">Aujourd'hui : <?php echo date('d')." ".date('M')." , ".date('Y'); ?> </p>
 						</div>
 						<div class="panel-body">
@@ -25,14 +25,14 @@
 							<!-- TABLE STRIPED -->
 							<div class="panel">
 								<div class="panel-heading">
-									<h3 class="panel-title">@isset($searchuser) Resultat de recherche pour : <span class="text-primary"> " {{ $searchuser }} "</span> @else Type des pannes @endisset </h3>
+									<h3 class="panel-title">@isset($searchuser) Resultat de recherche pour : <span class="text-primary"> " {{ $searchuser }} "</span> @else Liste des Sous-traitants @endisset </h3>
 								</div>
 				
 								<div class="panel-body">
-								@if( session()->get( 'addpanne' ) == "deleted" )
+								@if( session()->get( 'addsoustraitant' ) == "deleted" )
                                 <div class="alert alert-success alert-dismissible" role="alert">
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<i class="fa fa-check-circle"></i> Panne Supprimé avec Succès
+										<i class="fa fa-check-circle"></i> Sous-traitant Supprimé avec Succès
 								</div>
                                 @endif
                                             <table class="table table-bordered">
@@ -40,25 +40,29 @@
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
-                                                        <th style="text-align: center;">Type de panne</th>
-                                                        <th style="text-align: center;">Description</th>
+                                                        <th style="text-align: center;">Désignation</th>
+                                                        <th style="text-align: center;">N°Téléphone</th>
+                                                        <th style="text-align: center;">Fax</th>
+                                                        <th style="text-align: center;">Email</th>
                                                            
 														@if (Auth::user()->role == "Administrateur")
-														<th>Action</th>
+														<th style="text-align: center;">Action</th>
 														@endif
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                 <?php $i=0; ?>
-                                                @foreach($typepanne as $typepanne)
+                                                @foreach($soustraitant as $soustraitant)
                                                 <?php $i++; ?>
                                                 <tr>
                                                     <td>{{ $i }}</td>
-                                                    <td>{{ $typepanne->name }}</td>
-                                                    <td>{{ $typepanne->description }}</td>
+                                                    <td>{{ $soustraitant->name }}</td>
+                                                    <td>{{ $soustraitant->phone }}</td>
+                                                    <td>{{ $soustraitant->fax }}</td>
+                                                    <td>{{ $soustraitant->email }}</td>
                                                    @if (Auth::user()->role == "Administrateur")
-                                                    <td><a data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary'  href="/typepanne/change/{{ $typepanne->id_typepanne }}"><i class="lnr lnr-pencil"></i></a> 
-														<a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/typepanne/delete/{{ $typepanne->id_typepanne  }}" onclick="return confirm ('voulez vous vraiment supprimer la panne' {{ $typepanne['id']}})"><i class="lnr lnr-trash"></i></a></td>
+                                                    <td style="text-align: center;"><a data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-info'  href="/soustraitant/change/{{ $soustraitant->id_soustraitant }}"><i class="lnr lnr-pencil"></i></a> 
+														<a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/soustraitant/delete/{{ $soustraitant->id_soustraitant  }}" onclick="return confirm ('voulez vous vraiment supprimer le sous-traitant' {{ $soustraitant['id']}})"><i class="lnr lnr-trash"></i></a></td>
                                                     @endif
                                                 </tr>
                                                 @endforeach 

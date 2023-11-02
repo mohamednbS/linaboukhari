@@ -48,17 +48,17 @@
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
-														<th>Type du contrat</th>
-                                                        <th>Client</th>
-                                                        <th>Equipement</th>
-														<th>Date de Début</th>
-														<th>Date de fin</th>
+														<th style="text-align: center;">Type du contrat</th>
+                                                        <th style="text-align: center;">Client</th>
+                                                        <th style="text-align: center;">Equipement</th>
+														<th style="text-align: center;">Date de Début</th>
+														<th style="text-align: center;">Date de fin</th>
 													
 														<th>Note</th>
 													
 														
 														@if (Auth::user()->role == "Administrateur")
-														<th> Actions </th>
+														<th style="text-align: center;">Actions </th>
 														@endif
 														
                                                     </tr>
@@ -91,7 +91,7 @@
 													<td>{{ $contrat->note }}</td>
 
 													@if (Auth::user()->role == "Administrateur")
-														<td><a href="/cm/mod/{{ $contrat->id_contrat }}" data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary'><i class="lnr lnr-pencil"></i> </a> 
+														<td  style="text-align: center;"><a href="/cm/mod/{{ $contrat->id_contrat }}" data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary'><i class="lnr lnr-pencil"></i> </a> 
 															<a  data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/cm/del/{{ $contrat->id_contrat }}"  onclick="return confirm ('voulez vous vraiment supprimer le contrat' {{ $contrat['id']}})"><i class="lnr lnr-trash"></i></a> </td>
 														@endif
                                                 </tr>

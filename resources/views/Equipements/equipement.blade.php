@@ -66,10 +66,10 @@
 
 									   
 									    @if (Auth::user()->role == "Administrateur") 
-										   <a href="/equipement/mod/{{ $equipement->id_equipement }}" class="btn btn-primary"><i class="lnr lnr-pencil"></i>Modifier</a>
+										   <a href="/equipement/mod/{{ $equipement->id_equipement }}" class="btn btn-info"><i class="lnr lnr-pencil"></i>Modifier</a>
 										   <a href="/equipement/del/{{ $equipement->id_equipement }}" class='btn btn-danger' onclick="return confirm ('voulez vous vraiment supprimer cet équipement' {{ $equipement['id']}})"><i class="lnr lnr-trash"></i>Supprimer</a>
-										   <a href="/equipements/{{ $equipement->id_equipement}}/sousequipements/create"class="btn btn-info">Ajouter sous Equipement</a>
-										   <a href="/equipements/{{ $equipement->id_equipement}}/accessoires/create" class="btn btn-info">Ajouter Accessoire</a>
+										   <a href="/equipements/{{ $equipement->id_equipement}}/sousequipements/create"class="btn btn-primary">Ajouter sous Equipement</a>
+										   <a href="/equipements/{{ $equipement->id_equipement}}/accessoires/create" class="btn btn-primary">Ajouter Accessoire</a>
 										@endif
                                         </div> 
                                       </div>      
@@ -86,7 +86,7 @@
 
                             <h3  class="text-info"> Liste des Sous-Equipements</h3>
 
-							<table class="table table-striped">
+							<table class="table table-bordered">
 								<thead>
 									<tr>
 										<th class="p-3 mb-2 bg-info text-white">#</th>
@@ -111,7 +111,7 @@
 									<td>{{ $sousequipement->date_achat }}</td>
 									<td>{{ $sousequipement->date_arrive }}</td>
 									@if (Auth::user()->role == "Administrateur")
-									<td><a data-toggle="tooltip" data-placement="top" title="Modifier"class="btn btn-primary" href="/sousequipement/mod/{{ $sousequipement->id_sousequipement }}"><i class="lnr lnr-pencil"></i></a>
+									<td  style="text-align: center;"><a data-toggle="tooltip" data-placement="top" title="Modifier"class="btn btn-primary" href="/sousequipement/mod/{{ $sousequipement->id_sousequipement }}"><i class="lnr lnr-pencil"></i></a>
 										<a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/accessoire/mod/"><i class="lnr lnr-trash"></i></a></td>
 									@endif
 								</tr>
@@ -132,7 +132,7 @@
 										<th class="p-3 mb-2 bg-info text-white">Date d'Arrivée</th>
 										
 										@if (Auth::user()->role == "Administrateur")
-										<th class="p-3 mb-2 bg-info text-white">Action</th>
+										<th  style="text-align: center;" class="p-3 mb-2 bg-info text-white">Action</th>
 										@endif
 									</tr>
 								</thead>
@@ -147,7 +147,7 @@
 									<td>{{ $accessoire->date_achat }}</td>
 									<td>{{ $accessoire->date_arrive }}</td>
 									@if (Auth::user()->role == "Administrateur")
-									<td><a class="table-info"><a  data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary' href="/accessoire/mod/{{ $accessoire->id_accessoire }}"><i class="lnr lnr-pencil"></i></a>
+									<td  style="text-align: center;"><a class="table-info"><a  data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary' href="/accessoire/mod/{{ $accessoire->id_accessoire }}"><i class="lnr lnr-pencil"></i></a>
 										<a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/accessoire/del/{{ $accessoire->id_accessoire  }}"><i class="lnr lnr-trash"></i></a></td>
 									@endif
 								</tr>

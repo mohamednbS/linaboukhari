@@ -22,6 +22,15 @@
 						<div class="panel-body">
                         <div class="row">
 						<div class="col-md-12">
+
+							<div class="card">
+							<div class="card-header">
+								
+
+								<button type="button" class="btn btn-link" href="department/create">Link</button>
+							</div>
+							</div>
+							
 							<!-- TABLE STRIPED -->
 							<div class="panel">
 								<div class="panel-heading">
@@ -46,8 +55,8 @@
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">#</th>
-                                                        <th scope="col">Nom Du Département</th>
-                                                        <th scope="col">
+                                                        <th scope="col" style="text-align: center;">Nom Du Département</th>
+                                                        <th scope="col" style="text-align: center;">
 															<span> 
 																<i class ="fa fa-arrow-up"></i>
 																<i class ="fa fa-arrow-down"></i>
@@ -57,7 +66,7 @@
 															Description</th>
                                                            
 														@if (Auth::user()->role == "Administrateur")
-														<th>Action</th>
+														<th style="text-align: center;"> Action</th>
 														@endif
                                                     </tr>
                                                 </thead>
@@ -70,7 +79,7 @@
                                                     <td>{{ $dep->name }}</td>
                                                     <td>{{ $dep->description }}</td>
                                                    @if (Auth::user()->role == "Administrateur")
-                                                    <td><a data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary'  href="/department/change/{{ $dep->id_departement }}"><i class="lnr lnr-pencil"></i></a> 
+                                                    <td  style="text-align: center;"><a data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-info'  href="/department/change/{{ $dep->id_departement }}"><i class="lnr lnr-pencil"></i></a> 
 														<a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/department/delete/{{ $dep->id_departement  }}" onclick="return confirm ('voulez vous vraiment supprimer le déparatement' {{ $dep['id']}})"><i class="lnr lnr-trash"></i></a></td>
                                                     @endif
                                                 </tr>

@@ -41,17 +41,17 @@
 								</form>
 								<thead>
 									<tr>
-										<th>Nom</th>
-										<th>Matricule</th>
-										<th>Email</th>
-										<th>Mobile</th>
-										<th> Rôle</th>
-										<th>Modalité </th>
-										<th> Département </th>
+										<th style="text-align: center;">Nom</th>
+										<th style="text-align: center;">Matricule</th>
+										<th style="text-align: center;">Email</th>
+										<th style="text-align: center;">Mobile</th>
+										<th style="text-align: center;"> Rôle</th>
+										<th style="text-align: center;">Modalité </th>
+										<th style="text-align: center;"> Département </th>
 										
 										
 										@if (Auth::user()->role == "Administrateur")
-										<th>Action</th>
+										<th style="text-align: center;">Action</th>
 										@endif
 									</tr>
 								</thead>
@@ -87,7 +87,7 @@
 									
 									
 									@if (Auth::user()->role == "Administrateur")
-									<td><a data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-info' href="/user/{{$user->id_user}}"><i class="lnr lnr-pencil"></i>  </a> 
+									<td  style="text-align: center;"><a data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-info' href="/user/{{$user->id_user}}"><i class="lnr lnr-pencil"></i>  </a> 
 									
 										<a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/user/delete/{{ $user->id_user }}" onclick="return confirm ('voulez vous vraiment supprimer cet utilisateur' {{ $user['id']}})"><i class="lnr lnr-trash" ></i></a></td>
 									@endif

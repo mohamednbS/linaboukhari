@@ -17,7 +17,7 @@
 					<!-- OVERVIEW -->
 					<div class="panel panel-headline">
 						<div class="panel-heading">
-							<h3 class="panel-title"><i class="lnr lnr-store"></i> Gestion des Départements</h3>
+							<h3 class="panel-title"><i class="lnr lnr-store"></i> Gestion des Sous-traitants</h3>
 							<p class="panel-subtitle">Aujourd'hui : <?php echo date('d')." ".date('M')." , ".date('Y'); ?> </p>
 						</div>
 						<div class="panel-body">
@@ -27,37 +27,55 @@
 							<div class="panel">
                                 
 								<div class="panel-heading">
-									<h3 class="panel-title"> Modifier Un Département   </h3>
+									<h3 class="panel-title"> Modifier un Sous-traitant   </h3>
 								</div>
                                 
 								<div class="panel-body">
-                                @if( session()->get( 'adddepartment' ) == "success" )
+                                @if( session()->get( 'addsoustraitant' ) == "success" )
                                 <div class="alert alert-success alert-dismissible" role="alert">
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<i class="fa fa-check-circle"></i> Département modifié avec succès <a href="/departments" class="btn btn-sm btn-default"> Consulter la Liste des Départements </a>
+										<i class="fa fa-check-circle"></i> Sous-traitant modifié avec succès <a href="/soustraitants" class="btn btn-sm btn-default"> Consulter la liste des sous-traitants </a>
 								</div>
                                 @endif
-                                <form action='/department/mod/{{$department->id_departement}}' method="POST" >
+                                <form action='/soustraitant/modifier/{{$soustraitant->id_soustraitant}}' method="POST" >
 										{{ csrf_field() }} 
                                          
 										<div class="row">
 										
 											<div class="col-md-3">
-											<label > Nom Du Département </label>
+											<label > Désignation </label>
 											
 											</div>
 											<div class="col-md-9">
-											<input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $department->name }}" type="text" name="nom">
+											<input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $soustraitant->name }}" type="text" name="name">
 											
 											</div>
 											<div class="col-md-3">
-											<label > Description </label>
+											<label > N°Téléphone </label>
 											
 											</div>
 											<div class="col-md-9">
-											<textarea style="width:100%;margin-bottom:10px;" class="form-control"   name="description">{{ $department->description }}</textarea>
+											<input style="width:100%;margin-bottom:10px;" class="form-control"   name="phone" value="{{ $soustraitant->phone }}">
 											
 											</div>
+
+                                            <div class="col-md-3">
+                                            <label > Fax  </label>
+                                            
+                                            </div>
+                                            <div class="col-md-9">
+                                            <input style="width:100%;margin-bottom:10px;" class="form-control" name="fax" type="num" value="{{ $soustraitant->fax }}">
+                                            
+                                            </div>
+
+                                            <div class="col-md-3">
+                                            <label > Email  </label>
+                                            
+                                            </div>
+                                            <div class="col-md-9">
+                                            <input style="width:100%;margin-bottom:10px;" class="form-control"  name="email" type="text" value="{{ $soustraitant->email }}">
+                                            
+                                            </div>
 											
 										</div>
                                                                

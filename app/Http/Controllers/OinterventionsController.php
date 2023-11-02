@@ -16,6 +16,7 @@ use App\Typepanne;
 use App\Mpreventive;
 use App\Notification;
 use App\Ointervention;
+use App\Soustraitant;
 use Illuminate\Http\Request;
 
 class OinterventionsController extends Controller
@@ -30,15 +31,7 @@ class OinterventionsController extends Controller
         $clients = Client::all();
         $techniciens = User::where('role',"Technicien")->get();
         $ingenieurs = User::where('role',"Ingenieur")->get();
-        $ointerventions = Ointervention::where('etat',"=","Demandé") 
-                                        ->orwhere('etat',"=","Mise en Attente")
-                                        ->orwhere('etat',"=","Diagnostic en Cours ")
-                                        ->orwhere('etat',"=","Reporté")
-                                        ->orwhere('etat',"=","Attente BC")
-                                        ->orwhere('etat',"=","Attente Pièce")
-                                        ->orwhere('etat',"=","Devis à fournir")
-                                        ->orwhere('etat',"=","Clôturé Sans Rappport")  
-                                        ->get(); 
+        $ointerventions = Ointervention::where('etat',"!=","Clôturé")->get(); 
         $ointerventions = Ointervention::paginate(5);
         return view('dmdinterventions.index')->with('messages',$messages)->with('notifications',$notifications)->with('ointerventions',$ointerventions)->with('equipements',$equipements)->with('clients',$clients)->with('users',$users)->with('typepannes',$typepannes)->with('techniciens', $techniciens)->with('ingenieurs',$ingenieurs);
     }
@@ -49,7 +42,8 @@ class OinterventionsController extends Controller
         $techniciens = User::where('role',"Technicien")->get();
         $ingenieurs = User::where('role',"Ingenieur")->get();
         $users = User::all();
-        return view('dmdinterventions.ajout')->with('users',$users)->with('techniciens',$techniciens)->with('messages',$messages)->with('notifications',$notifications)->with('typepannes',$typepannes)->with('ingenieurs',$ingenieurs);
+        $soustraitants = Soustraitant::all();
+        return view('dmdinterventions.ajout')->with('users',$users)->with('techniciens',$techniciens)->with('messages',$messages)->with('notifications',$notifications)->with('typepannes',$typepannes)->with('ingenieurs',$ingenieurs)->with('soustraitants', $soustraitants);
     }
     public function store(Request $request){
         $numero = $request->input('numero');
@@ -59,6 +53,7 @@ class OinterventionsController extends Controller
         $type_panne = $request->input('type_panne');
         $description_panne = $request->input('description_panne');
         $destinateurs = $request->input('iduser');
+        $soustraitant = $request->input('soustraitant');
         $appel_client = $request->input('appel_client');
         $mode_appel = $request->input('mode_appel');
         $priorite = $request->input('priorite');
@@ -73,7 +68,8 @@ class OinterventionsController extends Controller
        $oi->type_panne = $type_panne;
        $oi->description_panne = $description_panne;
        $oi->destinateur = implode(',', $destinateurs);
-       $oi->appel_client = $appel_client ; 
+       $oi->type_panne = $type_panne;
+       $oi->soustraitant = $soustraitant; 
        $oi->mode_appel = $mode_appel ;
        $oi->priorite = $priorite; 
        $oi->date_intervention = $date_intervention ;
@@ -113,7 +109,8 @@ class OinterventionsController extends Controller
         $techniciens = User::where('role',"Technicien")->get();
         $ingenieurs = User::where('role',"Ingenieur")->get();
         $typepannes = Typepanne::all();
-        return view('dmdinterventions.modifier')->with('oi',$oi)->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('techniciens',$techniciens)->with('ingenieurs',$ingenieurs)->with('typepannes',$typepannes)->with('sousequipement ',$sousequipement );
+        $soustraitants = Soustraitant::all();
+        return view('dmdinterventions.modifier')->with('oi',$oi)->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('techniciens',$techniciens)->with('ingenieurs',$ingenieurs)->with('typepannes',$typepannes)->with('sousequipement ',$sousequipement )->with('soustraitants',$soustraitants);
     }
     public function update(Request $request,$id_intervention){
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
@@ -136,6 +133,7 @@ class OinterventionsController extends Controller
         $oi->client_name = $request->input("client_name");
         $oi->type_panne = $request->input("type_panne");
         $oi->destinateur = implode(',', $destinateurs);
+        $oi->soustraitant = $request->input("soustraitant");
         $oi->priorite = $request->input("priorite");
         $oi->date_intervention  = $request->input("date_intervention ");
         $oi->date_fin_intervention = $request->input("date_fin_intervention ");
@@ -153,6 +151,7 @@ class OinterventionsController extends Controller
             $oi->client_name = $request->input("client_name");
             $oi->type_panne = $request->input("type_panne");
             $oi->destinateur = implode(',', $destinateurs);
+            $oi->soustraitant = $request->input("soustraitant");
             $oi->priorite = $request->input("priorite");
             $oi->date_intervention  = $request->input("date_intervention ");
             $oi->date_fin_intervention = $request->input("date_fin_intervention ");

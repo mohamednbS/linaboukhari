@@ -128,6 +128,23 @@
                                                     </select>
                                                 </div>
 
+                                                <div class="col-md-3"> 
+                                                <label> Sous-traitant </label>
+                                                
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <select style="width:100%;margin-bottom:10px;" class="form-control" name="soustraitant">
+                                                
+                                                        <option >Sélectionner un sous-traitant</option>
+                                                    @foreach($soustraitants as $soustraitant )
+                                                    
+                                                        <option value="{{ $soustraitant->id_soustraitant}}">{{ $soustraitant->name }}</option>
+                                            
+                                                        @endforeach
+                                            
+                                                </select>
+                                                </div>
+
                                                 <div class="col-md-3">
                                                     <label for="validationDefault08"> Etat </label>
                                                     

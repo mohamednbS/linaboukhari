@@ -1,5 +1,6 @@
  @extends('layouts.app')
  
+ 
  <!-- NAVBAR -->
  <nav class="navbar navbar-default navbar-fixed-top">
     <div class="brand">

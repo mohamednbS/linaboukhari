@@ -47,18 +47,18 @@
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
-                                                        <th>N° Intervention</th>
-                                                        <th>Equipement</th>
-														<th>Client</th>
-														<th>Panne/Mission</th>
-														<th>Intervenant</th>
-														<th>Etat</th>
-                                                        <th>Commmentaires</th>
+                                                        <th style="text-align: center;">N° Intervention</th>
+                                                        <th style="text-align: center;">Equipement</th>
+														<th style="text-align: center;">Client</th>
+														<th style="text-align: center;">Panne/Mission</th>
+														<th style="text-align: center;">Intervenant</th>
+														<th style="text-align: center;">Etat</th>
+                                                        <th style="text-align: center;">Commmentaires</th>
 														@if (Auth::user()->role == "Administrateur")
 							
-                                                        <th>Rapport<a data-bs-toggle="modal" data-bs-target="#exampleModal"></a></th>
+                                                        <th style="text-align: center;">Rapport<a data-bs-toggle="modal" data-bs-target="#exampleModal"></a></th>
 
-														<th> Action </th>
+														<th style="text-align: center;"> Action </th>
                                                         @endif
                                                     </tr>
                                                 </thead>

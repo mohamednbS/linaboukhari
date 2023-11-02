@@ -199,6 +199,16 @@ Route::get('/department/change/{id_departement}',"DepartmentsController@change")
 Route::get('/typepannes',"TypepannesController@index")->middleware('auth');
 Route::get('/typepanne/delete/{id_typepanne}',"TypepannesController@destroy")->middleware('auth');
 
+/* Sous traitants routes */
+
+Route::post('/department/filter',"DepartmentsController@filter")->middleware('auth');
+Route::get('/soustraitants',"SoustraitantsController@index")->middleware('auth');
+Route::get('/soustraitant/create',"SoustraitantsController@create")->middleware('auth');
+Route::post('/soustraitant/add',"SoustraitantsController@add")->middleware('auth');
+Route::post('/soustraitant/modifier/{id_soustraitant}',"SoustraitantsController@update")->middleware('auth');
+Route::get('/soustraitant/change/{id_soustraitant}',"SoustraitantsController@change")->middleware('auth');
+Route::get('/soustraitant/delete/{id_soustraitant}',"SoustraitantsController@destroy")->middleware('auth');
+
 
 /* ajouter un sous équipement
 Route::get('/sousequipements/ajout', function () {

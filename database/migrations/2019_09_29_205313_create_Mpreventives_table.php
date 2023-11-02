@@ -17,13 +17,14 @@ class CreateMpreventivesTable extends Migration
         Schema::create('mpreventives', function (Blueprint $table) {
             $table->bigIncrements('id_mpreventive')->primaryKey();
             $table->string('numero')->unique();
-            $table->string('status');
+            $table->string('status')->nullable();
             $table->string('umesure');
             $table->integer('equipement_name');
             $table->integer('numserie');
             $table->integer('client_name');
             $table->string('intervalle');
             $table->string('executeur'); 
+            $table->string('soustraitant'); 
             $table->date('date_prochaine');
             $table->date('date_debut')->nullable();
             $table->date('date_fin')->nullable();

@@ -54,7 +54,7 @@
                                         
 
                                             <!-- Le composant app/Http/Livewire/ClientsEquipementsSelect.php -->
-                                            @livewire("client-equipement-select") 
+                                            @livewire("client-equipement-select")
 
                                             <!-- Scripts livewire -->
                                             @livewireScripts()
@@ -193,7 +193,7 @@
                                                     <option value="Mise en Attente">Mise en Attente</option>
                                                     <option value="Attente Rapport">Attente Rapport</option>
                                                     <option value="Clôturé Sans Rappport">Clôturé Sans Rappport</option>
-                                                    <option value="Clôturé">Clôturé </option> 
+                                                    <option value="Cloture">Clôturé </option> 
                                                 @elseif ($oi->etat == "Diagnostic en Cours")
                                                     <option>-- Sélectionner un Etat --</option>
                                                     <option selected value='Diagnostic en Cours'>Diagnostic en Cours</option>
@@ -205,7 +205,7 @@
                                                     <option value="Mise en Attente">Mise en Attente</option>
                                                     <option value="Attente Rapport">Attente Rapport</option>
                                                     <option value="Clôturé Sans Rappport">Clôturé Sans Rappport</option>
-                                                    <option value="Clôturé">Clôturé </option> 
+                                                    <option value="Cloture">Clôturé </option> 
                                                 @elseif ($oi->etat == "Reporté")
                                                     <option>-- Sélectionner un Etat --</option>
                                                     <option selected value='Reporté'>Reporté</option>
@@ -217,7 +217,7 @@
                                                     <option value="Mise en Attente">Mise en Attente</option>
                                                     <option value="Attente Rapport">Attente Rapport</option>
                                                     <option value="Clôturé Sans Rappport">Clôturé Sans Rappport</option>
-                                                    <option value="Clôturé">Clôturé </option>
+                                                    <option value="Cloture">Clôturé </option>
                                                 @elseif ($oi->etat == "Attente BC")
                                                     <option>-- Sélectionner un Etat --</option>
                                                     <option selected value='Attente BC'>Attente BC</option>
@@ -231,7 +231,7 @@
                                                     <option value="Mise en Attente">Mise en Attente</option>
                                                     <option value="Attente Rapport">Attente Rapport</option>
                                                     <option value="Clôturé Sans Rappport">Clôturé Sans Rappport</option>
-                                                    <option value="Clôturé">Clôturé </option>
+                                                    <option value="Cloture">Clôturé </option>
                                                 @elseif ($oi->etat == "Attente Pièce")
                                                     <option>-- Sélectionner un Etat --</option>
                                                     <option selected value='Attente Pièce'>Attente Pièce</option>
@@ -243,7 +243,7 @@
                                                     <option value="Mise en Attente">Mise en Attente</option>
                                                     <option value="Attente Rapport">Attente Rapport</option>
                                                     <option value="Clôturé Sans Rappport">Clôturé Sans Rappport</option>
-                                                    <option value="Clôturé">Clôturé </option>
+                                                    <option value="Cloture">Clôturé </option>
                                                 @elseif ($oi->etat == "Devis à fournir")
                                                     <option>-- Sélectionner un Etat --</option>
                                                     <option selected value='Devis à fournir'>Devis à fournir</option>
@@ -255,7 +255,7 @@
                                                     <option value="Mise en Attente">Mise en Attente</option>
                                                     <option value="Attente Rapport">Attente Rapport</option>
                                                     <option value="Clôturé Sans Rappport">Clôturé Sans Rappport</option>
-                                                    <option value="Clôturé">Clôturé </option>
+                                                    <option value="Cloture">Clôturé </option>
                                                 @elseif ($oi->etat == "Mise en Attente")
                                                     <option>-- Sélectionner un Etat --</option>
                                                     <option selected value='Mise en Attente'>Mise en Attente</option>
@@ -267,7 +267,7 @@
                                                     <option value="Devis à fournir">Devis à fournir</option>
                                                     <option value="Attente Rapport">Attente Rapport</option>
                                                     <option value="Clôturé Sans Rappport">Clôturé Sans Rappport</option>
-                                                    <option value="Clôturé">Clôturé </option>
+                                                    <option value="Cloture">Clôturé </option>
                                                 @elseif ($oi->etat == "Attente Rapport")
                                                     <option>-- Sélectionner un Etat --</option>
                                                     <option selected value='Attente Rapport'>Attente Rapport</option>
@@ -279,7 +279,7 @@
                                                     <option value="Devis à fournir">Devis à fournir</option>
                                                     <option value="Mise en Attente">Mise en Attente</option>
                                                     <option value="Clôturé Sans Rappport">Clôturé Sans Rappport</option>
-                                                    <option value="Clôturé">Clôturé </option>
+                                                    <option value="Cloture">Clôturé </option>
                                                 @elseif ($oi->etat == "Clôturé Sans Rappport")
                                                     <option>-- Sélectionner un Etat --</option>
                                                     <option selected value='Clôturé Sans Rappport'>Clôturé Sans Rappport</option>
@@ -291,7 +291,7 @@
                                                     <option value="Devis à fournir">Devis à fournir</option>
                                                     <option value="Mise en Attente">Mise en Attente</option>
                                                     <option value="Attente Rapport">Attente Rapport</option>
-                                                    <option value="Clôturé">Clôturé </option>
+                                                    <option value="Cloture">Clôturé </option>
                                                     <option value='Terminé'>Terminé</option>
                                                 
                                                 @else
@@ -305,7 +305,7 @@
                                                     <option value="Devis à fournir">Devis à fournir</option>
                                                     <option value="Mise en Attente">Mise en Attente</option>
                                                     <option value="Attente Rapport">Attente Rapport</option>
-                                                    <option value='Clôturé'>En Cours</option>
+                                                    <option value="Cloture">En Cours</option>
                                                     <option value="Clôturé Sans Rappport">Clôturé Sans Rappport</option>
                                                    
                                                     
@@ -343,7 +343,7 @@
 								<div class="panel-footer">
 									<div class="row">
 										<div class="col-md-6"></div>
-										<div class="col-md-6 text-right"><input type="submit" value="Ajouter" class="btn btn-primary"></div>
+										<div class="col-md-6 text-right"><input type="submit" value="Modifier" class="btn btn-primary"></div>
                                 </form>
 									</div>
 								</div>

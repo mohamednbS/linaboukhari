@@ -46,16 +46,16 @@
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
-                                                        <th>N°</th>
-														<th>Client</th>
-                                                        <th>Equipement</th>
-														<th>Panne Equipement</th>
-														<th>Intervenant(s)</th>													
-														<th>Etat</th>
-                                                        <th>Description</th>
+                                                        <th style="text-align: center;">N° Intervention</th>
+														<th style="text-align: center;">Client</th>
+                                                        <th style="text-align: center;">Equipement</th>
+														<th style="text-align: center;">Panne Equipement</th>
+														<th style="text-align: center;">Intervenant(s)</th>													
+														<th style="text-align: center;">Etat</th>
+                                                        <th style="text-align: center;">Description</th>
 														@if (Auth::user()->role == "Administrateur")			
-                                                        <th>Validation</th>
-														<th> Action </th>
+                                                        <th style="text-align: center;">Validation</th>
+														<th style="text-align: center;">Action </th>
                                                         @endif
                                                     </tr>
                                                 </thead>
@@ -122,6 +122,10 @@
                         
 													<td><a  data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-info'  href="/ointervention/change/{{ $oi->id_intervention }}"><i class="lnr lnr-pencil"></i> </a> 
 														<a  data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/ointervention/delete/{{ $oi->id_intervention  }}"onclick="return confirm ('voulez vous vraiment supprimer la demande' {{ $oi['id']}})" ><i class="lnr lnr-trash" ></i></a>
+														<a  data-toggle="tooltip" data-placement="top" class='btn btn-primary' href="/di/show/{{ $oi->id_intervention }}">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+														<path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/><path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+														</svg>
 													</td>
 													@endif
                                                     

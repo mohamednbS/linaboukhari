@@ -9,7 +9,8 @@ use App\Equipement;
 use App\Maintenance;
 use App\Client;
 use App\Mpreventive;
-use App\Notification;  
+use App\Notification; 
+use App\Soustraitant; 
 use Illuminate\Http\Request;
 use Auth;
 
@@ -43,11 +44,12 @@ class MpreventivesController extends Controller
         $users = User::all();
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-         $equipements = Equipement::all();
-         $clients = Client::all();
-         $techniciens = User::where('role',"Technicien")->get();
-         $ingenieurs = User::where('role',"Ingenieur")->get();
-         return view('mpreventives.ajout')->with('messages',$messages)->with('notifications',$notifications)->with('equipements',$equipements)->with('clients',$clients)->with('techniciens',$techniciens)->with('users',$users)->with('ingenieurs',$ingenieurs);
+        $equipements = Equipement::all();
+        $clients = Client::all();
+        $soustraitants = Soustraitant::all();
+        $techniciens = User::where('role',"Technicien")->get();
+        $ingenieurs = User::where('role',"Ingenieur")->get();
+         return view('mpreventives.ajout')->with('messages',$messages)->with('notifications',$notifications)->with('equipements',$equipements)->with('clients',$clients)->with('techniciens',$techniciens)->with('users',$users)->with('ingenieurs',$ingenieurs)->with('soustraitants',$soustraitants);
      }
     public function store(Request $request){
         $intervalle = $request->input("intervalle");
@@ -56,10 +58,10 @@ class MpreventivesController extends Controller
         $numero= $request->input("numero");
         $status = $request->input("status");
         $equipement_name = $request->input("equipement_name");
-        $numserie = $request->input("numserie");
         $client_name = $request->input("client_name");
         $umesure = $request->input("unite_mesure");
         $executeurs = $request->input("executeur");
+        $soustraitant = $request->input("soustraitant");
         $date_execution = $request->input("date_execution");
         $observation = $request->input("observation");
         $etat = $request->input("etat");
@@ -74,10 +76,10 @@ class MpreventivesController extends Controller
         $mp->numero = $numero;
         $mp->status = $status;
         $mp->equipement_name  = $equipement_name ;
-        $mp->numserie = $numserie;
         $mp->client_name = $client_name;
         $mp->umesure = $umesure;
         $mp->executeur = implode(',', $executeurs);
+        $mp->soustraitant = $soustraitant;
         $mp->intervalle = $intervalle;
         $mp->date_debut = $datedebut;
         $mp->date_fin = $datefin;

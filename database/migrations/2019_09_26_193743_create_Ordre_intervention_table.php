@@ -25,6 +25,7 @@ class CreateOrdreInterventionTable extends Migration
             $table->string('priorite');
             $table->string('mode_appel');
             $table->string('destinateur');
+            $table->string('soustraitant')->nullable();
             $table->string('appel_client');
             $table->text('commentaire')->nullable();
             $table->text('observation')->nullable();
