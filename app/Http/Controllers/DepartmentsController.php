@@ -14,6 +14,10 @@ use Illuminate\Http\Request;
 class DepartmentsController extends Controller
 {
     //
+    public function sortBy($columndescription)
+    {
+        dd('test');
+    }
     public function index(){ 
         $users = User::all();
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();

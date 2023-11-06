@@ -57,7 +57,7 @@
                                                         <th scope="col">#</th>
                                                         <th scope="col" style="text-align: center;">Nom Du Département</th>
                                                         <th scope="col" style="text-align: center;">
-															<span> 
+															<span wire : click = "sortBy('description')" class="float-right text-sm" style="cursor:pointer"> 
 																<i class ="fa fa-arrow-up"></i>
 																<i class ="fa fa-arrow-down"></i>
 															</span>

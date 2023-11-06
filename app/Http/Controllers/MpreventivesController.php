@@ -26,8 +26,7 @@ class MpreventivesController extends Controller
         $today = date("Y-m-d");
         $techniciens = User::where('role',"Technicien")->get();
         $clients = Client::all();
-        $mpreventives = Mpreventive::where('etat',"!=","Terminé")->get();
-        $mpreventives = Mpreventive::paginate(5);
+        $mpreventives = Mpreventive::where('etat',"!=","Terminé")->orderBy('created_at','desc')->paginate(8); 
         return view('mpreventives.index')->with('messages',$messages)->with('notifications',$notifications)->with('mpreventives',$mpreventives)->with('equipements',$equipements)->with('clients',$clients)->with('techniciens',$techniciens)->with('users',$users)->with('dateprochaine',$dateprochaine)->with('today',$today);
     }
     public function filter(Request $request){

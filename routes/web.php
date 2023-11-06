@@ -24,7 +24,7 @@ Route::get('/equipements','EquipementsController@index')->middleware('auth');
 Route::get('/profile','UsersController@profile')->middleware('auth');
 Route::get('/profile/mod','UsersController@profilemod')->middleware('auth');
 Route::post('/modprofile','UsersController@modprofile')->middleware('auth');
-Route::get('/users','UsersController@index')->middleware('auth');
+Route::get('/users','UsersController@index')->middleware('auth')->name('users.index');
 Route::get('/user/add','UsersController@create')->middleware('auth');
 Route::post('/adduser','UsersController@store')->middleware('auth');
 Route::post('/user/filter','UsersController@filter')->middleware('auth');
@@ -77,7 +77,7 @@ Route::get('/equipements/{equipement_id_equipement}/accessoires/create', 'Access
 
 /* Demande d'intervention route */
 
-Route::get('/di','OinterventionsController@index')->middleware('auth');
+Route::get('/di','OinterventionsController@index')->middleware('auth')->name('dmdinterventions.index');
 Route::get('/di/add','OinterventionsController@create')->middleware('auth');
 Route::post('/addoi','OinterventionsController@store')->middleware('auth');
 Route::post('/oi/filter','OinterventionsController@filter')->middleware('auth');

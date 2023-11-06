@@ -17,7 +17,7 @@ class SoustraitantsController extends Controller
         $users = User::all();
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-        $soustraitant = Soustraitant::all();
+        $soustraitant = Soustraitant::orderBy('name','asc')->get();
         return view('soustraitants.index')->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('soustraitant',$soustraitant);
     }
     public function create(){

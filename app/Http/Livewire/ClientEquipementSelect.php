@@ -24,7 +24,7 @@ class ClientEquipementSelect extends Component
     public function mount($selectedSousequipement = null)
     {
         $this->clients = Client::orderby('clientname')->get();
-        $this->equipements= collect();
+        $this->equipements= Equipement::orderBy('modele')->get();
         $this->sousequipements = collect();
         $this->selectedSousequipement = $selectedSousequipement;
 
