@@ -25,7 +25,7 @@ class ContratsController extends Controller
         $accessoires = Accessoire::all();
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-        $contrats =  Contrat::paginate(20);
+        $contrats =  Contrat::orderBy('client_name','asc')->paginate(20);
         $today = date('Y-m-d');
         return view('contrats.index')->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('contrats',$contrats)->with('equipements',$equipements)->with('sousequipements',$sousequipements)->with('accessoires',$accessoires)->with('clients',$clients);
     }

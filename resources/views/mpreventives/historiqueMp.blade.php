@@ -37,7 +37,7 @@
 										<i class="fa fa-check-circle"></i> Utilisateur supprimé avec success 
 								</div>
                                 @endif
-                                            <table class="table table-striped">
+                                            <table class="table table-bordered">
                                             <!-- nav search--> 
                                             <div>
                                             <form action="{{ route('search_mp') }}" method="GET">
@@ -47,15 +47,15 @@
                                             </div>
                                                 <thead>
                                                     <tr>
-                                                        <th>#</th>
-                                                        <th>N° Intervention</th>
-                                                        <th> Etat</th>
-                                                        <th>Equipement</th>
-                                                        <th>N°Série</th>
-                                                        <th>Client</th>
-                                                        <th>Intervenant</th>
-                                                        <th>Observations</th>
-                                                        <th>Rapport Maintenance</th>
+                                                         <th>#</th>
+                                                        <th style="text-align: center;">N° MP</th>
+                                                        <th style="text-align: center;">Etat</th>
+                                                        <th style="text-align: center;">Client</th>
+                                                        <th style="text-align: center;">Equipement</th>
+                                                        <th style="text-align: center;">Intervenant</th>
+                                                        <th style="text-align: center;">Date de Maintenance</th>
+                                                        <th style="text-align: center;">Observations</th>
+                                                        <th style="text-align: center;">Rapport Maintenance</th>
                                                         @if (Auth::user()->role == "Administrateur")
 														<th>Action</th>
 														@endif
@@ -87,22 +87,16 @@
 													</td>
                                                     <td>
                                                         @foreach($equipements as $equipement )
-                                                            @if ( $equipement->id_equipement == $mp->idmachine )
+                                                            @if ( $equipement->id_equipement == $mp->equipement_name )
                                                                 {{ $equipement->designation }} 
                                                             @endif
                                                         @endforeach
                                                     </td>
-                                                    <td>
-                                                        @foreach($equipements as $equipement )
-                                                            @if ( $equipement->id_equipement == $mp->idmachine )
-                                                                {{ $equipement->name }} 
-                                                            @endif
-                                                        @endforeach
-                                                    </td>
+                                                  
                                                     <td>
                                                         @foreach($clients as $client )
-                                                            @if ( $client->id_client == $mp->idclient )
-                                                                {{ $client->name }} 
+                                                            @if ( $client->id_client == $mp->client_name )
+                                                                {{ $client->clientname }} 
                                                             @endif
                                                         @endforeach
                                                     </td>

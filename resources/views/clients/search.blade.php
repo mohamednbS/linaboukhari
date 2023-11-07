@@ -41,19 +41,19 @@
 										<i class="fa fa-check-circle"></i> Client supprimé avec succès
 								</div>
                                 @endif
-                                            <table class="table table-striped">
+                                            <table class="table table-bordered">
                                                 <thead>
                                                     <tr>
-                                                        <th>Nom client/Raison sociale</th>
-														<th>Adresse</th>
+                                                        <th style="text-align: center;">Nom client/Raison sociale</th>
+														<th style="text-align: center;">Adresse</th>
 													             
-														<th>Email</th>
-														<th>Mobile</th>   
-														<th>Equipements</th>            
+														<th style="text-align: center;">Email</th>
+														<th style="text-align: center;">Mobile</th>   
+														<th style="text-align: center;">Equipements</th>            
 													
 														
 														@if (Auth::user()->role == "Administrateur")
-														<th>Action</th>
+														<th style="text-align: center;">Action</th>
 														@endif
                                                     </tr>
                                                 </thead>
@@ -73,7 +73,7 @@
 													<td><a href="/equipementclient/{{ $client->id_client }}"> voir les équipements</a></td>
 													
 													@if (Auth::user()->role == "Administrateur")
-                                                    <td><a data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary' href="/client/change/{{$client->id_client}}"><i class="lnr lnr-pencil"></i>  </a> 
+                                                    <td style="text-align: center;"><a data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-info' href="/client/change/{{$client->id_client}}"><i class="lnr lnr-pencil"></i>  </a> 
 														<a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/client/delete/{{ $client->id_client }}" onclick="return confirm ('voulez vous vraiment supprimer le client' {{ $client['id']}})"><i class="lnr lnr-trash"></i></a></td>
                                                     @endif
                                                 </tr>

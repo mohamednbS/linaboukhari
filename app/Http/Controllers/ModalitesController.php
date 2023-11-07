@@ -22,7 +22,7 @@ class ModalitesController extends Controller
         $users = User::all();
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-        $modalites = Modalite::all();
+        $modalites = Modalite::orderBy('name','asc')->get();
         return view('modalites.index')->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('modalites',$modalites);
     }
     public function create(){

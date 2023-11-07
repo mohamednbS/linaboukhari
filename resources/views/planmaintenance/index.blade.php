@@ -89,8 +89,14 @@ document.addEventListener('DOMContentLoaded', function() {
       eventLimit: true, // allow "more" link when too many events
       events: [
 		@foreach($ointerventions as $oi)
-        {
-          title: '{{ $oi->numero }}',
+        { 
+		@foreach($clients as $client)
+
+		@if($oi->client_name == $client->id_client)
+          title: '{{ $client->clientname}}',
+		@endif
+	
+		@endforeach
           start: '{{ $oi->created_at }}'
 		 
         },
@@ -105,10 +111,10 @@ document.addEventListener('DOMContentLoaded', function() {
 			@foreach($mpreventives as $mp)
 			@foreach($clients as $client) 
 			@foreach($equipements as $equipement)
-			@if (( $maintenance->idmp == $mp->id_mpreventive) &&($mp->idclient == $client->id_client) &&($mp->idmachine == $equipement->id_equipement))
+			@if (( $maintenance->idmp == $mp->id_mpreventive) &&($mp->client_name == $client->id_client) &&($mp->equipement_name == $equipement->id_equipement))
 	            
 		
-					title: '{{$client->clientname.'---'.$equipement->designation  }}',
+					title: '{{$client->clientname.'---'.$equipement->modele }}',
 				
 			@endif
 			@endforeach

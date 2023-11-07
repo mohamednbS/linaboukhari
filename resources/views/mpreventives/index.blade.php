@@ -48,7 +48,7 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th style="text-align: center;">N°Maintenance</th>
+                                            <th style="text-align: center;">N° MP</th>
                                             <th style="text-align: center;">Etat</th>
                                             <th style="text-align: center;">Client</th>
                                             <th style="text-align: center;">Equipement</th>

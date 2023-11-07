@@ -57,7 +57,7 @@
                                                     <td>{{ $typepanne->name }}</td>
                                                     <td>{{ $typepanne->description }}</td>
                                                    @if (Auth::user()->role == "Administrateur")
-                                                    <td><a data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary'  href="/typepanne/change/{{ $typepanne->id_typepanne }}"><i class="lnr lnr-pencil"></i></a> 
+                                                    <td><a data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-info'  href="/typepanne/change/{{ $typepanne->id_typepanne }}"><i class="lnr lnr-pencil"></i></a> 
 														<a data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/typepanne/delete/{{ $typepanne->id_typepanne  }}" onclick="return confirm ('voulez vous vraiment supprimer la panne' {{ $typepanne['id']}})"><i class="lnr lnr-trash"></i></a></td>
                                                     @endif
                                                 </tr>

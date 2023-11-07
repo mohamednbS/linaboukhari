@@ -37,13 +37,7 @@ class OinterventionsController extends Controller
         $clients = Client::all();
         $techniciens = User::where('role',"Technicien")->get();
         $ingenieurs = User::where('role',"Ingenieur")->get();
-       
-
-        $sortColumn = $request->get('sort', 'created_at');
-        $sortDirection = $request->get('direction', 'desc');
-        $ointerventions = Ointervention::where('etat',"!=","Clôturé")->orderBy($sortColumn, $sortDirection)->paginate(5); 
-       
-  
+        $ointerventions = Ointervention::where('etat',"!=","Clôturé")->orderBy('created_at', 'desc')->paginate(5);
         return view('dmdinterventions.index')->with('messages',$messages)->with('notifications',$notifications)->with('ointerventions',$ointerventions)->with('equipements',$equipements)->with('clients',$clients)->with('users',$users)->with('typepannes',$typepannes)->with('techniciens', $techniciens)->with('ingenieurs',$ingenieurs);
     }
     public function create(){

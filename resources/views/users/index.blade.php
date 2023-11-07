@@ -41,7 +41,7 @@
 								</form>
 								<thead>
 									<tr>
-										<th style="text-align: center;"><a href="{{ route('users.index', ['sort' => 'name', 'direction' => 'asc']) }}">Nom</a></th>
+										<th style="text-align: center;">Nom</th>
 										<th style="text-align: center;">Matricule</th>
 										<th style="text-align: center;">Email</th>
 										<th style="text-align: center;">Mobile</th>
@@ -95,7 +95,7 @@
 								@endforeach 
 								</tbody>  
 							</table>
-							{{ $users->appends(request()->query())->links() }}
+						
 						
 					<!-- END TABLE STRIPED -->
                                 </div>

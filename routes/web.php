@@ -107,10 +107,10 @@ Route::get('/notification/seen/{id_intervention}','NotificationsController@seen'
 Route::get('/oi/find', "OinterventionsController@find")->name('find')->middleware('auth'); 
 
 /* Rapport d'intervention*/ 
-Route::get('download-document/',  function ($document) {
-    $path = storage_path('app/public/' . $document);  
-
-    return response()->download($path, $document);})->name('download.document')->middleware('auth');
+Route::get('download-document/', function ($document) {
+    $path = storage_path('app/public/' . $document);
+    return response()->download($path, $document);
+})->name('download.document')->middleware('auth');
 
 
 

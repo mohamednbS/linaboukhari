@@ -46,9 +46,9 @@
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
-                                                        <th style="text-align: center;"><a href="{{ route('dmdinterventions.index', ['sort' => 'numero', 'direction' => 'asc']) }}">N° Intervention</a></th>
+                                                        <th style="text-align: center;">N° Intervention</th>
 														
-													    <th style="text-align: center;"><a href="{{ route('dmdinterventions.index', ['sort' => 'client_name', 'direction' => 'asc']) }}">Client</a></th>
+													    <th style="text-align: center;">Client</th>
 														
                                                         <th style="text-align: center;">Equipement</th>
 														<th style="text-align: center;">Panne Equipement</th>

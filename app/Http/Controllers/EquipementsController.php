@@ -29,13 +29,12 @@ class EquipementsController extends Controller
     public function index()
     {
          //
-         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
-         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-         $equipements = Equipement::paginate(20);
-        
-         $users = User::all();
-         $clients = Client::all();
-         return view('Equipements.index')->with('users',$users)->with('equipements',$equipements)->with('messages',$messages)->with('notifications',$notifications)->with('clients',$clients);
+        $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
+        $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
+        $equipements = Equipement::orderBy('modele','asc')->paginate(20);
+        $users = User::all();
+        $clients = Client::orderBy('clientname','asc')->get();
+        return view('Equipements.index')->with('users',$users)->with('equipements',$equipements)->with('messages',$messages)->with('notifications',$notifications)->with('clients',$clients);
     }
      /**
      * Display a listing of the resource.

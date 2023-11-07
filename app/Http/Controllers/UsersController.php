@@ -30,9 +30,7 @@ class UsersController extends Controller
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $departments = Department::all();
         $modalites = Modalite::all();
-        $users = User::where('role',"!=", "Administrateur")->get();
-        $users = User::orderBy('name')->get(); 
-        
+        $users = User::where('role',"!=", "Administrateur")->orderBy('name','asc')->get(); 
         return view('users.index')->with('users',$users)->with('departments',$departments)->with('modalites',$modalites)->with('messages',$messages)->with('notifications',$notifications);
     }
         /**
