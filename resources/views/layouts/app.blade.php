@@ -34,6 +34,10 @@
 	<link href="{{ asset('packages/timegrid/main.css') }}" rel='stylesheet' />
 	<link href="{{ asset('packages/list/main.css') }}" rel='stylesheet' />
 
+	
+
+
+
 </head>
 
 
@@ -51,6 +55,8 @@
 	<script src="{{ asset('vendor/chartist/js/chartist.min.js') }}"></script>
     <script src="{{ asset('vendor/toastr/toastr.min.js') }}"></script>
 	<script src="{{ asset('scripts/klorofil-common.js') }}"></script>
+
+	
 	
                                                                 
 </body>

@@ -22,6 +22,8 @@ class CreateEquipementsTable extends Migration
             $table->unsignedBigInteger('modalite_id_modalite');
             $table->unsignedBigInteger('client_id_client');
             $table->unsignedBigInteger('software');
+            $table->string('contrat');
+            $table->string('type_contrat');
                 // Ajouter la contrainte de clé étrangère après avoir créé la colonne `modalite_id et 'client_id`
             $table->foreign('modalite_id_modalite')->references('id_modalite')->on('modalites');
             $table->foreign('client_id_client')->references('id_client')->on('clients');

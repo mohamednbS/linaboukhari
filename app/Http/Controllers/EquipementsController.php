@@ -108,6 +108,8 @@ class EquipementsController extends Controller
         $equipement->numserie=$request->input("numserie");
         $equipement->software=$request->input("software");
         $equipement->date_installation=$request->input("date_installation"); 
+        $equipement->contrat=$request->input("contrat"); 
+        $equipement->type_contrat=$request->input("type_contrat"); 
         $equipement->plan_prev=$request->input("plan_prev"); 
         $equipement->client_id_client=$request->input("client_id_client"); 
         $equipement->document = $document -> getClientOriginalName();
@@ -132,7 +134,6 @@ class EquipementsController extends Controller
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
         $modalites = Modalite::all();
         $clients = Client::all();
-      
         $equipement = Equipement::find($id_equipement);
         $users = User::all();
         $sousequipements = $equipement->sousequipements ?? null ; // Filtrer les sous-équipements par id de l'équipement
@@ -181,6 +182,8 @@ class EquipementsController extends Controller
         $equipement->designation=$request->input("designation");
         $equipement->numserie=$request->input("numserie");
         $equipement->software=$request->input("software");
+        $equipement->contrat=$request->input("contrat"); 
+        $equipement->type_contrat=$request->input("type_contrat"); 
         $equipement->date_installation=$request->input("date_installation");
         $equipement->plan_prev=$request->input("plan_prev"); 
         $equipement->client_id_client=$request->input("client_id_client");

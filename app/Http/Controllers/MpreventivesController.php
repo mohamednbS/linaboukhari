@@ -26,7 +26,7 @@ class MpreventivesController extends Controller
         $today = date("Y-m-d");
         $techniciens = User::where('role',"Technicien")->get();
         $clients = Client::all();
-        $mpreventives = Mpreventive::where('etat',"!=","Terminé")->orderBy('created_at','desc')->paginate(8); 
+        $mpreventives = Mpreventive::where('etat',"!=","Clôturé")->orderBy('date_execution','asc')->paginate(8); 
         return view('mpreventives.index')->with('messages',$messages)->with('notifications',$notifications)->with('mpreventives',$mpreventives)->with('equipements',$equipements)->with('clients',$clients)->with('techniciens',$techniciens)->with('users',$users)->with('dateprochaine',$dateprochaine)->with('today',$today);
     }
     public function filter(Request $request){
@@ -57,13 +57,13 @@ class MpreventivesController extends Controller
         $numero= $request->input("numero");
         $status = $request->input("status");
         $equipement_name = $request->input("equipement_name");
-        $client_name = $request->input("client_name");
+        $client_name = $request->input("client_name");  
         $umesure = $request->input("unite_mesure");
         $executeurs = $request->input("executeur");
         $soustraitant = $request->input("soustraitant");
         $date_execution = $request->input("date_execution");
         $observation = $request->input("observation");
-        $etat = $request->input("etat");
+        $etat = $request->input("etat"); 
 
         if ( $request->input("unite_mesure") == "Jours"){
             $dateprochaine = Carbon::parse($datedebut)->addDays($intervalle);
@@ -159,9 +159,9 @@ class MpreventivesController extends Controller
         $mp = Mpreventive::find($id_mpreventive);
         $mp->numero = $request->input("numero");
         $mp->status = $request->input("status");
-        $mp->idmachine = $request->input("machine");
-        $numserie = $request->input("numserie");
-        $mp->idclient = $request->input("client");
+        $mp->equipement_name = $request->input("equipement_name");
+        
+        $mp->client_name = $request->input("client_name");
         $mp->umesure = $request->input("unite_mesure");   
         $mp->executeur = implode(',', $executeurs);
         $mp->intervalle = $request->input("intervalle");
@@ -179,9 +179,9 @@ class MpreventivesController extends Controller
             $mp = Mpreventive::find($id_mpreventive);
             $mp->numero = $request->input("numero");
             $mp->status = $request->input("status");
-            $mp->idmachine = $request->input("machine");
-            $mp->numserie = $request->input("numserie");
-            $mp->idclient = $request->input("client");
+            $mp->equipement_name = $request->input("equipement_name");
+     
+            $mp->client_name = $request->input("client_name");
             $mp->umesure = $request->input("unite_mesure");   
             $mp->executeur = implode(',', $executeurs);
             $mp->intervalle = $request->input("intervalle");
@@ -218,16 +218,65 @@ class MpreventivesController extends Controller
           
     }
     public function historiqueMp(){
-        $allmp = Mpreventive::where('etat',"Terminé")->get();
+        $mpreventives = Mpreventive::where('etat',"Clôturé")->paginate(8); 
         $equipements = Equipement::all();
         $users = User::all();
         $clients = Client::all();
         $techniciens = User::where('role',"Technicien")->get();
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-        return view('mpreventives.historiqueMp')->with('allmp',$allmp)->with('equipements',$equipements)->with('messages',$messages)->with('notifications',$notifications)->with('clients',$clients)->with('users',$users)->with('techniciens',$techniciens);
+        return view('mpreventives.historiqueMp')->with('mpreventives',$mpreventives)->with('equipements',$equipements)->with('messages',$messages)->with('notifications',$notifications)->with('clients',$clients)->with('users',$users)->with('techniciens',$techniciens);
     
     }
+
+    public function mpindex(){
+        $users = User::all();
+        $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
+        $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
+        $equipements = Equipement::all();
+        $clients = Client::all();
+        $soustraitants = Soustraitant::all();
+        $techniciens = User::where('role',"Technicien")->get();
+        $ingenieurs = User::where('role',"Ingenieur")->get();
+         return view('mpreventives.indexmp')->with('messages',$messages)->with('notifications',$notifications)->with('equipements',$equipements)->with('clients',$clients)->with('techniciens',$techniciens)->with('users',$users)->with('ingenieurs',$ingenieurs)->with('soustraitants',$soustraitants);
+    }
+    public function addindex(Request $request, $id_mpreventive)
+    {
+        $datedebutmp = $request->input("datedebutmp");
+        $datefinmp = $request->input("datefinmp");
+        $observation = $request->input("observation");
+        $etat = $request->input("etat");
+    
+        // Retrieve the Mpreventive model instance
+        $mp = Mpreventive::find($id_mpreventive);
+    
+        if (!$mp) {
+            // Handle the case where the Mpreventive with the given ID is not found
+            return redirect()->back()->with('error', 'Mpreventive not found.');
+        }
+    
+        if ($request->hasFile('document')) {
+            $document = $request->file('document');
+            $documentname = $document->getClientOriginalName();
+            $destinationPath = storage_path('app/public');
+            $document->move($destinationPath, $documentname);
+    
+            // Set the document property only if the file upload is successful
+            $mp->document = $documentname;
+        }
+    
+        // Set other properties
+        $mp->datedebutmp = $datedebutmp;
+        $mp->datefinmp = $datefinmp;
+        $mp->observation = $observation;
+        $mp->etat = $etat;
+    
+        // Save the changes
+        $mp->save();
+    
+        return redirect("/mp/indexmp/{$id_mpreventive}");
+    }
+    
       
     public function search_mp(Request $request)
     {   $users = User::all();
@@ -240,8 +289,8 @@ class MpreventivesController extends Controller
         $mpreventives = Mpreventive::where('numero', 'like', '%'.$query.'%')
                           ->orwhere('status', 'like', '%'.$query.'%')
                           ->orwhere('umesure', 'like', '%'.$query.'%')
-                          ->orwhere('idmachine', 'like', '%'.$query.'%')
-                          ->orwhere('idclient', 'like', '%'.$query.'%')
+                          ->orwhere('equipement_name', 'like', '%'.$query.'%')
+                          ->orwhere('client_name', 'like', '%'.$query.'%')
                           ->orwhere('executeur', 'like', '%'.$query.'%')
                           ->orwhere('intervalle', 'like', '%'.$query.'%')
                           ->orwhere('date_debut', 'like', '%'.$query.'%')

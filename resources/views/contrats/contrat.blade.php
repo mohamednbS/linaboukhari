@@ -25,7 +25,12 @@
 							<!-- TABLE STRIPED -->
 							<div class="panel">
 								<div class="panel-heading">
-									<h3  class="font-weight-bold" class="panel-title" > Contrat : {{ $contrat->type_contrat}} </h3>
+									<h3  class="font-weight-bold" class="panel-title" > Client : 
+										@foreach($clients as $client )
+                                            @if ($contrat->client_name == $client->id_client)
+                                                    {{ $client->clientname}}
+                                            @endif
+                                        @endforeach</h3>
 								</div>
 								<div class="panel-body">
 							
@@ -35,11 +40,26 @@
                                     <!-- PANEL NO PADDING -->
                                     <div class="panel">
                                           <div class="panel-heading">
-                                            <h3 class="p-3 mb-2 bg-info text-white" class="panel-title">   @foreach($clients as $client )
-                                                @if ($contrat->client_name == $client->id_client)
-                                                    {{ $client->clientname}}
-                                                @endif
-                                                @endforeach</h3>
+                                            <h3 style="text-align: center;" class="panel-title">
+												@if ($contrat->status =="Proche expiration")
+												<span class="label label-danger">
+
+												@elseif( $contrat->status == "Renouvelé"  )
+												<span class="label label-info">
+
+												@elseif( $contrat->status == "En cours" )
+												<span class="label label-success">
+												
+												@elseif( $contrat->status == "En cours rénégociation" )
+												<span class="label label-primary">
+
+												@else
+												<span class="label label-warning"> 
+												
+												
+												@endif
+												{{ $contrat->status }}</span>
+											</h3>
                                           
                                           </div>
 
@@ -50,6 +70,7 @@
                                       <!-- PANEL HEADLINE -->
                                       <div class="panel panel-headline">
                                         <div class="panel-heading">
+										<h3> {{ $contrat->type_contrat}} </h3>
                                         <h3 class="panel-title">Equipement : 
                                             @foreach($equipements as $equipement )
                                             @if ($contrat->equipement_name == $equipement->id_equipement)
@@ -57,6 +78,7 @@
                                             @endif
                                             @endforeach
                                         </h3>
+
                                         
                                         </div>
                                         <div class="panel-body">

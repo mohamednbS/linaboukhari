@@ -76,12 +76,30 @@
 											<div class="col-md-9">
 												<select  name="type_contrat" class="form-control"  style="width:100%;margin-bottom:15px;" >
 													<option>-- Selectionner le Type du Contrat  --</option>
-													<option value='Contrat de pièces et main oeuvre'>Contrat depièces et main d'oeuvre</option>
+													<option value='Contrat de pièces et main oeuvre'>Contrat de pièces et main d'oeuvre</option>
 													<option value='Contrat main oeuvre'>Contrat main d'oeuvre</option>
 												</select> 
 											</div>
+
+											<div class="col-md-3">
+												<label for="validationDefault06"> Etat Contrat </label>
+															
+											</div>
+											<div class="col-md-9">
+												<select style="width:100%;margin-bottom:10px;" class="form-control" name="status">
+												
+													<option >Sélectionner l'état du contrat'</option>
+													<option value="En cours">En cours</option>
+													<option value="Proche expiration">Proche expiration</option>
+													<option value="Renouvelé">Renouvelé</option>
+													<option value="Expiré">Expiré</option>
+													<option value="Attente approbation">Attente approbation</option>
+													<option value="En cours rénégociation">En cours rénégociation</option>
+												
+												</select>
+											</div>
 											
-											
+											 
 											<div class="col-md-3">
 											    <label> Note </label>
 											</div>

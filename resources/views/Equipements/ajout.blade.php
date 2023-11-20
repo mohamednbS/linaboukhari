@@ -94,7 +94,7 @@
                                                     </div>
 
                                             <div class="col-md-3">
-                                            <label for="validationDefault07"> Durée Planning Préventif/an  </label>
+                                            <label for="validationDefault07"> Nombre Planning Préventif/an  </label>
                                                     
                                             </div>
                                             <div class="col-md-9">
@@ -123,6 +123,33 @@
                                             <input style="width:100%;margin-bottom:10px;" class="form-control" placeholder="tapper le software installé ici " type="text" name="software" id="validationDefault09" required>
                                             
                                             </div>
+
+                                            <div class="col-md-3">
+                                                <label for="validationDefault09"> Contrat </label>
+                                                
+                                            </div>
+                                        
+                                            <div class="col-md-9">
+												<select  name="type_contrat" class="form-control"  style="width:100%;margin-bottom:15px;" >
+													
+													<option value='oui'>OUI</option>
+													<option value='non'>NON</option>
+                                                    <option value='sous garantie'>SOUS GARANTIE</option>
+												</select> 
+											</div>
+
+                                            <div class="col-md-3">
+                                                <label> Type contrat </label>
+                                                
+                                            </div>
+
+                                            <div class="col-md-9">
+												<select  name="type_contrat" class="form-control"  style="width:100%;margin-bottom:15px;" >
+													<option>-- Selectionner le Type du Contrat  --</option>
+													<option value='Contrat de pièces et main oeuvre'>Contrat de pièces et main d'oeuvre</option>
+													<option value='Contrat main oeuvre'>Contrat main d'oeuvre</option>
+												</select> 
+											</div>
                                             
                                             <div class="col-md-3">
                                             <label><label> Documentation de l'équipement </label>

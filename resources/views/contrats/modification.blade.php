@@ -43,41 +43,16 @@
 							
 											<div class="row">
 
-												<div class="col-md-3">
-													<label > Nom du Client</label>
-												</div>
-												<div class="col-md-9">
-														<select name="client_name" class="form-control">
-															<option>-- Selectionner un Client --</option>
-															@foreach( $clients as $client )
-																@if ($client->id_client == $contrat->client_name )
-															<option selected value='{{ $client->id_client }}'>{{ $client->clientname }}</option>
-																@else
-															<option value='{{ $client->id_client }}'>{{ $client->clientname }}</option>
-																@endif
-															
-															@endforeach
-														</select> 
-													
-												</div>
+												<!--Générer la liste des clients et équipements et sous-equipements-->
+										
+												<!-- Styles livewire -->
+												@livewireStyles()
 
-												<div class="col-md-3">
-													<label > Equipement</label>
-												</div>
-												<div class="col-md-9">
-														<select name="equipement_name" class="form-control">
-															<option>-- Selectionner un Equipement --</option>
-															@foreach( $equipements as $equipement )
-																@if ($equipement->id_equipement == $contrat->equipement_name )
-															<option selected value='{{ $equipement->id_equipement }}'>{{ $equipement->designation }}</option>
-																@else
-															<option value='{{ $equipement->id_equipement }}'>{{ $equipement->designation }}</option>
-																@endif
-															
-															@endforeach
-														</select> 
-													
-												</div>
+												<!-- Le composant app/Http/Livewire/ClientsEquipementsSelect.php -->
+													@livewire("client-equipement-select")
+
+												<!-- Scripts livewire -->
+													@livewireScripts()
 
 												<div class="col-md-3">
 													<label > Date de Début </label>
@@ -113,6 +88,72 @@
 															<option selected value='Contrat main oeuvre'>Contrat main d'oeuvre</option>
 														@endif
 													</select>
+												</div>
+												<div class="col-md-3">
+													<label for="validationDefault06"> Etat Contrat </label>
+																
+												</div>
+												<div class="col-md-9">
+												<select style="width:100%;margin-bottom:10px;" class="form-control" name="status">
+												
+													@if ( $contrat->status == "En cours")
+														<option >Sélectionner l'état du contrat</option>
+														<option selected value='En cours'>En cours</option>
+														<option value='Proche expiration'>Proche expiration</option>
+														<option value='Renouvelé'>Renouvelé</option>
+														<option value='Expiré'>Expiré</option>
+														<option value='Attente approbation'>Attente approbation</option>
+														<option value='En cours rénégociation'>En cours rénégociation</option>
+
+													@elseif ( $contrat->status == "Proche expiration")
+														<option >Sélectionner l'état du contrat</option>
+														<option selected value='Proche expiration'>Proche expiration</option>
+														<option value='En cours'>En cours</option>
+														<option value='Renouvelé'>Renouvelé</option>
+														<option value='Expiré'>Expiré</option>
+														<option value='Attente approbation'>Attente approbation</option>
+														<option value='En cours rénégociation'>En cours rénégociation</option>
+
+													@elseif ( $contrat->status == "Renouvelé")
+														<option >Sélectionner l'état du contrat</option>
+														<option selected value='Renouvelé'>Renouvelé</option>
+														<option value='En cours'>En cours</option>
+														<option value='Proche expiration'>Proche expiration</option>
+														<option value='Expiré'>Expiré</option>
+														<option value='Attente approbation'>Attente approbation</option>
+														<option value='En cours rénégociation'>En cours rénégociation</option>
+
+													@elseif ( $contrat->status == "Expiré")
+														<option >Sélectionner l'état du contrat</option>
+														<option selected value='Expiré'>Expiré</option>
+														<option value='En cours'>En cours</option>
+														<option value='Proche expiration'>Proche expiration</option>
+														<option value='Renouvelé'>Renouvelé</option>
+														<option value='Attente approbation'>Attente approbation</option>
+														<option value='En cours rénégociation'>En cours rénégociation</option>
+
+													@elseif ( $contrat->status == "Attente approbation")
+														<option >Sélectionner l'état du contrat</option>
+														<option selected value='Attente approbation'>Attente approbation</option>
+														<option value='En cours'>En cours</option>
+														<option value='Proche expiration'>Proche expiration</option>
+														<option value='Renouvelé'>Renouvelé</option>
+														<option value='Expiré'>Expiré</option>
+														<option value='En cours rénégociation'>En cours rénégociation</option>
+													
+
+													@else
+													<option >Sélectionner l'état du contrat</option>
+													
+													<option value='En cours rénégociation'>En cours rénégociation</option>
+													<option selected value='En cours'>En cours</option>
+													<option selected value='Proche expiration'>Proche expiration</option>
+													<option selected value='Renouvelé'>Renouvelé</option>
+													<option selected value='Expiré'>Expiré</option>
+													<option selected value='Attente approbation'>Attente approbation</option>
+									
+												@endif
+												</select>
 												</div>
 												
 												

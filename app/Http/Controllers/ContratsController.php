@@ -25,7 +25,7 @@ class ContratsController extends Controller
         $accessoires = Accessoire::all();
         $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
         $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
-        $contrats =  Contrat::orderBy('client_name','asc')->paginate(20);
+        $contrats =  Contrat::orderBy('status','desc')->paginate(10);
         $today = date('Y-m-d');
         return view('contrats.index')->with('users',$users)->with('messages',$messages)->with('notifications',$notifications)->with('contrats',$contrats)->with('equipements',$equipements)->with('sousequipements',$sousequipements)->with('accessoires',$accessoires)->with('clients',$clients);
     }
@@ -46,10 +46,10 @@ class ContratsController extends Controller
         $contrat->client_name = $request->input('client_name');
         $contrat->equipement_name = $request->input('equipement_name');
         $contrat->souseq_name = $request->input('souseq_name');
-     
         $contrat->date_debut= $request->input('date_debut');
         $contrat->date_fin = $request->input('date_fin');
         $contrat->type_contrat = $request->input('type_contrat');
+        $contrat->status = $request->input('status');
         $contrat->note = $request->input('note');
 
         $contrat->save();
@@ -117,6 +117,7 @@ class ContratsController extends Controller
         $contrat->date_debut= $request->input('date_debut');
         $contrat->date_fin = $request->input('date_fin');
         $contrat->type_contrat = $request->input('type_contrat');
+        $contrat->status = $request->input('status');
         $contrat->note = $request->input('note');
         $contrat->update();
         return redirect("/cm/mod/".$contrat->id_contrat)->with('addcontrat',"success");
@@ -135,13 +136,16 @@ class ContratsController extends Controller
          $users = User::all();
          $messages = Message::where('iddestination',Auth::user()->id_user)->where('stat',"unread")->get();
          $notifications = Notification::where('iduser',Auth::user()->id_user)->where('stat',"unseen")->get();
+        
          $query = $request->input('query');
-         $contrats = Contrat::where('name', 'like', '%'.$query.'%')
+         $contrats = Contrat::where('type_contrat', 'like', '%'.$query.'%')
                             ->orwhere('date_debut', 'like', '%'.$query.'%')
                             ->orwhere('date_fin', 'like', '%'.$query.'%')
-                            ->orwhere('idclient', 'like', '%'.$query.'%')
+                            ->orwhere('client_name', 'like', '%'.$query.'%')
+                            ->orwhere('souseq_name', 'like', '%'.$query.'%')
+                            ->orwhere('status', 'like', '%'.$query.'%')
                             ->orwhere('note', 'like', '%'.$query.'%')
-                            ->orwhere('idequipement', 'like', '%'.$query.'%')->get();
+                            ->orwhere('equipement_name', 'like', '%'.$query.'%')->orderBy('status','desc')->paginate(10);
          return view('contrats.search')->with('users',$users)->with('contrats',$contrats)->with('messages',$messages)->with('equipements',$equipements)->with('clients',$clients)->with('notifications',$notifications);
     }
 

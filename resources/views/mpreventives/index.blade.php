@@ -55,6 +55,7 @@
                                             <th style="text-align: center;">Intervenant</th>
                                             <th style="text-align: center;">Date de Maintenance</th>
                                             <th style="text-align: center;">Observations</th>
+                                            <th style="text-align: center;">Validation</th>
                                        
                                             @if (Auth::user()->role == "Administrateur")
                                             <th style="text-align: center;">Action</th>
@@ -62,7 +63,7 @@
                                             
                                             
                                         </tr>
-                                    </thead>
+                                    </thead> 
                                                 
                                         <tbody> 
                                         <?php $i=0; ?>
@@ -73,9 +74,9 @@
                                             <td><a href="/mp/show/{{ $mp->id_mpreventive }}">{{ $mp->numero }}</a></td> 
                                             <td>
                                             
-                                                @if ($mp->etat == "Suspendu")
+                                                @if ($mp->etat == "Reporté")
                                                 <span class="label label-danger">
-                                                @elseif( $mp->etat == "Programé"  )
+                                                @elseif( $mp->etat == "Planifié"  )
                                                 <span class="label label-info">
                                                 @elseif( $mp->etat == "En attente de validation" || $mp->etat == "En Cours"  )
                                                 <span class="label label-warning">
@@ -108,6 +109,11 @@
                                             <td> {{ $mp->date_execution }}</td>
                                         
                                             <td>{{ $mp->observation }} </td>
+                                            @if (Auth::user()->role == "Administrateur")
+                                            <td>
+												<a href="{{ route('download.document', ['document' => $mp->document]) }}"> le Rapport d'Intervention</a>
+											</td>
+                                            @endif
                                             
                                         
                                             

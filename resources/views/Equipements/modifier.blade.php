@@ -37,98 +37,142 @@
 								</div>
                                 @endif
                                 <form action='/modequipement/{{ $equipement->id_equipement }}' method="POST" enctype="multipart/form-data">
-                                                        {{ csrf_field() }} 
-                                         
-                                                            <div class="row">
-                                                            
-                                                                <div class="col-md-3">
-                                                                    <label > Code </label>
-                                                                
-                                                                </div>
-                                                                <div class="col-md-9">
-                                                                    <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $equipement->name }}"  type="text" name="code">
-                                                                    
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                <label > Modele du machine</label>
-                                                                
-                                                                </div>
-                                                                <div class="col-md-9">
-                                                                <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $equipement->modele }}" type="text" name="modele">
-                                                                
-                                                                </div>
+                                    {{ csrf_field() }} 
+                    
+                                        <div class="row">
+                                        
+                                            <div class="col-md-3">
+                                                <label > Code </label>
+                                            
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $equipement->name }}"  type="text" name="code">
+                                                
+                                            </div>
+                                            <div class="col-md-3">
+                                            <label > Modele du machine</label>
+                                            
+                                            </div>
+                                            <div class="col-md-9">
+                                            <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $equipement->modele }}" type="text" name="modele">
+                                            
+                                            </div>
 
-                                                                <div class="col-md-3">
-                                                                <label > <label> Marque du machine </label> </label>
-                                                                   
-                                                                </div>
-                                                                <div class="col-md-9">
-                                                                <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $equipement->marque }}" type="text" name="marque">
-                                                                
-                                                                </div>
-                                                                
-                                                                <div class="col-md-3">
-                                                                    <label > <label> Désignation </label> </label>  
-                                                                 </div>
-                                                                <div class="col-md-9">
-                                                                <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $equipement->designation }}" type="text" name="designation">
-                                                                    
-                                                                </div>
+                                            <div class="col-md-3">
+                                            <label > <label> Marque du machine </label> </label>
+                                            
+                                            </div>
+                                            <div class="col-md-9">
+                                            <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $equipement->marque }}" type="text" name="marque">
+                                            
+                                            </div>
+                                            
+                                            <div class="col-md-3">
+                                                <label > <label> Désignation </label> </label>  
+                                            </div>
+                                            <div class="col-md-9">
+                                            <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $equipement->designation }}" type="text" name="designation">
+                                                
+                                            </div>
 
-                                                                <div class="col-md-3">
-                                                                <label> Numéro Série </label>
-                                                                </div>
+                                            <div class="col-md-3">
+                                            <label> Numéro Série </label>
+                                            </div>
 
-                                                                <div class="col-md-9">
-                                                                <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $equipement->numserie}}" type="text" name="numserie">
-                                                                </div>
+                                            <div class="col-md-9">
+                                            <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $equipement->numserie}}" type="text" name="numserie">
+                                            </div>
 
-                                                                <div class="col-md-3">
-                                                                    <label> Date d'installation </label>       
-                                                                </div>
-                                                                <div class="col-md-9">
-                                                                <input min="{{ Carbon\Carbon::now() }}" style="width:100%;margin-bottom:10px;" value="{{ $equipement->date_installation}}" type="date" name="date_installation" class="form-control" >
-                                                                </div>
+                                            <div class="col-md-3">
+                                                <label> Date d'installation </label>       
+                                            </div>
+                                            <div class="col-md-9">
+                                            <input min="{{ Carbon\Carbon::now() }}" style="width:100%;margin-bottom:10px;" value="{{ $equipement->date_installation}}" type="date" name="date_installation" class="form-control" >
+                                            </div>
 
-                                                                <div class="col-md-3">
-                                                                    <label> Durée Planing Préventif/an  </label>
-                                                                </div>
-                                                                <div class="col-md-9">
-                                                                <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $equipement->plan_prev}}" type="number" name="plan_prev">
-                                                                </div>
+                                            <div class="col-md-3">
+                                                <label> Durée Planing Préventif/an  </label>
+                                            </div>
+                                            <div class="col-md-9">
+                                            <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $equipement->plan_prev}}" type="number" name="plan_prev">
+                                            </div>
 
-                                                                <div class="col-md-3">
-                                                                    <label> Client </label>
-                                                                </div>
-                                                                <div class="col-md-9">
-                                                                <select name="client_id_client" class="form-control">
-                                                                     <option>-- selectionner un client --</option>
-                                                                        @foreach( $clients as $client )
-                                                                            @if ($client->id_client == $equipement->client_id_client )
-                                                                        <option selected value='{{ $client->id_client }}'>{{ $client->clientname }}</option>
-                                                                            @else
-                                                                        <option value='{{ $client->id_client }}'>{{ $client->clientname }}</option>
-                                                                           @endif
-                                                                        
-                                                                        @endforeach
-                                                                    </select> 
-                                                                </div>
+                                            <div class="col-md-3">
+                                                <label> Client </label>
+                                            </div>
+                                            <div class="col-md-9">
+                                            <select name="client_id_client" class="form-control">
+                                                <option>-- selectionner un client --</option>
+                                                    @foreach( $clients as $client )
+                                                        @if ($client->id_client == $equipement->client_id_client )
+                                                    <option selected value='{{ $client->id_client }}'>{{ $client->clientname }}</option>
+                                                        @else
+                                                    <option value='{{ $client->id_client }}'>{{ $client->clientname }}</option>
+                                                    @endif
+                                                    
+                                                    @endforeach
+                                                </select> 
+                                            </div>
 
-                                                                <div class="col-md-3">
-                                                                <label> Software </label>
-                                                                </div>
-                                                                
-                                                                <div class="col-md-9">
-                                                                <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $equipement->software}}" type="text" name="software">
-                                                                </div>
+                                            <div class="col-md-3">
+                                            <label> Software </label>
+                                            </div>
+                                            
+                                            <div class="col-md-9">
+                                            <input style="width:100%;margin-bottom:10px;" class="form-control" value="{{ $equipement->software}}" type="text" name="software">
+                                            </div>
 
-                                                                <div class="col-md-3">
-                                                                <label> Documentation du machine </label>
-                                                                </div>
-                                                                <div class="col-md-9">
-                                                                    <input style="width:100%;margin-bottom:10px;" class="form-control"  type="file" name="document">
-                                                                </div>
-                                                            </div>
+                                            <div class="col-md-3">
+                                                <label> Contrat </label>
+                                                
+                                            </div>
+                                            <div class="col-md-9">
+                                                <select name="type_contrat" style="width:100%;margin-bottom:10px;" class="form-control">
+                                                    @if ( $equipement->contrat == "oui")
+                                                     
+                                                        <option selected value='oui'>OUI</option>
+                                                        <option value='non'>NON</option>
+                                                        <option value="sous garantie">SOUS GARANTIE</option>
+                                                    
+                                                    @elseif ($equipement->contrat == "non")
+                                                    
+                                                       
+                                                        <option value='oui'>OUI</option>
+                                                        <option value='sous garantie'>SOUS GARANTIE</option>
+                                                        <option selected value='non'>NON</option>
+                                                    @else 
+                                                        <option selectedvalue='sous garantie'>SOUS GARANTIE</option>
+                                                    @endif
+                                                </select>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <label > Type du Contrat </label>
+                                                
+                                            </div>
+                                            <div class="col-md-9">
+                                                <select name="type_contrat" style="width:100%;margin-bottom:10px;" class="form-control">
+                                                    @if ( $equipement->type_contrat == "Contrat de pièces et main oeuvre")
+                                                        <option>-- Selectionner le type du contrat --</option>
+                                                        <option selected value='Contrat de pièces et main oeuvre'>Contrat depièces et main d'oeuvre</option>
+                                                        <option value='Contrat main oeuvre'>Contrat main d'oeuvre</option>
+                                                    
+                                                    @else
+                                                    
+                                                        <option>-- Selectionner le type du contrat --</option>
+                                                        <option value='Contrat de pièces et main oeuvre'>Contrat depièces et main d'oeuvre</option>
+                                                        <option selected value='Contrat main oeuvre'>Contrat main d'oeuvre</option>
+                                                    @endif
+                                                </select>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                            <label> Documentation du machine </label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input style="width:100%;margin-bottom:10px;" class="form-control"  type="file" name="document">
+                                            </div>
+                                        </div>
                                                                
                                                            
                                                             

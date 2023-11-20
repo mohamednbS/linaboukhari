@@ -3,15 +3,23 @@
         <label for="client" >{{__('Client') }}</label>
     </div> 
         <div class="col-md-9">
-            <select wire:model="selectedClient" style="width:100%;margin-bottom:10px;" class="form-control" name="client_name">
+            <select wire:model="selectedClient" style="width:100%;margin-bottom:10px;" class="js-example-basic-single" name="client_name">
                 <option value="" selected>Sélectionner un client</option>
                 @foreach($clients as $client)
                     <option value="{{ $client->id_client }}">{{ $client->clientname }}</option>
                 @endforeach
             </select>
-        </div>
-    
- 
+        </div> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet">
+    <script>
+    document.addEventListener('livewire:load', function () {
+        $('.js-example-basic-single').select2();
+        $('.js-example-basic-single').on('change', function (e) {
+            @this.set('selectedClient', e.target.value);
+        });
+    });
+    </script>
     @if (!is_null($selectedClient))
         <div class="col-md-3">
             <label for="equipement">{{ __('Equipement') }}</label>

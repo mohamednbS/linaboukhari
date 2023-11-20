@@ -52,49 +52,21 @@
                                                 
                                                 </div>
 
-                                                <div class="col-md-3">
-                                                    <label > <label>  Client </label> </label>
-                                                        
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <select style="width:100%;margin-bottom:10px;" class="form-control" name="client">
-                                                    @foreach($clients as $client )
+                                           
+                                                <!--Générer la liste des clients et équipements -->
                                                                 
-                                                        @if ($client->id_client == $mp->idclient )
-                                                            <option selected value='{{ $client->id_client }}'>{{ $client->clientname }}</option>
-                                                        @else
-                                                            <option value='{{ $client->id_client }}'>{{ $client->clientname }}</option>
-                                                        @endif
-                                                    @endforeach
-                                                        </select>
-                                                </div>
+                                                <!-- Styles livewire -->
+                                                    @livewireStyles()
 
-                                                
-                                                <div class="col-md-3">
-                                                <label > <label>  Equipement </label> </label>
-                                                
-                                                </div>
-                                                <div class="col-md-9">
-                                                <select style="width:100%;margin-bottom:10px;" class="form-control" name="machine">
-                                                @foreach($equipements as $equipement )
-                                        
-                                                    @if ($equipement->id_equipement == $mp->idmachine )
-                                                        <option selected value='{{ $equipement->id_equipement }}'>{{ $equipement->designation }}</option>
-                                                    @else
-                                                        <option value='{{ $equipement->id_equipement }}'>{{ $equipement->designation }}</option>
-                                                    @endif
-                                                @endforeach
-                                                </select>
+                                                <!-- Le composant app/Http/Livewire/ClientsEquipementsSelect.php -->
+                                                    @livewire("client-equipement-select")
 
-                                                </div>
+                                                <!-- Scripts livewire -->
+                                                    @livewireScripts()
+                                             
+                                           
 
-                                                <div class="col-md-3">
-                                                <label > <label>  Numéro de série </label> </label>
-                                                        
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <input style="width:100%;margin-bottom:10px;"  value="{{ $mp->numserie}}" class="form-control" type='text' name="numserie">
-                                                </div>
+                                          
                     
 
                                                 <div class="col-md-3">
@@ -178,22 +150,43 @@
                                                 <div class="col-md-9">
                                                     <select style="width:100%;margin-bottom:10px;" class="form-control" name="etat">
                                         
-                                                    @if ( $mp->etat == "Programé")
+                                                    @if ( $mp->etat == "Planifié")
                                                         <option>-- Sélectionner un Etat --</option>
-                                                        <option selected value='Programé'>Programé</option>
+                                                        <option selected value='Planifié'>Planifié</option>
                                                         <option value='En Cours'>En Cours</option>
-                                                        <option value='Suspendu'>Suspendu</option>
-                                                        <option value='Terminé'>Terminé</option>
+                                                        <option value='Reporté'>Reporté</option>
+                                                        <option value='Clôturé'>Clôturé</option>
+                                                        <option value="Clôturé sans rapport">Clôturé sans rapport</option>
+
                                                     @elseif ($mp->etat == "En Cours")
                                                         <option>-- Sélectionner un Etat --</option>
                                                         <option selected value='En Cours'>En Cours</option>
-                                                        <option value='Suspendu'>Suspendu</option>
-                                                        <option value='Terminé'>Terminé</option>
+                                                        <option value='Planifié'>Planifié</option>
+                                                        <option value='Reporté'>Reporté</option>
+                                                        <option value='Clôturé'>Clôturé</option>
+                                                        <option value="Clôturé sans rapport">Clôturé sans rapport</option>
+                                                    @elseif ($mp->etat == "Reporté")
+                                                        <option>-- Sélectionner un Etat --</option>
+                                                        <option selected value='Reporté'>Reporté</option>
+                                                        <option value='En cours'>En cour</option>
+                                                        <option value='Planifié'>Planifié</option>
+                                                        <option value='Clôturé'>Clôturé</option>
+                                                        <option value="Clôturé sans rapport">Clôturé sans rapport</option>
+
+                                                    @elseif ($mp->etat == "Clôturé")
+                                                        <option>-- Sélectionner un Etat --</option>
+                                                        <option selected value='Clôturé'>Reporté</option>
+                                                        <option value='Planifié'>Planifié</option>
+                                                        <option value='En cours'>En cour</option> 
+                                                        <option value='Reporté'>Reporté</option>
+                                                        <option value="Clôturé sans rapport">Clôturé sans rapport</option>
                                                     @else
                                                         <option>-- Sélectionner un Etat --</option>
-                                                        <option selected value='Suspendu'>Suspendu</option>
+                                                        <option selected value="Clôturé sans rapport">Clôturé sans rapport</option>
                                                         <option value='En Cours'>En Cours</option>
-                                                        <option value='Terminé'>Terminé</option>
+                                                        <option value='Planifié'>Planifié</option>
+                                                        <option value='Reporté'>Reporté</option>
+                                                        <option value='Clôturé'>Clôturé</option>
                                                         
                                                     
                                                     @endif

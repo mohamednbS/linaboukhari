@@ -29,9 +29,10 @@
 									<h3 class="panel-title"> Maintenance Préventive 
                                      </h3>
 								</div>
+                                <div class="panel-body">
                                 
 							
-                                <form action = "/m/{id_mpreventive}" method="POST" enctype="multipart/form-data">
+                                <form action = "/mp/indexmp/{id_mpreventive}" method="POST" enctype="multipart/form-data">
                                     {{ csrf_field() }} 
                         
                                         <div class="row">
@@ -52,6 +53,12 @@
                                                 
                                             </div>
 
+
+                                            <div class="col-md-3">
+                                                <label> Etat </label>
+                                                
+                                            </div>
+
                                             <div class="col-md-9">
                                                 <select style="width:100%;margin-bottom:10px;" class="form-control" name="etat">
                                                     
@@ -63,30 +70,6 @@
                                                     <option value="Clôturé">Clôturé</option>
                                                     
                                                 </select>
-                                            </div>
-                                            <div class="col-md-3">
-                                            <label> Intervenant(s) </label>
-                                            
-                                            </div>
-                                            <div class="col-md-9">
-                                            <select style="width:100%;margin-bottom:10px;" class="form-control" name="iduser[]" id="iduser"  multiple="multiple">
-                                             @foreach($techniciens as $technicien )
-                                                    
-                    
-                                                    <option value='{{ $technicien->name }}'>{{ $technicien->name }}</option>
-                                           
-                                                    
-                                            @endforeach
-                                            @foreach($ingenieurs as $ingenieur )
-                                                    
-                                              
-                                                    <option value='{{ $ingenieur->name }}'>{{ $ingenieur->name }}</option>
-                                           
-                                                    
-                                            @endforeach
-
-                                            </select>
-                                            
                                             </div>
 
                                             <div class="col-md-3">
@@ -118,7 +101,7 @@
 								<div class="panel-footer">
 									<div class="row">
 										<div class="col-md-6"></div>
-										<div class="col-md-6 text-right"><input type="submit" value="Modifier" class="btn btn-primary"></div>
+										<div class="col-md-6 text-right"><input type="submit" value="Ajouter" class="btn btn-primary"></div>
                                 </form>
 									</div>
 								</div>

@@ -53,10 +53,13 @@
                                                                 <!--Générer la liste des clients et équipements et sous-equipements-->
                                                                 
                                                                 <!-- Styles livewire -->
+
+
               
                                                                 @livewireStyles()
                                                                  <!-- Le composant app/Http/Livewire/ClientsEquipementsSelect.php -->
                                                                     @livewire("client-equipement-select")
+                        
 
                                                                 <!-- Scripts livewire -->
                                                                 @livewireScripts()

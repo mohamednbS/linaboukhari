@@ -45,8 +45,28 @@ class HomeController extends Controller
         $equipements = Equipement::all()->count();
         $contrats = Contrat::all()->count();
         $modalites = Modalite::all()->count();
+   //count mp 
+
+        $mpall = Mpreventive::all()->count();
+        $mppl = Mpreventive::where('etat',"Planifié")->count();   
+        $mpr = Mpreventive::where('etat',"Reporté")->count(); 
+        $mpec = Mpreventive::where('etat',"en Cours")->count();
+        $mpsr = Mpreventive::where('etat',"Clôturé sans rapport")->count();
+        $mpc = Mpreventive::where('etat',"Clôturé")->count();
+        if ($mpall > 0 ){
+            $diperc = round( ( $mppl/ $mpall ) * 100 , 2) ;
+            $dirperc = round( ( $mpr / $mpall ) * 100 , 2);
+            $diecperc = round( ( $mpec / $mpall ) * 100 + ( $mpsr/ $mpall ) * 100, 2);
+            $ditperc = round( ( $mpc / $mpall ) * 100, 2);
+        }else{
+            $diperc = 0 ;
+            $dirperc = 0 ;
+            $diecperc = 0;
+            $ditperc = 0 ;
+
+        }
        
-        $dimp = Mpreventive::where('etat',"Programé")->count();
+        $dimp = Mpreventive::where('etat',"Planifié")->count();
 
         $diall = Ointervention::all()->count();
         $dinc = Ointervention::where('etat',"Demandé")->count();   

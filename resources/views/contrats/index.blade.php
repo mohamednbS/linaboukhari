@@ -53,10 +53,8 @@
                                                         <th style="text-align: center;">Equipement</th>
 														<th style="text-align: center;">Date de Début</th>
 														<th style="text-align: center;">Date de fin</th>
-													
-														<th>Note</th>
-													
-														
+													    <th style="text-align: center;">Etat</th>
+														<th style="text-align: center;">Notes</th>
 														@if (Auth::user()->role == "Administrateur")
 														<th style="text-align: center;">Actions </th>
 														@endif
@@ -81,17 +79,38 @@
                                                     <td>
 														@foreach($equipements as $equipement )
 															@if ( $equipement->id_equipement == $contrat->equipement_name)
-																{{ $equipement->designation }} 
+																{{ $equipement->modele.'--'.$equipement->numserie }} 
 															@endif
 														@endforeach
 													</td>
 													<td>{{ $contrat->date_debut }}</td>
 													<td>{{ $contrat->date_fin }}</td>
+													<td>
+
+														@if ($contrat->status =="Proche expiration")
+														<span class="label label-danger">
+
+														@elseif( $contrat->status == "Renouvelé"  )
+														<span class="label label-info">
+
+														@elseif( $contrat->status == "En cours" )
+														<span class="label label-success">
+														
+														@elseif( $contrat->status == "En cours rénégociation" )
+														<span class="label label-primary">
+
+														@else
+														<span class="label label-warning"> 
+														
+														
+														@endif
+														{{ $contrat->status }}</span>
+													</td>
 												
 													<td>{{ $contrat->note }}</td>
 
 													@if (Auth::user()->role == "Administrateur")
-														<td  style="text-align: center;"><a href="/cm/mod/{{ $contrat->id_contrat }}" data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary'><i class="lnr lnr-pencil"></i> </a> 
+														<td  style="text-align: center;"><a href="/cm/mod/{{ $contrat->id_contrat }}" data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-info'><i class="lnr lnr-pencil"></i> </a> 
 															<a  data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/cm/del/{{ $contrat->id_contrat }}"  onclick="return confirm ('voulez vous vraiment supprimer le contrat' {{ $contrat['id']}})"><i class="lnr lnr-trash"></i></a> </td>
 														@endif
                                                 </tr>

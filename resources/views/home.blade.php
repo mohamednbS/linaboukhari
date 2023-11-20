@@ -85,13 +85,13 @@
      <div class="panel">
       <div class="panel-heading">
           <div class="therichpost-container" style="margin-left:10px;">
-          <h4>Liste des Maintenances</h4>
+          <h4>Etat des Maintenances Préventives</h4>
 
       </div>
       <div class="panel-body">
           <ul class="list-unstyled task-list">
               <li>
-                  <p class="text-primary">Liste des Maintenances Non Consultées <span class="label-percent">{{ $diperc }} %</span></p>
+                  <p class="text-primary">Maintenance Planifiées <span class="label-percent">{{ $diperc }} %</span></p>
                   <div class="progress progress-xs">
                       <div  class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="{{ $diperc }}" aria-valuemin="0" aria-valuemax="100" style="width:{{ $diperc }}%">
                           <span class="sr-only">{{ $diperc }} % Complete</span>
@@ -99,7 +99,7 @@
                   </div>
               </li>
               <li>
-                  <p class="text-danger"> Liste des Maintenances Reportées <span class="label-percent">{{ $dirperc }} %</span></p>
+                  <p class="text-danger"> Maintenance Reportées <span class="label-percent">{{ $dirperc }} %</span></p>
                   <div class="progress progress-xs">
                       <div  class="progress-bar progress-bar-danger" role="progressbar"  aria-valuenow="{{ $dirperc }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $dirperc }}%">
                           <span class="sr-only">{{ $dirperc }} % Complete</span>
@@ -107,7 +107,7 @@
                   </div>
               </li>
               <li>
-                  <p class="text-warning">Liste des Maintenances en Cours <span class="label-percent">{{ $diecperc }} %</span></p>
+                  <p class="text-warning">Maintenances en Cours <span class="label-percent">{{ $diecperc }} %</span></p>
                   <div class="progress progress-xs">
                       <div class="progress-bar progress-bar-warning" role="progressbar"  aria-valuenow="{{ $diecperc }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $diecperc }}%">
                           <span class="sr-only">Success</span>
@@ -115,7 +115,7 @@
                   </div>
               </li>
               <li>
-                  <p class="text-success">Liste des Maintenances Terminées<span class="label-percent">{{ $ditperc }}%</span></p>
+                  <p class="text-success">Maintenances Clôturées<span class="label-percent">{{ $ditperc }}%</span></p>
                   <div class="progress progress-xs">
                       <div  class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ $ditperc }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $ditperc }}%">
                           <span class="sr-only">45% Complete</span>
@@ -126,6 +126,53 @@
           </ul>
       </div>
   </div>
+  <!--MP dashboard--> 
+ 
+    <!-- TASKS -->
+    <div class="panel">
+     <div class="panel-heading">
+         <div class="therichpost-container" style="margin-left:10px;">
+         <h4>Etat des Interventions </h4>
+
+     </div>
+     <div class="panel-body">
+         <ul class="list-unstyled task-list">
+             <li>
+                 <p class="text-primary">Liste des Maintenances Non Consultées <span class="label-percent">{{ $diperc }} %</span></p>
+                 <div class="progress progress-xs">
+                     <div  class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="{{ $diperc }}" aria-valuemin="0" aria-valuemax="100" style="width:{{ $diperc }}%">
+                         <span class="sr-only">{{ $diperc }} % Complete</span>
+                     </div>
+                 </div>
+             </li>
+             <li>
+                 <p class="text-danger"> Liste des Maintenances Reportées <span class="label-percent">{{ $dirperc }} %</span></p>
+                 <div class="progress progress-xs">
+                     <div  class="progress-bar progress-bar-danger" role="progressbar"  aria-valuenow="{{ $dirperc }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $dirperc }}%">
+                         <span class="sr-only">{{ $dirperc }} % Complete</span>
+                     </div>
+                 </div>
+             </li>
+             <li>
+                 <p class="text-warning">Liste des Maintenances en Cours <span class="label-percent">{{ $diecperc }} %</span></p>
+                 <div class="progress progress-xs">
+                     <div class="progress-bar progress-bar-warning" role="progressbar"  aria-valuenow="{{ $diecperc }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $diecperc }}%">
+                         <span class="sr-only">Success</span>
+                     </div>
+                 </div>
+             </li>
+             <li>
+                 <p class="text-success">Liste des Maintenances Terminées<span class="label-percent">{{ $ditperc }}%</span></p>
+                 <div class="progress progress-xs">
+                     <div  class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ $ditperc }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $ditperc }}%">
+                         <span class="sr-only">45% Complete</span>
+                     </div>
+                 </div>
+             </li>
+         </div>
+         </ul>
+     </div>
+ </div>
   <!-- END TASKS -->
 </div>
 <div class="col-md-5">
@@ -166,7 +213,8 @@
 
 
 </div>
-</div></div>
+</div>
+</div>
 <div>
 <!-- END MAIN CONTENT -->
 </div>

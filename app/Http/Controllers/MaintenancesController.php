@@ -26,4 +26,5 @@ class MaintenancesController extends Controller
         return view('maintenances.affiche')->with('m',$m)->with('mp',$mp)->with('messages', $messages)->with('notifications',$notifications );
 
     }
+      
 }

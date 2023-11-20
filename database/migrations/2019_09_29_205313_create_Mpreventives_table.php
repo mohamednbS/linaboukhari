@@ -32,6 +32,8 @@ class CreateMpreventivesTable extends Migration
             $table->string('etat');
             $table->string('observation')->nullable();
             $table->string('document')->nullable();
+            $table->date('datedebutmp')->nullable();
+            $table->date('datefinmp')->nullable();
             $table->timestamps();
         });
     }

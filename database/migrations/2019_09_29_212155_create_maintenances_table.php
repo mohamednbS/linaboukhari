@@ -18,7 +18,6 @@ class CreateMaintenancesTable extends Migration
             $table->bigIncrements('id_maintenance')->primaryKey();
             $table->integer('idmp');
             $table->date('date_maintenance');
-         
             $table->text('observation')->nullable();
             $table->timestamps();
         });

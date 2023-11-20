@@ -153,10 +153,11 @@
                                                     <select style="width:100%;margin-bottom:10px;" class="form-control" name="etat" id="validationDefault08" required>
                                                         
                                                         <option >Selectionner un Etat</option>
-                                                        <option value="Programé">Programmé</option>
+                                                        <option value="Planifié">Planifié</option>
                                                         <option value="En Cours">En Cours</option>
-                                                        <option value="Suspendu">Suspendu</option>
-                                                        <option value="Terminé">Terminé</option>
+                                                        <option value="Reporté">Reporté</option>
+                                                        <option value="Clôturé sans rapport">Clôturé sans rapport</option>
+                                                        <option value="Clôturé">Clôturé</option>
                                                         
                                                     </select>
                                                 </div>

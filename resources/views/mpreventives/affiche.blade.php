@@ -52,7 +52,7 @@
 								<table class="table table-striped">
                                                 <thead>
                                                     <tr>
-                                                        <th>N° Intervention</th>
+                                                        <th>N° Maintenance</th>
                                                         <th>Dates des Maintenances</th>
 														<th>Commentaire</th>
                                                         

@@ -26,108 +26,117 @@
 							<!-- TABLE STRIPED -->
 							<div class="panel">
 								<div class="panel-heading">
-									<h3 class="panel-title">@isset($searchuser) Resultat de recherche pour : <span class="text-primary"> " {{ $searchuser }} "</span> @else Historique des Maintenances Préventives @endisset </h3>
+									<h3 class="panel-title">@isset($searchuser) Resultat de recherche pour : <span class="text-primary"> " {{ $searchuser }} "</span> @else Liste des Maintenances Préventives @endisset </h3>
 								</div>
                                 
 								
 								<div class="panel-body">
-								@if( session()->get( 'adduser' ) == "deleted" )
+								@if( session()->get( 'addmp' ) == "deleted" )
                                 <div class="alert alert-success alert-dismissible" role="alert">
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<i class="fa fa-check-circle"></i> Utilisateur supprimé avec success 
+										<i class="fa fa-check-circle"></i> Maintenance supprimée avec succèss 
 								</div>
                                 @endif
-                                            <table class="table table-bordered">
+                                <table  class="table table-bordered" >
                                             <!-- nav search--> 
-                                            <div>
-                                            <form action="{{ route('search_mp') }}" method="GET">
-                                                <input type="text" name="query" placeholder="Recherche...">
-                                                <button type="submit">Rechercher</button> 
-                                            </form>
-                                            </div>
-                                                <thead>
-                                                    <tr>
-                                                         <th>#</th>
-                                                        <th style="text-align: center;">N° MP</th>
-                                                        <th style="text-align: center;">Etat</th>
-                                                        <th style="text-align: center;">Client</th>
-                                                        <th style="text-align: center;">Equipement</th>
-                                                        <th style="text-align: center;">Intervenant</th>
-                                                        <th style="text-align: center;">Date de Maintenance</th>
-                                                        <th style="text-align: center;">Observations</th>
-                                                        <th style="text-align: center;">Rapport Maintenance</th>
-                                                        @if (Auth::user()->role == "Administrateur")
-														<th>Action</th>
-														@endif
-                                                        
-                                                        
-                                                    </tr>
-                                                </thead>
+                                <div>
+                                <form action="{{ route('search_mp') }}" method="GET">
+                                    <input type="text" name="query" placeholder="Recherche...">
+                                    <button type="submit">Rechercher</button> 
+                                </form>
+                                </div>
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th style="text-align: center;">N° MP</th>
+                                            <th style="text-align: center;">Etat</th>
+                                            <th style="text-align: center;">Client</th>
+                                            <th style="text-align: center;">Equipement</th>
+                                            <th style="text-align: center;">Intervenant</th>
+                                            <th style="text-align: center;">Date de Maintenance</th>
+                                            <th style="text-align: center;">Observations</th>
+                                            <th style="text-align: center;">Validation</th>
+                                       
+                                            @if (Auth::user()->role == "Administrateur")
+                                            <th style="text-align: center;">Action</th>
+                                            @endif
+                                            
+                                            
+                                        </tr>
+                                    </thead> 
                                                 
-                                                <tbody>
-                                                <?php $i=0; ?>
-                                                @foreach($allmp as $mp)
-                                                <?php $i++; ?>
-                                                <tr>
-                                                    <td>{{ $i }}</td>
-                                                    <td><a href="/mp/show/{{ $mp->id_mpreventive }}">{{ $mp->numero }}</a></td> 
-                                                    <td>
-													
-														@if ($mp->etat == "Suspendu")
-														<span class="label label-danger">
-														@elseif( $mp->etat == "Programé"  )
-														<span class="label label-info">
-														@elseif( $mp->etat == "En attente de validation" || $mp->etat == "En Cours"  )
-														<span class="label label-warning">
-														@else
-														<span class="label label-success">
-														
-														@endif
-														{{ $mp->etat }}</span>
-													</td>
-                                                    <td>
-                                                        @foreach($equipements as $equipement )
-                                                            @if ( $equipement->id_equipement == $mp->equipement_name )
-                                                                {{ $equipement->designation }} 
-                                                            @endif
-                                                        @endforeach
-                                                    </td>
-                                                  
-                                                    <td>
-                                                        @foreach($clients as $client )
-                                                            @if ( $client->id_client == $mp->client_name )
-                                                                {{ $client->clientname }} 
-                                                            @endif
-                                                        @endforeach
-                                                    </td>
-                                                   <td> 
-                                                    @foreach($techniciens as $technicien )
-                                                        @if ( $technicien->id == $mp->executeur )
-                                                            {{ $technicien->name }} 
-                                                        @endif
-                                                    @endforeach
-                                                    </td>
-          
-                                                    <td>{{ $mp->observation }} </td>
-                                                    <td>
-                                                        <a href="{{ route('download.document', ['document' => $mp->document]) }}">Rapport Maintenance</a>
-                                                        </td>
+                                        <tbody> 
+                                        <?php $i=0; ?>
+                                        @foreach($mpreventives as $mp)
+                                        <?php $i++; ?>
+                                        <tr>
+                                            <td>{{ $i }}</td>
+                                            <td><a href="/mp/show/{{ $mp->id_mpreventive }}">{{ $mp->numero }}</a></td> 
+                                            <td>
+                                            
+                                                @if ($mp->etat == "Reporté")
+                                                <span class="label label-danger">
+                                                @elseif( $mp->etat == "Planifié"  )
+                                                <span class="label label-info">
+                                                @elseif( $mp->etat == "En attente de validation" || $mp->etat == "En Cours"  )
+                                                <span class="label label-warning">
+                                                @else
+                                                <span class="label label-success">
                                                 
-                                                   
-                                                    @if (Auth::user()->role == "Administrateur")
-                                                    <td><a data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-primary' href="/mpreventive/change/{{ $mp->id_mpreventive }}"><i class="lnr lnr-pencil"></i> </a> 
-                                                        <a  data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/mpreventive/delete/{{ $mp->id_mpreventive  }}"><i class="lnr lnr-trash"></i></a></td>
+                                                @endif
+                                                {{ $mp->etat }}</span>
+                                            </td>
+                                            
+                                            <td>
+                                                @foreach($clients as $client )
+                                                    @if ( $client->id_client == $mp->client_name )
+                                                        {{ $client->clientname }} 
                                                     @endif
-                                                      
-                                                </tr>
-                                                @endforeach 
-                                                </tbody>
-                                            </table>
+                                                @endforeach
+                                            </td>
+
+                                            <td>
+                                                @foreach($equipements as $equipement )
+                                                    @if ( $equipement->id_equipement == $mp->equipement_name )
+                                                        {{ $equipement->designation.'--'.$equipement->modele }}  
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                            <td>
+                                            {{ implode('/ ', explode(',', $mp->executeur)) }}
+                                            </td>
+                                    
+                                            <td> {{ $mp->date_execution }}</td>
+                                        
+                                            <td>{{ $mp->observation }} </td>
+                                            @if (Auth::user()->role == "Administrateur")
+                                            <td>
+												<a href="{{ route('download.document', ['document' => $mp->document]) }}"> le Rapport d'Intervention</a>
+											</td>
+                                            @endif
+                                            
+                                        
+                                            
+                                            @if (Auth::user()->role == "Administrateur")
+                                            <td style="text-align: center;"><a data-toggle="tooltip" data-placement="top" title="Modifier" class='btn btn-info' href="/mpreventive/change/{{ $mp->id_mpreventive }}"><i class="lnr lnr-pencil"></i> </a> 
+                                                <a  data-toggle="tooltip" data-placement="top" title="supprimer" class='btn btn-danger' href="/mpreventive/delete/{{ $mp->id_mpreventive  }}" onclick="return confirm ('voulez vous vraiment supprimer la maintenance' {{ $mp['id']}})"><i class="lnr lnr-trash"></i></a>
+                                                <a data-toggle="tooltip" data-placement="top" class='btn btn-primary' href="/mp/show/{{ $mp->id_mpreventive }}">
+                                                <i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/><path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                                                </svg></i>
+                                            </td>
+                                            @endif
+                                                
+                                        </tr>
+                                        @endforeach 
+                                        </tbody>
+                                    </table>
+                                    {{$mpreventives->links()}}
                                       
                                     <!-- END TABLE STRIPED -->
                                 </div>
                     	</div>
-							
+								
 							</div>
 							<!-- END RECENT PURCHASES -->
                             </div>

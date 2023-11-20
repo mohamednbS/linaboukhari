@@ -35,7 +35,10 @@
                                     <!-- PANEL NO PADDING -->
                                     <div class="panel">
                                           <div class="panel-heading">
-                                            <h3 class="p-3 mb-2 bg-info text-white" class="panel-title"><a href="/equipement/{{ $equipement->id_equipement}}">{{ $equipement->marque }}</a></h3>
+                                            <h3 class="p-3 mb-2 bg-info text-white" class="panel-title"><a href="/equipement/{{ $equipement->id_equipement}}">Modèle : {{ $equipement->modele}}</h3></a></h3>
+											
+										
+											
                                           
                                           </div>
 
@@ -46,7 +49,7 @@
                                       <!-- PANEL HEADLINE -->
                                       <div class="panel panel-headline">
                                         <div class="panel-heading">
-                                          <h3 class="panel-title">Modèle : {{ $equipement->modele}}</h3>
+                                          <h3 class="panel-title">Marque : {{ $equipement->marque}}</h3>
                                           <h5 class="panel-subtitle">Numéro de série: {{ $equipement->numserie}}</h5>
 										  <h5 class="panel-subtitle">Code: {{ $equipement->name}}</h5>
                                         </div>
@@ -59,8 +62,9 @@
 															@endif
 														 
 														    @endforeach</h4>
+											<h5>Contrat: {{ $equipement->type_contrat}}</h5>
 										   <h5>Date d'installation : {{ $equipement->date_installation}}</h5>
-										   <h5>Durée planing préventif par an: {{ $equipement->plan_prev}}</h5>
+										   <h5>nombre de planning préventif par an: {{ $equipement->plan_prev}}</h5>
 										   
 										   <p><a href="{{ route('download.document', ['document' => $equipement->document]) }}">voir la documentation</a></p>
 
